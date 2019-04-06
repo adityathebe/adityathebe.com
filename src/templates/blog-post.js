@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import './post.css'
 
 const BlogPostTemplate = ({ data }) => {
   const post = data.markdownRemark;

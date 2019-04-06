@@ -1,7 +1,8 @@
 ---
 title: "Seive's Algorithm for sum of all prime numbers less than one million"
 date: 2018-03-16 12:00:00 +0545
-categories: Algorithms
+categories: 
+  - Algorithms
 comments: true
 slug: sum-of-primes-below-million
 excerpt: Fastest algorithm to calculate Sum of all prime numbers less than one million.

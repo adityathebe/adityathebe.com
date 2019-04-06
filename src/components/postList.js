@@ -12,6 +12,7 @@ export default () => {
               title
               date
               slug
+              categories
             }
           }
         }
@@ -20,16 +21,26 @@ export default () => {
   `);
 
   return (
-    <div className="post-lists">
+    <ul className="post-list">
       {allMarkdownRemark.edges.map((edge) => {
         return (
-          <div key={edge.node.id} className="post-list-meta">
-            <Link to={edge.node.frontmatter.slug}>
-              <h1>{edge.node.frontmatter.title}</h1>
-            </Link>
-          </div>
+          <li key={edge.node.id}>
+            <span className="post-meta">
+            {edge.node.frontmatter.date}
+            <b> - </b>
+            {edge.node.frontmatter.categories}
+            </span>
+            <h2>
+              <Link
+                className="post-link"
+                to={edge.node.frontmatter.slug}
+              >
+                {edge.node.frontmatter.title}
+              </Link>
+            </h2>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 };
