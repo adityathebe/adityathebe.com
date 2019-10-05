@@ -7,7 +7,9 @@ import PostList from '../components/postList';
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <PostList />
+    <div>
+      <h1>Incomplete ...</h1>
+    </div>
   </Layout>
 );
 
