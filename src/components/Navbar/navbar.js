@@ -1,5 +1,7 @@
+// @ts-check
+
 import React from 'react';
-import { Link, graphql, useStaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 
 const Navbar = () => {
   return (
@@ -30,7 +32,7 @@ const Navbar = () => {
             </span>
           </label>
 
-          <div class="trigger">
+          <div className="trigger">
             <Link className="page-link" to="/projects">
               Projects
             </Link>
