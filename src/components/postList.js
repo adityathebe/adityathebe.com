@@ -4,13 +4,13 @@ import { graphql, useStaticQuery, Link } from 'gatsby';
 export default () => {
   const { allMarkdownRemark } = useStaticQuery(graphql`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
         edges {
           node {
             id
             frontmatter {
               title
-              date
+              date(formatString: "MMMM DD, YYYY")
               slug
               categories
             }
