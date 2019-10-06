@@ -22,11 +22,9 @@ const Footer = () => {
         <div className="footer-col-wrapper">
           <div className="footer-col footer-col-1">
             <ul className="contact-list">
-              <li>Aditya Thebe</li>
+              <li>© 2019 Aditya Thebe</li>
               <li>
-                <a href="mailto:thebeaditya@gmail.com">
-                  thebeaditya@gmail.com
-                </a>
+                <a href="mailto:thebeaditya@gmail.com">thebeaditya@gmail.com</a>
               </li>
             </ul>
           </div>
@@ -69,7 +67,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-baseline">
-          <p>© 2019 Aditya Thebe </p>
+          <p>Built with ❤️ using Gatsby</p>
         </div>
       </div>
     </footer>
