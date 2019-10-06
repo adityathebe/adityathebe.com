@@ -5,8 +5,7 @@ categories:
   - Tutorials
 comments: true
 slug: ku_twitter_bot
-image: /assets/images/kunotifier.jpg
-feature_image: false
+featuredImage: ./kunotifier.jpg
 description: A twitter bot for Kathmandu University that tweets college notices on Twitter. Built with Node Js
 ---
 

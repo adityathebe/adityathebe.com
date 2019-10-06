@@ -4,13 +4,18 @@ import { graphql } from 'gatsby';
 
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
-import './post.css'
+import './post.css';
 
 const BlogPostTemplate = ({ data }) => {
   const post = data.markdownRemark;
   return (
     <Layout>
-      <SEO title={post.frontmatter.title} keywords={['blog']} />
+      <SEO
+        title={post.frontmatter.title}
+        description={post.frontmatter.description}
+        featuredImage={post.frontmatter.featuredImage.publicURL}
+        keywords={['blog']}
+      />
       <h1>{post.frontmatter.title}</h1>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
@@ -33,6 +38,10 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date
+        featuredImage {
+          publicURL
+        }
+        description
       }
     }
   }
