@@ -10,9 +10,9 @@ import PostList from '../components/PostList';
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "aditya.png" }) {
+      file(relativePath: { eq: "adityathebe.png" }) {
         childImageSharp {
-          fixed {
+          fixed(width: 162, height: 200) {
             ...GatsbyImageSharpFixed_withWebp_noBase64
           }
         }
