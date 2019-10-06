@@ -64,7 +64,7 @@ const Footer = () => {
 
           <div className="footer-col footer-col-3">
             {data.site.siteMetadata.description} <br />
-            subscribe <Link to="/rss.xml">via RSS</Link>
+            Subscribe <Link to="/rss.xml">via RSS</Link>
           </div>
         </div>
 
