@@ -7,7 +7,7 @@
   font-size: 14px;
   line-height: 21px;
   font-family: 'Raleway', sans-serif, 'Helvetica Neue', Helvetica, Arial;
-  color: #828282;
+  color: #454545;
 }
 
 .post-meta .post-tag {
@@ -39,14 +39,44 @@
   color: #454545;
 }
 
+/* Links */
 .post-content a:visited {
-  text-decoration: underline;
+  background-image: linear-gradient(
+    transparent 0%,
+    transparent calc(50% - 5px),
+    rgba(0, 0, 0, 0.25) calc(50% - 5px),
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  background-size: 100% 200%;
+  text-decoration: none;
   color: #454545;
 }
 
 .post-content a {
-  text-decoration: underline;
   color: #454545;
+  padding:0;
+  text-decoration: none;
+  background-image: linear-gradient(
+    transparent 0%,
+    transparent calc(50% - 5px),
+    rgba(0, 0, 0, 0.25) calc(50% - 5px),
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  transition: background-position 2s ease-in-out;
+  transition: padding 120ms ease-in-out;
+  background-size: 100% 200%;
+  background-position: 0 0;
+}
+
+.post-content a:hover {
+  padding: 2px 0 4px 0;
+  background-image:linear-gradient(
+    transparent 0%,
+    transparent calc(50% - 5px),
+    rgba(0, 0, 0, 0.25) calc(50% - 5px),
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  background-position: 0 100%;
 }
 
 .post-content hr {
@@ -97,9 +127,9 @@ span.gatsby-resp-image-wrapper + em {
 }
 
 span.gatsby-resp-image-wrapper + em::after {
-  content: ' --'
+  content: ' --';
 }
 
 span.gatsby-resp-image-wrapper + em::before {
-  content: '-- '
+  content: '-- ';
 }

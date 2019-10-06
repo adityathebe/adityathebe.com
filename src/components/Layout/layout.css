@@ -142,6 +142,7 @@ blockquote {
   text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
   font-style: italic;
   font-family: 'Kalam', cursive;
+  text-align: center;
 }
 
 blockquote > :last-child {
@@ -231,4 +232,11 @@ blockquote > :last-child {
 
 .center-block img {
   height: 200px;
+}
+
+/* Codes */
+@media screen and (max-width: 900px) {
+  pre[class*='language'] {
+    font-size: 0.8em;
+  }
 }
