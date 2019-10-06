@@ -446,9 +446,3 @@ There’s one last thing we need to do. Go to your heroku app page on your brows
 ![Heroku Dynos](./heroku_dyno.png)_Heroku Dynos_
 
 We need to turn on the worker dyno to start our bot. Click on the edit button and disable the web dyno and turn on worker dyno. This is where the Procfile comes into play! Without the Procfile, we wouldn’t have this option to turn on worker dyno.
-
----
-
-<br />
-
-# That’s all! Now we have our Twitter bot running on a web server

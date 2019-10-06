@@ -2,6 +2,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
+import './navbar.css'
+
 const Navbar = () => {
   return (
     <header className="site-header" role="banner">
