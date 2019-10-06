@@ -13,10 +13,25 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-plugin-favicon`,
+            options: {
+              logo: './src/images/favicon.png',
+              icons: {
+                android: true,
+                appleIcon: true,
+                appleStartup: true,
+                coast: false,
+                favicons: true,
+                firefox: true,
+                yandex: false,
+                windows: false,
+              },
+            },
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 800,
-              loading: 'lazy',
             },
           },
           {

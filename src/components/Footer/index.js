@@ -24,9 +24,9 @@ const Footer = () => {
             <ul className="contact-list">
               <li>Aditya Thebe</li>
               <li>
-                <Link to="mailto:thebeaditya@gmail.com">
+                <a href="mailto:thebeaditya@gmail.com">
                   thebeaditya@gmail.com
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
