@@ -54,7 +54,7 @@ If you did everything right, you shall now have the following information:
 - Access Token
 - Access Token Secret
 
-<center> <b>NEVER EVER SHARE YOUR KEYS. </b>  </center>
+> NEVER EVER SHARE YOUR KEYS
 
 Now we need to create a new file called config.js. Open your text editor and make a JavaScript object exactly like this filling up the necessary information. Do not modify the parameters. For example : Do not change consumer_key to Consumer Key. The format should be exactly as shown below.
 
