@@ -8,13 +8,13 @@ import Footer from '../Footer';
 import './layout.css';
 
 const Layout = ({ children }) => (
-  <div>
+  <>
     <Navbar />
     <main className="page-content">
       <div className="wrapper">{children}</div>
     </main>
     <Footer />
-  </div>
+  </>
 );
 
 Layout.propTypes = {
