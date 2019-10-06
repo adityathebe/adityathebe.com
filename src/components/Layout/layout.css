@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway|Roboto+Mono|Sanchez');
+*,
+*::after {
+  box-sizing: border-box;
+}
 
 html {
   font-family: sans-serif;
@@ -56,7 +60,8 @@ figure,
 }
 
 body {
-  font-family: 'Sanchez', 'Raleway', sans-serif, 'Helvetica Neue', Helvetica, Arial;
+  font-family: 'Sanchez', 'Raleway', sans-serif, 'Helvetica Neue', Helvetica,
+    Arial;
   color: #515050;
   line-height: 31px;
   font-size: 17px;
@@ -105,6 +110,12 @@ h5,
 h6 {
   font-weight: bold;
   font-family: 'Raleway', sans-serif, 'Helvetica Neue', Helvetica, Arial;
+  color: #454545;
+}
+
+h1 {
+  font-size: 35px;
+  line-height: 1.4em;
 }
 
 /* Links */

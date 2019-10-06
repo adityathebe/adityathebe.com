@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
+import { formatReadingTime } from '../utils/helper.js';
 
 export default () => {
   const { allMarkdownRemark } = useStaticQuery(graphql`
@@ -8,6 +9,7 @@ export default () => {
         edges {
           node {
             id
+            timeToRead
             frontmatter {
               title
               date(formatString: "MMMM DD, YYYY")
@@ -22,19 +24,20 @@ export default () => {
 
   return (
     <ul className="post-list">
-      {allMarkdownRemark.edges.map((edge) => {
+      {allMarkdownRemark.edges.map(edge => {
         return (
           <li key={edge.node.id}>
             <span className="post-meta">
-            {edge.node.frontmatter.date}
-            <b> - </b>
-            {edge.node.frontmatter.categories}
+              {edge.node.frontmatter.categories.map(x => (
+                <span className="post-tag">{x}</span>
+              ))}
+              {' • '}
+              {edge.node.frontmatter.date}
+              {' • '}
+              {formatReadingTime(edge.node.timeToRead)}
             </span>
             <h2>
-              <Link
-                className="post-link"
-                to={edge.node.frontmatter.slug}
-              >
+              <Link className="post-link" to={edge.node.frontmatter.slug}>
                 {edge.node.frontmatter.title}
               </Link>
             </h2>
