@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway|Roboto+Mono|Sanchez');
+@import url('https://fonts.googleapis.com/css?family=Raleway|Roboto+Mono|Sanchez|Kalam');
+
 *,
 *::after {
   box-sizing: border-box;
@@ -137,7 +138,10 @@ blockquote {
   color: #454545;
   padding: 1em 2em;
   border: 8px dashed #828282;
-  margin: 1em -2rem;
+  margin: 1em 0;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  font-style: italic;
+  font-family: 'Kalam', cursive;
 }
 
 blockquote > :last-child {
