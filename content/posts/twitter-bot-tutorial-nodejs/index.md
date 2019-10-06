@@ -6,10 +6,8 @@ categories:
 comments: true
 slug: /twitter-bot-tutorial-nodejs/
 featuredImage: ./twitter-bot-tutorial-featured.png
-description: Learn to build a twitter bot with NodeJs and Javascript in under 50 lines of code. 
+description: Learn to build a twitter bot with NodeJs and Javascript in under 50 lines of code.
 ---
-
-Hi there, I am Aditya - a CS Undergrad. I have worked on developing Chat Bots in the past few months as part of my pet projects. I have also sold multiple bots on Fiverr. I believe teaching is one of the best ways of learning and this post is my humble attempt to it. I intent to keep this tutorial updated over time.
 
 Chat bots are growing in power with the increase in social media users and advancement in technology. They will be the app of the future and heck they probably already are. They can be useful in many aspects of the customer experience, including providing customer service, presenting product recommendations and engaging customers through targeted marketing campaigns. Although chat bots have still a long way to go in terms of AI, they're still powerful.
 
@@ -31,7 +29,7 @@ Before we start writing any code let us first set up all these requirements
 3. [Setting Up The Project](#3-setting-up-the-project)
 4. [Installing Twit Module](#4-installing-twit-module)
 5. [Writing Codes](#5-writing-codes)
-5. [Deploying our Bot on Heroku](#6-deploying-our-bot-on-heroku)
+6. [Deploying our Bot on Heroku](#6-deploying-our-bot-on-heroku)
 
 ### 1. CREATING A TWITTER APP
 
@@ -39,22 +37,22 @@ You can’t create a bot without a twitter account. Sign up for a new account [h
 
 To get your API keys, you need to first create a Twitter app. Go to [apps.twitter.com](https://apps.twitter.com) to get them.
 
-![Create new app on Twitter](./create_twitter_app_1.png)*Create new app on Twitter*
+![Create new app on Twitter](./create_twitter_app_1.png)_Create new app on Twitter_
 
 Click on ‘Create New app’. Then on the next page fill up all the details. If you don’t have a website just put a placeholder in the Website field. You can leave out the Callback URL field. Tick the Developer Agreement and then finally click on ‘Create Your Twitter application’ at the bottom. We now have a Twitter application. Let’s get the API keys.
 
-![Create new app on Twitter](./create_twitter_app_2.png)*Create new app on Twitter*
+![Create new app on Twitter](./create_twitter_app_2.png)_Create new app on Twitter_
 
-On the next page go to ‘Key and access Tokens‘ tab. We’ll need four different key from here out of which 2  (Consumer Key and Consumer Secret) are already created. We need to generate a thing called “access tokens”. On the bottom of the page, click on the “Create my access tokens”.
+On the next page go to ‘Key and access Tokens‘ tab. We’ll need four different key from here out of which 2 (Consumer Key and Consumer Secret) are already created. We need to generate a thing called “access tokens”. On the bottom of the page, click on the “Create my access tokens”.
 
-![Grab the API Keys](./twitter_api_keys.png)*Grab the API Keys*
+![Grab the API Keys](./twitter_api_keys.png)_Grab the API Keys_
 
 If you did everything right, you shall now have the following information:
 
-* Consumer Key
-* Consumer Secret
-* Access Token
-* Access Token Secret
+- Consumer Key
+- Consumer Secret
+- Access Token
+- Access Token Secret
 
 <center> <b>NEVER EVER SHARE YOUR KEYS. </b>  </center>
 
@@ -62,25 +60,27 @@ Now we need to create a new file called config.js. Open your text editor and mak
 
 ```js
 module.exports = {
-    consumer_key:         '<YOUR_CONSUMER_KEY_HERE>',
-    consumer_secret:      '<YOUR_CONSUMER_SECRET_KEY_HERE',
-    access_token:         'YOUR_ACCESS_TOKEN_HERE',
-    access_token_secret:  'YOUR_ACCESS_TOKEN_SECRET_HERE',
-}
+  consumer_key: '<YOUR_CONSUMER_KEY_HERE>',
+  consumer_secret: '<YOUR_CONSUMER_SECRET_KEY_HERE',
+  access_token: 'YOUR_ACCESS_TOKEN_HERE',
+  access_token_secret: 'YOUR_ACCESS_TOKEN_SECRET_HERE',
+};
 ```
 
 ### 2. Installing and Setting up Node JS
 
 Now, let’s install Node JS. The instructions will vary a bit depending on your operating system, so just follow the official download and installation guide. It’s pretty simple.
 
-Once you have Node JS installed, fire up your command line and type 
+Once you have Node JS installed, fire up your command line and type
+
 ```bash
 node --version
 ```
 
 If you get something like ‘v6.10.3‘ then your installation was successful. The number you get back is the version of Node. If you get something like 'not recognized', there was some error in the installation. Try reinstalling.
 
-Node JS comes with NPM (Node Package Manger) with which you can download Node Modules. Node modules are simply JavaScript libraries. Don’t worry about it right now. Once again in your command line, type 
+Node JS comes with NPM (Node Package Manger) with which you can download Node Modules. Node modules are simply JavaScript libraries. Don’t worry about it right now. Once again in your command line, type
+
 ```bash
 npm --version
 ```
@@ -93,39 +93,40 @@ Hold your horses folks. Few more minutes and then we’ll get into coding. Lets 
 
 Create a folder to store all your bot files. Inside the Folder you should have the config.js file we created earlier. Create another file called bot.js (you can name it anything you want but it should have .js extension). This is the file where we’ll be writing all our codes.
 
-Now we need to create a package.json file. This file will contain all the metadata of our project like project name, project version, lisence and most importantly the dependencies. Dependencies are the node modules that we use in our program. You can manually create this file but there's a much better way. 
+Now we need to create a package.json file. This file will contain all the metadata of our project like project name, project version, lisence and most importantly the dependencies. Dependencies are the node modules that we use in our program. You can manually create this file but there's a much better way.
 Open up your command line and then navigate to this folder. Then type the following command
+
 ```bash
 npm init
 ```
 
 It’s not necessary to fill the details. In fact you can leave everything blank. Just press enter to skip the fields. Finally you should have a package.json file created on your main folder. You folder should have 3 files by now
 
-* config.js
-* bot.js
-* package.json
+- config.js
+- bot.js
+- package.json
 
 ### 4. Installing Twit Module
 
 We’ll be using a Node Module called Twit. This module helps us communicate with Twitter Server using our API keys. This is the only module we’ll need for our Twitter Bot.
 
 Open your terminal and navigate to the main folder. Run the following command
+
 ```bash
 npm install --save twit
 ```
 
-This will install the Twit Node Module. If you check your package.json file you should see "twit" in your dependencies. 
+This will install the Twit Node Module. If you check your package.json file you should see "twit" in your dependencies.
 
-
-```js
+```json
 {
-    "name": "your-project-name",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "dependencies": {
-        "twit": "^2.2.9"    // twit module
-    }
+  "name": "your-project-name",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "twit": "^2.2.9" // twit module
+  }
 }
 ```
 
@@ -145,8 +146,8 @@ let config = require('./config');
 
 The first line of code imports the Twit module and assigns it to the ‘Twit’ variable. Similarly the second line of code imports the config.js file on our Folder. Make sure you have added all the required consumer keys and access tokens on the config.js file.
 
-> Note: config.js is our own custom module on our directory which is why we have added './' 
-before 'config' to import it.
+> Note: config.js is our own custom module on our directory which is why we have added './'
+> before 'config' to import it.
 
 We now create a Twit Instance.
 
@@ -157,17 +158,15 @@ let Bot = new Twit(config);
 
 The variable **"Bot"** holds the TWIT instance. **Bot** has a function called ‘post’ which enables us to make a tweet. This post function takes 3 different arguments
 
-* method
-* input
-* callback function
+- method
+- input
+- callback function
 
 ```js
-// tweet 'hello world!' 
-Bot.post('statuses/update', { status: 'Hello World'}, function(err, data, response) {
-    if (err)
-        console.log(err)
-    else
-        console.log('Successfully Tweeted');
+// tweet 'hello world!'
+Bot.post('statuses/update', { status: 'Hello World' }, (err, data) => {
+  if (err) return console.log(err);
+  console.log('Successfully Tweeted');
 });
 ```
 
@@ -175,7 +174,7 @@ Let’s breakdown and understand this code.
 
 #### a. The first argument: –
 
-‘statuses/update’ means we want to update the status. There are other various methods like ‘media/upload’ to upload a media, ‘favorites/create’ to favorite a tweet,  ‘direct_messages/new’ to send direct messages, and many more. Read more about Twitter API here.
+‘statuses/update’ means we want to update the status. There are other various methods like ‘media/upload’ to upload a media, ‘favorites/create’ to favorite a tweet, ‘direct_messages/new’ to send direct messages, and many more. Read more about Twitter API here.
 
 #### b. The second argument: –
 
@@ -197,11 +196,9 @@ const config = require('./config');
 
 let Bot = new Twit(config);
 
-Bot.post('statuses/update', { status: 'Hello World'}, function(err, data, response) {
-    if (err)
-        console.log(err)
-    else
-        console.log('Successfully Tweeted');
+Bot.post('statuses/update', { status: 'Hello World' }, (err, data) => {
+  if (err) return console.log(err);
+  console.log('Successfully Tweeted');
 });
 ```
 
@@ -221,14 +218,11 @@ const config = require('./config');
 
 let Bot = new Twit(config);
 
-function makeTweet(tweet) {
-    Bot.post('statuses/update', { status: tweet }, function(err, data, response) {
-        if (err) {
-            console.log(err)
-        } else {
-            console.log("Tweet Made Successfully")
-        }
-    });
+const makeTweet = tweet => {
+  Bot.post('statuses/update', { status: tweet }, (err, data) => {
+    if (err) return console.log(err);
+    console.log('Tweet Made Successfully');
+  });
 };
 
 makeTweet("I am tweeting from my command line and it's awesome");
@@ -243,7 +237,7 @@ makeTweet("I am tweeting from my command line and it's awesome");
 This is great but what’s the fun if we need to run a command everytime we need to make a tweet? Let’s automate the process so that our bot will make a tweet in certain time interval. We can achieve this by using the setInterval() function in JavaScript that runs a task in a certain set of intervals. Add this line of code at the bottom
 
 ```js
-setInterval(makeTweet, 60000, Math.random() * 20)
+setInterval(makeTweet, 60000, Math.random() * 20);
 ```
 
 This code runs the makeTweet() function every 60 seconds ( 60,000 milliseconds). If you run the bot from your command line the bot will tweet a random number every minute.
@@ -262,24 +256,22 @@ const config = require('./config');
 
 let Bot = new Twit(config);
 
-function makeTweet(tweet) {
-    Bot.post('statuses/update', { status: tweet }, function(err, data, response) {
-        if(err) {
-            console.log(err)
-        } else {
-            console.log("Tweet Made Successfully")
-        }
-    });
+const makeTweet = tweet => {
+  Bot.post('statuses/update', { status: tweet }, (err, data) => {
+    if (err) return console.log(err);
+    console.log('Tweet Made Successfully');
+  });
 };
+
 // Lets not call this function right now
 // setInterval(makeTweet, 60 * 1000, Math.random() * 20)
 
-function trackTweet(keyword) {
-    let stream = Bot.stream('statuses/filter', {track: keyword})
-    stream.on('tweet', function (tweet) {
-        console.log(tweet.text)
-    });
-}
+const trackTweet = keyword => {
+  let stream = Bot.stream('statuses/filter', { track: keyword });
+  stream.on('tweet', function(tweet) {
+    console.log(tweet.text);
+  });
+};
 
 trackTweet('trump');
 ```
@@ -288,9 +280,9 @@ The last line calls the function and the bot will start tracking every tweets wi
 
 #### Track tweets and favorite the tweet
 
-We're not done yet! Currently the **trackTweet** function track tweets and print it on the command line. Let’s modify it so that we can not only track tweets but also *favorite* the ones we like.
+We're not done yet! Currently the **trackTweet** function track tweets and print it on the command line. Let’s modify it so that we can not only track tweets but also _favorite_ the ones we like.
 
-We’ll create a **favoriteTweet** function that will favorite tweets we pass to it. Then inside our **trackTweet** function we'll use this function to favorite tweets we like. 
+We’ll create a **favoriteTweet** function that will favorite tweets we pass to it. Then inside our **trackTweet** function we'll use this function to favorite tweets we like.
 
 ```js
 const Twit = require('twit');
@@ -298,33 +290,27 @@ const config = require('./config');
 
 let Bot = new Twit(config);
 
-function makeTweet(tweet) {
-    Bot.post('statuses/update', { status: tweet }, function(err, data, response) {
-        if(err) {
-            console.log(err)
-        } else {
-            console.log("Tweet Made Successfully")
-        }
-    });
+const makeTweet = tweet => {
+  Bot.post('statuses/update', { status: tweet }, (err, data) => {
+    if (err) return console.log(err);
+    console.log('Tweet Made Successfully');
+  });
 };
 
-function favoriteTweet(tweet_id) {
-    Bot.post('favorites/create', {id: tweet_id}, function(err, data, response) {
-        if (err) {
-            console.log("Couldn't favorite tweet");
-        } else {
-            console.log('Successfully favorited Tweet!');
-        }
-    });
-}
+const favoriteTweet = tweet_id => {
+  Bot.post('favorites/create', { id: tweet_id }, (err, data) => {
+    if (err) return console.log(err);
+    console.log('Successfully favorited Tweet!');
+  });
+};
 
-function trackTweet(keyword) {
-    let stream = Bot.stream('statuses/filter', {track: keyword})
-    stream.on('tweet', function (tweet) {
-        console.log(tweet.user.screen_name, 'tweeted', tweet.text);
-        favoriteTweet(tweet.id_str)
-    });
-}
+const trackTweet = keyword => {
+  let stream = Bot.stream('statuses/filter', { track: keyword });
+  stream.on('tweet', function(tweet) {
+    console.log(tweet.text);
+    favoriteTweet(tweet.id_str);
+  });
+};
 
 trackTweet('nepal');
 // setInterval(makeTweet, 60 * 1000, Math.random() * 20)
@@ -339,13 +325,10 @@ Did you succeed? Well done if you did. The code must look something like this.
 ```js
 // Pass it the username and your bot will follow the user.
 function followUser(username) {
-    Bot.post('friendships/create', {screen_name: username}, function(err, data, response) {
-        if (err) {
-            console.log("Couldn't Follow!");
-        } else {
-            console.log('Followed!', username);
-        }
-    });    
+  Bot.post('friendships/create', { screen_name: username }, (err, data) => {
+    if (err) return console.log("Couldn't Follow!");
+    console.log('Followed!', username);
+  });
 }
 ```
 
@@ -366,9 +349,9 @@ Currently the twitter bot runs on our PC and that’s not what we want. We want 
 
 Create an account here. If you create a free account then you can host up to 5 different applications. Once you create a new account create a new app. Now there’s a whole bunch of things we need to do here. Basically there are 3 different ways we can add our code on heroku
 
-- Through Heroku Command Line (*Preffered and the programmer's way*)
-- Github (*Easy way*)
-- Dropbox (*Easy way*)
+- Through Heroku Command Line (_Preffered and the programmer's way_)
+- Github (_Easy way_)
+- Dropbox (_Easy way_)
 
 I would recommend the first way although it's a bit harder to get at first. However you can just follow along by using the syntax I provide here
 
@@ -383,17 +366,21 @@ Now we need to download one more thing and that’s GIT – a CLI for GitHub. Do
 
 ![](./heroku_deploy.png)
 
-By now you should have Heroku CLI and GIT installed. To check if you have successfully installed those two application open your command line and type 
+By now you should have Heroku CLI and GIT installed. To check if you have successfully installed those two application open your command line and type
+
 ```bash
 heroku --verion
 ```
 
-If you get a reply something like this 
+If you get a reply something like this
+
 ```bash
 heroku-cli/6.14.22-f598c4a (windows-x64) node-v8.4.0
 ```
-then the app was installed successfully. Likewise type 
-```bash 
+
+then the app was installed successfully. Likewise type
+
+```bash
 git --version
 ```
 
@@ -401,11 +388,12 @@ and you should see the git version. Please proceed to rest of the tutorial only 
 
 ### C. Creating a Procfile
 
-Heroku requires a special file called **Procfile**. *If you're hosting your bot on any other hosting service then this file is not require*. This file does not have any extension like .js or .txt, but only a name ‘Procfile’. So in your Project folder, create a new file and name it as Procfile. Inside this file, write
+Heroku requires a special file called **Procfile**. _If you're hosting your bot on any other hosting service then this file is not require_. This file does not have any extension like .js or .txt, but only a name ‘Procfile’. So in your Project folder, create a new file and name it as Procfile. Inside this file, write
 
 ```
 worker: node bot.js
 ```
+
 and save it. That’s all we need to do with Procfile.
 
 This Procfile tells heroku to run node bot.js command just like we did on your command line. The ‘worker’ is a type of dyno in heroku which I better not talk about right now.
@@ -418,7 +406,7 @@ On your terminal, type heroku login. Type your Heroku email and password and log
 heroku create <your_app_name>
 ```
 
-Replace <you_app_name> with your app name. The app name should be in lowercase. That’s how easy it is to create an app in heroku. All we need to do now is upload our code to the Heroku app that we created just now. 
+Replace <you_app_name> with your app name. The app name should be in lowercase. That’s how easy it is to create an app in heroku. All we need to do now is upload our code to the Heroku app that we created just now.
 
 On your browser go to [www.heroku.com](https://www.heroku.com) and login. You’ll see a list of all your apps. Click on the app you created just now. Then go to the ‘Deploy’ tab section. If you scroll down you’ll see this :
 
@@ -455,11 +443,11 @@ git push heroku master
 
 There’s one last thing we need to do. Go to your heroku app page on your browser. On the **‘Resources’** tab you should see your dynos.
 
-![Heroku Dynos](./heroku_dyno.png)*Heroku Dynos*
+![Heroku Dynos](./heroku_dyno.png)_Heroku Dynos_
 
 We need to turn on the worker dyno to start our bot. Click on the edit button and disable the web dyno and turn on worker dyno. This is where the Procfile comes into play! Without the Procfile, we wouldn’t have this option to turn on worker dyno.
 
-***
+---
 
 <br />
 
