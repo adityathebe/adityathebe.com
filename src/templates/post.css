@@ -11,8 +11,8 @@
 }
 
 .post-meta .post-tag {
-  border-radius: 5px;
-  background-color: #454545;
+  border-radius: 4px;
+  background-color: #828282;
   color: white;
   margin: 0 0.1rem;
   padding: 0.1rem 0.2rem;
@@ -80,5 +80,12 @@ span.gatsby-resp-image-wrapper + em {
   display: block;
   text-align: center;
   font-size: 0.8em;
-  text-decoration: underline;
+}
+
+span.gatsby-resp-image-wrapper + em::after {
+  content: ' --'
+}
+
+span.gatsby-resp-image-wrapper + em::before {
+  content: '-- '
 }
