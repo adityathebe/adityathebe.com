@@ -12,7 +12,7 @@ const IndexPage = () => {
     query {
       file(relativePath: { eq: "adityathebe.png" }) {
         childImageSharp {
-          fixed(width: 162, height: 200) {
+          fixed(height: 200) {
             ...GatsbyImageSharpFixed_withWebp_noBase64
           }
         }
