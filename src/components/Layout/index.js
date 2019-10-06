@@ -1,18 +1,17 @@
+// @ts-check
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Footer from './Footer/footer';
-import Navbar from './Navbar/navbar'
+import Navbar from '../Navbar';
+import Footer from '../Footer';
 
 import './layout.css';
 
 const Layout = ({ children }) => (
   <div>
     <Navbar />
-    <main className='page-content'>
-      <div className="wrapper">
-        {children}
-      </div>
+    <main className="page-content">
+      <div className="wrapper">{children}</div>
     </main>
     <Footer />
   </div>

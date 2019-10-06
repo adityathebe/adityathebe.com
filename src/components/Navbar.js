@@ -1,5 +1,4 @@
 // @ts-check
-
 import React from 'react';
 import { Link } from 'gatsby';
 
@@ -44,6 +43,6 @@ const Navbar = () => {
       </div>
     </header>
   );
-}
+};
 
 export default Navbar;

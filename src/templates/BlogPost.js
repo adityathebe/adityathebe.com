@@ -1,8 +1,9 @@
+// @ts-check
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import SEO from '../components/SEO';
+import Layout from '../components/Layout';
 import './post.css'
 
 const BlogPostTemplate = ({ data }) => {

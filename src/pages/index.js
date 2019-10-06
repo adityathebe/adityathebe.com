@@ -1,22 +1,37 @@
+// @ts-check
 import React from 'react';
+import Img from 'gatsby-image';
+import { useStaticQuery, graphql } from 'gatsby';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import PostList from '../components/postList';
+import SEO from '../components/SEO';
+import Layout from '../components/Layout';
+import PostList from '../components/PostList';
 
-import Image from '../../content/static/aditya.png';
+const IndexPage = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "aditya.png" }) {
+        childImageSharp {
+          fixed {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
+          }
+        }
+      }
+    }
+  `);
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <div className="home">
-      <div className="center-block">
-        <img alt="Author's Avatar" src={Image} />
-        <h2 id="site-title">Random Thoughts Of A Programmer</h2>
+  return (
+    <Layout>
+      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <div className="home">
+        <div className="center-block">
+          <Img alt="Author's Image" fixed={data.file.childImageSharp.fixed} />
+          <h2 id="site-title">Random Thoughts Of A Programmer</h2>
+        </div>
       </div>
-    </div>
-    <PostList />
-  </Layout>
-);
+      <PostList />
+    </Layout>
+  );
+};
 
 export default IndexPage;
