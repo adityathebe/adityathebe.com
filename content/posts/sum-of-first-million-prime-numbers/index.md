@@ -1,12 +1,12 @@
 ---
-title: "Seive's Algorithm for sum of all prime numbers less than one million"
+title: "Seive's Algorithm To Calculate The Sum Of First Million Prime Numbers"
 date: 2018-03-16 12:00:00 +0545
 categories:
   - Algorithms
 comments: true
 featuredImage: ./prime-number-sieve.png
-slug: sum-of-primes-below-million
-excerpt: Fastest algorithm to calculate Sum of all prime numbers less than one million.
+slug: sum-of-first-million-prime-numbers
+description: Fastest algorithm to calculate Sum of all prime numbers less than one million.
 ---
 
 If you're a programmer there's a good chance that you have, at least once, written a prime detection function. This problem seems easy enough for anyone who knows what a prime number is and in fact it is ! But many of us approach it the wrong way. The most obvious way would be to make a function that classifies a number as prime or composite and then another function that loops through all the numbers say upto a million and then checks each number with the classifier function. There's nothing wrong with this but depending on the prime classifier function, calculating sum of all prime numbers upto 1 million can take anywhere from 1 second to 10 minutes ! Let me write a prime classifier function first ...
