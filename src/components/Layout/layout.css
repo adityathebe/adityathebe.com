@@ -49,7 +49,6 @@ h4,
 h5,
 h6,
 p,
-blockquote,
 pre,
 ul,
 ol,
@@ -135,12 +134,10 @@ a:hover {
 
 /* Blockquotes */
 blockquote {
-  color: #828282;
-  border-left: 4px solid #e8e8e8;
-  padding-left: 15px;
-  font-size: 18px;
-  letter-spacing: -1px;
-  font-style: italic;
+  color: #454545;
+  padding: 1em 2em;
+  border: 8px dashed #828282;
+  margin: 1em -2rem;
 }
 
 blockquote > :last-child {

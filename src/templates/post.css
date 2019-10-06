@@ -36,7 +36,21 @@
   font-size: 1em;
   font-family: 'Sanchez', serif;
   line-height: 30px;
-  color: #515050;
+  color: #454545;
+}
+
+.post-content a:visited {
+  text-decoration: underline;
+  color: #454545;
+}
+
+.post-content a {
+  text-decoration: underline;
+  color: #454545;
+}
+
+.post-content hr {
+  margin: 1em 0;
 }
 
 .post-content h2 {
