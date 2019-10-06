@@ -223,3 +223,11 @@ blockquote > :last-child {
 .page-heading {
   font-size: 20px;
 }
+
+.center-block {
+  text-align: center;
+}
+
+.center-block img {
+  height: 200px;
+}

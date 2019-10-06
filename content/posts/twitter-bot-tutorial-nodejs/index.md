@@ -45,7 +45,7 @@ Click on ‘Create New app’. Then on the next page fill up all the details. If
 
 On the next page go to ‘Key and access Tokens‘ tab. We’ll need four different key from here out of which 2 (Consumer Key and Consumer Secret) are already created. We need to generate a thing called “access tokens”. On the bottom of the page, click on the “Create my access tokens”.
 
-![Grab the API Keys](./twitter_api_keys.png)_Grab the API Keys_
+![Grab the API Keys](./twitter_api_keys.png)_Grab the api keys_
 
 If you did everything right, you shall now have the following information:
 
@@ -364,7 +364,7 @@ Download Heroku Command Line from [here](https://devcenter.heroku.com/articles/h
 
 Now we need to download one more thing and that’s GIT – a CLI for GitHub. Download GIT [here](https://git-scm.com/downloads). Run those two installation files. If you have any trouble installing look for tutorials online, there are plenty.
 
-![](./heroku_deploy.png)
+![](./heroku_deploy.png)_Deploy on Heroku_
 
 By now you should have Heroku CLI and GIT installed. To check if you have successfully installed those two application open your command line and type
 
