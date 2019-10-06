@@ -1,14 +1,6 @@
-svg#i-clock {
-  vertical-align: middle;
-}
-
 .post-list {
   margin-left: 0;
   list-style: none;
-}
-
-.post-list > li {
-  margin-bottom: 15px;
 }
 
 .post-meta {
@@ -28,36 +20,27 @@ svg#i-clock {
 }
 
 .post-link {
-  display: block;
+  display: inline;
   font-size: 20px;
-  color: #515050;
-  line-height: 29px;
+  color: #454545;
+  line-height: 1em;
   font-weight: 700;
 }
 
 .post-link a,
 .post-link:visited {
-  color: #515050;
+  color: #454545;
 }
 
 .post-content {
-  margin-bottom: 30px;
+  font-size: 1em;
   font-family: 'Sanchez', serif;
-  font-size: 17px;
-  line-height: 31px;
+  line-height: 30px;
   color: #515050;
 }
 
 .post-content h2 {
   font-size: 32px;
-}
-
-.center-block {
-  text-align: center;
-}
-
-.center-block img {
-  height: 200px;
 }
 
 @media screen and (max-width: 800px) {
@@ -86,15 +69,6 @@ svg#i-clock {
   }
 }
 
-.post-header {
-  margin-bottom: 30px;
-}
-
-#post-title {
-  font-size: 35px;
-  color: #454545;
-}
-
 @media screen and (max-width: 800px) {
   #post-title {
     font-size: 36px;
@@ -102,7 +76,9 @@ svg#i-clock {
 }
 
 /* Image Caption */
-img + em {
+span.gatsby-resp-image-wrapper + em {
   display: block;
   text-align: center;
+  font-size: 0.8em;
+  text-decoration: underline;
 }

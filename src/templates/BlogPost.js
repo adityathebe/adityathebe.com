@@ -18,7 +18,7 @@ const BlogPostTemplate = ({ data }) => {
         featuredImage={post.frontmatter.featuredImage.publicURL}
         keywords={['blog']}
       />
-      <h1>{post.frontmatter.title}</h1>
+      <h1 className="post-header">{post.frontmatter.title}</h1>
       <span className="post-meta">
         {post.frontmatter.categories.map(x => (
           <span className="post-tag">{x}</span>
@@ -28,8 +28,11 @@ const BlogPostTemplate = ({ data }) => {
         {' • '}
         {formatReadingTime(post.timeToRead)}
       </span>
-      <hr style={ {margin: "1em 0"} }/>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <hr style={{ margin: '1em 0' }} />
+      <div
+        className="post-content"
+        dangerouslySetInnerHTML={{ __html: post.html }}
+      />
     </Layout>
   );
 };
