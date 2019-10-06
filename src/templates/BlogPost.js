@@ -4,6 +4,8 @@ import { graphql } from 'gatsby';
 
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
+import { formatReadingTime, formatPostDate } from '../utils/helper.js';
+
 import './post.css';
 
 const BlogPostTemplate = ({ data }) => {
@@ -17,6 +19,16 @@ const BlogPostTemplate = ({ data }) => {
         keywords={['blog']}
       />
       <h1>{post.frontmatter.title}</h1>
+      <span className="post-meta">
+        {post.frontmatter.categories.map(x => (
+          <span className="post-tag">{x}</span>
+        ))}
+        {' • '}
+        {formatPostDate(post.frontmatter.date)}
+        {' • '}
+        {formatReadingTime(post.timeToRead)}
+      </span>
+      <hr style={ {margin: "1em 0"} }/>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
   );
@@ -42,7 +54,9 @@ export const pageQuery = graphql`
           publicURL
         }
         description
+        categories
       }
+      timeToRead
     }
   }
 `;

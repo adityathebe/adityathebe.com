@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
-import { formatReadingTime } from '../utils/helper.js';
+import { formatReadingTime, formatPostDate } from '../utils/helper.js';
 
 export default () => {
   const { allMarkdownRemark } = useStaticQuery(graphql`
@@ -12,7 +12,7 @@ export default () => {
             timeToRead
             frontmatter {
               title
-              date(formatString: "MMMM DD, YYYY")
+              date
               slug
               categories
             }
@@ -32,7 +32,7 @@ export default () => {
                 <span className="post-tag">{x}</span>
               ))}
               {' • '}
-              {edge.node.frontmatter.date}
+              {formatPostDate(edge.node.frontmatter.date)}
               {' • '}
               {formatReadingTime(edge.node.timeToRead)}
             </span>
