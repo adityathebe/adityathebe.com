@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 
 import './footer.css';
 
@@ -70,7 +70,10 @@ const Footer = () => {
 
           <div className="footer-col footer-col-3">
             {data.site.siteMetadata.description} <br />
-            Subscribe <Link to="/rss.xml">via RSS</Link>
+            Subscribe{' '}
+            <a href="/rss.xml" rel="noopener noreferrer">
+              via RSS
+            </a>
           </div>
         </div>
 
