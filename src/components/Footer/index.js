@@ -67,7 +67,13 @@ const Footer = () => {
         </div>
 
         <div className="footer-baseline">
-          <p>Built with ❤️ using Gatsby</p>
+          <p>
+            Built with{' '}
+            <span role="img" aria-label="heart-icon">
+              ❤️
+            </span>{' '}
+            using Gatsby
+          </p>
         </div>
       </div>
     </footer>
