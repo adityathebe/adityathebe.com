@@ -22,7 +22,6 @@ function SEO({ description, lang, meta, keywords, title, featuredImage }) {
   );
 
   const metaDescription = description || site.siteMetadata.description;
-  console.log(file);
 
   return (
     <Helmet
