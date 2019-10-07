@@ -1,8 +1,13 @@
 module.exports = {
   siteMetadata: {
     title: `Aditya Thebe`,
-    description: `Computer Science Undergraduate`,
-    author: `@adityathebe`,
+    description: `Full Stack Web Developer`,
+    author: `Aditya Thebe`,
+    siteUrl: 'https://overreacted.io',
+    social: {
+      twitter: 'adityathebe',
+      github: 'adityathebe',
+    },
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

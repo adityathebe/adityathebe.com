@@ -11,6 +11,10 @@ const Footer = () => {
           title
           author
           description
+          social {
+            github
+            twitter
+          }
         }
       }
     }
@@ -22,7 +26,7 @@ const Footer = () => {
         <div className="footer-col-wrapper">
           <div className="footer-col footer-col-1">
             <ul className="contact-list">
-              <li>© 2019 Aditya Thebe</li>
+              <li>© 2019 {data.site.siteMetadata.author}</li>
               <li>
                 <a href="mailto:thebeaditya@gmail.com">thebeaditya@gmail.com</a>
               </li>
@@ -41,7 +45,9 @@ const Footer = () => {
                       />
                     </svg>
                   </span>
-                  <span className="username">adityathebe</span>
+                  <span className="username">
+                    {data.site.siteMetadata.social.github}
+                  </span>
                 </a>
               </li>
               <li>
@@ -54,7 +60,9 @@ const Footer = () => {
                       />
                     </svg>
                   </span>
-                  <span className="username">adityathebe</span>
+                  <span className="username">
+                    {data.site.siteMetadata.social.twitter}
+                  </span>
                 </a>
               </li>
             </ul>
