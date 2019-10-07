@@ -4,7 +4,6 @@ import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 function SEO({ description, lang, meta, keywords, title, featuredImage }) {
-  console.log({ featuredImage, description });
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -46,6 +45,10 @@ function SEO({ description, lang, meta, keywords, title, featuredImage }) {
           content: `website`,
         },
         {
+          name: `og:image`,
+          content: featuredImage,
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
@@ -62,7 +65,7 @@ function SEO({ description, lang, meta, keywords, title, featuredImage }) {
           content: metaDescription,
         },
         {
-          name: `og:image`,
+          name: `twitter:image`,
           content: featuredImage,
         },
       ]
