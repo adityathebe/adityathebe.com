@@ -63,7 +63,7 @@ const primality = num => {
 
 I used both the algorithms to classify the 50 millionth prime number **982,451,653** and the result was:
 
-```
+```bash
 # first Algorithm: 2952.744ms
 # primality: 0.527ms
 ```
@@ -149,7 +149,7 @@ const eratosthenes = n => {
 
 You must have probably guessed the problem with this algorithm. Yes, it's the memory consumption! For N = 1million we need an array of size 1million! In Node for large values of N, we see the classic javascript error - " **heap out of memory** ". But Node can easily handle upto N = 50 million.
 
-```
+```bash
 <--- JS stacktrace --->
 
 ==== JS stack trace =========================================

@@ -390,7 +390,7 @@ and you should see the git version. Please proceed to rest of the tutorial only 
 
 Heroku requires a special file called **Procfile**. _If you're hosting your bot on any other hosting service then this file is not require_. This file does not have any extension like .js or .txt, but only a name ‘Procfile’. So in your Project folder, create a new file and name it as Procfile. Inside this file, write
 
-```
+```bash
 worker: node bot.js
 ```
 
