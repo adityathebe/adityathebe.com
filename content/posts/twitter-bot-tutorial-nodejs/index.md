@@ -25,11 +25,11 @@ Before we start writing any code let us first set up all these requirements
 ## Contents
 
 1. [Create A Twitter App](#1-creating-a-twitter-app)
-2. [Set up and Install NodeJs](#2-installing-and-setting-up-node-js)
-3. [Setting Up The Project](#3-setting-up-the-project)
-4. [Installing Twit Module](#4-installing-twit-module)
-5. [Writing Codes](#5-writing-codes)
-6. [Deploying our Bot on Heroku](#6-deploying-our-bot-on-heroku)
+2. [Set up and InstalSettingl NodeJs](#2-installing-and-setting-up-node-js)
+3. [Project Setup](#3-project-setup)
+4. [Install Twit Module](#4-install-twit-module)
+5. [Code](#5-code)
+6. [Deploy on Heroku](#6-deploy-on-heroku)
 
 ### 1. CREATING A TWITTER APP
 
@@ -87,7 +87,7 @@ npm --version
 
 You should get a back a version number like before. Great! We now have all the requirements fulfilled.
 
-### 3. Setting Up The Project
+### 3. Project Setup
 
 Hold your horses folks. Few more minutes and then we’ll get into coding. Lets set up our project first. This process takes about a minute or so.
 
@@ -106,7 +106,7 @@ It’s not necessary to fill the details. In fact you can leave everything blank
 - bot.js
 - package.json
 
-### 4. Installing Twit Module
+### 4. Install Twit Module
 
 We’ll be using a Node Module called Twit. This module helps us communicate with Twitter Server using our API keys. This is the only module we’ll need for our Twitter Bot.
 
@@ -132,7 +132,7 @@ This will install the Twit Node Module. If you check your package.json file you 
 
 Every time you install a node module it’ll automatically be added to your package.json file. But it’s necessary that on your command line you must be on the same path where you want to install the module.
 
-### 5. Writing Codes
+### 5. Code
 
 Open your bot.js file on a text editor. Let's write our first line of code :)
 
@@ -341,7 +341,7 @@ So basically this is all our coding part. We have created a twitter bot that tra
 
 There’s still so much more to explore. Visit the [Twitter API Documentation](https://developer.twitter.com/en/docs/api-reference-index) page and try doing more on your own.
 
-### 6. Deploying our Bot on Heroku
+### 6. Deploy on Heroku
 
 Currently the twitter bot runs on our PC and that’s not what we want. We want to run it on a server online. Heroku is a service that provides this facility for free. Of course there’re some limitation to the free package but you can get their premium packages if you want.
 
