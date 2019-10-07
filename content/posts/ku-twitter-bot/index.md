@@ -4,7 +4,7 @@ date: 2017-11-07 20:30:35 +0545
 categories:
   - Tutorials
 comments: true
-slug: kathmandu-university-twitter-bot
+slug: /kathmandu-university-twitter-bot
 featuredImage: ./kunotifier.jpg
 description: A twitter bot for Kathmandu University that tweets college notices on Twitter. Built with Node Js
 ---

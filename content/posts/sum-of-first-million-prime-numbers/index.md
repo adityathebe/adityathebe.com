@@ -5,7 +5,7 @@ categories:
   - Algorithms
 comments: true
 featuredImage: ./prime-number-sieve.png
-slug: sum-of-first-million-prime-numbers
+slug: /sum-of-first-million-prime-numbers
 description: Fastest algorithm to calculate Sum of all prime numbers less than one million.
 ---
 
