@@ -240,3 +240,11 @@ blockquote > :last-child {
     font-size: 0.8em;
   }
 }
+
+:not(pre) > code[class='language-text'] {
+  background-color: #454545;
+  color: white;
+  padding-left: 0;
+  padding-right: 0;
+  border-radius: 0px;
+}

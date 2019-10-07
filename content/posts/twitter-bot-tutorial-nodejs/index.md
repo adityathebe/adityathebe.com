@@ -25,7 +25,7 @@ Before we start writing any code let us first set up all these requirements
 ## Contents
 
 1. [Create A Twitter App](#1-creating-a-twitter-app)
-2. [Set up and InstalSettingl NodeJs](#2-installing-and-setting-up-node-js)
+2. [Set up and Install NodeJs](#2-setup-and-install-nodejs)
 3. [Project Setup](#3-project-setup)
 4. [Install Twit Module](#4-install-twit-module)
 5. [Code](#5-code)
@@ -67,7 +67,7 @@ module.exports = {
 };
 ```
 
-### 2. Installing and Setting up Node JS
+### 2. Setup and Install Nodejs
 
 Now, let’s install Node JS. The instructions will vary a bit depending on your operating system, so just follow the official download and installation guide. It’s pretty simple.
 
