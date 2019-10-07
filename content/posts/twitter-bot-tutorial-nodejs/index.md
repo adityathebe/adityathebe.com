@@ -1,6 +1,6 @@
 ---
 title: Twitter Bot Tutorial for Beginners
-date: 2018-11-07 20:30:35 +0545
+date: '2018-11-07'
 categories:
   - Tutorials
 comments: true

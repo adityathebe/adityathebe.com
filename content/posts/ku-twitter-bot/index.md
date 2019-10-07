@@ -1,6 +1,6 @@
 ---
 title: 'The Code behind @KuNotifier - A Twitter bot for Kathmandu University'
-date: 2017-11-07 20:30:35 +0545
+date: '2017-11-07'
 categories:
   - Tutorials
 comments: true

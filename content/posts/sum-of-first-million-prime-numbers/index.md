@@ -1,6 +1,6 @@
 ---
 title: "Seive's Algorithm To Calculate The Sum Of First Million Prime Numbers"
-date: 2018-03-16 12:00:00 +0545
+date: '2018-03-16'
 categories:
   - Algorithms
 comments: true
