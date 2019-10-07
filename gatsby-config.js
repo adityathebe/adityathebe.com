@@ -14,22 +14,6 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-plugin-favicon`,
-            options: {
-              logo: './content/images/favicon.png',
-              icons: {
-                android: true,
-                appleIcon: true,
-                appleStartup: true,
-                coast: false,
-                favicons: true,
-                firefox: true,
-                yandex: false,
-                windows: false,
-              },
-            },
-          },
-          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 800,
@@ -70,6 +54,18 @@ module.exports = {
       options: {
         path: `${__dirname}/content/posts`,
         name: `posts`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Aditya Thebe`,
+        short_name: `adityathebe`,
+        start_url: `/`,
+        background_color: `#fff`,
+        theme_color: `#454545`,
+        display: `standalone`,
+        icon: `${__dirname}/content/images/favicon.png`,
       },
     },
   ],
