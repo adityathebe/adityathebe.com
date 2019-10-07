@@ -24,9 +24,6 @@ const IndexPage = () => {
     <Layout>
       <SEO
         title="Home"
-        featuredImage={
-          'https://raw.githubusercontent.com/adityathebe/www.adityathebe.com/jekyll/assets/images/site_featured_aditya_thebe.jpg'
-        }
         keywords={[`gatsby`, `application`, `react`]}
       />
       <div className="home">
