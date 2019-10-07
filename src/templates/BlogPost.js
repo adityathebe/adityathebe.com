@@ -20,8 +20,10 @@ const BlogPostTemplate = ({ data }) => {
       />
       <h1 className="post-header">{post.frontmatter.title}</h1>
       <span className="post-meta">
-        {post.frontmatter.categories.map(x => (
-          <span className="post-tag">{x}</span>
+        {post.frontmatter.categories.map((x, idx) => (
+          <span key={idx} className="post-tag">
+            {x}
+          </span>
         ))}
         {' • '}
         {formatPostDate(post.frontmatter.date)}
