@@ -27,15 +27,17 @@ export default () => {
       {allMarkdownRemark.edges.map(edge => {
         return (
           <li key={edge.node.id}>
-            <span className="post-meta">
-              {edge.node.frontmatter.categories.map(x => (
-                <span className="post-tag">{x}</span>
+            <div className="post-meta">
+              {edge.node.frontmatter.categories.map((x, idx) => (
+                <span key={idx} className="post-tag">
+                  {x}
+                </span>
               ))}
               {' • '}
               {formatPostDate(edge.node.frontmatter.date)}
               {' • '}
               {formatReadingTime(edge.node.timeToRead)}
-            </span>
+            </div>
             <h2>
               <Link className="post-link" to={edge.node.frontmatter.slug}>
                 {edge.node.frontmatter.title}

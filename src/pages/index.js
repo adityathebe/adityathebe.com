@@ -22,7 +22,13 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <SEO
+        title="Home"
+        featuredImage={
+          'https://raw.githubusercontent.com/adityathebe/www.adityathebe.com/jekyll/assets/images/site_featured_aditya_thebe.jpg'
+        }
+        keywords={[`gatsby`, `application`, `react`]}
+      />
       <div className="home">
         <div className="center-block">
           <Img alt="Author's Image" fixed={data.file.childImageSharp.fixed} />
