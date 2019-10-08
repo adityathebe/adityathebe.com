@@ -26,7 +26,7 @@ We'll code our Twitter Bot in JavaScript - NodeJS. I have tried my best to be as
 
 You can't create a bot without a twitter account. Sign up for a new account [here](https://twitter.com/signup?lang=en). 
 
-Great! Now we'll need something called `API keys`. API keys are the 'username and password' for your bot. Your Bot will require this to make API calls, or in simple words, interact with the data on twitter's server. To get your API keys, you need to first create a Twitter app. Go to [apps.twitter.com](https://apps.twitter.com) to get them.
+Great! Now we'll need something called `API keys`. API keys are the 'username and password' for your bot. Your Bot will require them to make API calls, or in simple words, interact with the data on twitter's server. To get your API keys, you need to first create a Twitter app. Go to [apps.twitter.com](https://apps.twitter.com) to get them.
 
 ![Create new app on Twitter](./create_twitter_app_1.png)_Create new app on Twitter_
 
@@ -231,7 +231,7 @@ setInterval(makeTweet, 60000, Math.random() * 20);
 
 This code runs the makeTweet() function every 60 seconds ( 60,000 milliseconds). If you run the bot from your command line the bot will tweet a random number every minute.
 
-> Do not spam and post every few seconds or so. Twitter will block your app! But you can make new one again.
+> Do not spam and post every few seconds or so. Twitter will block your app!
 
 #### Streaming Tweets
 
