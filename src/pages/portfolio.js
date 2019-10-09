@@ -39,6 +39,7 @@ const ProjectPage = () => {
         title="Portfolio"
         keywords={['aditya thebe', 'adityathebe', 'portfolio']}
       />
+      <h2>Major Projects</h2>
       {projectsList.map((project, idx) => (
         <Project key={idx} project={project} />
       ))}

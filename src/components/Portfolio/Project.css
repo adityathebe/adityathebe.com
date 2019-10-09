@@ -1,6 +1,6 @@
 .project-card {
   display: flex;
-  border: 1px solid black;
+  border: 1px solid #454545;
   padding: 1em;
   margin: 0.5em;
   justify-content: flex-start;
