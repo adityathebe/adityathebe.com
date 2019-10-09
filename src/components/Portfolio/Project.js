@@ -11,6 +11,7 @@ function durationFormatter(duration) {
 }
 
 export default ({ project }) => {
+  const { sourceCodeUrl, demoUrl } = project;
   return (
     <div className="project-card">
       <div className="project-card__left-col">
@@ -18,20 +19,21 @@ export default ({ project }) => {
       </div>
 
       <div className="right-col">
-        <p className="project-card__project-name">{project.name}</p>
+        <p className="project-card__project-name">
+          {project.name}
+          <span className="project-card__project-type">{project.type}</span>
+        </p>
         <p className={'project-card__project_duration'}>
           {durationFormatter(project.duration)}
         </p>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href={project.sourceCodeUrl}
-        >
-          <button>Source Code</button>
-        </a>
-        <a target="_blank" rel="noopener noreferrer" href={project.demoUrl}>
-          <button>Visit</button>
-        </a>
+        <div className="project-card__project-btns">
+          <a target="_blank" rel="noopener noreferrer" href={sourceCodeUrl}>
+            <button>Source Code</button>
+          </a>
+          <a target="_blank" rel="noopener noreferrer" href={demoUrl}>
+            <button>Visit</button>
+          </a>
+        </div>
 
         <div className={'project_card__project_description'}>
           <p>{project.description}</p>

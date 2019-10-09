@@ -39,7 +39,7 @@
     - Web Scraping
   duration:
     - 2017/10/10
-  description: An awesome telegram bot
+  description: An awesome telegram bot.
   image: './Images/tokennews.png'
   sourceCodeUrl: ''
   demoUrl: 'https://t.me/TokenElite'

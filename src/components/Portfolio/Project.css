@@ -8,7 +8,16 @@
 
 .project-card__left-col {
   margin-right: 1em;
-  flex-basis: 40%;
+  min-width: 40%;
+}
+
+.project-card__left-col img {
+  border-radius: 0px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.project-card__project-btns > :last-child {
+  margin-left: 0.8rem;
 }
 
 .project-card p {
@@ -18,6 +27,15 @@
 .project-card__project-name {
   font-size: 1.5em;
   font-weight: bold;
+}
+
+.project-card__project-type {
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+  color: white;
+  background-color: #454545;
+  padding: 0.2rem;
+  padding-bottom: 0;
 }
 
 .project_card__project_skills {
@@ -45,5 +63,6 @@
 
   .project-card__left-col {
     margin-right: 0;
+    margin-bottom: 1em;
   }
 }
