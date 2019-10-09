@@ -137,5 +137,16 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          { family: `Raleway` },
+          { family: `Roboto Mono` },
+          { family: `Sanchez` },
+          { family: `Kalam` },
+        ],
+      },
+    },
   ],
 };
