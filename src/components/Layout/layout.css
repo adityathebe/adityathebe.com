@@ -74,7 +74,7 @@ body {
   font-kerning: normal;
 }
 
-img {
+.post-content img {
   max-width: 100%;
   border-radius: 5px;
   margin: 0 auto;
