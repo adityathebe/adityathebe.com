@@ -27,7 +27,10 @@ const ProjectPage = () => {
   const projectsList = data.allProjectListJson.edges.map(x => x.node);
   return (
     <Layout>
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <SEO
+        title="Home"
+        keywords={['aditya thebe', 'adityathebe', 'portfolio']}
+      />
       {projectsList.map((project, idx) => (
         <Project key={idx} project={project} />
       ))}
