@@ -6,7 +6,7 @@ import Layout from '../components/Layout';
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" keywords={['aditya thebe', 'adityathebe']} />
+    <SEO title="About" keywords={['aditya thebe', 'adityathebe']} />
     <div>
       <h1>Incomplete ...</h1>
     </div>

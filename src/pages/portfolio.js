@@ -28,7 +28,7 @@ const ProjectPage = () => {
   return (
     <Layout>
       <SEO
-        title="Home"
+        title="Portfolio"
         keywords={['aditya thebe', 'adityathebe', 'portfolio']}
       />
       {projectsList.map((project, idx) => (

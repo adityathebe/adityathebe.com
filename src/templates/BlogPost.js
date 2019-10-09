@@ -17,6 +17,7 @@ const BlogPostTemplate = ({ data }) => {
         description={post.frontmatter.description}
         featuredImage={post.frontmatter.featuredImage.publicURL}
         keywords={['blog']}
+        meta={[{ property: 'og:type', content: 'article' }]}
       />
       <h1 className="post-header">{post.frontmatter.title}</h1>
       <span className="post-meta">
