@@ -1,0 +1,58 @@
+- type: Webpage
+  name: Evolution Simulator
+  skills:
+    - Tensorflow.js
+    - Box2dJS
+    - Genetic Algorithm
+  duration:
+    - 2017/10/10
+    - 2018/10/10
+  description: 'A simulation of bipedals that try to learn to walk as humans'
+  image: './Images/evolution-simulator.png'
+  sourceCodeUrl: https://github.com/adityathebe/evolutionSimulator
+  demoUrl: https://adityathebe.github.io/evolutionSimulator/
+
+- type: Website
+  name: GolfMate
+  skills:
+    - ReactJS
+    - Redux
+    - ExpressJs
+    - JWT
+    - Mongo DB
+  duration:
+    - 2017/10/10
+    - 2018/10/10
+  description:
+    A match matching site like Tinder for golf lovers.
+  image: './Images/golfmate.png'
+  sourceCodeUrl: ''
+  demoUrl: 'https://members.golfmate.fr/'
+
+- type: Telegram Bot
+  name: TokenNews
+  skills:
+    - Telegram API
+    - Twitter API
+    - Reddit API
+    - NickJS
+    - Web Scraping
+  duration:
+    - 2017/10/10
+  description: An awesome telegram bot
+  image: './Images/tokennews.png'
+  sourceCodeUrl: ''
+  demoUrl: 'https://t.me/TokenElite'
+
+- type: Telegram Bot
+  name: Market Cockpit
+  skills:
+    - Telegram API
+    - Yahoo Finance API
+    - MLab
+  duration:
+    - 2017/10/10
+  description: 'An awesome telegram bot'
+  image: './Images/marketcockpit.png'
+  sourceCodeUrl: ''
+  demoUrl: 'https://t.me/marketcockpitbot'

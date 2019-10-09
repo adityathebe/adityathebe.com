@@ -13,7 +13,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `gatsby-transformer-json`,
+    `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -48,13 +48,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `ProjectLists`,
-        path: `${__dirname}/content/data/ProjectList.json`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `pages`,
         path: `${__dirname}/src/pages`,
       },
@@ -62,15 +55,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/content/images`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/posts`,
-        name: `posts`,
+        name: `content`,
+        path: `${__dirname}/content`,
       },
     },
     {
@@ -82,7 +68,7 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#454545`,
         display: `standalone`,
-        icon: `${__dirname}/content/images/favicon.png`,
+        icon: `${__dirname}/content/Images/favicon.png`,
       },
     },
     `gatsby-plugin-offline`,

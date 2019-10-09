@@ -9,22 +9,30 @@ import Project from '../components/Portfolio/Project';
 
 const ProjectPage = () => {
   const data = useStaticQuery(graphql`
-    {
-      allProjectListJson {
+    query Projects {
+      allProjectListYaml {
         edges {
           node {
             name
             type
             skills
-            image
+            image {
+              childImageSharp {
+                fixed(width: 300) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
             duration
             description
+            demoUrl
+            sourceCodeUrl
           }
         }
       }
     }
   `);
-  const projectsList = data.allProjectListJson.edges.map(x => x.node);
+  const projectsList = data.allProjectListYaml.edges.map(x => x.node);
   return (
     <Layout>
       <SEO

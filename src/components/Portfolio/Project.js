@@ -1,23 +1,43 @@
 // @ts-check
 import React from 'react';
+import Image from 'gatsby-image';
 
-import './Project.css'
+// @ts-ignore
+import ProjectCSS from './Project.module.css';
+
+function durationFormatter(duration) {
+  const [start, end] = duration;
+  return start + ' to ' + (end || 'ongoing');
+}
 
 export default ({ project }) => {
   return (
-    <div className="project-card">
-      <p className="project-card--name">{project.name}</p>
-      <p className="project-card--skills">{project.skills.join(' - ')}</p>
-      <p className="project-card--description">{project.description}</p>
+    <div className={ProjectCSS.card}>
+      <div className={ProjectCSS.leftCol}>
+        <p className={ProjectCSS.projectName}>{project.name}</p>
+        <p className={ProjectCSS.projectDuration}>
+          {durationFormatter(project.duration)}
+        </p>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={project.sourceCodeUrl}
+        >
+          <button>Source Code</button>
+        </a>
+        <a target="_blank" rel="noopener noreferrer" href={project.demoUrl}>
+          <button>Visit</button>
+        </a>
+
+        <div className={ProjectCSS.projectDescription}>
+          <p>{project.description}</p>
+        </div>
+
+        <p className={ProjectCSS.projectSkills}>{project.skills.join(' - ')}</p>
+      </div>
+      <div className={ProjectCSS.rightCol}>
+        <Image alt={'hey'} fixed={project.image.childImageSharp.fixed}></Image>
+      </div>
     </div>
-    /**
-     * Project Name
-     * Description
-     * Image
-     * Tools and Libraries used
-     * [Source Code]
-     * [Demo Url]
-     * Tags
-     */
   );
 };

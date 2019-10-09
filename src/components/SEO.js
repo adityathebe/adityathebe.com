@@ -14,7 +14,7 @@ function SEO({ description, meta, keywords, title, featuredImage }) {
             author
           }
         }
-        file(relativePath: { eq: "site_featured_aditya_thebe.jpg" }) {
+        file(relativePath: { eq: "Images/site_featured_aditya_thebe.jpg" }) {
           publicURL
         }
       }

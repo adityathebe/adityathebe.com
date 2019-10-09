@@ -1,0 +1,39 @@
+.card {
+  display: flex;
+  border: 1px solid black;
+  padding: 1em;
+  margin: 0.5em;
+  justify-content: space-between;
+}
+
+.card p {
+  margin: 0;
+}
+
+.leftCol {
+  flex-basis: 4;
+  margin-right: 1em;
+}
+
+.projectName {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.projectSkills {
+  font-size: 0.8em;
+  font-weight: lighter;
+}
+
+.projectDescription {
+  font-size: 0.8em;
+  font-weight: lighter;
+  margin: 1em 0;
+  border-top: 2px dashed #454545;
+  border-bottom: 2px dashed #454545;
+}
+
+.projectDuration {
+  font-size: 0.8em;
+  font-weight: lighter;
+}
