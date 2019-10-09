@@ -86,6 +86,7 @@ module.exports = {
         icon: `${__dirname}/content/images/favicon.png`,
       },
     },
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -132,7 +133,7 @@ module.exports = {
               }
             `,
             output: '/rss.xml',
-            title: "Aditya Thebe Personal Blog RSS Feed",
+            title: 'Aditya Thebe Personal Blog RSS Feed',
           },
         ],
       },
