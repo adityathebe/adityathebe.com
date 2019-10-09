@@ -85,6 +85,11 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.2)
 }
 
+.post-content img:hover {
+  border: 0;
+  border-radius: 0;
+}
+
 figure > img {
   display: block;
 }
