@@ -26,7 +26,7 @@ const IndexPage = () => {
       <div className="home">
         <div className="center-block">
           <Img alt="Author's Image" fixed={data.file.childImageSharp.fixed} />
-          <h2 id="site-title">Random Thoughts Of A Programmer</h2>
+          <h2>Random Thoughts Of A Programmer</h2>
         </div>
       </div>
       <PostList />

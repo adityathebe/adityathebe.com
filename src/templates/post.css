@@ -7,12 +7,12 @@
   font-size: 14px;
   line-height: 21px;
   font-family: 'Raleway', sans-serif, 'Helvetica Neue', Helvetica, Arial;
-  color: #454545;
+  color: var(--dark-color-2);
 }
 
 .post-meta .post-tag {
   border-radius: 4px;
-  background-color: #454545;
+  background-color: var(--dark-color-1);
   color: white;
   margin: 0 0.1rem;
   padding: 0.1rem 0.2rem;
@@ -22,21 +22,37 @@
 .post-link {
   display: inline;
   font-size: 20px;
-  color: #454545;
+  color: var(--dark-color-1);
   line-height: 1em;
   font-weight: 700;
 }
 
 .post-link a,
 .post-link:visited {
-  color: #454545;
+  color: var(--dark-color-1);
 }
 
 .post-content {
   font-size: 1em;
   font-family: 'Sanchez', serif;
   line-height: 30px;
-  color: #454545;
+  color: var(--dark-color-1);
+}
+
+.post-content img {
+  max-width: 100%;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  max-width: 100%;
+  font-size: 45px;
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.post-content img:hover {
+  border: 0;
+  border-radius: 0;
 }
 
 /**
@@ -44,11 +60,11 @@
 */
 .post-content a:visited {
   text-decoration: none;
-  color: #454545;
+  color: var(--dark-color-1);
 }
 
 .post-content a {
-  color: #454545;
+  color: var(--dark-color-1);
   text-decoration: none;
   background-image: linear-gradient(
     transparent 0%,

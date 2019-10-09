@@ -1,6 +1,6 @@
 .project-card {
   display: flex;
-  border: 1px solid #454545;
+  border: 1px solid var(--dark-color-1);
   padding: 1em;
   margin: 0.5em;
   justify-content: flex-start;
@@ -33,7 +33,7 @@
   font-size: 0.8rem;
   margin-left: 0.5rem;
   color: white;
-  background-color: #454545;
+  background-color: var(--dark-color-1);
   padding: 0.2rem;
   padding-bottom: 0;
 }
@@ -47,8 +47,8 @@
   font-size: 0.8em;
   font-weight: lighter;
   margin: 1em 0;
-  border-top: 2px dashed #454545;
-  border-bottom: 2px dashed #454545;
+  border-top: 2px dashed var(--dark-color-1);
+  border-bottom: 2px dashed var(--dark-color-1);
 }
 
 .project-card__project_duration {
