@@ -22,10 +22,7 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <SEO
-        title="Home"
-        keywords={[`gatsby`, `application`, `react`]}
-      />
+      <SEO title="Home" keywords={[`adityathebe`]} />
       <div className="home">
         <div className="center-block">
           <Img alt="Author's Image" fixed={data.file.childImageSharp.fixed} />
