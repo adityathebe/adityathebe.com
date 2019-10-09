@@ -242,10 +242,11 @@ blockquote > :last-child {
 }
 
 :not(pre) > code[class='language-text'] {
-  background-color: #454545;
-  color: white;
-  padding-left: 0;
-  padding-right: 0;
-  border-radius: 0px;
+  background-color: #f7ee7f;
+  color: #454545;
+  padding: 0 0.4em;
+  border-radius: 2px;
   font: inherit;
+  transform: skew(-10deg);
+  display: inline-block;
 }
