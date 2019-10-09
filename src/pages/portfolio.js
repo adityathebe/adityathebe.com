@@ -18,8 +18,8 @@ const ProjectPage = () => {
             skills
             image {
               childImageSharp {
-                fixed(width: 300) {
-                  ...GatsbyImageSharpFixed
+                fluid(maxWidth: 300) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }

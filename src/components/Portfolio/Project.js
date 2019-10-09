@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'gatsby-image';
 
 // @ts-ignore
-import ProjectCSS from './Project.module.css';
+import './Project.css';
 
 function durationFormatter(duration) {
   const [start, end] = duration;
@@ -12,10 +12,14 @@ function durationFormatter(duration) {
 
 export default ({ project }) => {
   return (
-    <div className={ProjectCSS.card}>
-      <div className={ProjectCSS.leftCol}>
-        <p className={ProjectCSS.projectName}>{project.name}</p>
-        <p className={ProjectCSS.projectDuration}>
+    <div className="project-card">
+      <div className="project-card__left-col">
+        <Image alt={'hey'} fluid={project.image.childImageSharp.fluid}></Image>
+      </div>
+
+      <div className="right-col">
+        <p className="project-card__project-name">{project.name}</p>
+        <p className={'project-card__project_duration'}>
           {durationFormatter(project.duration)}
         </p>
         <a
@@ -29,14 +33,13 @@ export default ({ project }) => {
           <button>Visit</button>
         </a>
 
-        <div className={ProjectCSS.projectDescription}>
+        <div className={'project_card__project_description'}>
           <p>{project.description}</p>
         </div>
 
-        <p className={ProjectCSS.projectSkills}>{project.skills.join(' - ')}</p>
-      </div>
-      <div className={ProjectCSS.rightCol}>
-        <Image alt={'hey'} fixed={project.image.childImageSharp.fixed}></Image>
+        <p className={'project_card__project_skills'}>
+          {project.skills.join(' - ')}
+        </p>
       </div>
     </div>
   );
