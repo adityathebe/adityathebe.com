@@ -5,6 +5,11 @@
 
 :root {
   --bg-color: #ffffff;
+  --border-color-1: #e8e8e8;
+  --border-color-2: #454545;
+  --primary-text-color: #454545;
+  --secondary-text-color: #828282;
+  --highligh-color-1: #f7ee7f;
   --dark-color-1: #454545;
   --dark-color-2: #828282;
   --dark-color-3: #e8e8e8;
@@ -122,7 +127,7 @@ a {
 
 a,
 a:visited {
-  color: var(--light-color-1);;
+  color: var(--light-color-1);
 }
 
 a:hover {

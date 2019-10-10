@@ -1,6 +1,6 @@
 .project-card {
   display: flex;
-  border: 1px solid var(--dark-color-2);
+  border: 1px solid var(--border-color-1);
   padding: 1em;
   margin: 0.5em;
   justify-content: flex-start;
@@ -13,7 +13,7 @@
 
 .project-card__left-col img {
   border-radius: 0px;
-  border: 1px solid var(--dark-color-3);
+  border: 1px solid var(--border-color-1);
 }
 
 .project-card__project-btns > :last-child {
@@ -48,8 +48,8 @@
   font-size: 0.8em;
   font-weight: lighter;
   margin: 1em 0;
-  border-top: 2px dashed var(--dark-color-1);
-  border-bottom: 2px dashed var(--dark-color-1);
+  border-top: 2px dashed var(--border-color-2);
+  border-bottom: 2px dashed var(--border-color-2);
 }
 
 .project-card__project_duration {
