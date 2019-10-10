@@ -3,7 +3,7 @@
   box-sizing: border-box;
 }
 
-:root {
+html {
   --bg-color: #ffffff;
   --bg-color-tag: #454545;
 
@@ -13,6 +13,19 @@
   --highlight-color-1: #f7ee7f;
 
   --primary-text-color: #454545;
+  --secondary-text-color: #828282;
+}
+
+html[data-theme='dark'] {
+  --bg-color: #121212;
+  --bg-color-tag: #454545;
+
+  --border-color-1: #323232;
+  --border-color-2: #454545;
+
+  --highlight-color-1: #ec5759;
+
+  --primary-text-color: #ffffff;
   --secondary-text-color: #828282;
 }
 
