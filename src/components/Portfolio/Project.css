@@ -35,7 +35,7 @@
   color: var(--dark-color-1);
   padding: 0 0.5em;
   font-style: italic;
-  background-color: #f7ee7f;
+  background-color: var(--light-color-1);
   border-radius: 5px;
 }
 

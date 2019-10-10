@@ -1,0 +1,17 @@
+.mini-projects-ul {
+  list-style: none;
+}
+
+.mini-projects-ul a,
+.mini-projects-ul a:hover {
+  color: var(--dark-color-1);
+}
+
+.mini-projects-ul li:hover {
+  background-color: var(--light-color-1);
+}
+
+.mini-project-li-description {
+  font-style: italic;
+  font-family: 'Raleway';
+}

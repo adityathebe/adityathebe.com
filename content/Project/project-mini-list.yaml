@@ -27,13 +27,9 @@
   link: https://www.npmjs.com/package/qfx-cinema
 
 - name: Nepal Disaster Visualization
-  stack: P5.js
-  image: https://github.com/adityathebe/disaster_vis_nepal/raw/master/disaster_vis_nepal.png
   description: A Program written with P5.JS to visualize the effect of disasters in Nepal
   link: https://adityathebe.github.io/disaster_vis_nepal/
 
 - name: Falling Walls
   description: A simple game where an AI learns to avoid falling walls.
-  source_code: https://www.github.com/adityathebe/yts/
-  demo: https://m.me/botlimbu
-  tags: [GeneticAlgorithm, MachineLearning, NeuroEvolution]
+  link: https://www.github.com/adityathebe/yts/
