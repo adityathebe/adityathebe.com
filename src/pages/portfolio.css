@@ -10,7 +10,7 @@
 }
 
 .mini-projects-ul li {
-  border-bottom: 1px solid var(--dark-color-2);
+  border-bottom: 1px solid var(--dark-color-3);
 }
 
 .mini-projects-ul li:hover {

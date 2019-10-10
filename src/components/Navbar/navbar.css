@@ -12,7 +12,7 @@ header {
 
 .site-header {
   border-top: 5px solid var(--dark-color-1);
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--dark-color-3);
   min-height: 55.95px;
   position: relative;
 }
@@ -63,7 +63,7 @@ header {
     top: 9px;
     right: 15px;
     background-color: #ffffff;
-    border: 1px solid #e8e8e8;
+    border: 1px solid var(--dark-color-3);
     border-radius: 5px;
     text-align: right;
   }

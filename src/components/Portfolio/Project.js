@@ -19,7 +19,7 @@ export default ({ project }) => {
       </div>
 
       <div className="right-col">
-        <div style={{ display: 'flex', justifyContent:'flex-start' }}>
+        <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
           <p className="project-card__project-name">{project.name}</p>
           <span className="project-card__project-type">{project.type}</span>
         </div>
@@ -28,7 +28,7 @@ export default ({ project }) => {
         </p>
         <div className="project-card__project-btns">
           <a target="_blank" rel="noopener noreferrer" href={sourceCodeUrl}>
-            <button>Source Code</button>
+            <button disabled={sourceCodeUrl ? false : true}>Source Code</button>
           </a>
           <a target="_blank" rel="noopener noreferrer" href={demoUrl}>
             <button>Visit</button>

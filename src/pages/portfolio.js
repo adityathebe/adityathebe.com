@@ -59,9 +59,7 @@ const ProjectPage = () => {
         <Project key={idx} project={project} />
       ))}
 
-      <hr style={{ margin: '1.5em 0' }} />
-
-      <h2>Mini Projects</h2>
+      <h2 style={{ marginTop: '2em' }}>Mini Projects</h2>
       <ul className="mini-projects-ul">
         {miniProjectsList.map((project, idx) => (
           <li key={project.name}>
