@@ -12,7 +12,7 @@
 
 .post-meta .post-tag {
   border-radius: 4px;
-  background-color: var(--dark-color-1);
+  background-color: var(--bg-color-tag);
   color: white;
   margin: 0 0.1rem;
   padding: 0.1rem 0.2rem;

@@ -5,11 +5,15 @@
 
 :root {
   --bg-color: #ffffff;
+  --bg-color-tag: #454545;
+
   --border-color-1: #e8e8e8;
   --border-color-2: #454545;
+
+  --highlight-color-1: #f7ee7f;
+
   --primary-text-color: #454545;
   --secondary-text-color: #828282;
-  --highligh-color-1: #f7ee7f;
   --dark-color-1: #454545;
   --dark-color-2: #828282;
   --dark-color-3: #e8e8e8;
