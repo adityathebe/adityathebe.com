@@ -1,6 +1,6 @@
 .project-card {
   display: flex;
-  border: 1px solid var(--dark-color-1);
+  border: 1px solid var(--dark-color-2);
   padding: 1em;
   margin: 0.5em;
   justify-content: flex-start;
@@ -32,10 +32,11 @@
 .project-card__project-type {
   font-size: 0.8rem;
   margin-left: 0.5rem;
-  color: white;
-  background-color: var(--dark-color-1);
-  padding: 0.2rem;
-  padding-bottom: 0;
+  color: var(--dark-color-1);
+  padding: 0 0.5em;
+  font-style: italic;
+  background-color: #f7ee7f;
+  border-radius: 5px;
 }
 
 .project_card__project_skills {

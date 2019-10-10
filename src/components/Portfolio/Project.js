@@ -19,10 +19,10 @@ export default ({ project }) => {
       </div>
 
       <div className="right-col">
-        <p className="project-card__project-name">
-          {project.name}
+        <div style={{ display: 'flex', justifyContent:'flex-start' }}>
+          <p className="project-card__project-name">{project.name}</p>
           <span className="project-card__project-type">{project.type}</span>
-        </p>
+        </div>
         <p className={'project-card__project_duration'}>
           {durationFormatter(project.duration)}
         </p>
