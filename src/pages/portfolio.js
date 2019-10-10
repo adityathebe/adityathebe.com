@@ -61,7 +61,7 @@ const ProjectPage = () => {
 
       <hr style={{ margin: '1.5em 0' }} />
 
-      <h3>Mini Projects</h3>
+      <h2>Mini Projects</h2>
       <ul className="mini-projects-ul">
         {miniProjectsList.map((project, idx) => (
           <li key={project.name}>

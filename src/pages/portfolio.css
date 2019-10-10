@@ -1,17 +1,24 @@
 .mini-projects-ul {
   list-style: none;
+  margin: 0;
 }
 
 .mini-projects-ul a,
 .mini-projects-ul a:hover {
   color: var(--dark-color-1);
+  text-decoration: none;
+}
+
+.mini-projects-ul li {
+  border-bottom: 1px solid var(--dark-color-2);
 }
 
 .mini-projects-ul li:hover {
   background-color: var(--light-color-1);
+  font-size: 1.2em;
+  padding: 0.1em;
 }
 
 .mini-project-li-description {
-  font-style: italic;
   font-family: 'Raleway';
 }
