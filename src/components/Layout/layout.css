@@ -235,3 +235,11 @@ blockquote > :last-child {
   transform: skew(-10deg);
   display: inline-block;
 }
+
+html.transition,
+html.transition *,
+html.transition *::after,
+html.transition *::before {
+  transition: all 500ms !important;
+  transition-delay: 0 !important;
+}
