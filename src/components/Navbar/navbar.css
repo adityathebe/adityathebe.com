@@ -62,7 +62,7 @@ header {
     position: absolute;
     top: 9px;
     right: 15px;
-    background-color: #ffffff;
+    background-color: var(--bg-color);
     border: 1px solid var(--dark-color-3);
     border-radius: 5px;
     text-align: right;

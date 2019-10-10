@@ -4,6 +4,7 @@
 }
 
 :root {
+  --bg-color: #ffffff;
   --dark-color-1: #454545;
   --dark-color-2: #828282;
   --dark-color-3: #e8e8e8;
@@ -69,7 +70,7 @@ body {
   color: var(--dark-color-1);
   line-height: 31px;
   font-size: 17px;
-  background-color: #ffffff;
+  background-color: var(--bg-color);
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: 'kern' 1;
   -moz-font-feature-settings: 'kern' 1;
@@ -121,11 +122,11 @@ a {
 
 a,
 a:visited {
-  color: #2a7ae2;
+  color: var(--light-color-1);;
 }
 
 a:hover {
-  color: #111;
+  color: var(--dark-color-1);
   text-decoration: underline;
 }
 
@@ -137,7 +138,6 @@ blockquote {
   padding: 1em 2em;
   border: 8px dashed var(--dark-color-2);
   margin: 1em 0;
-  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
   font-style: italic;
   font-family: 'Kalam', cursive;
   text-align: center;
@@ -209,7 +209,7 @@ blockquote > :last-child {
 }
 
 :not(pre) > code[class='language-text'] {
-  background-color: #f7ee7f;
+  background-color: var(--light-color-1);
   color: var(--dark-color-1);
   padding: 0 0.4em;
   border-radius: 2px;

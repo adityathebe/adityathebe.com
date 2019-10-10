@@ -123,12 +123,6 @@
   }
 }
 
-@media screen and (max-width: 800px) {
-  #post-title {
-    font-size: 36px;
-  }
-}
-
 /* Image Caption */
 span.gatsby-resp-image-wrapper + em {
   display: block;
