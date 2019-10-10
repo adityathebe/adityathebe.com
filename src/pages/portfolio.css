@@ -5,16 +5,16 @@
 
 .mini-projects-ul a,
 .mini-projects-ul a:hover {
-  color: var(--dark-color-1);
+  color: var(--primary-text-color);
   text-decoration: none;
 }
 
 .mini-projects-ul li {
-  border-bottom: 1px solid var(--dark-color-3);
+  border-bottom: 1px solid var(--border-color-1);
 }
 
 .mini-projects-ul li:hover {
-  background-color: var(--light-color-1);
+  background-color: var(--highlight-color-1);
   font-size: 1.2em;
   padding: 0.1em;
 }

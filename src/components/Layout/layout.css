@@ -14,10 +14,6 @@
 
   --primary-text-color: #454545;
   --secondary-text-color: #828282;
-  --dark-color-1: #454545;
-  --dark-color-2: #828282;
-  --dark-color-3: #e8e8e8;
-  --light-color-1: #f7ee7f;
 }
 
 html {
@@ -76,7 +72,7 @@ figure,
 
 body {
   font-family: 'Sanchez', 'Raleway', sans-serif, Helvetica, Arial;
-  color: var(--dark-color-1);
+  color: var(--primary-text-color);
   line-height: 31px;
   font-size: 17px;
   background-color: var(--bg-color);
@@ -114,7 +110,7 @@ h5,
 h6 {
   font-weight: bold;
   font-family: 'Raleway', sans-serif, 'Helvetica Neue', Helvetica, Arial;
-  color: var(--dark-color-1);
+  color: var(--primary-text-color);
 }
 
 h1 {
@@ -131,11 +127,11 @@ a {
 
 a,
 a:visited {
-  color: var(--light-color-1);
+  color: var(--highlight-color-1);
 }
 
 a:hover {
-  color: var(--dark-color-1);
+  color: var(--primary-text-color);
   text-decoration: underline;
 }
 
@@ -143,9 +139,9 @@ a:hover {
 /**** Blockquotes ****/
 /*********************/
 blockquote {
-  color: var(--dark-color-1);
+  color: var(--primary-text-color);
   padding: 1em 2em;
-  border: 8px dashed var(--dark-color-2);
+  border: 8px dashed var(--secondary-text-color);
   margin: 1em 0;
   font-style: italic;
   font-family: 'Kalam', cursive;
@@ -193,7 +189,7 @@ blockquote > :last-child {
 }
 
 .icon > svg path {
-  fill: var(--dark-color-2);
+  fill: var(--secondary-text-color);
 }
 
 .page-content {
@@ -218,8 +214,8 @@ blockquote > :last-child {
 }
 
 :not(pre) > code[class='language-text'] {
-  background-color: var(--light-color-1);
-  color: var(--dark-color-1);
+  background-color: var(--highlight-color-1);
+  color: var(--primary-text-color);
   padding: 0 0.4em;
   border-radius: 2px;
   font: inherit;

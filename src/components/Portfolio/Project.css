@@ -32,10 +32,10 @@
 .project-card__project-type {
   font-size: 0.8rem;
   margin-left: 0.5rem;
-  color: var(--dark-color-1);
+  color: var(--primary-text-color);
   padding: 0 0.5em;
   font-style: italic;
-  background-color: var(--light-color-1);
+  background-color: var(--highlight-color-1);
   border-radius: 5px;
 }
 

@@ -7,7 +7,7 @@
   font-size: 14px;
   line-height: 21px;
   font-family: 'Raleway', sans-serif, 'Helvetica Neue', Helvetica, Arial;
-  color: var(--dark-color-2);
+  color: var(--secondary-text-color);
 }
 
 .post-meta .post-tag {
@@ -22,21 +22,21 @@
 .post-link {
   display: inline;
   font-size: 20px;
-  color: var(--dark-color-1);
+  color: var(--primary-text-color);
   line-height: 1em;
   font-weight: 700;
 }
 
 .post-link a,
 .post-link:visited {
-  color: var(--dark-color-1);
+  color: var(--primary-text-color);
 }
 
 .post-content {
   font-size: 1em;
   font-family: 'Sanchez', serif;
   line-height: 30px;
-  color: var(--dark-color-1);
+  color: var(--primary-text-color);
 }
 
 .post-content img {
@@ -47,7 +47,7 @@
   max-width: 100%;
   font-size: 45px;
   display: block;
-  border: 1px solid var(--dark-color-3);
+  border: 1px solid var(--border-color-1);
 }
 
 .post-content img:hover {
@@ -60,11 +60,11 @@
 */
 .post-content a:visited {
   text-decoration: none;
-  color: var(--dark-color-1);
+  color: var(--primary-text-color);
 }
 
 .post-content a {
-  color: var(--dark-color-1);
+  color: var(--primary-text-color);
   text-decoration: none;
   background-image: linear-gradient(
     transparent 0%,

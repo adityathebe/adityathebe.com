@@ -7,7 +7,7 @@
 
 .site-footer a,
 .site-footer a:visited {
-  color: var(--dark-color-1);
+  color: var(--primary-text-color);
   text-decoration: underline;
 }
 
@@ -31,7 +31,7 @@
 
 .footer-col-wrapper {
   font-size: 15px;
-  color: var(--dark-color-2);
+  color: var(--secondary-text-color);
   margin-left: -15px;
 }
 
@@ -86,6 +86,6 @@
 .footer-baseline {
   text-align: center;
   font-size: 0.8rem;
-  color: var(--dark-color-1);
+  color: var(--primary-text-color);
   margin-bottom: -15px;
 }
