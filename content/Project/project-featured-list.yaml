@@ -4,6 +4,8 @@
     - Tensorflow.js
     - Box2dJS
     - Genetic Algorithm
+    - NeuroEvolution
+    - Machine Learning
   duration:
     - 2017/10/10
     - 2018/10/10
@@ -23,8 +25,7 @@
   duration:
     - 2017/10/10
     - 2018/10/10
-  description:
-    A match matching site like Tinder for golf lovers.
+  description: A match matching site like Tinder for golf lovers.
   image: './Images/golfmate.png'
   sourceCodeUrl: ''
   demoUrl: 'https://members.golfmate.fr/'
@@ -56,3 +57,28 @@
   image: './Images/marketcockpit.png'
   sourceCodeUrl: ''
   demoUrl: 'https://t.me/marketcockpitbot'
+
+- name: BotLimbu
+  type: Facebook Meessenger Bot
+  image: './Images/botlimbu.jpg'
+  description: A utility Messenger Bot
+  sourceCodeUrl: https://github.com/adityathebe/botLimbu
+  demoUrl: https://m.me/botlimbu
+  duration:
+    - 2017/10/10
+    - 2017/11/10
+  skills:
+    - Facebook Messenger API
+
+- name: Two Cars
+  type: Game
+  image: './Images/two-cars.png'
+  description: Two cars game implemented in browser
+  sourceCodeUrl: https://www.github.com/adityathebe/two-cars/
+  demoUrl: https://adityathebe.github.io/two-cars
+  duration:
+    - 2017/10/10
+    - 2017/11/10
+  skills:
+    - p5.js
+    - firebase

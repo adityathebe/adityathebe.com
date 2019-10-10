@@ -1,0 +1,39 @@
+- name: YTS
+  description: A VUEJS implementation of YTS Torrent Site
+  link: https://adityathebe.github.io/yts/
+
+- name: Crypto Compare
+  description: A VUEJS implementation of YTS Torrent Site
+  link: https://adityathebe.github.io/cryptoCompare/
+
+- name: Sierpinski Triangle
+  description: Simulating Sierpinski Triangle (Chaos Game)
+  link: https://adityathebe.github.io/sierpinski_triangle/
+
+- name: Number System Conversion
+  description: A Website for Number System Conversion
+  link: https://adityathebe.github.io/num_conv/
+
+- name: Reddit Bot
+  description: A Streamable mirror reddit bot for Football fans
+  link: https://github.com/adityathebe/redditBot
+
+- name: Kalimati API
+  description: A NPM module for Kalimati Vegetable Rates
+  link: https://github.com/adityathebe/kalimati-rate
+
+- name: qfx-cinema
+  description: Get QFX cinema updates on your terminal
+  link: https://www.npmjs.com/package/qfx-cinema
+
+- name: Nepal Disaster Visualization
+  stack: P5.js
+  image: https://github.com/adityathebe/disaster_vis_nepal/raw/master/disaster_vis_nepal.png
+  description: A Program written with P5.JS to visualize the effect of disasters in Nepal
+  link: https://adityathebe.github.io/disaster_vis_nepal/
+
+- name: Falling Walls
+  description: A simple game where an AI learns to avoid falling walls.
+  source_code: https://www.github.com/adityathebe/yts/
+  demo: https://m.me/botlimbu
+  tags: [GeneticAlgorithm, MachineLearning, NeuroEvolution]

@@ -10,7 +10,7 @@ import Project from '../components/Portfolio/Project';
 const ProjectPage = () => {
   const data = useStaticQuery(graphql`
     query Projects {
-      allProjectListYaml {
+      allProjectFeaturedListYaml {
         edges {
           node {
             name
@@ -32,14 +32,14 @@ const ProjectPage = () => {
       }
     }
   `);
-  const projectsList = data.allProjectListYaml.edges.map(x => x.node);
+  const projectsList = data.allProjectFeaturedListYaml.edges.map(x => x.node);
   return (
     <Layout>
       <SEO
         title="Portfolio"
         keywords={['aditya thebe', 'adityathebe', 'portfolio']}
       />
-      <h2>Major Projects</h2>
+      <h2>Featured Projects</h2>
       {projectsList.map((project, idx) => (
         <Project key={idx} project={project} />
       ))}
