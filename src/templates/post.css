@@ -69,23 +69,16 @@
   background-image: linear-gradient(
     transparent 0%,
     transparent calc(50% - 5px),
-    rgba(0, 0, 0, 0.25) calc(50% - 5px),
-    rgba(0, 0, 0, 0.25) 100%
+    var(--highlight-color-1) calc(50% - 5px),
+    var(--highlight-color-1) 100%
   );
   transition: background-position 120ms ease-in-out;
   transition: color 100m ease-in-out;
-  background-size: 100% 200%;
+  background-size: 100% 230%;
   background-position: 0 0;
 }
 
 .post-content a:hover {
-  background-image: linear-gradient(
-    transparent 0%,
-    transparent calc(50% - 5px),
-    rgba(0, 0, 0, 0.8) calc(50% - 5px),
-    rgba(0, 0, 0, 0.8) 100%
-  );
-  color: white;
   background-position: 0 100%;
 }
 
@@ -130,10 +123,18 @@ span.gatsby-resp-image-wrapper + em {
   font-size: 0.8em;
 }
 
-span.gatsby-resp-image-wrapper + em::after {
-  content: ' --';
+span.gatsby-resp-image-wrapper + em::after,
+.post-content img + em::after {
+  content: ' •';
 }
 
-span.gatsby-resp-image-wrapper + em::before {
-  content: '-- ';
+span.gatsby-resp-image-wrapper + em::before,
+.post-content img + em::before {
+  content: '• Fig: ';
+}
+
+.post-content img + em {
+  display: block;
+  text-align: center;
+  font-size: 0.8em;
 }

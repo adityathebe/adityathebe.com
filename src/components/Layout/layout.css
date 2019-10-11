@@ -11,6 +11,7 @@ html {
   --border-color-2: #454545;
 
   --highlight-color-1: #f7ee7f;
+  --highlight-color-rgb: 247, 238, 127;
 
   --primary-text-color: #454545;
   --secondary-text-color: #828282;
@@ -24,6 +25,7 @@ html[data-theme='dark'] {
   --border-color-2: #454545;
 
   --highlight-color-1: #ec5759;
+  --highlight-color-rgb: 236, 87, 89;
 
   --primary-text-color: #ffffff;
   --secondary-text-color: #828282;
