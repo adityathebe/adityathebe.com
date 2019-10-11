@@ -31,7 +31,7 @@ export default ({ project }) => {
             <button disabled={sourceCodeUrl ? false : true}>Source Code</button>
           </a>
           <a target="_blank" rel="noopener noreferrer" href={demoUrl}>
-            <button>Visit</button>
+            <button disabled={demoUrl ? false : true}>Visit</button>
           </a>
         </div>
 
@@ -40,7 +40,9 @@ export default ({ project }) => {
         </div>
 
         <p className={'project_card__project_skills'}>
-          {project.skills.join(' - ')}
+          {project.skills.map(x => {
+            return <span className="project-skill-tag">{'#' + x}</span>;
+          })}
         </p>
       </div>
     </div>
