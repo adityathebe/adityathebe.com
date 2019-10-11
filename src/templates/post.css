@@ -123,10 +123,18 @@ span.gatsby-resp-image-wrapper + em {
   font-size: 0.8em;
 }
 
-span.gatsby-resp-image-wrapper + em::after {
-  content: ' --';
+span.gatsby-resp-image-wrapper + em::after,
+.post-content img + em::after {
+  content: ' •';
 }
 
-span.gatsby-resp-image-wrapper + em::before {
-  content: '-- ';
+span.gatsby-resp-image-wrapper + em::before,
+.post-content img + em::before {
+  content: '• Fig: ';
+}
+
+.post-content img + em {
+  display: block;
+  text-align: center;
+  font-size: 0.8em;
 }
