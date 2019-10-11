@@ -2,10 +2,9 @@
   name: Evolution Simulator
   skills:
     - Tensorflow.js
-    - Box2dJS
-    - Genetic Algorithm
     - NeuroEvolution
-    - Machine Learning
+    - Genetic Algorithm
+    - Box2dJS
   duration:
     - 2017/10/10
     - 2018/10/10
@@ -38,6 +37,7 @@
     - Reddit API
     - NickJS
     - Web Scraping
+    - ExpressJs
   duration:
     - 2017/10/10
   description: An awesome telegram bot.
@@ -50,6 +50,8 @@
   skills:
     - Telegram API
     - Yahoo Finance API
+    - ExpressJs
+    - MongoDB
     - MLab
   duration:
     - 2017/10/10
@@ -69,6 +71,7 @@
     - 2017/11/10
   skills:
     - Facebook Messenger API
+    - ExpressJs
 
 - name: Two Cars
   type: Game
@@ -82,3 +85,34 @@
   skills:
     - p5.js
     - firebase
+
+- type: SaaS
+  name : EmailFinder
+  image: './Images/email-finder.png'
+  description: A Saas application that scrapes email from all the urls provided in a googlesheet
+  demoUrl: https://aarrr-formations.com/tools/emailfinder/
+  duration:
+    - 2018/09/19
+    - 2019/10/10
+  skills:
+    - Google Spreadsheet API
+    - Message Queueing
+    - NodeMailer
+    - Sqlite3
+    - ExpressJS
+
+- type: SaaS
+  name : DomainFinder
+  image: './Images/domain-finder.png'
+  description: A Saas application that finds the domain url of a given company by aggregating results from top search engines
+  demoUrl: https://domainfinder.aarrr-formations.net/
+  duration:
+    - 2018/10/06
+    - 2019/10/16
+  skills:
+    - Google Spreadsheet API
+    - Message Queueing
+    - NodeMailer
+    - Sqlite3
+    - NickJS
+    - ExpressJS

@@ -1,3 +1,6 @@
+- name: TicTacToe
+  description: Minimax algorithm
+  link: https://github.com/adityathebe/tic-tac-toe-minimax
 - name: YTS
   description: A VUEJS implementation of YTS Torrent Site
   link: https://adityathebe.github.io/yts/
