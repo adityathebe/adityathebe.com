@@ -157,4 +157,6 @@ You must have probably guessed the problem with this algorithm. Yes, it's the me
 FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory
 ```
 
+---
+
 If you've read this far I hope you enjoyed it :)

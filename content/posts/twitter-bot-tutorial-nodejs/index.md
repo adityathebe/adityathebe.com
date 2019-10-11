@@ -24,7 +24,7 @@ We'll code our Twitter Bot in JavaScript - NodeJS. I have tried my best to be as
 
 ### 1. CREATING A TWITTER APP
 
-You can't create a bot without a twitter account. Sign up for a new account [here](https://twitter.com/signup?lang=en). 
+You can't create a bot without a twitter account. Sign up for a new account [here](https://twitter.com/signup?lang=en).
 
 Great! Now we'll need something called `API keys`. API keys are the 'username and password' for your bot. Your Bot will require them to make API calls, or in simple words, interact with the data on twitter's server. To get your API keys, you need to first create a Twitter app. Go to [apps.twitter.com](https://apps.twitter.com) to get them.
 
@@ -305,53 +305,48 @@ trackTweet('nepal');
 // setInterval(makeTweet, 60 * 1000, Math.random() * 20)
 ```
 
-If you are smart you must see a pattern in the functions we've created. They're almost identical except for the parameters it takes.
+Do you see some resemblance in the `favoriteTweet()` function we just created? It is almost identical to the `makeTweet()` function. The only difference is the parameter passed to them.
 
-Go to the [Twitter API Documentation](https://developer.twitter.com/en/docs/api-reference-index) and try to make a function that follows twitter users. **Please** take your time and try to figure this yourself. Because you can use plenty of other features that twitter provides if you learn how to read the documentation.
+Go to the [Twitter API Documentation](https://developer.twitter.com/en/docs/api-reference-index) and try to make a function that follows a twitter user. **Please** take your time and try to figure this on your own because once you learn to read the documentation you can add plenty more features that twitter provides.
 
-Did you succeed? Well done if you did. The code must look something like this.
+The code must look something like this.
 
 ```js
 // Pass it the username and your bot will follow the user.
-function followUser(username) {
+const followUser = username => {
   Bot.post('friendships/create', { screen_name: username }, (err, data) => {
     if (err) return console.log("Couldn't Follow!");
     console.log('Followed!', username);
   });
-}
+};
 ```
 
-So basically this is all our coding part. We have created a twitter bot that tracks a keyword and favorites the tweet if it finds one. I know it's not the most exciting bot. I tried to focus this tutorial mainly for beginners. To summarize this tutorial, We have learnt to
+We have created a twitter bot that tracks a keyword and favorites the tweet if it finds one. I know it's not the most exciting bot. I tried to focus this tutorial mainly for beginners. To summarize this tutorial, We have learnt to
 
 - Track realtime tweets
 - Make tweets
 - Follow users
 - Favorite tweets
 
-There's still so much more to explore. Visit the [Twitter API Documentation](https://developer.twitter.com/en/docs/api-reference-index) page and try doing more on your own.
+> There's still so much more to explore! Visit the [Twitter API Documentation](https://developer.twitter.com/en/docs/api-reference-index) and try adding more features.
 
 ### 6. Deploy on Heroku
 
-Currently the twitter bot runs on our PC and that's not what we want. We want to run it on a server online. Heroku is a service that provides this facility for free. Of course there're some limitation to the free package but you can get their premium packages if you want.
+I know you must be thinking "Wait a minute, do I have to keep my computer running for this bot to function?". I have a good news for you - **NO, you can actually run your bot on the cloud**. One cloud platform that I can vouch for is `Heroku` _(mainly because it is very easy to setup and there's a free package that doesn't require credit card)_. The free package, of course, has limitations. A very limited compute-time is provided to you but that should be more than enough for this tutorial.
 
 #### A. Create a Heroku account
 
-Create an account here. If you create a free account then you can host up to 5 different applications. Once you create a new account create a new app. Now there's a whole bunch of things we need to do here. Basically there are 3 different ways we can add our code on heroku
+Create an account [here](https://www.heroku.com/). If you create a free account then you can host up to 5 different applications. Once you create a new account create a new app. Now there's a whole bunch of things we need to do here. Basically there are 3 different ways we can add our code on heroku
 
 - Through Heroku Command Line (_Preffered and the programmer's way_)
 - Github (_Easy way_)
 - Dropbox (_Easy way_)
 
-I would recommend the first way although it's a bit harder to get at first. However you can just follow along by using the syntax I provide here
+I would recommend the first way although it's a bit harder to get at first. However you can just follow along by using the syntax I provide here.
 
 #### B. Heroku Command Line Interface (CLI) and GIT:
 
-Download Heroku Command Line from [here](https://devcenter.heroku.com/articles/heroku-cli) or simply click on the link below.
-
-- [For Windows](https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-x64.exe)
-- [For Mac OS](https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli.pkg)
-
-Now we need to download one more thing and that's GIT – a CLI for GitHub. Download GIT [here](https://git-scm.com/downloads). Run those two installation files. If you have any trouble installing look for tutorials online, there are plenty.
+Download Heroku Command Line from [here](https://devcenter.heroku.com/articles/heroku-cli). We need to download one more thing and that's `git` – a CLI for GitHub. Download git [here](https://git-scm.com/downloads). Run those two installation files. If you have any trouble installing look for tutorials online, there are plenty.
 
 ![](./heroku_deploy.png)_Deploy on Heroku_
 
@@ -377,7 +372,7 @@ and you should see the git version. Please proceed to rest of the tutorial only 
 
 ### C. Creating a Procfile
 
-Heroku requires a special file called **Procfile**. _If you're hosting your bot on any other hosting service then this file is not require_. This file does not have any extension like .js or .txt, but only a name 'Procfile'. So in your Project folder, create a new file and name it as Procfile. Inside this file, write
+Heroku requires a special file called `Procfile`. _If you're hosting your bot on any other hosting service then this file is not require_. This file does not have any extension like .js or .txt, but only a name 'Procfile'. So in your Project folder, create a new file and name it as Procfile. Inside this file, write
 
 ```bash
 worker: node bot.js
@@ -385,7 +380,7 @@ worker: node bot.js
 
 and save it. That's all we need to do with Procfile.
 
-This Procfile tells heroku to run node bot.js command just like we did on your command line. The 'worker' is a type of dyno in heroku which I better not talk about right now.
+> This Procfile tells heroku to run `node bot.js` command just like you did in your command line. The `worker` is a type of a thing called dyno in heroku which I better not talk about right now.
 
 #### D. Creating a New App in Heroku
 
@@ -395,15 +390,15 @@ On your terminal, type heroku login. Type your Heroku email and password and log
 heroku create <your_app_name>
 ```
 
-Replace <you_app_name> with your app name. The app name should be in lowercase. That's how easy it is to create an app in heroku. All we need to do now is upload our code to the Heroku app that we created just now.
+Replace `<you_app_name>` with your app name. The app name should be in lowercase. We're done. That's how easy it is to create an app in heroku. All we need to do now is upload our code to our Heroku app.
 
-On your browser go to [www.heroku.com](https://www.heroku.com) and login. You'll see a list of all your apps. Click on the app you created just now. Then go to the 'Deploy' tab section. If you scroll down you'll see this :
+Login to your heroku account and you'll see a list of all your apps. Click on the app you created just now and then go to the `Deploy` tab section. If you scroll down you'll see this :
 
 As I mentioned earlier, there are various methods to deploy your code on heroku. We are using the Heroku CLI because its cooler than using GUI 😀 .
 
 #### E. Creating a Git Repository and Uploading our Twitter Bot code:
 
-We first need to create a Git Repository of our bot and only then we can upload(push) it to Heroku. Open command line and navigate to your project file and type
+We first need to create a Git Repository of our bot and only then we can upload (_push_) it to Heroku. Open command line and navigate to your project file and type
 
 ```bash
 git init
@@ -435,3 +430,7 @@ There's one last thing we need to do. Go to your heroku app page on your browser
 ![Heroku Dynos](./heroku_dyno.png)_Heroku Dynos_
 
 We need to turn on the worker dyno to start our bot. Click on the edit button and disable the web dyno and turn on worker dyno. This is where the Procfile comes into play! Without the Procfile, we wouldn't have this option to turn on worker dyno.
+
+---
+
+If you've read this far I hope you enjoyed it :)
