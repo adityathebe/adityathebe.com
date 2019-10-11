@@ -227,6 +227,11 @@ blockquote > :last-child {
     font-size: 0.8em;
     margin: 1rem -15px;
   }
+
+  span.gatsby-resp-image-wrapper {
+    border-radius: 0 !important;
+    margin: auto -15px !important;
+  }
 }
 
 :not(pre) > code[class='language-text'] {
