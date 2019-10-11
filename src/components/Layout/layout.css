@@ -223,8 +223,9 @@ blockquote > :last-child {
 /********* Codes **********/
 /**************************/
 @media screen and (max-width: 900px) {
-  pre[class*='language'] {
+  .gatsby-highlight > pre[class*='language'] {
     font-size: 0.8em;
+    margin: 1rem -15px;
   }
 }
 
