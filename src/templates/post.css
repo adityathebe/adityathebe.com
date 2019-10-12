@@ -41,23 +41,19 @@
 
 .post-content img {
   max-width: 100%;
-  border-radius: 5px;
   margin: 0 auto;
   margin-bottom: 20px;
   max-width: 100%;
-  font-size: 45px;
-  display: block;
   border: 1px solid var(--border-color-1);
 }
 
 .post-content img:hover {
-  border: 0;
   border-radius: 0;
 }
 
-/**
-** Links **
-*/
+/*************************/
+/********* LINKS *********/
+/*************************/
 .post-content a:visited {
   text-decoration: none;
   color: var(--primary-text-color);
@@ -66,20 +62,12 @@
 .post-content a {
   color: var(--primary-text-color);
   text-decoration: none;
-  background-image: linear-gradient(
-    transparent 0%,
-    transparent calc(50% - 5px),
-    var(--highlight-color-1) calc(50% - 5px),
-    var(--highlight-color-1) 100%
-  );
-  transition: background-position 120ms ease-in-out;
-  transition: color 100m ease-in-out;
-  background-size: 100% 230%;
-  background-position: 0 0;
+  border-bottom: 2px solid var(--link-color);
+  transition: border-width 100ms ease-in-out; 
 }
 
 .post-content a:hover {
-  background-position: 0 100%;
+  border-width: 2.5px;
 }
 
 .post-content hr {
@@ -113,6 +101,18 @@
 @media screen and (max-width: 800px) {
   .post-content h4 {
     font-size: 18px;
+  }
+}
+
+/**************************/
+/********* IMAGES *********/
+/**************************/
+
+/* Image full width on smaller screens */
+@media screen and (max-width: 900px) {
+  span.gatsby-resp-image-wrapper {
+    border-radius: 0 !important;
+    margin: auto -15px !important;
   }
 }
 
