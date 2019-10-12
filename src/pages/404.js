@@ -1,8 +1,8 @@
 // @ts-check
-import React from "react"
+import React from 'react';
 
-import SEO from "../components/SEO"
-import Layout from "../components/Layout"
+import SEO from '../components/SEO';
+import Layout from '../components/Layout';
 
 const NotFoundPage = () => (
   <Layout>
@@ -10,6 +10,6 @@ const NotFoundPage = () => (
     <h1>NOT FOUND</h1>
     <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
   </Layout>
-)
+);
 
-export default NotFoundPage
+export default NotFoundPage;

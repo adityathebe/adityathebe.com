@@ -15,7 +15,7 @@ export function formatReadingTime(minutes) {
 }
 
 // `lang` is optional and will default to the current user agent locale
-export function formatPostDate(date, lang ='en-US') {
+export function formatPostDate(date, lang = 'en-US') {
   if (typeof Date.prototype.toLocaleDateString !== 'function') {
     return date;
   }
