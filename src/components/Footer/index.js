@@ -26,7 +26,7 @@ const Footer = () => {
         <div className="footer-col-wrapper">
           <div className="footer-col footer-col-1">
             <ul className="contact-list">
-              <li>© 2019 {data.site.siteMetadata.author}</li>
+              <li>© 2020 {data.site.siteMetadata.author}</li>
               <li>
                 <a href="mailto:thebeaditya@gmail.com">thebeaditya@gmail.com</a>
               </li>
