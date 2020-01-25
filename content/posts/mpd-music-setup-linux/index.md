@@ -9,7 +9,7 @@ featuredImage: ./mpd-linux.png
 description: Learn how to setup music player daemon (mpd) as a user service on Arch Linux
 ---
 
-In this tutorial we'll go through the process of setting up mpd as a user service. This is just a bare minimum installation setup. If you want customizations then you can look up dotfiles on the internet - lots of people share it. Here's [mine](https://www.github.com/adityathebedotfiles).
+In this tutorial we'll go through the process of setting up mpd as a user service. This is just a bare minimum installation setup. If you want customizations then you can look up dotfiles on the internet - lots of people share it. Here's [mine](https://www.github.com/adityathebe/dotfiles).
 
 First thing first - download the `mpd` package along with the mpd clients `mpc` and `ncmpcpp`.
 
