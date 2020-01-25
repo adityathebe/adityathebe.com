@@ -10,7 +10,7 @@ featuredImage: ./ssh-github.png
 description: Set up ssh keys on your github account
 ---
 
-The reason I like to use ssh over https is because I hate to provide my username and password on every remote actions like `git clone`, `git pull`, or `git push`. Sure, I could use a credential manager but why would I do that when I can simply configure ssh keys >
+The reason I like to use ssh over https is because I hate to provide my username and password on every remote actions like `git clone`, `git pull`, or `git push`. Sure, I could use a credential manager but why would I do that when I can simply configure ssh keys ?
 
 On the contrary, [Github actually suggest using https over ssh](https://help.github.com/en/github/using-git/which-remote-url-should-i-use) mainly because it is the easiest to set up for novice users and https is almost never blocked by firewalls.
 
@@ -95,7 +95,7 @@ This config file is read by the ssh command on every execution.
 
 Add the following lines to the ~/.ssh/config file.
 
-```bash
+```
 Host github.com
   User git
   IdentityFile ~/.ssh/id_rsa_github
