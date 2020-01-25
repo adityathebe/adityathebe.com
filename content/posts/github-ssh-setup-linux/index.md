@@ -95,7 +95,7 @@ This config file is read by the ssh command on every execution.
 
 Add the following lines to the ~/.ssh/config file.
 
-```ssh
+```bash
 Host github.com
   User git
   IdentityFile ~/.ssh/id_rsa_github
