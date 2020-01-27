@@ -24,11 +24,7 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" keywords={['aditya thebe', 'adityathebe']} />
       <div className="home">
-        <div
-          onClick={changeTheme}
-          className="center-block"
-          onKeyDown={this.handleClick}
-        >
+        <div onClick={changeTheme} className="center-block">
           <Img alt="Author's Image" fixed={data.file.childImageSharp.fixed} />
           <h2>Random Thoughts Of A Programmer</h2>
         </div>
