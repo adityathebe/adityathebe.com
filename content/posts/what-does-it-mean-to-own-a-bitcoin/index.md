@@ -9,6 +9,9 @@ featuredImage: ./bitcoin.jpg
 description: Learn several ways to install softwares in your linux system from using the package manager to managing the binaries.
 ---
 
+Abstract:
+	A transaction in Bitcoin involves two things: the input and the output. Both the input and the output are UTXO(s). UTXO stands for Unspent Transaction Output. UTXO are indivisible chunks of bitcoin currency.
+
 The notion of owning a bitcoin can be difficult to grasp to anyone who has dealt with cash all their life.
 
 When Bob says he has $5 we can understand that he either has a $5 bill or \$5 in his bank account.
@@ -20,6 +23,12 @@ Most of the things that I've written in this blog post, I've learned it from the
 I am writing this blog post to put down in words the things that I've learned from the book and in hopes to help at least a single person who wants to learn about Bitcoin.
 
 > Disclaimer: This post only deals with the techinal aspects of owning a bitcoin; not political, not economical, not legal or any other \*-cal imaginable but just the technical aspects.
+
+First let's understand the basic but also a very important concept in bitcoin - Transactions. When Bob wants to transfer $2 from his $5 to Alice he simply sources the $2 from his account. In the case of Bitcoin, where does Bob source the 2 BTC from ?
+
+In our traditional practice the input to a transaction is a fund source. If you want to transact in cash then you get the money from your wallet(source), if you're paying online then you get the money from your Paypal(source) or your credit card(source) maybe. In the same way, if you want to transact in bitcoin, what exactly is the source ? Weirdly enough, the source to a transaction is another transaction!
+
+There's actually no such thing as bitcoin balance. There are only UTXOs. So when BOB says he has 5 BTC what he really means is there are some UTXO that he has ownership over. IT means that BOB has the key which can unlock the UTXOs worth 5 BTC.
 
 ## Private Keys
 
@@ -42,3 +51,5 @@ Back to our question - in what form do the bitcoins exist in the blockchain ? Th
 Understanding transactions is the key to understanding Bitcoin. You could say that everything in the bitcoin system is designed to ensure that transactions can be created, propagated on the network, validated, and finally added to the blockchain. A bitcoin transaction, as the name suggests, is just transfer of bitcoins. But it's important to underestand how the transfers happen.
 
 A transaction comprises of two important things - an input and output. Everyting that I have said about transaction may seem trivial until now.
+
+When Bob wants to transfer $2 from his $5 to Alice where does he draw that money from ?
