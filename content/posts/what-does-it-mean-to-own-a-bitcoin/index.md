@@ -1,0 +1,85 @@
+---
+title: What does it mean to own bitcoins
+date: '2020-02-02 00:05'
+modified-date: '2020-02-02 00:05'
+categories:
+  - Bitcoin
+slug: /what-does-it-mean-to-own-bitcoins
+featuredImage: ./bitcoin.jpg
+description: There are no accounts in bitcoin. A user's bitcoin is not stored in an account but rather scattered in the blockchain as UTXOs.
+---
+
+What does it mean to "have" bitcoins ? Where exactly are they stored ? Where can one sign up for a bitcoin account ? These were some of the questions that I had when I first started to study Bitcoin.
+
+The notion of owning bitcoins can be difficult to grasp to anyone who has dealt with cash all their lives. There's nothing physical to hold and everything is digital.
+
+When Bob says he has $5 we can understand that he either has a $5 bill or \$5 in his bank account. But what does it mean when Alice says she owns 5 BTC ? Well, that's what we are gonna find out ...
+
+Bitcoin can mean both the currency and the protocol that governs the currency. The Bitcoin protocol differs fundamentally from our traditional financial system. And so to understand it, it's important to learn the fundamental concepts and the underlying building blocks.
+
+## Blockchain
+
+The blockchain is a double-entry bookkeeping ledger. The name is derived from the fact that it is literally a linear chain of blocks. A block consists of numerous transactions. Every single bitcoin transaction that has ever happened has an entry in one of the blocks in the blockchain.
+
+The block chain is public, and anyone can download it and look through the transactions that's not just theirs but anyone else's. If I have your bitcoin address then I can see all the transactions going in and out from your address. Despite the popular belief that Bitcoin is untraceable, it is actually the opposite. In fact, one would need to take extreme measures to stay anonymous in the Bitcoin network.
+
+The important thing to understand, for now, is just that the blockchain is a database of transactions.
+
+> Every single bitcoin transaction that has ever happened has an entry in one of the blocks in the blockchain.
+
+## Transactions
+
+A bitcoin transaction is just an entry in the blockchain that indicates transfer of bitcoins. Transaction of bitcoins is quite different from a banking transaction. In a banking system, you have an account where you store all your money. To make a transaction you'd transfer money from your account to the receiver's account. In Bitcoin, there's no such thing as an Account.
+
+Recall, the blockchain is just a list of transactions. There is no such entry in the blockchain that states that Bob's account has 5 BTC or even that there's an account that belongs to Bob. To put it precisely, there's no concept of balance in Bitcoin.
+
+So how and where does one store bitcoins ? To answer that we need to understand _transactions_.
+
+A transaction comprises of a bunch of metadata which are shown below.
+
+![Structure of a bitcoin transaction](./structure-of-a-transaction.png)
+_Structure of a bitcoin transaction. Source: Mastering Bitcoin by Andreas Antonopolous_
+
+The fields that are of interest to us are `inputs` and `outputs`. The input to a transaction is the source of funds and the output is the destination. If there are no accounts in Bitcoin, then what is the source of funds and where is the destination?
+
+### Transaction Outputs
+
+The output of a transaction is called **UTXO** (Unspent Transaction Output). A UTXO consists of a locking script & the amount that is to be transferred. The locking script locks the transaction amount. For someone to use the transaction amount, an `unlocking script` is required.
+
+![Structure of a Bitcoin UTXO](./utxo-structure.png)
+_Structure of a Bitcoin UTXO. Source: Mastering Bitcoin by Andreas Antonopolous_
+
+So Bob asks Alice for her bitcoin address. He then creates a UTXO with an amount of 5 BTC and a locking script using Alice's bitcoin address such that only Alice can create an unlocking script using her private key.
+
+> Sending someone bitcoin is creating an unspent transaction output (UTXO) registered to their address and available for them to spend.
+
+### Transaction Inputs
+
+The input to a transaction is actually a pointer to another transaction that's in the blockchain. Precisely, the input is a pointer to a UTXO.
+
+![](./structure-of-a-transaction-input.png)
+
+So essentially, when Bob wants to makes the 5 BTC transaction, he needs to provide the following input
+
+- A `transaction hash`
+- An `output index` that points to a UTXO (_fund source_) in that transaction referenced by the transaction hash (there can be more than one UTXO in a single transaction).
+- An `unlocking script` indicating authority over the UTXO.
+
+This 5 BTC transfer will be placed on the blockchain as a new transaction with a unique transaction hash. In future, Alice can refer to this transaction and the UTXO to use the fund locked in the UTXO.
+
+### Calculating Bitcoin Balance
+
+You might have seen some bitcoin wallet applications that shows the balance of a bitcoin address.
+
+![Mycelium Wallet homescreen](./mycelium-wallet.png)
+_Mycelium wallet application_
+
+If there are no accounts then how is the bitcoin balance calculated ? The concept of a user’s bitcoin balance is a derived construct created by the wallet application.
+
+The bitcoin network actually keeps track of all the available unspent UTXO. A wallet application calculates the user’s balance by scanning the blockchain and aggregating all UTXO belonging to that user.
+
+A user's bitcoin balance is the sum of all unspent UTXOs that can be unlocked by the user.
+
+---
+
+_Most of the things that I've written in this blog post, I've learned it from the book **"Mastering Bitcoin" by Andreas Antonopolous**. It's [open sourced](https://github.com/bitcoinbook/bitcoinbook) !!_
