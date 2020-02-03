@@ -3,7 +3,7 @@ module.exports = {
     title: `Aditya Thebe`,
     description: `Full Stack Web Developer`,
     author: `Aditya Thebe`,
-    siteUrl: 'https://overreacted.io',
+    siteUrl: 'https://www.adityathebe.com',
     social: {
       twitter: 'adityathebe',
       github: 'adityathebe',
