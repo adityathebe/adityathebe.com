@@ -102,7 +102,7 @@ Miners compete against each other to put a block into the blockchain. This proce
 
 The block reward gets halved every 210,000 blocks or approximately every 4 years. When Bitcoin started in Jan 2009, the block reward was 50 BTC. On November 28, 2012 it dropped to 25 BTC per block and on July 9, 2016, it droped again to 12.5 BTC per block. It is estimated that on [May 2020 the block reward will again get halved to 6.25 BTC per block.](https://www.bitcoinblockhalf.com/)
 
-The block reward will keep on decreasing exponentially. It is projected that in the year 2140, the last halvening will take place and there'll be no more block rewards. This essentially means there is a limit to the production of bitcoins. It's _21 million_ and more than _18 million_ of the have already been mined.
+The block reward will keep on decreasing exponentially. It is projected that in the year 2140, the last halvening will take place and there'll be no more block rewards. This essentially means there is a limit to the production of bitcoins. It's _21 million_ and more than _18 million_ of them have already been mined.
 
 ## Tldr
 
