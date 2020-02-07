@@ -29,6 +29,11 @@ const BlogPostTemplate = ({ data }) => {
         {' • '}
         {formatPostDate(post.frontmatter.date)}
         {' • '}
+        {post.frontmatter.modified_date
+          ? 'Updated on: ' +
+            formatPostDate(post.frontmatter.modified_date) +
+            ' • '
+          : ''}
         {formatReadingTime(post.timeToRead)}
       </span>
       <hr style={{ margin: '1em 0' }} />
@@ -55,6 +60,7 @@ export const pageQuery = graphql`
         }
         description
         categories
+        modified_date
       }
       timeToRead
     }
