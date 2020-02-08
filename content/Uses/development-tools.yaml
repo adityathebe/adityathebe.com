@@ -1,0 +1,23 @@
+- name: Termite
+  description: Terminal Emulator
+  url: https://github.com/thestinger/termite
+
+- name: ZSH & oh-my-zsh
+  description: Shell
+  url: https://ohmyz.sh/
+
+- name: Visual Studio Code
+  description: Text Editor
+  url: https://code.visualstudio.com
+
+- name: Vim
+  description: Terminal based text editor
+  url: https://www.vim.org/
+
+- name: NVM
+  description: Node Version Manager
+  url: https://github.com/nvm-sh/nvm
+
+- name: Docker
+  description: Container Management
+  url: https://www.docker.com

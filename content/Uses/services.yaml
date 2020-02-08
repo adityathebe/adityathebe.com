@@ -1,0 +1,11 @@
+- name: Netlify
+  description: Hosting
+
+- name: Github
+  description: Software Repository hosting
+
+- name: NameCheap
+  description: Domain Provider
+
+- name: DigitalOcean
+  description: VPS provider
