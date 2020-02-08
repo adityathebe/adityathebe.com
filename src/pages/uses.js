@@ -69,7 +69,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO
-        title="About"
+        title="Uses"
         keywords={['aditya thebe uses', 'aditya thebe tools']}
       />
 
