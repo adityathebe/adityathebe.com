@@ -1,0 +1,27 @@
+- name: Transmission
+  description: Torrent
+  url: https://www.example.com
+
+- name: Telegram
+  description: Instant Messaging
+  url: https://www.telegram.org
+
+- name: Brave
+  description: Web Browser
+  url: https://www.example.com
+
+- name: mpd & ncmpcpp
+  description: Music Player
+  url: https://www.example.com
+
+- name: LastPass
+  description: Password Manager
+  url: https://www.lastpass.com
+
+- name: Git
+  description: Version Control
+  url: https://git-scm.com
+
+- name: Newsboat
+  description: RSS Manager
+  url: https://newsboat.org
