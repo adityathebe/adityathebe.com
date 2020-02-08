@@ -1,8 +1,11 @@
 - name: Model
   description: DELL XPS 7590
 
+- name: Display
+  description: 15.6" FHD InfinityEdge Anti-Glare Non-touch IPS
+
 - name: RAM
-  description: 8GB
+  description: 8GB DDR4-2666MHz
 
 - name: Processor
   description: Intel i5-9300H (4) @ 4.100GHz
@@ -14,7 +17,7 @@
   description: Arch Linux
 
 - name: SSD
-  description: 256GB
+  description: 256GB M.2 PCIe NVMe Solid State Drive
 
 - name: bspwm
   description: Window Manager
