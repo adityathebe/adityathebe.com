@@ -18,10 +18,6 @@
   description: Password Manager
   url: https://www.lastpass.com
 
-- name: Git
-  description: Version Control
-  url: https://git-scm.com
-
 - name: Newsboat
   description: RSS Manager
   url: https://newsboat.org

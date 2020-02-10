@@ -19,5 +19,5 @@
 - name: SSD
   description: 256GB M.2 PCIe NVMe Solid State Drive
 
-- name: bspwm
-  description: Window Manager
+- name: Window Manager
+  description: bspwm

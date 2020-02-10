@@ -21,3 +21,7 @@
 - name: Docker
   description: Container Management
   url: https://www.docker.com
+
+- name: Git
+  description: Version Control
+  url: https://git-scm.com
