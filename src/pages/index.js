@@ -1,33 +1,16 @@
 // @ts-check
 import React from 'react';
-import Img from 'gatsby-image';
-import { useStaticQuery, graphql } from 'gatsby';
 
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
 import PostList from '../components/PostList';
 
 const IndexPage = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "Images/adityathebe.png" }) {
-        childImageSharp {
-          fixed(height: 200) {
-            ...GatsbyImageSharpFixed_withWebp_noBase64
-          }
-        }
-      }
-    }
-  `);
-
   return (
     <Layout>
       <SEO title="Home" keywords={['aditya thebe', 'adityathebe']} />
-      <div className="home">
-        <div onClick={changeTheme} className="center-block">
-          <Img alt="Author's Image" fixed={data.file.childImageSharp.fixed} />
-          <h2>Random Thoughts Of A Programmer</h2>
-        </div>
+      <div className="center-block">
+        <h2>Random Thoughts Of A Programmer</h2>
       </div>
       <PostList />
     </Layout>

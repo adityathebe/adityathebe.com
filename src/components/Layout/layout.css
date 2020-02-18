@@ -175,15 +175,19 @@ h1 {
 }
 
 .page-content {
-  padding: 30px 0;
+  padding: 1.5rem 0;
 }
 
-.page-heading {
-  font-size: 20px;
-}
-
+/*************************/
+/*** Home Page Heading ***/
+/*************************/
 .center-block {
   text-align: center;
+  padding-bottom: 1.5rem;
+}
+
+.center-block > h2 {
+  margin: 0;
 }
 
 /***********************/
