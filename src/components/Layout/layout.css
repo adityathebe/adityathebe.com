@@ -208,7 +208,6 @@ a:hover {
 blockquote {
   color: var(--primary-text-color);
   padding: 1em 2em;
-  border: 8px dashed var(--secondary-text-color);
   margin: 1em 0;
   font-style: italic;
   font-family: 'Kalam', cursive;
