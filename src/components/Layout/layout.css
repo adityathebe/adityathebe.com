@@ -16,6 +16,9 @@ html {
 
   --primary-text-color: #454545;
   --secondary-text-color: #828282;
+
+  --toggle-bg-color: #454545;
+  --toggle-btn-color: #fff;
 }
 
 html[data-theme='dark'] {
@@ -30,6 +33,9 @@ html[data-theme='dark'] {
 
   --primary-text-color: #ffffff;
   --secondary-text-color: #828282;
+
+  --toggle-bg-color: #fff;
+  --toggle-btn-color: #000;
 }
 
 html {
