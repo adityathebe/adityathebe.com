@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 import './navbar.css';
+import DarkModeToggle from '../DarkMode';
 
 const Navbar = () => {
   return (
@@ -40,6 +41,7 @@ const Navbar = () => {
             <Link className="page-link" to="/uses">
               Uses
             </Link>
+            <DarkModeToggle />
           </div>
         </nav>
       </div>

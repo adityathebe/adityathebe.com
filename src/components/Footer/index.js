@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-
 import './footer.css';
 
 const Footer = () => {
@@ -81,7 +80,7 @@ const Footer = () => {
           <p>
             Built with{' '}
             <span role="img" aria-label="heart-icon">
-              ❤️
+              ❤
             </span>{' '}
             using Gatsby
           </p>

@@ -1,0 +1,48 @@
+.theme-switch {
+  display: inline-block;
+  height: 16px;
+  position: relative;
+  width: 28px;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: var(--toggle-bg-color);
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  background-color: var(--toggle-btn-color);
+  bottom: 2px;
+  left: 2px;
+  content: '';
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--toggle-bg-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(12px);
+}
+
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
