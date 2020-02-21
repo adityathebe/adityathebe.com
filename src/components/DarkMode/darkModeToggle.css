@@ -1,13 +1,8 @@
-.theme-switch-wrapper {
-  display: flex;
-  align-items: center;
-}
-
 .theme-switch {
   display: inline-block;
-  height: 34px;
+  height: 16px;
   position: relative;
-  width: 60px;
+  width: 28px;
 }
 
 .theme-switch input {
@@ -27,13 +22,13 @@
 
 .slider:before {
   background-color: var(--toggle-btn-color);
-  bottom: 4px;
+  bottom: 2px;
+  left: 2px;
   content: '';
-  height: 26px;
-  left: 4px;
+  height: 12px;
+  width: 12px;
   position: absolute;
   transition: 0.4s;
-  width: 26px;
 }
 
 input:checked + .slider {
@@ -41,11 +36,11 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(26px);
+  transform: translateX(12px);
 }
 
 .slider.round {
-  border-radius: 34px;
+  border-radius: 24px;
 }
 
 .slider.round:before {

@@ -18,6 +18,7 @@ export default class DarkModeToggle extends React.Component {
     const toggleSwitch = document.querySelector(query);
     toggleSwitch.addEventListener('change', this.switchTheme, false);
 
+    // Read theme from local storage and set
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme) {
       document.documentElement.setAttribute('data-theme', currentTheme);
@@ -30,10 +31,10 @@ export default class DarkModeToggle extends React.Component {
 
   render() {
     return (
-      <span class="page-link theme-switch-wrapper">
-        <label class="theme-switch" for="checkbox">
+      <span className="theme-switch-wrapper">
+        <label className="theme-switch" htmlFor="checkbox">
           <input type="checkbox" id="checkbox" />
-          <span class="slider round" />
+          <span className="slider round" />
         </label>
       </span>
     );
