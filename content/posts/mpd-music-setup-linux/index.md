@@ -1,6 +1,7 @@
 ---
 title: Setup mpd on your Linux system as a User service
 date: '2020-01-24'
+modified_date: '2020-02-24 21:05'
 categories:
   - Tutorials
   - Linux
@@ -21,7 +22,7 @@ sudo pacman -S mpd ncmpcpp mpc
 sudo apt install mpd ncmpcpp mpc
 ```
 
-*You can choose other mpd clients instead of ncmpcpp of course.*
+_You can choose other mpd clients instead of ncmpcpp of course._
 
 ## Setup the config files
 
@@ -44,7 +45,7 @@ pid_file              "~/.config/mpd/pid"
 state_file            "~/.config/mpd/state"
 ```
 
-It's not necessary to create any of these files as mpd will itself create them.
+It's not necessary to create any of these files as mpd will itself create them. However, you'll need to create a new "playlists" directory to create new playlists.
 
 ## Start the service as a user
 
@@ -52,6 +53,7 @@ It's not necessary to create any of these files as mpd will itself create them.
 systemctl --user enable mpd
 systemctl --user start mpd
 ```
+
 Don't forget the `--user` flag !
 
 ## Update the music database
