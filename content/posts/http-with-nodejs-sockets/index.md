@@ -22,7 +22,7 @@ I am sure you've heard about TCP. It's the protocol that governs the exchange of
 
 HTTP works over TCP. This means whenever you need to make an http request to a server - either via nodejs, python, curl or via web browsers - you first need to establish a TCP connection with the server. Once the TCP connection is established, http requests and responses are exchanged to-and-fro over the connection.
 
-Technically, there's no server and client in TCP. There are just the two nodes at the two ends of the socket connection. From now on, I'll refer two both the client and the server as just "nodes".
+_Technically, there's no server and client in TCP. There are just the two nodes at the two ends of the socket connection._
 
 So how do we establish a TCP connection? That's where sockets come in. A socket is an interface to make a tcp connection. Every programming language has a socket interface. NodeJs provides the [`net`](https://nodejs.org/api/net.html) library, python provides the `socket` library and likewise there's `java.net.Socket` in Java.
 
@@ -52,23 +52,25 @@ socket.on('connect', () => {
 });
 ```
 
-That's it. We successfully established a tcp connection and then killed it right away.
+That's it. If you run the code above, you'll establish a tcp connection and then also kill it right away. TCP connections remain active for as long as days or even months or, theoretically, forever as long as there's no network connection issues. That's why it's important to kill the connection after's there's no need for it.
 
 ## Make an HTTP request over the socket
 
-Now, let's try to send some data over the tcp connection. In our case, the data will be an http request/response.
+Now, let's try to send some data over the tcp connection. In our case, the data will be an http request/response. The data could be anything form a simple text to a large file.
 
-HTTP is a really simple protocol - it's literally just plain texts! I can write an http request in plain text and then send it over the socket to the server. The server parses the http request and then responds accordingly.
+HTTP is a really simple protocol - it's literally just plain texts! So when we say we need to send http request, what we really mean is - we need to send plain text. The plain text is of course the http header and http body. The server parses the http request and then responds accordingly.
 
-As a fun demo, let's try to make an http request to example.com. We can send a very bare minimal http request like this
+> HTTP is simply a plain text
+
+As a fun demo, let's try to make an http request to example.com. We can send a very bare minimal http request like this that only consists of http header.
 
 ```text
 GET / HTTP/1.1
 Host: example.com
-
+   
 ```
 
-Notice the blank line at the end ? That's important. The blank line separates http header from the http body.
+Notice the blank line at the end ? That's important. The blank line separates http header from the http body. If you leave out the blank line, then example.com's server will respond with an error because the http request you sent it is invalid.
 
 ```js
 const net = require('net');
@@ -161,3 +163,5 @@ Content-Length: 1256
 </body>
 </html>
 ```
+
+I hope this was fun and helpful. Under the hood, the libraries like axios, request, express, etc are doing all of these and much more ...
