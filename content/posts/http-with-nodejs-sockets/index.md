@@ -12,21 +12,21 @@ description: Set up ssh keys on your github account
 
 I love programming in NodeJs; mainly due to the speed in which I can quickly get an application up and running. Need to make an http request ? Well `npm install axios` and a few lines of code will do the trick. Need to create an http server? `npm install express` and a few lines and bam you've an http server running. I could say the same is the case with Python. Now take a look at this [StackOverflow answer](https://stackoverflow.com/a/1359700/6199444) on how to make http request in Java. So much of code right ?
 
-But this comes at a cost. These fancy easy-to-use libraries abstract all the nitty gritties that's happening under the hood.
+But this convenience comes at a cost. All these fancy easy-to-use libraries abstract the nitty gritties that's happening under the hood.
 
-I learned about sockets years after learning to make http requests in NodeJs. I don't know if it's just me, and I don't really want to blame the programming language, but the easiness provided by requestJs and ExpressJs never made the need for me to learn or even know about sockets. If you don't know about sockets then good news - this is going to be fun.
+I learned about sockets years after learning to make http requests in NodeJs. The convenience provided by RequestJs and ExpressJs never made the need for me to learn sockets. In fact I didn't even know that there's such thing as sockets just a while ago and I am sure most junior devs don't either.
 
 ## What are sockets ?
 
-I am sure you've heard about TCP. It's the protocol that governs the exchange of data over network connections.
+You've probably heard about TCP. It's the protocol that governs the exchange of data over network connections.
 
 HTTP works over TCP. This means whenever you need to make an http request to a server - either via nodejs, python, curl or via web browsers - you first need to establish a TCP connection with the server. Once the TCP connection is established, http requests and responses are exchanged to-and-fro over the connection.
 
 _Technically, there's no server and client in TCP. There are just the two nodes at the two ends of the socket connection._
 
-So how do we establish a TCP connection? That's where sockets come in. A socket is an interface to make a tcp connection. Every programming language has a socket interface. NodeJs provides the [`net`](https://nodejs.org/api/net.html) library, python provides the `socket` library and likewise there's `java.net.Socket` in Java.
+So how do we establish a TCP connection? That's where sockets come in. A socket is an interface provided by the operating system, that helps us to make a tcp connection. Every programming language has a socket interface. NodeJs provides the [`net`](https://nodejs.org/api/net.html) library, python provides the `socket` library and likewise there's `java.net.Socket` in Java.
 
-> A socket is an interface to make a tcp connection
+> A socket is an interface provided by an operating system to make a tcp connection
 
 ## Establish a TCP connection in NodeJs with sockets
 
@@ -67,7 +67,7 @@ As a fun demo, let's try to make an http request to example.com. We can send a v
 ```text
 GET / HTTP/1.1
 Host: example.com
-   
+
 ```
 
 Notice the blank line at the end ? That's important. The blank line separates http header from the http body. If you leave out the blank line, then example.com's server will respond with an error because the http request you sent it is invalid.
