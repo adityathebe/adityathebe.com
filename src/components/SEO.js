@@ -30,6 +30,10 @@ function SEO({ description, meta, keywords, title, featuredImage }) {
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
+          name: `yandex-verification`,
+          content: `0e3d760f663fd964`
+        },
+        {
           name: `description`,
           content: metaDescription,
         },

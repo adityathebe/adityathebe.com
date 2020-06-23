@@ -9,9 +9,6 @@ import './layout.css';
 
 const Layout = ({ children }) => (
   <>
-    <head>
-      <meta name="yandex-verification" content="0e3d760f663fd964" />
-    </head>
     <Navbar />
     <main className="page-content">
       <div className="wrapper">{children}</div>
