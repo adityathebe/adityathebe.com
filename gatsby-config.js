@@ -21,12 +21,6 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-plugin-google-analytics`,
-            options: {
-              trackingId: `UA-46064963-14`,
-            },
-          },
-          {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               icon: false,
