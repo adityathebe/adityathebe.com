@@ -31,7 +31,7 @@ function SEO({ description, meta, keywords, title, featuredImage }) {
       meta={[
         {
           name: `yandex-verification`,
-          content: `0e3d760f663fd964`
+          content: `0e3d760f663fd964`,
         },
         {
           name: `description`,

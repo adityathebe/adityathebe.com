@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
-import './uses.css'
+import './uses.css';
 
 const UsesItem = props => (
   <ul className="uses-list">

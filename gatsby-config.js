@@ -17,6 +17,14 @@ module.exports = {
     `gatsby-transformer-yaml`,
     `gatsby-plugin-netlify`,
     {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Raleway', 'Sanchez', 'Kalam'],
+        },
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
