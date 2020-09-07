@@ -10,12 +10,13 @@ import './post.css';
 
 const BlogPostTemplate = ({ data }) => {
   const post = data.markdownRemark;
+  const siteUrl = data.site.siteMetadata.siteUrl;
   return (
     <Layout>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description}
-        featuredImage={post.frontmatter.featuredImage.publicURL}
+        featuredImage={siteUrl + post.frontmatter.featuredImage.publicURL}
         keywords={['blog']}
         meta={[{ property: 'og:type', content: 'article' }]}
       />
@@ -49,6 +50,11 @@ export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       id
       html
@@ -64,5 +70,4 @@ export const pageQuery = graphql`
       }
       timeToRead
     }
-  }
-`;
+  }`;
