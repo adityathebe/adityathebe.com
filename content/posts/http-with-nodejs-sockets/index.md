@@ -1,13 +1,14 @@
 ---
-title: Let's make a raw http request with Sockets in NodeJs
+title: Basic introduction to HTTP requests with TCP Sockets in NodeJs
 date: '2020-03-22 22:00'
+modified_date: '2020-09-07 14:30'
 categories:
   - TCP
   - HTTP
   - Sockets
 slug: /raw-http-request-with-sockets-nodejs
 featuredImage: ./http.png
-description: Set up ssh keys on your github account
+description: Understand the structure of HTTP messages and how they work with network sockets in NodeJs 
 ---
 
 I love programming in NodeJs; mainly due to the speed in which I can quickly get an application up and running. Need to make an http request ? `npm install axios` and a few lines of code will do the trick. Need to create an http server? `npm install express` and with few lines you've an http server running. Now take a look at this [StackOverflow answer](https://stackoverflow.com/a/1359700/6199444) on how to make http request in Java. There's just so much of code to write ...
@@ -18,11 +19,19 @@ I learned about sockets years after learning to make http requests in NodeJs. Th
 
 ## What are sockets ?
 
-You've probably heard about TCP. It's the protocol that governs the exchange of data over network connections.
+You've probably heard of [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol). It is one of the protocols that governs the exchange of data over network connections.
 
-HTTP works over TCP (Any other protocol like UDP is fine as well but TCP is the standard). This means whenever you need to make an http request to a server - via whatever means like nodejs, python, curl or web browsers - you first need to establish a TCP connection with the server. Once the TCP connection is established, http requests and responses can be exchanged to-and-fro over the connection.
+HTTP works over TCP (Any other protocol like UDP is fine as well but TCP is the standard). This means whenever we need to make an http request to a server - via whatever means like nodejs, python, curl or web browsers - we first need to establish a TCP connection with the server. Once the TCP connection is established, http requests and responses can be exchanged to-and-fro over the connection.
 
-So how do we establish a TCP connection? That's where sockets come in. A socket is an interface provided by the operating system, that enables end users to make TCP connections (UDP too but let's stick to TCP sockets). Every programming language has a socket interface. NodeJs provides the `net` library, python provides the `socket` library and likewise there's `java.net.Socket` in Java.
+So how do we establish a TCP connection? That's where sockets come in. A socket is an interface provided by the operating system that enables us to read and write to a network. There are 3 types of sockes
+
+- Stream Sockets (TCP)
+- Datagrap Sockets (UDP)
+- Raw Sockets
+
+Since HTTP is most commonly used with TCP, we are only concerned with TCP sockets in this article.
+
+Most programming languages provide a socket interface. NodeJs provides the `net` library, python provides the `socket` library and likewise there's `java.net.Socket` in Java.
 
 ![Zines by Julia Evans](./sockets-zines.jpeg)_Zines by Julia Evans_
 
@@ -55,25 +64,26 @@ socket.on('connect', () => {
 });
 ```
 
-That's it. If you run the code above, you'll establish a TCP connection and then also kill it right away. TCP connections remain active for as long as days or even months or, theoretically, forever as long as there's no network connection issues. That's why it's important to kill the connection after's there's no need for it.
+If you run the code above, you'll establish a TCP connection and then also kill it right away. TCP connections remain active for as long as days or even months or, theoretically, forever as long as there's no network connection issues. That's why it's important to kill the connection after there's no need for it.
 
-## Make an HTTP request over the socket
+## Send an HTTP request over the socket
 
-Now, let's try to send some data over the TCP connection. The data could be anything from a simple text to a large media file. In our case, the data will be an [HTTP messages](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages).
+Now let's try to send some data over the TCP connection. The data could be anything from a simple text to a large media file. In our case, the data will be an [HTTP messages](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages).
 
 HTTP is a really simple protocol - it's literally just plain texts! You can even craft http requests & responses by hand. There are standards & structures to HTTP messages.
 
 ![HTTP Structure](./http-structure.png)_HTTP Structure_
 
-As a fun demo, let's try to make an http request to example.com. We can send a very bare minimal http request like this that only consists of http header.
+As a fun demo, let's try to make an http request to *example.com*. We can send a very bare minimal http request like this that only consists of http header.
 
 ```text
 GET / HTTP/1.1
 Host: example.com
    
+   
 ```
 
-Notice the blank line at the end ? That's important. The blank line separates http header from the http body. If you leave out the blank line, then example.com's server will respond with an error because the http request is invalid. It's also important to note that the blank line is actually a [CRLF](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) `\r\n` and not the `\n` character.
+Notice the two blank lines at the end? That's important. The blank line separates http header from the http body. If you leave out the blank line, then example.com's server will respond with an error because the http request is invalid. Give it a try... It's also important to note that the blank line is actually a [CRLF](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) `\r\n` and not the Line Feed `\n` character. Although servers this day accept the LineFeed `\n` character
 
 ```js
 const net = require('net');
@@ -97,8 +107,10 @@ socket.on('connect', () => {
 });
 
 socket.on('data', data => {
-  // data is a buffer. We need to transform it to string
+  // data is an array buffer. We need to transform it to string
   console.log(data.toString());
+
+  // Close the connection
   socket.destroy();
 });
 ```
@@ -122,46 +134,11 @@ Content-Length: 1256
 <!doctype html>
 <html>
 <head>
-    <title>Example Domain</title>
-
-    <meta charset="utf-8" />
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style type="text/css">
-    body {
-        background-color: #f0f0f2;
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-    }
-    div {
-        width: 600px;
-        margin: 5em auto;
-        padding: 2em;
-        background-color: #fdfdff;
-        border-radius: 0.5em;
-        box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
-    }
-    a:link, a:visited {
-        color: #38488f;
-        text-decoration: none;
-    }
-    @media (max-width: 700px) {
-        div {
-            margin: 0 auto;
-            width: auto;
-        }
-    }
-    </style>
-</head>
-
+  ...
 <body>
 <div>
-    <h1>Example Domain</h1>
-    <p>This domain is for use in illustrative examples in documents. You may use this
-    domain in literature without prior coordination or asking for permission.</p>
-    <p><a href="https://www.iana.org/domains/example">More information...</a></p>
+  <h1>Example Domain</h1>
+  ...
 </div>
 </body>
 </html>
