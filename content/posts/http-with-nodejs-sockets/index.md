@@ -83,7 +83,7 @@ Host: example.com
    
 ```
 
-Notice the two blank lines at the end? That's important. The blank line separates http header from the http body. If you leave out the blank line, then example.com's server will respond with an error because the http request is invalid. Give it a try... It's also important to note that the blank line is actually a [CRLF](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) `\r\n` and not the Line Feed `\n` character. Although servers this day accept the LineFeed `\n` character
+Notice the two blank lines at the end? That's important. The blank line separates http header from the http body. If you leave out the blank line, then example.com's server will respond with an error because the http request is invalid. Give it a try... It's also important to note that the blank line is actually a [CRLF](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) `\r\n` and not the Line Feed `\n` character. Although servers these days accept the LineFeed `\n` character.
 
 ```js
 const net = require('net');
