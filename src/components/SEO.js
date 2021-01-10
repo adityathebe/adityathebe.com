@@ -12,6 +12,7 @@ function SEO({ description, meta, keywords, title, featuredImage }) {
             title
             description
             author
+            siteUrl
           }
         }
         file(relativePath: { eq: "Images/site_featured_aditya_thebe.jpg" }) {
@@ -50,8 +51,8 @@ function SEO({ description, meta, keywords, title, featuredImage }) {
           content: `website`,
         },
         {
-          name: `og:image`,
-          content: featuredImage || file.publicURL,
+          property: `og:image`,
+          content: featuredImage || site.siteMetadata.siteUrl + file.publicURL,
         },
         {
           name: `twitter:card`,
