@@ -68,7 +68,6 @@ const Footer = () => {
           </div>
 
           <div className="footer-col footer-col-3">
-            {data.site.siteMetadata.description} <br />
             Subscribe{' '}
             <a href="/rss.xml" rel="noopener noreferrer">
               via RSS

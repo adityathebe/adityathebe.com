@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Aditya Thebe`,
-    description: `Full Stack Web Developer`,
+    description: `This little corner on the Internet is where I pen down my random thoughts mostly on Bitcoin, Web security, Linux and various web technologies ...`,
     author: `Aditya Thebe`,
     siteUrl: 'https://www.adityathebe.com',
     social: {
