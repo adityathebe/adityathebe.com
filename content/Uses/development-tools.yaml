@@ -1,6 +1,6 @@
-- name: Termite
+- name: Alacritty
   description: Terminal Emulator
-  url: https://github.com/thestinger/termite
+  url: https://github.com/alacritty/alacritty
 
 - name: ZSH & oh-my-zsh
   description: Shell
@@ -14,9 +14,9 @@
   description: Terminal based text editor
   url: https://www.vim.org/
 
-- name: NVM
+- name: ASDF
   description: Node Version Manager
-  url: https://github.com/nvm-sh/nvm
+  url: https://github.com/asdf-vm/asdf
 
 - name: Docker
   description: Container Management
