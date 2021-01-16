@@ -35,11 +35,14 @@ const Navbar = () => {
           </label>
 
           <div className="trigger">
+            <Link className="page-link" to="/uses">
+              Uses
+            </Link>
             <Link className="page-link" to="/portfolio">
               Portfolio
             </Link>
-            <Link className="page-link" to="/uses">
-              Uses
+            <Link className="page-link" to="/about">
+              About Me
             </Link>
             <DarkModeToggle />
           </div>
