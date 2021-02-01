@@ -29,13 +29,6 @@ const IndexPage = () => {
         }
       }
 
-      allPodcastsYaml {
-        nodes {
-          name
-          url
-        }
-      }
-
       allSoftwaresYaml {
         nodes {
           name
@@ -60,7 +53,6 @@ const IndexPage = () => {
     }
   `);
 
-  const podcastsList = data.allPodcastsYaml.nodes;
   const devToolsList = data.allDevelopmentToolsYaml.nodes;
   const sofwaresList = data.allSoftwaresYaml.nodes;
   const servicesList = data.allServicesYaml.nodes;
@@ -78,9 +70,6 @@ const IndexPage = () => {
 
       <h2>Softwares</h2>
       <UsesItem items={sofwaresList} />
-
-      <h2>Podcasts</h2>
-      <UsesItem items={podcastsList} />
 
       <h2>Services</h2>
       <UsesItem items={servicesList} />

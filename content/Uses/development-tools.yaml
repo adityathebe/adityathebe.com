@@ -7,11 +7,11 @@
   url: https://ohmyz.sh/
 
 - name: Visual Studio Code
-  description: Text Editor
+  description: Text Editor - Primary
   url: https://code.visualstudio.com
 
 - name: Vim
-  description: Terminal based text editor
+  description: Text Editor - Secondary
   url: https://www.vim.org/
 
 - name: ASDF
