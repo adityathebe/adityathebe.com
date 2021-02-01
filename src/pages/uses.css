@@ -1,3 +1,18 @@
 .uses-list {
   list-style: none;
 }
+
+/* .uses-list-item a {
+  color: inherit;
+} */
+
+.uses-list-item a:visited {
+  text-decoration: none;
+  color: var(--primary-text-color);
+}
+
+.uses-list-item a {
+  color: var(--primary-text-color);
+  text-decoration: none;
+  border-bottom: 0.10em solid var(--link-color);
+}

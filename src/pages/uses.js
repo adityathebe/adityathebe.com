@@ -9,7 +9,7 @@ import './uses.css';
 const UsesItem = props => (
   <ul className="uses-list">
     {props.items.map(({ name, description, url }, idx) => (
-      <li key={idx}>
+      <li className="uses-list-item" key={idx}>
         {url ? <a href={url}>{name}</a> : name}
         {description && ' - '}
         {description && <i>{description}</i>}
