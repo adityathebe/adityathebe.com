@@ -19,6 +19,8 @@ html {
 
   --toggle-bg-color: #212121;
   --toggle-btn-color: #fff;
+
+  --code-bg-color: #ebebeb;
 }
 
 html[data-theme='dark'] {
@@ -36,6 +38,8 @@ html[data-theme='dark'] {
 
   --toggle-bg-color: #fff;
   --toggle-btn-color: rgb(22, 21, 21);
+
+  --code-bg-color: #2d2d2d;
 }
 
 html {
@@ -235,13 +239,12 @@ blockquote > :last-child {
 }
 
 :not(pre) > code[class='language-text'] {
-  background-color: var(--highlight-color-1);
-  color: var(--primary-text-color);
+  background-color: var(--code-bg-color);
+  color: inherit;
   display: inline-block;
-  font-family: inherit;
-  line-height: 1em;
-  padding: 0.15em;
-  border: 1px solid var(--border-color-1);
+  line-height: 0.9em;
+  padding: 0.25em 0.3em;
+  border: 0.1px solid var(--border-color-2);
   border-radius: 2px;
 }
 
