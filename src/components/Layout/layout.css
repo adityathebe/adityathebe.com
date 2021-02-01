@@ -242,7 +242,8 @@ blockquote > :last-child {
   background-color: var(--code-bg-color);
   color: inherit;
   display: inline-block;
-  line-height: 0.9em;
+  line-height: 0.85em;
+  font-size: 0.9em;
   padding: 0.25em 0.3em;
   border: 0.1px solid var(--border-color-2);
   border-radius: 2px;
