@@ -28,7 +28,7 @@
 }
 
 .post-link a,
-.post-link:visited {
+.post-link a:visited {
   color: var(--primary-text-color);
 }
 
@@ -59,11 +59,6 @@
   color: var(--primary-text-color);
   text-decoration: none;
   border-bottom: 2px solid var(--link-color);
-  transition: border-width 100ms ease-in-out;
-}
-
-.post-content a:not(.gatsby-resp-image-link):hover  {
-  border-width: 2.5px;
 }
 
 .post-content hr {
