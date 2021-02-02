@@ -8,18 +8,18 @@ featuredImage: ./digital-fingerprints-featured-image.jpg
 description: Here's a gentle hands-on introduction to digital fingerprints.
 ---
 
-Digital fingerprint, as complex as it sounds, is simply just the digests(outputs) of a hash function. The hash function used to generate the digital fingerprint is part of the fingeprint and should be mentioned when providing someone with the fingerprint. Example:
+Digital fingerprint, as complex as it sounds, is simply just the digest(output) of a hash function. Example:
 
 ```bash
 printf 'adityathebe' | sha256sum
 62eb9a06b678df7d48eb59929ab07a9858ed940ddfd3d8596482458133babe67
 ```
 
-> You can try online tools to get the sha256 hash - https://emn178.github.io/online-tools/sha256.html
+There you go - we just created a digital fingerprint of the string 'adityathebe'. As simple as that!
 
-There you go we just created a digital fingerprint of the string 'adityathebe'. As simple as that !
+The above command may not run on a Windows machine or on MacOS. In that case, you can try online tools to get the sha256 hash - https://emn178.github.io/online-tools/sha256.html
 
-It's important to mention what hash function was used to generate the fingerprint. Because for the same string we can generate different fingerprints with other hash functions.
+It's important to mention what hash function was used to generate the fingerprint as we can generate different fingerprints for the same data with other hash functions.
 
 ```bash
 printf 'adityathebe' | sha1sum
@@ -33,9 +33,7 @@ There are many more hash functions in addition to these.
 
 ## Why create digital fingerprints ?
 
-Digital fingerprints are created to ensure Intigrity. Let's imagine I have a will that says I want to donate all of my bitcoins to John Mayer.
-
-Here's the `will.txt` file where I state just that
+Digital fingerprints are created to ensure Intigrity. Let's imagine I have a will that says I want to donate all of my bitcoins to John Mayer. Here's the `will.txt` file where I state just that
 
 ```txt
 I declare that I sign and execute this instrument as my last will
