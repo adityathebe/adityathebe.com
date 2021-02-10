@@ -1,10 +1,10 @@
 ---
-title: Pitfall in Javascript's Array.prototype.sort()
+title: Pitfall in JavaScript's Array.prototype.sort()
 date: '2021-02-09 20:45'
 categories:
-  - Javscript
+  - JavaScript
 slug: /array-sort-javascript-pitfall
-featuredImage: ./javscript-arrays-featured-img.jpg
+featuredImage: ./javascript-arrays-featured-img.jpg
 description: Javascript has many obscure and weird behaviors. One of them is how Array.prototype.sort() functions.
 ---
 
@@ -30,7 +30,7 @@ Baffled with what was going on, I ran the code on my local machine and started u
 [100, 32, 45, 59, 6, 60, 69, 74, 8, 9, 93, 98]
 ```
 
-As soon as I saw this, I knew what was going on ! If no compare function is supplied to `.sort()` javascript coerces the array elements into strings and then sorts them in lexicographical manner. Damn it ! I knew this behavior and I managed to fall for it.
+As soon as I saw this, I knew what was going on ! If no compare function is supplied to `.sort()` javascript coerces the array elements into strings and then sorts them in lexicographical manner. Damn it ! I knew this behavior and I still managed to fall for it.
 
 > The sort() method sorts the elements of an array in place and returns the sorted array. The default sort order is ascending, built upon **converting the elements into strings**, then comparing their sequences of UTF-16 code units values.
 
