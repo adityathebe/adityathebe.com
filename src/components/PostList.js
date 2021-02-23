@@ -5,7 +5,10 @@ import { formatReadingTime, formatPostDate } from '../utils/helper.js';
 export default () => {
   const { allMarkdownRemark } = useStaticQuery(graphql`
     {
-      allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/Posts/" } }
+        sort: { order: DESC, fields: [frontmatter___date] }
+      ) {
         edges {
           node {
             id

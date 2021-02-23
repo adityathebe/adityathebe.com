@@ -4,9 +4,12 @@ const path = require(`path`);
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
   const blogPost = path.resolve(`./src/templates/BlogPost.js`);
-  return graphql(`
+
+  // Create pages for blog posts
+  const blogPosts = graphql(`
     {
       allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/Posts/" } }
         sort: { fields: [frontmatter___date], order: DESC }
         limit: 1000
       ) {
@@ -29,7 +32,7 @@ exports.createPages = ({ graphql, actions }) => {
 
     // Create blog posts pages.
     const posts = result.data.allMarkdownRemark.edges;
-    posts.forEach((post, index) => {
+    posts.forEach(post => {
       createPage({
         path: post.node.frontmatter.slug,
         component: blogPost,
@@ -39,4 +42,6 @@ exports.createPages = ({ graphql, actions }) => {
       });
     });
   });
+
+  return Promise.all([blogPosts]);
 };
