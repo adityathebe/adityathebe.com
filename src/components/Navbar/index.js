@@ -35,6 +35,9 @@ const Navbar = () => {
           </label>
 
           <div className="trigger">
+            <Link className="page-link" to="/journal">
+              Weekly Journal
+            </Link>
             <Link className="page-link" to="/uses">
               Uses
             </Link>

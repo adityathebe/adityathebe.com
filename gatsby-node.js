@@ -1,11 +1,11 @@
 // @ts-check
-const path = require(`path`);
+const path = require('path');
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
-  const blogPost = path.resolve(`./src/templates/BlogPost.js`);
 
   // Create pages for blog posts
+  const blogPostTemplate = path.resolve(`./src/templates/BlogPost.js`);
   const blogPosts = graphql(`
     {
       allMarkdownRemark(
@@ -35,7 +35,7 @@ exports.createPages = ({ graphql, actions }) => {
     posts.forEach(post => {
       createPage({
         path: post.node.frontmatter.slug,
-        component: blogPost,
+        component: blogPostTemplate,
         context: {
           slug: post.node.frontmatter.slug,
         },
@@ -43,5 +43,44 @@ exports.createPages = ({ graphql, actions }) => {
     });
   });
 
-  return Promise.all([blogPosts]);
+  // Create pages for weekly journals
+  const weeklyJournalTemplate = path.resolve(`./src/templates/Journal.js`);
+  const weeklyJournals = graphql(`
+    {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/WeeklyJournal/" } }
+        sort: { fields: [frontmatter___date], order: DESC }
+        limit: 1000
+      ) {
+        edges {
+          node {
+            id
+            frontmatter {
+              title
+              date
+              slug
+            }
+          }
+        }
+      }
+    }
+  `).then(result => {
+    if (result.errors) {
+      throw result.errors;
+    }
+
+    // Create weekly journal pages.
+    const posts = result.data.allMarkdownRemark.edges;
+    posts.forEach(post => {
+      createPage({
+        path: post.node.frontmatter.slug,
+        component: weeklyJournalTemplate,
+        context: {
+          slug: post.node.frontmatter.slug,
+        },
+      });
+    });
+  });
+
+  return Promise.all([blogPosts, weeklyJournals]);
 };

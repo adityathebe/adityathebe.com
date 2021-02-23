@@ -1,0 +1,30 @@
+.journal-list {
+  display: grid;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  grid-template-columns: 1fr min-content;
+}
+
+.journal-list > div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.journal-list time {
+  padding-right: 0.25em;
+  font-variant-numeric: tabular-nums;
+  white-space: pre;
+}
+
+.journal-link {
+  display: inline;
+  font-size: 1em;
+  color: var(--primary-text-color);
+  line-height: 1em;
+}
+
+.journal-link a,
+.journal-link a:visited {
+  color: var(--primary-text-color);
+}
