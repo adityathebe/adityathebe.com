@@ -10,9 +10,9 @@ description: I have added a weekly journal section in my blog where I'll post up
 
 I was a decent and an above-average student in college and I can say with some confidence that having clean and organized notes did help me a lot. I used to spend a tonne of time preparing notes and it's something I really take pride in.
 
-However, after my college, there have been rarely a few times that I've picked a pen. I don't even have a pen on my desk right now. The habit of making notes has gone. Most of my time is spent in front of my computer - reading blogs and watching videos; mostly tech-related.
+However, after my college, there have been rarely a few times that I've picked a pen. I don't even have a pen on my desk right now. The habit of making notes has gone. 
 
-I've realized that I've been bombarding my brain with new information so much that I've difficulty retaining most of them. Sometimes, when I'm scanning through my browser history, I see an article and go - "ah ya, that was an interesting read. I totally forgot about it".
+Most of my time is spent in front of my computer - reading blogs and watching videos; mostly tech-related. I've realized that I've been bombarding my brain with new information so much that I've difficulty retaining most of them. Sometimes, when I'm scanning through my browser history, I see an article and go - "ah ya, that was an interesting read. I totally forgot about it".
 
 And some other times, I read a blog and google the things I don't understand, and quite often I'll fall into this rabbit hole eventually not knowing where I started and what I was initially trying to read.
 
