@@ -65,36 +65,6 @@
   margin: 1em 0;
 }
 
-.post-content h2 {
-  font-size: 32px;
-}
-
-@media screen and (max-width: 800px) {
-  .post-content h2 {
-    font-size: 28px;
-  }
-}
-
-.post-content h3 {
-  font-size: 26px;
-}
-
-@media screen and (max-width: 800px) {
-  .post-content h3 {
-    font-size: 22px;
-  }
-}
-
-.post-content h4 {
-  font-size: 20px;
-}
-
-@media screen and (max-width: 800px) {
-  .post-content h4 {
-    font-size: 18px;
-  }
-}
-
 /**************************/
 /********* IMAGES *********/
 /**************************/
