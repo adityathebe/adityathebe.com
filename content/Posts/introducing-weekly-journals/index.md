@@ -12,17 +12,21 @@ I was a decent and an above-average student in college and I can say with some c
 
 However, after my college, there have been rarely a few times that I've picked a pen. I don't even have a pen on my desk right now. The habit of making notes has gone. Most of my time is spent in front of my computer - reading blogs and watching videos; mostly tech-related.
 
-I've realized that I've been bombarding my brain with new information so much that I've difficulty retaining most of them. Sometimes, when I'm scanning through my browser history, I see an article and go - "ah ya, that was an interesting read. I totally forgot about it". 
+I've realized that I've been bombarding my brain with new information so much that I've difficulty retaining most of them. Sometimes, when I'm scanning through my browser history, I see an article and go - "ah ya, that was an interesting read. I totally forgot about it".
 
-And some other times, I read a blog and google some of the things I don't understand, and quite often I'll fall into this rabbit hole eventually not knowing where I started and what I was initially trying to read. I'm hoping this initiative will help me stay focused because at the back of my mind I'll always have this sense of responsibility to take a journal of everything that I learn. So, if I realize that something I'm reading or watching is too much for me to understand, then I'll just quit instead of trying to force myself to sit through it.
+And some other times, I read a blog and google the things I don't understand, and quite often I'll fall into this rabbit hole eventually not knowing where I started and what I was initially trying to read.
 
-This false sense of productivity is dragging me back. In reality, I'm not learning much or rather not retaining much. For this reason, I've decided to start writing a journal every week in hopes that it'll help me retain the things that I learn. And also, this will motivate me to write every week which is a good thing I guess.
+In the end, all the time and effort spent learning will account for very little. This false sense of productivity is dragging me back as I'm not making the most of my time. In reality, I'm not learning much or rather not retaining much. For this reason, I've decided to start writing a journal every week in hopes that it'll help me retain the things that I learn. And also, this will motivate me to write every week which is a good thing I guess.
 
 ## What is this weekly journal?
 
-I've added a weekly journal section on my blog which you can visit [here](/journal). Every week I'll try to post an update on the things that I learned or built that week although certainly not limited to just these. It could be just about be anything that I got done that week like maybe a podcast or a movie that I enjoyed, a new place I visited, and so and so.
+You can visit the weekly journal [here](/journal). Every week I'll try to post an update on the things that I learned or built that week although certainly not limited to just these. It could be just about anything - I could maybe write about a podcast or a movie that I enjoyed, a new place I visited, and so and so.
 
-The goal of this weekly journal is to help me revise the things that I learned that week or really just any other week. I believe simply reminding yourself of the things that you learned a while ago goes a long way.
+I'm hoping this initiative will help me stay focused because at the back of my mind I'll always have this sense of responsibility to take a journal of everything that I learn. So, if I realize that something I'm reading or watching is too much for me to understand, then I'll just quit instead of trying to force myself to sit through it. Likewise, if I get diverted too much from the subject at hand, then maybe this will help me focus less on the less-important things and get back to the subject.
+
+At the end of the week, I can also go through the journal and revise the things that I learned.
+
+> I believe simply reminding yourself of the things that you learned a while ago goes a long way.
 
 ## Alternatives
 
