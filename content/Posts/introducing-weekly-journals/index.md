@@ -12,9 +12,11 @@ I was a decent and an above-average student in college and I can say with some c
 
 However, after my college, there have been rarely a few times that I've picked a pen. I don't even have a pen on my desk right now. The habit of making notes has gone. Most of my time is spent in front of my computer - reading blogs and watching videos; mostly tech-related.
 
-I've realized that I've been bombarding my brain with new information so much that I've difficulty retaining most of them. Sometimes, when I'm perusing through my browser history, I see an article and go - "ah ya, that was an interesting read. I totally forgot about it". And some other time, I read a blog and google some of the things I don't understand and quite often I'll fall into this rabbit hole eventually not knowing where I started and what I was initially trying to read.
+I've realized that I've been bombarding my brain with new information so much that I've difficulty retaining most of them. Sometimes, when I'm scanning through my browser history, I see an article and go - "ah ya, that was an interesting read. I totally forgot about it". 
 
-This false sense of productivity is draging me back. In reality, I'm not learning much or rather not retaining much. For this reason, I've decided to start writing a journal every week in hopes that it'll help me retain the things that I learn. And also, this will motivate me to write every week which is good thing I guess.
+And some other times, I read a blog and google some of the things I don't understand, and quite often I'll fall into this rabbit hole eventually not knowing where I started and what I was initially trying to read. I'm hoping this initiative will help me stay focused because at the back of my mind I'll always have this sense of responsibility to take a journal of everything that I learn. So, if I realize that something I'm reading or watching is too much for me to understand, then I'll just quit instead of trying to force myself to sit through it.
+
+This false sense of productivity is dragging me back. In reality, I'm not learning much or rather not retaining much. For this reason, I've decided to start writing a journal every week in hopes that it'll help me retain the things that I learn. And also, this will motivate me to write every week which is a good thing I guess.
 
 ## What is this weekly journal?
 

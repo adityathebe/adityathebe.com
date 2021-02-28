@@ -1,5 +1,5 @@
 ---
-title: '#1. GRPC, ProtoBuf and weekly journals'
+title: 'GRPC, ProtoBuf and weekly journals'
 date: '2021-02-23 23:25'
 slug: /journal/1
 featuredImage: ./img.png
