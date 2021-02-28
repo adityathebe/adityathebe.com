@@ -21,6 +21,8 @@ html {
   --toggle-btn-color: #fff;
 
   --code-bg-color: #ebebeb;
+
+  --table-of-contents-bg: #ebebeb;;
 }
 
 html[data-theme='dark'] {
@@ -40,6 +42,8 @@ html[data-theme='dark'] {
   --toggle-btn-color: rgb(22, 21, 21);
 
   --code-bg-color: #2d2d2d;
+
+  --table-of-contents-bg: #2d2d2d;
 }
 
 html {

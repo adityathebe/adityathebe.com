@@ -26,7 +26,7 @@ const WeeklyJournalTemplate = ({ data }) => {
       </span>
       <hr style={{ margin: '1em 0' }} />
       <div
-        className="post-content"
+        className="post-content journal-content"
         dangerouslySetInnerHTML={{ __html: journal.html }}
       />
     </Layout>

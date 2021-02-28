@@ -28,3 +28,10 @@
 .journal-link a:visited {
   color: var(--primary-text-color);
 }
+
+.journal-content > .table-of-contents {
+  padding: 1em;
+  margin: 1em 0;
+  background-color: var(--table-of-contents-bg);
+  border: 0.1em dotted var(--border-color-2);
+}
