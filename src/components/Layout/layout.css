@@ -12,7 +12,6 @@ html {
 
   --highlight-color-1: #f7ee7f;
   --highlight-color-rgb: 247, 238, 127;
-  --link-color: #ec5759;
 
   --primary-text-color: #3a3939;
   --secondary-text-color: #747373;
@@ -22,7 +21,7 @@ html {
 
   --code-bg-color: #ebebeb;
 
-  --table-of-contents-bg: #ebebeb;;
+  --table-of-contents-bg: #ebebeb;
 }
 
 html[data-theme='dark'] {

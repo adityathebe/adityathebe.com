@@ -29,6 +29,7 @@
   color: var(--primary-text-color);
 }
 
+/* Table of contents */
 .journal-content > .table-of-contents {
   padding: 1em;
   margin: 1em 0;

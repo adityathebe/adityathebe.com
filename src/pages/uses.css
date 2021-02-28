@@ -14,5 +14,5 @@
 .uses-list-item a {
   color: var(--primary-text-color);
   text-decoration: none;
-  border-bottom: 0.10em solid var(--link-color);
+  border-bottom: 0.10em solid var(--primary-text-color);
 }
