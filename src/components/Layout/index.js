@@ -14,7 +14,6 @@ const Layout = ({ children }) => (
       <div className="wrapper">{children}</div>
     </main>
     <Footer />
-    <script async defer src="https://stats.adityathebe.com/latest.js" />
   </>
 );
 
