@@ -14,11 +14,7 @@ const Layout = ({ children }) => (
       <div className="wrapper">{children}</div>
     </main>
     <Footer />
-    <script
-      data-goatcounter="https://adityakosite.goatcounter.com/count"
-      async
-      src="//gc.zgo.at/count.js"
-    />
+    <script async defer src="https://stats.adityathebe.com/latest.js" />
   </>
 );
 
