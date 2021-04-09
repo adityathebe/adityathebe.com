@@ -52,7 +52,7 @@ const ProjectPage = () => {
     <Layout>
       <SEO
         title="Portfolio"
-        keywords={['aditya thebe', 'adityathebe', 'portfolio']}
+        keywords={['aditya thebe portfolio', 'aditya thebe projects']}
       />
       <h1>Featured Projects</h1>
       {featuredProjectsList.map((project, idx) => (

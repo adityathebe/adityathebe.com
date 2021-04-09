@@ -17,7 +17,7 @@ const BlogPostTemplate = ({ data }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description}
         featuredImage={siteUrl + post.frontmatter.featuredImage.publicURL}
-        keywords={['blog']}
+        keywords={post.frontmatter.keywords ? post.frontmatter.keywords : []}
         meta={[{ property: 'og:type', content: 'article' }]}
       />
       <h1 className="post-header">{post.frontmatter.title}</h1>
@@ -66,8 +66,10 @@ export const pageQuery = graphql`
         }
         description
         categories
+        keywords
         modified_date
       }
       timeToRead
     }
-  }`;
+  }
+`;
