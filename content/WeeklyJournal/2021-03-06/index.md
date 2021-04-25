@@ -2,7 +2,6 @@
 title: 'Security and Analytics'
 date: '2021-03-06 23:25'
 slug: /journal/2
-featuredImage: ./img.png
 description: This week I re-added simple analytics to my website and fixed a major bug that was costing me $70 every month
 keywords:
   - gastbyjs web analytics

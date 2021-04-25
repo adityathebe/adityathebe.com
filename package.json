@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Aditya Thebe <contact@adityathebe.com>",
   "dependencies": {
+    "canvas": "^2.7.0",
     "gatsby": "^2.32.4",
     "gatsby-image": "^2.2.24",
     "gatsby-plugin-feed": "^2.3.15",

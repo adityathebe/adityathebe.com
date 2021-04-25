@@ -2,7 +2,6 @@
 title: Number of lines of code in my website
 date: '2021-04-03 18:30'
 slug: /journal/3
-featuredImage: ./img.png
 description: My website apparently has fewer lines of code than I expected
 keywords:
   - swapfiles on linux

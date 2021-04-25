@@ -2,7 +2,6 @@
 title: 'GRPC, ProtoBuf and weekly journals'
 date: '2021-02-27 17:00'
 slug: /journal/1
-featuredImage: ./img.png
 description: This week I learned about ProtoBuf, gRPC & sql in Go
 keywords:
   - grpc

@@ -8,15 +8,15 @@ import { formatPostDate } from '../utils/helper.js';
 
 import './journal.css';
 
-const WeeklyJournalTemplate = ({ data }) => {
+const WeeklyJournalTemplate = ({ data, pageContext }) => {
   const journal = data.markdownRemark;
   const siteUrl = data.site.siteMetadata.siteUrl;
   return (
     <Layout>
       <SEO
-        title={journal.frontmatter.title + " - Weekly Journal"}
+        title={journal.frontmatter.title + ' - Weekly Journal'}
         description={journal.frontmatter.description}
-        featuredImage={siteUrl + journal.frontmatter.featuredImage.publicURL}
+        featuredImage={siteUrl + pageContext.seoImage}
         keywords={journal.frontmatter.keywords}
         meta={[{ property: 'og:type', content: 'article' }]}
       />
@@ -48,9 +48,6 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date
-        featuredImage {
-          publicURL
-        }
         description
         modified_date
         keywords

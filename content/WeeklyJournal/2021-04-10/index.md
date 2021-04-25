@@ -2,7 +2,6 @@
 title: Git tricks & Deterministic builds on NPM install
 date: '2021-04-10 12:00'
 slug: /journal/4
-featuredImage: ./img.png
 description: Try out this git one-liners like a git ninja!
 keywords:
   - git tricks

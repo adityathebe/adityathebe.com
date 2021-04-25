@@ -1,5 +1,6 @@
 // @ts-check
 const path = require('path');
+const generateImage = require('./gen-social-image');
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -72,11 +73,18 @@ exports.createPages = ({ graphql, actions }) => {
     // Create weekly journal pages.
     const posts = result.data.allMarkdownRemark.edges;
     posts.forEach(post => {
+      const seoImage = generateImage({
+        title: post.node.frontmatter.title,
+        slug: post.node.frontmatter.slug,
+        pathPrefix: 'static/images/',
+      });
+
       createPage({
         path: post.node.frontmatter.slug,
         component: weeklyJournalTemplate,
         context: {
           slug: post.node.frontmatter.slug,
+          seoImage: seoImage,
         },
       });
     });
