@@ -1,12 +1,14 @@
 ---
-title: Dependency Injection In Go With Context API Is Pretty Neat !!
+title: Dependency Injection In Go With Context API
 date: '2021-04-25 14:00'
 slug: /journal/5
-description:
+description: This week I share a couple of new things that I learned about Go
 keywords:
   - go dependency injection
   - go time format
-  - go type
+  - go type assertion
+  - go slices declaration
+  - empty slices in go
 ---
 
 <div class="table-of-contents">
