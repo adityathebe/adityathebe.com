@@ -1,5 +1,5 @@
 # Ignore journal social images as they're generated during build
-static/images/journal
+static/images/journal/*
 
 # Logs
 logs
@@ -70,3 +70,5 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+!.keep
