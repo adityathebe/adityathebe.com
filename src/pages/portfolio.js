@@ -43,17 +43,12 @@ const ProjectPage = () => {
       }
     }
   `);
-  const featuredProjectsList = data.allProjectFeaturedListYaml.edges.map(
-    x => x.node
-  );
+  const featuredProjectsList = data.allProjectFeaturedListYaml.edges.map(x => x.node);
   const miniProjectsList = data.allProjectMiniListYaml.edges.map(x => x.node);
 
   return (
     <Layout>
-      <SEO
-        title="Portfolio"
-        keywords={['aditya thebe portfolio', 'aditya thebe projects']}
-      />
+      <SEO title="Portfolio" keywords={['aditya thebe portfolio', 'aditya thebe projects']} />
       <h1>Featured Projects</h1>
       {featuredProjectsList.map((project, idx) => (
         <Project key={idx} project={project} />
@@ -66,9 +61,7 @@ const ProjectPage = () => {
             <a href={project.link} target="_blank" rel="noopener noreferrer">
               <span className="mini-project-li-name">{project.name}</span>
               {' - '}
-              <span className="mini-project-li-description">
-                {project.description}
-              </span>
+              <span className="mini-project-li-description">{project.description}</span>
             </a>
           </li>
         ))}

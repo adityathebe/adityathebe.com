@@ -21,14 +21,9 @@ const WeeklyJournalTemplate = ({ data, pageContext }) => {
         meta={[{ property: 'og:type', content: 'article' }]}
       />
       <h1 className="post-header">{journal.frontmatter.title}</h1>
-      <span className="post-meta">
-        {formatPostDate(journal.frontmatter.date)}
-      </span>
+      <span className="post-meta">{formatPostDate(journal.frontmatter.date)}</span>
       <hr style={{ margin: '1em 0' }} />
-      <div
-        className="post-content journal-content"
-        dangerouslySetInnerHTML={{ __html: journal.html }}
-      />
+      <div className="post-content journal-content" dangerouslySetInnerHTML={{ __html: journal.html }} />
     </Layout>
   );
 };

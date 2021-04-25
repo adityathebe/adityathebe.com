@@ -60,10 +60,7 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <SEO
-        title="Uses"
-        keywords={['aditya thebe uses', 'aditya thebe tools']}
-      />
+      <SEO title="Uses" keywords={['aditya thebe uses', 'aditya thebe tools']} />
 
       <h2>Development Tools</h2>
       <UsesItem items={devToolsList} />

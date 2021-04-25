@@ -30,18 +30,11 @@ const BlogPostTemplate = ({ data }) => {
         {' • '}
         {formatPostDate(post.frontmatter.date)}
         {' • '}
-        {post.frontmatter.modified_date
-          ? 'Updated on: ' +
-            formatPostDate(post.frontmatter.modified_date) +
-            ' • '
-          : ''}
+        {post.frontmatter.modified_date ? 'Updated on: ' + formatPostDate(post.frontmatter.modified_date) + ' • ' : ''}
         {formatReadingTime(post.timeToRead)}
       </span>
       <hr style={{ margin: '1em 0' }} />
-      <div
-        className="post-content"
-        dangerouslySetInnerHTML={{ __html: post.html }}
-      />
+      <div className="post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
   );
 };

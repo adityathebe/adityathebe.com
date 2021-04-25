@@ -10,11 +10,7 @@ const JournalPage = () => {
     <Layout>
       <SEO
         title="Weekly Journals"
-        keywords={[
-          'aditya thebe journals',
-          'adityathebe journals',
-          'aditya thebe weekly journals',
-        ]}
+        keywords={['aditya thebe journals', 'adityathebe journals', 'aditya thebe weekly journals']}
       />
       <WeeklyJournalList />
     </Layout>

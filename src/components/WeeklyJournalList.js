@@ -35,9 +35,7 @@ export default () => {
                 {edge.node.frontmatter.title}
               </Link>
             </div>
-            <time className="journal-date">
-              {formatPostDate(edge.node.frontmatter.date)}
-            </time>
+            <time className="journal-date">{formatPostDate(edge.node.frontmatter.date)}</time>
           </>
         );
       })}

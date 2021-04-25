@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 function SEO({ description, meta, keywords, title, featuredImage }) {
-  const { site, file } = useStaticQuery(
+  const { site } = useStaticQuery(
     graphql`
       query {
         site {
@@ -15,14 +15,12 @@ function SEO({ description, meta, keywords, title, featuredImage }) {
             siteUrl
           }
         }
-        file(relativePath: { eq: "Images/site_featured_aditya_thebe.jpg" }) {
-          publicURL
-        }
       }
     `
   );
 
   const metaDescription = description || site.siteMetadata.description;
+  const fallbackSocialImage = site.siteMetadata.siteUrl + '/images/site_featured_aditya_thebe.jpg';
 
   return (
     <Helmet
@@ -52,7 +50,7 @@ function SEO({ description, meta, keywords, title, featuredImage }) {
         },
         {
           property: `og:image`,
-          content: featuredImage || site.siteMetadata.siteUrl + file.publicURL,
+          content: featuredImage || fallbackSocialImage,
         },
         {
           name: `twitter:card`,
@@ -72,7 +70,7 @@ function SEO({ description, meta, keywords, title, featuredImage }) {
         },
         {
           name: `twitter:image`,
-          content: featuredImage || file.publicURL,
+          content: featuredImage || fallbackSocialImage,
         },
       ]
         .concat(
