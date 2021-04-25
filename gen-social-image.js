@@ -42,7 +42,7 @@ function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
   }
 }
 
-function generateImage({ title, slug, pathPrefix }) {
+function generateImage({ title, slug }) {
   //define canvas size
   let width = 1200;
   let height = 630;
@@ -111,10 +111,11 @@ function generateImage({ title, slug, pathPrefix }) {
 
   //export image
   const buffer = canvas.toBuffer('image/png');
-  const imgPath = path.join(pathPrefix, `${slug}.png`);
+  const imgName = `images${slug}.png`;
+  const imgPath = path.join('static/', imgName);
   fs.writeFileSync(imgPath, buffer);
 
-  return imgPath;
+  return imgName;
 }
 
 // const x = generateImage({ title: "How to test the long keyword the quick brown fox jumps over the lazy dog", slug: "WHATEVER"})

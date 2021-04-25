@@ -16,7 +16,7 @@ const WeeklyJournalTemplate = ({ data, pageContext }) => {
       <SEO
         title={journal.frontmatter.title + ' - Weekly Journal'}
         description={journal.frontmatter.description}
-        featuredImage={siteUrl + pageContext.seoImage}
+        featuredImage={siteUrl + '/' + pageContext.seoImage}
         keywords={journal.frontmatter.keywords}
         meta={[{ property: 'og:type', content: 'article' }]}
       />

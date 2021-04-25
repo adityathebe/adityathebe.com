@@ -76,7 +76,6 @@ exports.createPages = ({ graphql, actions }) => {
       const seoImage = generateImage({
         title: post.node.frontmatter.title,
         slug: post.node.frontmatter.slug,
-        pathPrefix: 'static/images/',
       });
 
       createPage({
