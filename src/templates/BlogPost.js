@@ -16,7 +16,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description}
-        featuredImage={siteUrl + '/' + pageContext.seoImage}
+        featuredImage={siteUrl + pageContext.seoImage}
         keywords={post.frontmatter.keywords ? post.frontmatter.keywords : []}
         meta={[{ property: 'og:type', content: 'article' }]}
       />

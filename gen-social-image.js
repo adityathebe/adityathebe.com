@@ -1,3 +1,8 @@
+/*
+Source: https://danspratling.dev/blog/automatically-generating-a-social-image-in-gatsby
+- By Dan Spratling
+ */
+
 const fs = require('fs');
 const path = require('path');
 
@@ -117,8 +122,5 @@ function generateImage({ title, slug, isJournal }) {
 
   return imgRelPath;
 }
-
-// const x = generateImage({ title: "How to test the long keyword the quick brown fox jumps over the lazy dog", slug: "WHATEVER"})
-// console.log(x);
 
 module.exports = generateImage;

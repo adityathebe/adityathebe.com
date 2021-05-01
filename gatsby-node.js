@@ -22,7 +22,7 @@ exports.createPages = ({ graphql, actions }) => {
               date
               slug
               featuredImage {
-                id
+                publicURL
               }
             }
           }
@@ -42,12 +42,16 @@ exports.createPages = ({ graphql, actions }) => {
       if (post.node.frontmatter.featuredImage) {
         seoImage = post.node.frontmatter.featuredImage.publicURL;
       } else {
-        seoImage = generateImage({
-          title: post.node.frontmatter.title,
-          slug: post.node.frontmatter.slug,
-          isJournal: false,
-        });
+        seoImage =
+          '/' +
+          generateImage({
+            title: post.node.frontmatter.title,
+            slug: post.node.frontmatter.slug,
+            isJournal: false,
+          });
       }
+
+      console.log(seoImage);
 
       createPage({
         path: post.node.frontmatter.slug,
