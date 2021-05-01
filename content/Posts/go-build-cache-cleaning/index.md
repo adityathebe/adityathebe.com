@@ -14,13 +14,13 @@ keywords:
 
 ## Useless Anecdote
 
-I realized that my storage was quickly being filled out. I had recently added a new user to my system so I thought maybe that accounted for the sudden spike in storage usage. When I finally checked what was actually going on, I saw that my Go build cache directory was taking up about 35GB!
+I realized that my storage was quickly getting filled out. I had recently added a new user to my system so I thought maybe that accounted for the sudden spike in storage usage. When I finally checked what was actually going on, I saw that my Go build cache directory was taking up about 35GB!
 
 ![Contents of ~/.cache](./go-build-cache-du.png)
 
 ### Locate Go build cache directory
 
-The default location for build cache data is a directory named **go-build** in the standard user cache directory for the current operating system. For me, on Linux, it is `~/.cache/go-build/`. You can find out yours using this command
+The default location for build cache data is a directory named **go-build** in the standard cache directory. For me, on Linux, it is `~/.cache/go-build/`. You can find out yours using this command
 
 ```bash
 go env GOCACHE
