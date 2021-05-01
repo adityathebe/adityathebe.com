@@ -8,7 +8,7 @@ import { formatReadingTime, formatPostDate } from '../utils/helper.js';
 
 import './post.css';
 
-const BlogPostTemplate = ({ data }) => {
+const BlogPostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark;
   const siteUrl = data.site.siteMetadata.siteUrl;
   return (
@@ -16,7 +16,7 @@ const BlogPostTemplate = ({ data }) => {
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description}
-        featuredImage={siteUrl + post.frontmatter.featuredImage.publicURL}
+        featuredImage={siteUrl + '/' + pageContext.seoImage}
         keywords={post.frontmatter.keywords ? post.frontmatter.keywords : []}
         meta={[{ property: 'og:type', content: 'article' }]}
       />

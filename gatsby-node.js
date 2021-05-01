@@ -21,6 +21,9 @@ exports.createPages = ({ graphql, actions }) => {
               title
               date
               slug
+              featuredImage {
+                id
+              }
             }
           }
         }
@@ -33,12 +36,25 @@ exports.createPages = ({ graphql, actions }) => {
 
     // Create blog posts pages.
     const posts = result.data.allMarkdownRemark.edges;
+
     posts.forEach(post => {
+      let seoImage = '';
+      if (post.node.frontmatter.featuredImage) {
+        seoImage = post.node.frontmatter.featuredImage.publicURL;
+      } else {
+        seoImage = generateImage({
+          title: post.node.frontmatter.title,
+          slug: post.node.frontmatter.slug,
+          isJournal: false,
+        });
+      }
+
       createPage({
         path: post.node.frontmatter.slug,
         component: blogPostTemplate,
         context: {
           slug: post.node.frontmatter.slug,
+          seoImage: seoImage,
         },
       });
     });
@@ -76,6 +92,7 @@ exports.createPages = ({ graphql, actions }) => {
       const seoImage = generateImage({
         title: post.node.frontmatter.title,
         slug: post.node.frontmatter.slug,
+        isJournal: true,
       });
 
       createPage({

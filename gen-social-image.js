@@ -23,12 +23,7 @@ function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
   ctx.lineTo(x + width - radius.tr, y);
   ctx.quadraticCurveTo(x + width, y, x + width, y + radius.tr);
   ctx.lineTo(x + width, y + height - radius.br);
-  ctx.quadraticCurveTo(
-    x + width,
-    y + height,
-    x + width - radius.br,
-    y + height
-  );
+  ctx.quadraticCurveTo(x + width, y + height, x + width - radius.br, y + height);
   ctx.lineTo(x + radius.bl, y + height);
   ctx.quadraticCurveTo(x, y + height, x, y + height - radius.bl);
   ctx.lineTo(x, y + radius.tl);
@@ -42,7 +37,7 @@ function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
   }
 }
 
-function generateImage({ title, slug }) {
+function generateImage({ title, slug, isJournal }) {
   //define canvas size
   let width = 1200;
   let height = 630;
@@ -68,7 +63,7 @@ function generateImage({ title, slug }) {
   roundRect(context, 25, 25, width, height, 15, true, false);
 
   //set the copy style
-  context.font = 'bold 70pt Ubuntu';
+  context.font = 'bold 60pt Ubuntu';
   context.textAlign = 'left';
   context.textBaseline = 'top';
   context.fillStyle = '#fff';
@@ -95,13 +90,15 @@ function generateImage({ title, slug }) {
 
   //insert domain
   context.fillStyle = '#ccc';
-  context.font = 'bold 24pt Ubuntu';
+  context.font = 'bold 20pt Ubuntu';
   context.fillText('adityathebe.com', 60, 540);
 
-  //insert domain
-  context.fillStyle = '#ccc';
-  context.font = 'bold 24pt Ubuntu';
-  context.fillText(`# ${slug}`, 550, 540);
+  //insert slug
+  if (isJournal) {
+    context.fillStyle = '#ccc';
+    context.font = 'bold 20pt Ubuntu';
+    context.fillText(`# ${slug}`, 550, 540);
+  }
 
   //insert handle
   context.fillStyle = '#ccc';
@@ -111,11 +108,14 @@ function generateImage({ title, slug }) {
 
   //export image
   const buffer = canvas.toBuffer('image/png');
-  const imgName = `images${slug}.png`;
-  const imgPath = path.join('static/', imgName);
-  fs.writeFileSync(imgPath, buffer);
+  let imgRelPath = path.join('images', 'posts', `${slug}.png`);
+  if (isJournal) {
+    imgRelPath = path.join(`images`, `${slug}.png`);
+  }
+  const imgAbsPath = path.join('static', imgRelPath);
+  fs.writeFileSync(imgAbsPath, buffer);
 
-  return imgName;
+  return imgRelPath;
 }
 
 // const x = generateImage({ title: "How to test the long keyword the quick brown fox jumps over the lazy dog", slug: "WHATEVER"})
