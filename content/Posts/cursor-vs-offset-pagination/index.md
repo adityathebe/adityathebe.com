@@ -1,11 +1,10 @@
 ---
 title: Cursor-based pagination vs Offset-based pagination
-date: '2021-05-01 16:00'
-modified_date: '2021-04-29 00:00'
+date: '2021-05-01 18:45'
 categories:
   - Database
 slug: /cursor-vs-offset-based-pagination
-description: For faster build time, the go command caches build outputs for reuse in future builds. This cache dir piles up, so make sure to clean it periodically.
+description: The basics of cursor vs offset based pagination
 keywords:
   - pagination
   - cursor-based pagination
