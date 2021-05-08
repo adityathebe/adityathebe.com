@@ -99,3 +99,12 @@ span.gatsby-resp-image-wrapper + em::before,
   text-align: center;
   font-size: 0.8em;
 }
+
+#post-table table {
+  text-align: left;
+}
+
+#post-table td {
+  padding: 0 1em;
+  border: thin solid black;
+}
