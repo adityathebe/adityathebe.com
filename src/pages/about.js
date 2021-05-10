@@ -21,9 +21,9 @@ const IndexPage = () => (
       </p>
 
       <p>
-        In my free time, I play <a href="https://www.chess.com/member/adityathebe">Chess</a> - in particular Speed
-        Chess. I find speed chess much more entertaining than any other format of chess because of how much of a rush
-        the whole game is and all the hilarious blunders I and my opponent make.
+        In my free time, I play <a href="https://lichess.org/@/thebeaditya/all">Chess</a> - in particular Speed Chess. I
+        find speed chess much more entertaining than any other format of chess because of how much of a rush the whole
+        game is and all the hilarious blunders I and my opponent make.
       </p>
       <p>
         I love playing guitar but certainly nowhere near as much as I used to. My friend, whose name I don't wanna
