@@ -7,5 +7,5 @@
 - name: NameCheap
   description: Domain Provider
 
-- name: DigitalOcean
+- name: Contabo
   description: VPS provider

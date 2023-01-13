@@ -71,7 +71,7 @@ const IndexPage = () => {
       <h2>Services</h2>
       <UsesItem items={servicesList} />
 
-      <h2>Laptop</h2>
+      <h2>System</h2>
       <UsesItem items={laptopSpecsList} />
     </Layout>
   );

@@ -14,9 +14,9 @@
   description: Music Player
   url: https://www.example.com
 
-- name: LastPass
+- name: Bitwarded
   description: Password Manager
-  url: https://www.lastpass.com
+  url: https://bitwarden.com/
 
 - name: Newsboat
   description: RSS Manager
