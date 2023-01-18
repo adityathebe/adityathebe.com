@@ -1,11 +1,20 @@
 - name: Netlify
-  description: I host this website here
-
-- name: Github
-  description: Software Repository hosting
+  description: I host this website here. Also handles my DNS.
 
 - name: NameCheap
   description: Domain Provider
 
 - name: Contabo
   description: VPS provider
+
+- name: Yandex
+  description: Free email hosting for this domain.
+
+- name: Spotify Web
+  description: Music Player
+
+- name: Bitwarden
+  description: Password Manager
+
+- name: Github
+  description: Where I store all my code.

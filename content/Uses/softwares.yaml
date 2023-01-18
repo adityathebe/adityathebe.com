@@ -1,22 +1,26 @@
 - name: Transmission
-  description: Torrent
-  url: https://www.example.com
+  description: An extremly light torrent daemon that gets the job done.
+  url: https://transmissionbt.com/
+
+- name: Mailspring
+  description: An email client that's not ugly.
+  url: https://getmailspring.com/
 
 - name: Telegram
-  description: Instant Messaging
+  description: Instant Messaging (Personal)
   url: https://www.telegram.org
+
+- name: Discord
+  description: Instant Messaging (Communities - Go, Arsenal, Amass,...)
+  url: https://discord.com/
 
 - name: Brave
   description: Web Browser
-  url: https://www.example.com
+  url: https://brave.com/
 
 - name: mpd & ncmpcpp
   description: Music Player
-  url: https://www.example.com
-
-- name: Bitwarded
-  description: Password Manager
-  url: https://bitwarden.com/
+  url: https://www.musicpd.org/
 
 - name: Newsboat
   description: RSS Manager
