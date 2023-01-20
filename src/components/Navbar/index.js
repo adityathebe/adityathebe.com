@@ -45,7 +45,7 @@ const Navbar = () => {
               Portfolio
             </Link>
             <Link className="page-link" to="/about">
-              About Me
+              About
             </Link>
             <DarkModeToggle />
           </div>
