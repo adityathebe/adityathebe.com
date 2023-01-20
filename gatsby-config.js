@@ -43,6 +43,9 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
+              aliases: {
+                sh: 'shell',
+              },
               inlineCodeMarker: '÷',
             },
           },
