@@ -25,7 +25,7 @@ const Footer = () => {
         <div className="footer-col-wrapper">
           <div className="footer-col footer-col-1">
             <ul className="contact-list">
-              <li>© Since 2015 {data.site.siteMetadata.author}</li>
+              <li>© 2015 - 2023 {data.site.siteMetadata.author}</li>
             </ul>
           </div>
 
