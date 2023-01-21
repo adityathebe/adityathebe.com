@@ -28,15 +28,3 @@
 .journal-link a:visited {
   color: var(--primary-text-color);
 }
-
-/* Table of contents */
-.journal-content > .table-of-contents {
-  padding: 1em;
-  margin: 1em 0;
-  background-color: var(--table-of-contents-bg);
-  border: 0.1em dotted var(--border-color-2);
-}
-
-.journal-content > .table-of-contents li p {
-  margin-bottom: 0;
-}
