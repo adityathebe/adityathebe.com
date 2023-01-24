@@ -42,7 +42,7 @@ export default () => {
               {formatReadingTime(edge.node.timeToRead)}
             </div>
             <h2>
-              <Link className="post-link" to={edge.node.frontmatter.slug}>
+              <Link className="post-link" to={edge.node.frontmatter.slug + '/'}>
                 {edge.node.frontmatter.title}
               </Link>
             </h2>
