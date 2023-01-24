@@ -38,12 +38,12 @@ du -hs $(go env GOCACHE)
 
 ### Content of Go build cache
 
-![Contents of ~/.cache/go-build/](./go-build-cache-content.png)
+![Contents of ~/.cache/go-build/](./go-build-cache-content.png)_Contents of go-build cache using Diskonaut_
 
 Finally, to address the question of this article, you can run this command
 
 ```bash
-go clean --cache
+go clean -cache
 ```
 
 This command removes all the subdirectories inside go-build directory and leaves out just two files
@@ -52,6 +52,23 @@ This command removes all the subdirectories inside go-build directory and leaves
 - trim.txt
 
 The trim.txt file stores a Unix timestamp. I'm guessing it's the timestamp of the time you run the clean command.
+
+### Other caches
+
+In addition to the build cache Go also has a few other caches.
+
+- `-testcache`
+  expires all the test results cache inside the build cache
+
+- `-fuzzcache`
+  remove files stored in the Go buildcache for fuzz testing.
+
+Both of those flags clean caches that are inside the build cache directory.
+
+- `-modcache`
+  remove the entire module download cache located at `$GOPATH/pkg/`
+
+All of this information is available with `go help clean`
 
 ## References
 
