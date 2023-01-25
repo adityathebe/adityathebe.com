@@ -17,11 +17,10 @@ module.exports = {
     `gatsby-transformer-yaml`,
     `gatsby-plugin-netlify`,
     {
-      resolve: 'gatsby-plugin-web-font-loader',
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        google: {
-          families: ['Raleway', 'Sanchez'],
-        },
+        fonts: ['Raleway', 'Sanchez'],
+        display: 'swap',
       },
     },
     {
