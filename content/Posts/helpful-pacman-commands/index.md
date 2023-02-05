@@ -3,7 +3,7 @@ title: Pacman for newbies
 date: '2023-01-19 13:45'
 categories:
   - Linux
-slug: /pacman-for-newbies
+slug: /pacman-for-newbies/
 featuredImage: ./pacman.jpg
 description: A list of commonly used commands for the Pacman package manager.
 ---

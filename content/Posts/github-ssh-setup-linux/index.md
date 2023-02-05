@@ -5,7 +5,7 @@ categories:
   - Tutorials
   - Git
   - Linux
-slug: /configure-ssh-key-github
+slug: /configure-ssh-key-github/
 featuredImage: ./ssh-github.png
 description: Set up ssh keys on your github account
 ---

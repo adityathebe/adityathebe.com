@@ -5,7 +5,7 @@ modified_date: '2020-01-27 19:30'
 categories:
   - Tutorials
   - Linux
-slug: /how-to-install-softwares-in-linux
+slug: /how-to-install-softwares-in-linux/
 featuredImage: ./linux-software-installation.jpg
 description: Learn several ways to install softwares in your linux system from using the package manager to managing the binaries.
 ---

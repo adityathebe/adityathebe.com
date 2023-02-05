@@ -3,7 +3,7 @@ title: What the hell is even a Digital Fingerprint ?
 date: '2021-01-15 18:00'
 categories:
   - Fingerprints
-slug: /hands-on-introduction-to-digital-fingerprints
+slug: /hands-on-introduction-to-digital-fingerprints/
 featuredImage: ./digital-fingerprints-featured-image.jpg
 description: Here's a gentle hands-on introduction to digital fingerprints.
 ---

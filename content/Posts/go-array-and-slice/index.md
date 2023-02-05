@@ -3,7 +3,7 @@ title: Anatomy of Go Slices
 date: '2021-02-10 13:00'
 categories:
   - Go
-slug: /anatomy-of-go-slices
+slug: /anatomy-of-go-slices/
 featuredImage: ./go-slice-capacity-demo.png
 description: Let's take a closer look at the anatomy of Slices in Go.
 ---

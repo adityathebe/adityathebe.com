@@ -4,7 +4,7 @@ date: '2020-02-02 00:05'
 modified_date: '2020-02-07 12:45'
 categories:
   - Bitcoin
-slug: /what-does-it-mean-to-own-bitcoins
+slug: /what-does-it-mean-to-own-bitcoins/
 featuredImage: ./bitcoin.jpg
 description: There are no accounts in bitcoin. A user's bitcoin is not stored in an account but rather scattered in the blockchain as UTXO.
 ---

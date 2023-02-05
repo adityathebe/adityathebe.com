@@ -42,6 +42,11 @@ function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
   }
 }
 
+/**
+ *
+ * @param {{ title: string, slug:string, isJournal:bool }} param0
+ * @returns string
+ */
 function generateImage({ title, slug, isJournal }) {
   //define canvas size
   let width = 1200;
@@ -113,7 +118,7 @@ function generateImage({ title, slug, isJournal }) {
 
   //export image
   const buffer = canvas.toBuffer('image/png');
-  let imgRelPath = path.join('images', 'posts', `${slug}.png`);
+  let imgRelPath = path.join('images', 'posts', `${slug.replace(/\//g, "")}.png`);
   if (isJournal) {
     imgRelPath = path.join(`images`, `${slug}.png`);
   }

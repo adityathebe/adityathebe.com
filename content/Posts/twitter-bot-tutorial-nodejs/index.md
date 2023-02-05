@@ -4,7 +4,7 @@ date: '2018-11-07'
 categories:
   - Tutorials
 comments: true
-slug: /twitter-bot-tutorial-nodejs
+slug: /twitter-bot-tutorial-nodejs/
 featuredImage: ./twitter-bot-tutorial-featured.png
 description: Learn to build a twitter bot with NodeJs and Javascript in under 50 lines of code.
 ---

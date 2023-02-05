@@ -3,7 +3,7 @@ title: Here's how you can wake up early without waking up early
 date: '2023-01-05 16:00'
 categories:
   - Essay
-slug: /timezone-lifehack-for-night-owls
+slug: /timezone-lifehack-for-night-owls/
 description: Here's a silly but effective life hack for the night owls out there.
 featuredImage: ./quin-stevenson-unsplash.jpg
 keywords:

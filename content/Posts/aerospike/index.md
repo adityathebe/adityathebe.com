@@ -5,7 +5,7 @@ modified_date: '2021-05-09 11:40'
 categories:
   - Go
   - Aerospike
-slug: /aerospike-hands-on-golang
+slug: /aerospike-hands-on-golang/
 description: Get hands on introduction to Aerospike with Golang
 keywords:
   - Aerospike tutorial

@@ -3,7 +3,7 @@ title: Introducing Weekly Journals
 date: '2021-02-28 12:30'
 categories:
   - Misc
-slug: /introducing-weekly-journals
+slug: /introducing-weekly-journals/
 featuredImage: ./shelby-miller-SkOiBDYgXdI-unsplash.jpg
 description: I have added a weekly journal section in my blog where I'll post updates about the things that I learn, build and experience every week
 ---

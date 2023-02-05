@@ -3,7 +3,7 @@ title: Improve your Google dorking with keyboard shortcuts
 date: '2023-01-21 23:11'
 categories:
   - Tutorials
-slug: /improve-search-with-shortcuts
+slug: /improve-search-with-shortcuts/
 description: In chrome based browsers, you can setup keyboard shortcuts for site search & search engines.
 ---
 

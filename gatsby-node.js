@@ -51,7 +51,6 @@ exports.createPages = ({ graphql, actions }) => {
           });
       }
 
-      console.log(seoImage);
 
       createPage({
         path: post.node.frontmatter.slug,

@@ -5,7 +5,7 @@ modified_date: '2020-02-24 21:05'
 categories:
   - Tutorials
   - Linux
-slug: /setup-mpd-in-linux-as-user-service
+slug: /setup-mpd-in-linux-as-user-service/
 featuredImage: ./mpd-linux.png
 description: Learn how to setup music player daemon (mpd) as a user service on Arch Linux
 ---

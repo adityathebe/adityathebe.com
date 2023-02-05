@@ -4,7 +4,7 @@ date: '2022-07-24'
 categories:
   - Motorcycle
 comments: true
-slug: /places-to-ride-around-kathmandu
+slug: /places-to-ride-around-kathmandu/
 featuredImage: ./svartpilen.jpeg
 description: Sharing a handful of places I've gone on a motorcycle ride around Kathmandu.
 ---
