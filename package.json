@@ -1,7 +1,7 @@
 {
-  "name": "www-adityathebe-com",
+  "name": "adityathebe-com",
   "private": true,
-  "description": "Gatsby blog for www.adityathebe.com",
+  "description": "Gatsby blog for adityathebe.com",
   "version": "0.1.0",
   "author": "Aditya Thebe <contact@adityathebe.com>",
   "dependencies": {

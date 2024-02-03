@@ -80,8 +80,8 @@ _Bitcoin UTXO transaction model. Source: https://medium.com/coinmonks_
 
 You might have seen some bitcoin wallet applications that show the balance of a bitcoin address.
 
-![Mycelium Wallet homescreen](./mycelium-wallet.png)
-_Mycelium wallet application_
+![Mycelium Wallet homescreen](./bitcoin-wallet.png)
+_wallet application_
 
 If there are no accounts then how is the bitcoin balance calculated? The concept of a user’s bitcoin balance is a derived construct created by the wallet application.
 
