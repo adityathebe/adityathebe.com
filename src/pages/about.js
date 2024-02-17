@@ -7,7 +7,7 @@ import Layout from '../components/Layout';
 const IndexPage = () => (
   <Layout>
     <SEO title="About" keywords={['aditya thebe info', 'about aditya thebe']} />
-    <div>
+    <div className="post-content">
       <h1>About Me ...</h1>
       <p>
         I am a software engineer currently working remotely, from Nepal, as a Backend engineer for a startup overseas.
