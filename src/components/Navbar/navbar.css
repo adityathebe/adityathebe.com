@@ -1,20 +1,11 @@
 header {
-  font-family: 'Raleway', sans-serif, 'Helvetica Neue', Helvetica, Arial;
-}
-
-.head-wrapper {
-  max-width: 1000px;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 30px;
-  padding-left: 30px;
+  font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
 }
 
 .site-header {
-  border-top: 5px solid var(--border-color-2);
-  border-bottom: 1px solid var(--border-color-1);
   min-height: 55.95px;
   position: relative;
+  box-shadow: 0 3px 2px -2px #4c566a;
 }
 
 .site-title {

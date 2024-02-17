@@ -19,6 +19,6 @@ export function formatPostDate(date, lang = 'en-US') {
   }
 
   date = new Date(date);
-  const args = [lang, { day: 'numeric', month: 'long', year: 'numeric' }].filter(Boolean);
+  const args = [lang, { day: '2-digit', month: 'short', year: 'numeric' }].filter(Boolean);
   return date.toLocaleDateString(...args);
 }

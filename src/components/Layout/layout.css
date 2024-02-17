@@ -3,6 +3,7 @@
   box-sizing: border-box;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Nanum+Gothic+Coding&display=swap');
 html {
   --bg-color: #fafafa;
   --bg-color-tag: #454545;
@@ -13,8 +14,8 @@ html {
   --highlight-color-1: #f7ee7f;
   --highlight-color-rgb: 247, 238, 127;
 
-  --primary-text-color: #3a3939;
-  --secondary-text-color: #747373;
+  --primary-text-color: #2e3440;
+  --secondary-text-color: #434c5e;
 
   --toggle-bg-color: #212121;
   --toggle-btn-color: #fff;
@@ -46,16 +47,10 @@ html[data-theme='dark'] {
 }
 
 html {
-  font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 
-body {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
 .container {
   max-width: 800;
@@ -100,17 +95,21 @@ figure,
 }
 
 body {
-  font-family: 'Sanchez', 'Raleway', sans-serif, Helvetica, Arial;
-  color: var(--primary-text-color);
-  line-height: 31px;
-  font-size: 17px;
-  background-color: var(--bg-color);
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-feature-settings: 'kern' 1;
   -moz-font-feature-settings: 'kern' 1;
+  -moz-osx-font-smoothing: grayscale;
   -o-font-feature-settings: 'kern' 1;
+  -webkit-font-feature-settings: 'kern' 1;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  background-color: var(--bg-color);
+  border-top: 5px solid var(--border-color-2);
+  color: var(--primary-text-color);
+  font-family: 'JetBrains Mono', 'Sanchez', 'Raleway', sans-serif, Helvetica, Arial;
   font-feature-settings: 'kern' 1;
   font-kerning: normal;
+  font-size: 17px;
+  line-height: 31px;
+  margin: 0;
 }
 
 figure > img {
@@ -147,35 +146,10 @@ h1 {
   line-height: 1.4em;
 }
 
-.wrapper {
-  max-width: -webkit-calc(900px - (30px * 2));
-  max-width: calc(900px - (30px * 2));
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 30px;
-  padding-left: 30px;
-}
-
-.wrapper:after {
-  content: '';
-  display: table;
-  clear: both;
-}
-
-@media screen and (max-width: 900px) {
-  .wrapper {
-    max-width: -webkit-calc(800px - (30px));
-    max-width: calc(800px - (30px));
-    padding-right: 15px;
-    padding-left: 15px;
-  }
-
-  .head-wrapper {
-    max-width: -webkit-calc(900 - (30px));
-    max-width: calc(900 - (30px));
-    padding-right: 15px;
-    padding-left: 15px;
-  }
+.main-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 15px;
 }
 
 .icon > svg {
