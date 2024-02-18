@@ -30,6 +30,10 @@
   "devDependencies": {
     "prettier": "^3.2.5"
   },
+  "engines" : { 
+    "node": "^v20.11.0"
+  },
+  "packageManager": "yarn@1.22.19",
   "keywords": [
     "gatsby"
   ],
@@ -38,7 +42,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop -H 0.0.0.0",
     "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "npm run develop",
+    "start": "yarn run develop",
     "serve": "gatsby serve"
   },
   "repository": {
