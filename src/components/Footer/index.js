@@ -21,12 +21,11 @@ const Footer = () => {
 
   return (
     <footer className="site-footer">
-      <div className="wrapper">
         <div className="footer-col-wrapper">
           <div className="footer-col footer-col-1">
-            <ul className="contact-list">
-              <li>© 2015-2024 {data.site.siteMetadata.author}</li>
-            </ul>
+            <span className="contact-list">
+              © 2015-2024 {data.site.siteMetadata.author}
+            </span>
           </div>
 
           <div className="footer-col footer-col-3">
@@ -46,7 +45,6 @@ const Footer = () => {
             using Gatsby
           </p>
         </div>
-      </div>
     </footer>
   );
 };

@@ -20,20 +20,24 @@ const BlogPostTemplate = ({ data, pageContext }) => {
         keywords={post.frontmatter.keywords ? post.frontmatter.keywords : []}
         meta={[{ property: 'og:type', content: 'article' }]}
       />
+
+      <div className="post-each-info">
+        <span className="post-date">
+          {formatPostDate(post.frontmatter.date)}
+          {post.frontmatter.modified_date ? ` (updated: ${formatPostDate(post.frontmatter.modified_date)})` : ''}
+        </span>
+
+        <span className="post-meta">
+          {post.frontmatter.categories.map((x, idx) => (
+            <span key={idx} className="post-tag">
+              #{x}
+            </span>
+          ))}
+        </span>
+      </div>
+
       <h1 className="post-header">{post.frontmatter.title}</h1>
-      <span className="post-meta">
-        {post.frontmatter.categories.map((x, idx) => (
-          <span key={idx} className="post-tag">
-            {x}
-          </span>
-        ))}
-        {' • '}
-        {formatPostDate(post.frontmatter.date)}
-        {' • '}
-        {post.frontmatter.modified_date ? 'Updated on: ' + formatPostDate(post.frontmatter.modified_date) + ' • ' : ''}
-        {formatReadingTime(post.timeToRead)}
-      </span>
-      <hr style={{ margin: '1em 0' }} />
+
       <div className="post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
   );

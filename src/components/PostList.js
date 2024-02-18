@@ -27,23 +27,23 @@ export default () => {
 
   return (
     <ul className="post-list">
-      {allMarkdownRemark.edges.map(edge => {
+      {allMarkdownRemark.edges.map((edge) => {
         return (
           <li key={edge.node.id}>
-            <span className='post-date'>
-              {formatPostDate(edge.node.frontmatter.date)}
-            </span>
+            <span className="post-date">{formatPostDate(edge.node.frontmatter.date)}</span>
 
-            <Link className="post-link" to={edge.node.frontmatter.slug}>
-              {edge.node.frontmatter.title}
-            </Link>
-           
-            <div className="post-meta">
-              {edge.node.frontmatter.categories.map((x, idx) => (
-                <span key={idx} className="post-tag">
-                  {x}
-                </span>
-              ))}
+            <div className="post-item">
+              <Link className="post-link" to={edge.node.frontmatter.slug}>
+                {edge.node.frontmatter.title}
+              </Link>
+
+              <div className="post-meta">
+                {edge.node.frontmatter.categories.map((x, idx) => (
+                  <span key={idx} className="post-tag">
+                    #{x}
+                  </span>
+                ))}
+              </div>
             </div>
           </li>
         );

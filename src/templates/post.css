@@ -4,16 +4,14 @@
   font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 
 .post-list li {
   display: flex;
   align-items: center;
   gap: 20px;
-  border-bottom: 1px solid #eeeeee;
-  padding-bottom: 10px;
-  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border-color-1);
+  padding: 7px 0;
 }
 
 .post-list li:last-of-type {
@@ -26,10 +24,19 @@
   font-size: 15px;
   color: var(--primary-text-color);
   font-weight: 500;
+  margin-left: 25px;
+}
+
+.post-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  line-height: 25px;
 }
 
 .post-date {
   font-size: 14px;
+  white-space: nowrap;
   color: var(--secondary-text-color);
 }
 
@@ -40,14 +47,13 @@
 }
 
 .post-meta .post-tag {
-  background-color: #8fbcbb;
   border-radius: 5px;
-  box-shadow: rgba(11, 1, 1, 0.24) 0px 3px 8px;
-  color: white;
+  background: var(--bg-color-tag);
   display: inline-block;
-  font-size: 0.6em;
-  line-height: .8em;
+  font-size: 0.5em;
+  line-height: 0.8em;
   padding: 5px;
+  color: var(--tag-color);
 }
 
 .post-info {
@@ -69,7 +75,7 @@
   font-size: 1em;
   font-family: 'Sanchez', serif;
   color: var(--primary-text-color);
-  line-height: 31px; 
+  line-height: 31px;
 }
 
 .post-content img {
@@ -83,6 +89,7 @@
 .post-header {
   font-size: 28px;
   font-weight: 500;
+  margin-bottom: 30px;
 }
 
 /*************************/
@@ -159,6 +166,13 @@ span.gatsby-resp-image-wrapper + em::before,
   margin-bottom: 0;
 }
 
+.post-each-info {
+  display: flex;
+  justify-content: space-between;
+  line-height: 20px;
+  gap: 5px;
+}
+
 @media screen and (max-width: 400px) {
   .post-list {
     gap: 5px;
@@ -170,12 +184,22 @@ span.gatsby-resp-image-wrapper + em::before,
     gap: 0;
   }
 
-  .post-meta {
-    display: none !important;
-  }
-
   .post-date {
     font-size: 0.8em;
-    color: #4c566a;
+    color: var(--secondary-text-color);
+  }
+
+  .post-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 10px;
+  }
+
+  .post-list li a {
+    margin-left: 0;
+  }
+
+  .post-each-info {
+    flex-direction: column;
   }
 }
