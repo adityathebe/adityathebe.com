@@ -50,13 +50,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: ['Raleway', 'Sanchez', 'Nanum Gothic Coding'],
-        display: 'swap',
-      },
-    },
-    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
