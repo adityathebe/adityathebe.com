@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Nanum+Gothic+Coding&display=swap');
 html {
   --bg-color: #fafafa;
   --bg-color-tag: #454545;
@@ -51,6 +50,7 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Sanchez:ital@0;1&display=swap');
 
 .container {
   max-width: 800;
@@ -104,7 +104,7 @@ body {
   background-color: var(--bg-color);
   border-top: 5px solid var(--border-color-2);
   color: var(--primary-text-color);
-  font-family: 'JetBrains Mono', 'Sanchez', 'Raleway', sans-serif, Helvetica, Arial;
+  font-family: 'JetBrains Mono', 'Sanchez', sans-serif, Helvetica, Arial;
   font-feature-settings: 'kern' 1;
   font-kerning: normal;
   font-size: 17px;
@@ -137,7 +137,7 @@ h4,
 h5,
 h6 {
   font-weight: bold;
-  font-family: 'Raleway', sans-serif, 'Helvetica Neue', Helvetica, Arial;
+  font-family: 'JetBrains Mono', sans-serif, Helvetica, Arial;
   color: var(--primary-text-color);
 }
 
