@@ -31,6 +31,11 @@
 }
 
 html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+html {
   /* snowstorm - nord */
   --nord1: var(--nord-snowstorm-1);
   --nord2: var(--nord-snowstorm-2);
@@ -78,7 +83,7 @@ html[data-theme='dark'] {
   --highlight-color-rgb: 236, 87, 89;
 
   --primary-text-color: var(--nord-snowstorm-1);
-  --secondary-text-color:var(--nord-snowstorm-2);
+  --secondary-text-color: var(--nord-snowstorm-2);
 
   --toggle-bg-color: var(--nord-snowstorm-3);
   --toggle-btn-color: var(--nord-polar-night-1);
@@ -90,9 +95,8 @@ html[data-theme='dark'] {
   --code-bg: var(--nord-polar-night-3);
 }
 
-html {
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+html[data-theme='dark'] img {
+  filter: brightness(0.8) contrast(1.2);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Sanchez:ital@0;1&display=swap');
