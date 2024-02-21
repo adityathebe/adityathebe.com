@@ -6,17 +6,21 @@
   description: Shell
   url: https://ohmyz.sh/
 
+- name: Atuin
+  description: Sync shell history
+  url: https://atuin.sh/
+
+- name: Tmux
+  description: Terminal Multiplexer
+  url: https://github.com/tmux/tmux
+
 - name: Visual Studio Code
   description: Text Editor - Primary
   url: https://code.visualstudio.com
 
-- name: Vim
+- name: Neovim & Astronvim
   description: Text Editor - Secondary
   url: https://www.vim.org/
-
-- name: ASDF
-  description: Node Version Manager
-  url: https://github.com/asdf-vm/asdf
 
 - name: Docker
   description: Container Management
