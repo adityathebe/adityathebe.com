@@ -68,7 +68,7 @@ html[data-theme='dark'] {
 
   --bg-color: var(--nord1);
 
-  --tag-bg-color: var(--nord-polar-night-1);
+  --tag-bg-color: var(--nord-polar-night-2);
   --tag-color: var(--nord-snowstorm-1);
 
   --border-color-1: #3b4252;
@@ -77,15 +77,15 @@ html[data-theme='dark'] {
   --highlight-color-1: var(--nord-frost-4);
   --highlight-color-rgb: 236, 87, 89;
 
-  --primary-text-color: #e5e9f0;
-  --secondary-text-color: #d8dee9;
+  --primary-text-color: var(--nord-snowstorm-1);
+  --secondary-text-color:var(--nord-snowstorm-2);
 
   --toggle-bg-color: var(--nord-snowstorm-3);
   --toggle-btn-color: var(--nord-polar-night-1);
 
-  --blockquote-bg: var(--nord-polar-night-3);
+  --blockquote-bg: var(--nord-polar-night-2);
 
-  --table-of-contents-bg: var(--nord-snowstorm-3);
+  --table-of-contents-bg: var(--nord-polar-night-2);
 
   --code-bg: var(--nord-polar-night-3);
 }

@@ -173,7 +173,7 @@ span.gatsby-resp-image-wrapper + em::before,
   gap: 5px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   .post-list {
     gap: 5px;
   }
