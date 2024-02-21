@@ -76,7 +76,7 @@
 .project_card__project_skills .project-skill-tag {
   border-radius: 4px;
   margin: 0.2rem;
-  background-color: var(--bg-color-tag);
+  background-color: var(--tag-bg-color);
   color: white;
   padding: 0.2rem;
   line-height: 1em;
