@@ -18,14 +18,15 @@ export default class DarkModeToggle extends React.Component {
     const toggleSwitch = document.querySelector(query);
     toggleSwitch.addEventListener('change', this.switchTheme, false);
 
-    // Read theme from local storage and set
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
+    let currentTheme = localStorage.getItem('theme');
+    if (!currentTheme) {
+      const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      currentTheme = prefersDarkMode ? 'dark' : 'light';
+    }
 
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 
