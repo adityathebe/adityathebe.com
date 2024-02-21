@@ -243,6 +243,14 @@ blockquote > :last-child {
   margin-bottom: 0;
 }
 
+@media screen and (max-width: 450px) {
+  blockquote {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+}
+
 /***************************/
 /**** CODE HIGHLIGHTING ****/
 /***************************/
@@ -250,10 +258,12 @@ blockquote > :last-child {
   background-color: var(--nord-polar-night-2);
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 450px) {
   .gatsby-highlight > pre[class*='language'] {
     font-size: 0.8em;
-    margin: 1rem -15px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
   }
 }
 
@@ -262,7 +272,7 @@ blockquote > :last-child {
   color: inherit;
   display: inline-block;
   line-height: 0.85em;
-  font-size: 0.9em;
+  font-size: 0.8em;
   padding: 0.25em 0.3em;
   border: 1px solid var(--border-color-2);
   border-radius: 5px;

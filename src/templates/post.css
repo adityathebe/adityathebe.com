@@ -115,7 +115,7 @@
 /**************************/
 
 /* Image full width on smaller screens */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 450px) {
   span.gatsby-resp-image-wrapper {
     border-radius: 0 !important;
     margin: auto -15px !important;
@@ -145,13 +145,17 @@ span.gatsby-resp-image-wrapper + em::before,
   font-size: 0.8em;
 }
 
-#post-table table {
+/* Table */
+table {
+  border-collapse: collapse;
   text-align: left;
+  margin: 0.5em 0;
 }
 
-#post-table td {
-  padding: 0 1em;
-  border: thin solid black;
+th,
+td {
+  padding: 0.2em 1em;
+  border: 2px solid var(--nord3);
 }
 
 /* Table of contents */

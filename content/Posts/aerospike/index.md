@@ -20,8 +20,6 @@ I think the best way to start learning Aerospike is to establish an analogy with
 
 ![Conceptual components of Aerospike Data model](./conceptual-components-of-aerospike-data-model.png)_Conceptual components of Aerospike Data model_
 
-<div id="post-table">
-
 | Aerospike     | SQL         |
 | ------------- | ----------- |
 | NameSpace     | TableSpace  |
@@ -29,8 +27,6 @@ I think the best way to start learning Aerospike is to establish an analogy with
 | Record/Object | Row         |
 | Bin           | Column      |
 | Key           | Primary Key |
-
-</div>
 
 Knowing this much will be sufficient to get us started.
 
