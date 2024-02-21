@@ -6,8 +6,6 @@ import SEO from '../components/SEO';
 import Layout from '../components/Layout';
 import { formatPostDate } from '../utils/helper.js';
 
-import './journal.css';
-
 const WeeklyJournalTemplate = ({ data, pageContext }) => {
   const journal = data.markdownRemark;
   const siteUrl = data.site.siteMetadata.siteUrl;
