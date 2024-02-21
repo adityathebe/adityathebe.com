@@ -3,52 +3,91 @@
   box-sizing: border-box;
 }
 
+/* Nord theme color schemes */
+* {
+  /* snowstorm - nord */
+  --nord-snowstorm-1: #d8dee9;
+  --nord-snowstorm-2: #e5e9f0;
+  --nord-snowstorm-3: #eceff4;
+
+  /* Polar Night */
+  --nord-polar-night-1: #2e3440;
+  --nord-polar-night-2: #3b4252;
+  --nord-polar-night-3: #434c5e;
+  --nord-polar-night-4: #4c566a;
+
+  /* Frost */
+  --nord-frost-1: #8fbcbb;
+  --nord-frost-2: #88c0d0;
+  --nord-frost-3: #81a1c1;
+  --nord-frost-4: #5e81ac;
+
+  /* Aurora */
+  --nord-aurora-1: #bf616a;
+  --nord-aurora-2: #d08770;
+  --nord-aurora-3: #ebcb8b;
+  --nord-aurora-4: #a3be8c;
+  --nord-aurora-5: #b48ead;
+}
+
 html {
-  --bg-color: #fafafa;
-  --bg-color-tag: #4c566a;
+  /* snowstorm - nord */
+  --nord1: var(--nord-snowstorm-1);
+  --nord2: var(--nord-snowstorm-2);
+  --nord3: var(--nord-snowstorm-3);
 
-  --tag-color: #fafafa;
+  --bg-color: #ffffff;
 
-  --nord2: #3b4252;
+  --tag-bg-color: #4c566a;
+  --tag-color: var(--nord3);
 
   --border-color-1: #e8e8e8;
-  --border-color-2: #454545;
+  --border-color-2: var(--nord-polar-night-1);
 
-  --highlight-color-1: #a3be8c;
+  --highlight-color-1: var(--nord-frost-1);
   --highlight-color-rgb: 247, 238, 127;
 
   --primary-text-color: #2e3440;
   --secondary-text-color: #3b4252;
 
-  --toggle-bg-color: #212121;
-  --toggle-btn-color: #fff;
+  --toggle-bg-color: var(--nord-polar-night-1);
+  --toggle-btn-color: var(--nord-snowstorm-3);
 
-  --code-bg-color: #ebebeb;
+  --blockquote-bg: var(--nord-snowstorm-3);
 
-  --table-of-contents-bg: #ebebeb;
+  --table-of-contents-bg: var(--nord-snowstorm-3);
+
+  --code-bg: var(--nord-snowstorm-2);
 }
 
 html[data-theme='dark'] {
-  --bg-color: #2e3440;
-  --bg-color-tag: #3b4252;
+  --nord1: var(--nord-polar-night-1);
+  --nord2: var(--nord-polar-night-2);
+  --nord3: var(--nord-polar-night-3);
+  --nord4: var(--nord-polar-night-4);
 
-  --tag-color: #fafafa;
+  --bg-color: var(--nord1);
+
+  --tag-bg-color: var(--nord-polar-night-1);
+  --tag-color: var(--nord-snowstorm-1);
 
   --border-color-1: #3b4252;
   --border-color-2: #434c5e;
 
-  --highlight-color-1: #5e81ac;
+  --highlight-color-1: var(--nord-frost-4);
   --highlight-color-rgb: 236, 87, 89;
 
   --primary-text-color: #e5e9f0;
   --secondary-text-color: #d8dee9;
 
-  --toggle-bg-color: #fff;
-  --toggle-btn-color: rgb(22, 21, 21);
+  --toggle-bg-color: var(--nord-snowstorm-3);
+  --toggle-btn-color: var(--nord-polar-night-1);
 
-  --code-bg-color: #2d2d2d;
+  --blockquote-bg: var(--nord-polar-night-3);
 
-  --table-of-contents-bg: #2d2d2d;
+  --table-of-contents-bg: var(--nord-snowstorm-3);
+
+  --code-bg: var(--nord-polar-night-3);
 }
 
 html {
@@ -190,7 +229,7 @@ blockquote {
   color: var(--primary-text-color);
   padding: 1em 2em;
   border: 0.1em dotted var(--border-color-2);
-  background-color: var(--code-bg-color);
+  background-color: var(--blockquote-bg);
   margin: 1em 0;
   font-style: italic;
   text-align: center;
@@ -200,13 +239,13 @@ blockquote > :last-child {
   margin-bottom: 0;
 }
 
-.gatsby-highlight > pre{
-  background-color: var(--nord2);
-}
-
 /***************************/
 /**** CODE HIGHLIGHTING ****/
 /***************************/
+.gatsby-highlight > pre {
+  background-color: var(--nord-polar-night-2);
+}
+
 @media screen and (max-width: 900px) {
   .gatsby-highlight > pre[class*='language'] {
     font-size: 0.8em;
@@ -215,14 +254,14 @@ blockquote > :last-child {
 }
 
 :not(pre) > code[class='language-text'] {
-  background-color: var(--code-bg-color);
+  background-color: var(--code-bg);
   color: inherit;
   display: inline-block;
   line-height: 0.85em;
   font-size: 0.9em;
   padding: 0.25em 0.3em;
-  border: 0.1px solid var(--border-color-2);
-  border-radius: 2px;
+  border: 1px solid var(--border-color-2);
+  border-radius: 5px;
 }
 
 /************************/

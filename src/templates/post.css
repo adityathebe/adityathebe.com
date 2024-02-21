@@ -48,7 +48,7 @@
 
 .post-meta .post-tag {
   border-radius: 5px;
-  background: var(--bg-color-tag);
+  background: var(--tag-bg-color);
   display: inline-block;
   font-size: 0.5em;
   line-height: 0.8em;
