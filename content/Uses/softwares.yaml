@@ -2,10 +2,6 @@
   description: An extremly light torrent daemon that gets the job done.
   url: https://transmissionbt.com/
 
-- name: Mailspring
-  description: An email client that's not ugly.
-  url: https://getmailspring.com/
-
 - name: Telegram
   description: Instant Messaging (Personal)
   url: https://www.telegram.org
@@ -18,10 +14,18 @@
   description: Web Browser
   url: https://brave.com/
 
-- name: mpd & ncmpcpp
+- name: Navidrome
   description: Music Player
-  url: https://www.musicpd.org/
+  url: https://www.navidrome.org/
 
 - name: Newsboat
   description: RSS Manager
   url: https://newsboat.org
+
+- name: Proxmox
+  description: Virtualization
+  url: https://www.proxmox.com
+
+- name: TrueNAS
+  description: NAS
+  url: https://www.truenas.com

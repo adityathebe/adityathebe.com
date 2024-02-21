@@ -2,17 +2,15 @@
   list-style: none;
 }
 
-/* .uses-list-item a {
-  color: inherit;
-} */
-
-.uses-list-item a:visited {
-  text-decoration: none;
-  color: var(--primary-text-color);
+.uses-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .uses-list-item a {
   color: var(--primary-text-color);
   text-decoration: none;
-  border-bottom: 0.10em solid var(--primary-text-color);
+  border-bottom: 0.1em solid var(--primary-text-color);
 }

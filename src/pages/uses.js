@@ -6,13 +6,12 @@ import SEO from '../components/SEO';
 import Layout from '../components/Layout';
 import './uses.css';
 
-const UsesItem = props => (
+const UsesItem = (props) => (
   <ul className="uses-list">
     {props.items.map(({ name, description, url }, idx) => (
       <li className="uses-list-item" key={idx}>
-        {url ? <a href={url}>{name}</a> : name}
-        {description && ' - '}
-        {description && <i>{description}</i>}
+        <span>{url ? <a href={url}>{name}</a> : name}</span>
+        <span>{description && <i>{description}</i>}</span>
       </li>
     ))}
   </ul>
