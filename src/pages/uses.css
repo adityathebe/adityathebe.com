@@ -1,3 +1,7 @@
+.uses-list {
+  margin-left: 0px;
+}
+
 .uses-list-item {
   display: flex;
   flex-direction: row;
@@ -8,7 +12,7 @@
 .uses-list-item a {
   color: var(--primary-text-color);
   text-decoration: none;
-  border-bottom: 0.1em solid var(--primary-text-color);
+  border-bottom: 1px solid var(--primary-text-color);
 }
 
 @media screen and (max-width: 450px) {

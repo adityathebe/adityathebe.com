@@ -101,12 +101,6 @@ html[data-theme='dark'] img {
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Sanchez:ital@0;1&display=swap');
 
-.container {
-  max-width: 800;
-  margin: 0 auto;
-  padding: 0px 1.0875rem 1.45rem;
-}
-
 body,
 h1,
 h2,
@@ -198,7 +192,12 @@ h1 {
 .main-wrapper {
   max-width: 960px;
   margin: 0 auto;
-  padding: 15px;
+}
+
+@media screen and (max-width: 450px) {
+  .main-wrapper {
+    padding: 1.5em;
+  }
 }
 
 .icon > svg {
