@@ -21,7 +21,7 @@
 .post-list li a {
   margin-bottom: 0;
   font-family: inherit;
-  font-size: 15px;
+  font-size: 1em;
   color: var(--primary-text-color);
   font-weight: 500;
   margin-left: 25px;
@@ -117,8 +117,10 @@
 /* Image full width on smaller screens */
 @media screen and (max-width: 450px) {
   span.gatsby-resp-image-wrapper {
-    border-radius: 0 !important;
-    margin: auto -15px !important;
+    /* Important because gatsby adds inline margin */
+    width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
   }
 }
 
