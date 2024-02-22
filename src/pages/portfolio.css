@@ -3,22 +3,28 @@
   margin: 0;
 }
 
+.mini-projects-ul :hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .mini-projects-ul a,
 .mini-projects-ul a:hover {
   color: var(--primary-text-color);
-  text-decoration: none;
 }
 
 .mini-projects-ul li {
+  font-size: 1em;
+  padding: 0.5em 0;
   border-bottom: 1px solid var(--border-color-1);
+  transition: padding-left 0.4s ease;
+}
+
+.mini-projects-ul li:last-child {
+  border-bottom: none;
 }
 
 .mini-projects-ul li:hover {
   background-color: var(--highlight-color-1);
-  font-size: 1.2em;
-  padding: 0.1em;
-}
-
-.mini-project-li-description {
-  font-family: 'Raleway';
+  padding-left: 1em;
 }
