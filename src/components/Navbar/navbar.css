@@ -3,7 +3,7 @@ header {
 }
 
 .site-header {
-  min-height: 55.95px;
+  min-height: 3.5em;
   z-index: 2;
   position: relative;
   box-shadow: 0 3px 2px -2px var(--border-color-2);
@@ -89,7 +89,7 @@ header {
     display: none;
   }
 
-  .site-nav .trigger .theme-switch-wrapper{
+  .site-nav .trigger .theme-switch-wrapper {
     margin-right: 10px;
   }
 

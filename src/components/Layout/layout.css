@@ -196,7 +196,7 @@ h1 {
 
 @media screen and (max-width: 450px) {
   .main-wrapper {
-    padding: 1.5em;
+    padding: .5em 1.5em;
   }
 }
 
