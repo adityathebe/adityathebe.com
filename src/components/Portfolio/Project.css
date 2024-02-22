@@ -57,7 +57,7 @@
   font-weight: lighter;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 450px) {
   .project-card {
     flex-direction: column;
   }

@@ -2,12 +2,16 @@
   description: Terminal Emulator
   url: https://github.com/alacritty/alacritty
 
-- name: ZSH & oh-my-zsh
+- name: ZSH with oh-my-zsh
   description: Shell
-  url: https://ohmyz.sh/
+  url: https://www.zsh.org/
+
+- name: powerlevel10k
+  description: Shell theme
+  url: https://github.com/romkatv/powerlevel10k
 
 - name: Atuin
-  description: Sync shell history
+  description: Shell history
   url: https://atuin.sh/
 
 - name: Tmux

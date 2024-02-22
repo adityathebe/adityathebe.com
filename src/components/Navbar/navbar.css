@@ -49,7 +49,7 @@ header {
   font-size: 18px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 450px) {
   .site-nav {
     position: absolute;
     top: 9px;

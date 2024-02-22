@@ -1,7 +1,3 @@
-- name: Transmission
-  description: An extremly light torrent daemon that gets the job done.
-  url: https://transmissionbt.com/
-
 - name: Telegram
   description: Instant Messaging (Personal)
   url: https://www.telegram.org

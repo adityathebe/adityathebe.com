@@ -1,7 +1,3 @@
-.uses-list {
-  list-style: none;
-}
-
 .uses-list-item {
   display: flex;
   flex-direction: row;
@@ -13,4 +9,15 @@
   color: var(--primary-text-color);
   text-decoration: none;
   border-bottom: 0.1em solid var(--primary-text-color);
+}
+
+@media screen and (max-width: 450px) {
+  .uses-list {
+    margin-bottom: 2em;
+  }
+
+  .uses-list-item {
+    flex-direction: column;
+    margin-bottom: 1em;
+  }
 }

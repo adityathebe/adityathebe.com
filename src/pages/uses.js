@@ -10,8 +10,8 @@ const UsesItem = (props) => (
   <ul className="uses-list">
     {props.items.map(({ name, description, url }, idx) => (
       <li className="uses-list-item" key={idx}>
-        <span>{url ? <a href={url}>{name}</a> : name}</span>
-        <span>{description && <i>{description}</i>}</span>
+        <span>{description}</span>
+        <span>{url ? <a href={url}>{name}</a> : <u>{name}</u>}</span>
       </li>
     ))}
   </ul>

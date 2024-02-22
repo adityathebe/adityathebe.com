@@ -1,23 +1,23 @@
-- name: Model
-  description: DELL XPS 7590
+- description: Model
+  name: DELL XPS 7590
 
-- name: External Monitor
-  description: MSI Optix G273Q Series | 2560 x 1440 (QHD) | 165Hz | 27"
+- description: External Monitor
+  name: MSI Optix G273Q Series | 2560 x 1440 (QHD) | 165Hz | 27"
 
-- name: RAM
-  description: 2x16GB
+- description: RAM
+  name: 2x16GB
 
-- name: Processor
-  description: Intel i5-9300H (4) @ 4.100GHz
+- description: Processor
+  name: Intel i5-9300H (4) @ 4.100GHz
 
-- name: GPU
-  description: Intel UHD Graphics 630
+- description: GPU
+  name: Intel UHD Graphics 630
 
-- name: OS
-  description: Arch Linux
+- description: OS
+  name: Arch Linux
 
-- name: SSD
-  description: 256GB M.2 PCIe NVMe Solid State Drive
+- description: SSD
+  name: 256GB M.2 PCIe NVMe Solid State Drive
 
-- name: Window Manager
-  description: bspwm
+- description: Window Manager
+  name: bspwm
