@@ -19,7 +19,7 @@ export default ({ project }) => {
       </div>
 
       <div className="right-col">
-        <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <p className="project-card__project-name">{project.name}</p>
           <span className="project-card__project-type">{project.type}</span>
         </div>

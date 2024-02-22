@@ -8,26 +8,10 @@
   duration:
     - 2017/10/10
     - 2018/10/10
-  description: 'A simulation of bipedals that try to learn to walk as humans'
+  description: 'A simulation of bipedals that learn to walk as humans using a simple Neural Network'
   image: './Images/evolution-simulator.png'
   sourceCodeUrl: https://github.com/adityathebe/evolutionSimulator
   demoUrl: https://adityathebe.github.io/evolutionSimulator/
-
-- type: Website
-  name: GolfMate
-  skills:
-    - ReactJS
-    - Redux
-    - ExpressJs
-    - JWT
-    - Mongo DB
-  duration:
-    - 2017/10/10
-    - 2018/10/10
-  description: A match matching site like Tinder for golf lovers.
-  image: './Images/golfmate.png'
-  sourceCodeUrl: ''
-  demoUrl: 'https://members.golfmate.fr/'
 
 - type: Telegram Bot
   name: TokenNews
@@ -55,28 +39,16 @@
     - MLab
   duration:
     - 2017/10/10
-  description: 'An awesome telegram bot'
+  description: |
+    An Telegram bot for traders. Connects to Yahoo and various other crypto APIs to get real time data & alerts.
   image: './Images/marketcockpit.png'
   sourceCodeUrl: ''
   demoUrl: 'https://t.me/marketcockpitbot'
 
-- name: BotLimbu
-  type: Facebook Meessenger Bot
-  image: './Images/botlimbu.jpg'
-  description: A utility Messenger Bot
-  sourceCodeUrl: https://github.com/adityathebe/botLimbu
-  demoUrl: https://m.me/botlimbu
-  duration:
-    - 2017/10/10
-    - 2017/11/10
-  skills:
-    - Facebook Messenger API
-    - ExpressJs
-
 - name: Two Cars
   type: Game
   image: './Images/two-cars.png'
-  description: Two cars game implemented in browser
+  description: A simple implementation of the Two cars game using p5js.
   sourceCodeUrl: https://www.github.com/adityathebe/two-cars/
   demoUrl: https://adityathebe.github.io/two-cars
   duration:
@@ -87,9 +59,9 @@
     - firebase
 
 - type: SaaS
-  name : EmailFinder
+  name: EmailFinder
   image: './Images/email-finder.png'
-  description: A Saas application that scrapes email from all the urls provided in a googlesheet
+  description: A Saas application that scrapes email from all the urls provided in a googlesheet.
   demoUrl: https://aarrr-formations.com/tools/emailfinder/
   duration:
     - 2018/09/19
@@ -102,9 +74,9 @@
     - ExpressJS
 
 - type: SaaS
-  name : DomainFinder
+  name: DomainFinder
   image: './Images/domain-finder.png'
-  description: A Saas application that finds the domain url of a given company by aggregating results from top search engines
+  description: A Saas application that finds the domain url of a given company by aggregating results from top search engines.
   demoUrl: https://domainfinder.aarrr-formations.net/
   duration:
     - 2018/10/06
