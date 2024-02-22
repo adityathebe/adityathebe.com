@@ -19,13 +19,11 @@ export default ({ project }) => {
       </div>
 
       <div className="right-col">
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <p className="project-card__project-name">{project.name}</p>
           <span className="project-card__project-type">{project.type}</span>
         </div>
-        <p className={'project-card__project_duration'}>
-          {durationFormatter(project.duration)}
-        </p>
+        <p className={'project-card__project_duration'}>{durationFormatter(project.duration)}</p>
         <div className="project-card__project-btns">
           <a target="_blank" rel="noopener noreferrer" href={sourceCodeUrl}>
             <button disabled={sourceCodeUrl ? false : true}>Source Code</button>
@@ -40,7 +38,7 @@ export default ({ project }) => {
         </div>
 
         <p className={'project_card__project_skills'}>
-          {project.skills.map(x => {
+          {project.skills.map((x) => {
             return <span className="project-skill-tag">{'#' + x}</span>;
           })}
         </p>
