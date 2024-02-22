@@ -6,7 +6,7 @@ header {
   min-height: 55.95px;
   z-index: 2;
   position: relative;
-  box-shadow: 0 3px 2px -2px #4c566a;
+  box-shadow: 0 3px 2px -2px var(--border-color-2);
 }
 
 .site-title {
