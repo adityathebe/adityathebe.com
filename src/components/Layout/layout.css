@@ -254,12 +254,12 @@ blockquote > :last-child {
 /**** CODE HIGHLIGHTING ****/
 /***************************/
 .gatsby-highlight > pre {
+  font-size: 0.8em;
   background-color: var(--nord-polar-night-2);
 }
 
 @media screen and (max-width: 450px) {
   .gatsby-highlight > pre[class*='language'] {
-    font-size: 0.8em;
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
