@@ -196,7 +196,7 @@ h1 {
 
 @media screen and (max-width: 450px) {
   .main-wrapper {
-    padding: .5em 1.5em;
+    padding: 0.5em 1.5em;
   }
 }
 
@@ -225,9 +225,9 @@ a:hover {
   text-decoration: underline;
 }
 
-/*********************/
-/**** Blockquotes ****/
-/*********************/
+/**********************/
+/**** Block quotes ****/
+/**********************/
 blockquote {
   color: var(--primary-text-color);
   padding: 1em 2em;
@@ -261,6 +261,7 @@ blockquote > :last-child {
 @media screen and (max-width: 450px) {
   .gatsby-highlight > pre[class*='language'] {
     width: 100vw;
+    padding-inline: 1.8em;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
   }
