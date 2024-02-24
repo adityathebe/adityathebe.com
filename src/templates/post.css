@@ -76,6 +76,7 @@
   font-size: 1em;
   font-family: 'Sanchez', serif;
   color: var(--primary-text-color);
+  word-wrap: break-word;
 }
 
 .post-content img {
@@ -124,8 +125,8 @@
   span.gatsby-resp-image-wrapper {
     /* Important because gatsby adds inline margin */
     width: 100vw !important;
-    margin-left: calc(50% - 50vw) !important;
-    margin-right: calc(50% - 50vw) !important;
+    margin-left: -1.5em !important;
+    margin-right: -1.5em !important;
   }
 }
 
@@ -170,7 +171,17 @@ td {
   padding: 1em;
   margin: 1em 0;
   background-color: var(--table-of-contents-bg);
-  border: 0.1em dotted var(--border-color-2);
+  border-radius: 8px;
+}
+
+@media screen and (max-width: 450px) {
+  .table-of-contents {
+    min-width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    border-radius: 0;
+    padding-inline: 1.5em;
+  }
 }
 
 .table-of-contents li p {

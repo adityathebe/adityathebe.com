@@ -1,3 +1,8 @@
+/* * {
+  box-sizing: border-box;
+  background: rgb(0 100 0/ 0.1) !important;
+} */
+
 *,
 *::after {
   box-sizing: border-box;
@@ -108,8 +113,6 @@ h3,
 h4,
 h5,
 h6,
-p,
-blockquote,
 pre,
 hr,
 dl,
@@ -248,23 +251,17 @@ a:hover {
 /**********************/
 blockquote {
   color: var(--primary-text-color);
-  padding: 1em 2em;
-  border: 0.1em dotted var(--border-color-2);
+  padding: 0.3em 1em ;
   background-color: var(--blockquote-bg);
   margin: 1em 0;
   font-style: italic;
   text-align: center;
 }
 
-blockquote > :last-child {
-  margin-bottom: 0;
-}
-
 @media screen and (max-width: 450px) {
   blockquote {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
   }
 }
 
@@ -278,10 +275,9 @@ blockquote > :last-child {
 
 @media screen and (max-width: 450px) {
   .gatsby-highlight > pre[class*='language'] {
-    width: 100vw;
     padding-inline: 1.8em;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
   }
 }
 
