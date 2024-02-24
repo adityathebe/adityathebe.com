@@ -150,8 +150,7 @@ body {
   font-family: 'JetBrains Mono', 'Sanchez', sans-serif, Helvetica, Arial;
   font-feature-settings: 'kern' 1;
   font-kerning: normal;
-  font-size: 17px;
-  line-height: 31px;
+  line-height: 1.75em;
   margin: 0;
 }
 
@@ -207,10 +206,6 @@ h1 {
 
 .icon > svg path {
   fill: var(--secondary-text-color);
-}
-
-.page-content {
-  padding: 1.5rem 0;
 }
 
 /***********************/

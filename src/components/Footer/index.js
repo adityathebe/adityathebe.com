@@ -21,30 +21,16 @@ const Footer = () => {
 
   return (
     <footer className="site-footer">
-        <div className="footer-col-wrapper">
-          <div className="footer-col footer-col-1">
-            <span className="contact-list">
-              © 2015-2024 {data.site.siteMetadata.author}
-            </span>
-          </div>
+      <div className="footer-col">
+        <span className="contact-list">© 2015-2024 {data.site.siteMetadata.author}</span>
+      </div>
 
-          <div className="footer-col footer-col-3">
-            Subscribe{' '}
-            <a href="/rss.xml" rel="noopener noreferrer">
-              via RSS
-            </a>
-          </div>
-        </div>
-
-        <div className="footer-baseline">
-          <p>
-            Built with{' '}
-            <span role="img" aria-label="heart-icon">
-              ❤
-            </span>{' '}
-            using Gatsby
-          </p>
-        </div>
+      <div className="footer-col">
+        Subscribe{' '}
+        <a href="/rss.xml" rel="noopener noreferrer">
+          via RSS
+        </a>
+      </div>
     </footer>
   );
 };
