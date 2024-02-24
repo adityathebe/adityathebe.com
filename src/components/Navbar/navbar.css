@@ -1,5 +1,6 @@
 header {
   font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
+  letter-spacing: -1px;
 }
 
 .site-header {
@@ -10,6 +11,10 @@ header {
   position: relative;
   margin-bottom: 1em;
   box-shadow: 0 3px 2px -2px var(--border-color-2);
+}
+
+.site-title {
+  font-size: 1.2em;
 }
 
 .site-title,

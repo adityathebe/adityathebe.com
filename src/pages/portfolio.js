@@ -43,13 +43,13 @@ const ProjectPage = () => {
       }
     }
   `);
-  const featuredProjectsList = data.allProjectFeaturedListYaml.edges.map(x => x.node);
-  const miniProjectsList = data.allProjectMiniListYaml.edges.map(x => x.node);
+  const featuredProjectsList = data.allProjectFeaturedListYaml.edges.map((x) => x.node);
+  const miniProjectsList = data.allProjectMiniListYaml.edges.map((x) => x.node);
 
   return (
     <Layout>
       <SEO title="Portfolio" keywords={['aditya thebe portfolio', 'aditya thebe projects']} />
-      <h1>Featured Projects</h1>
+      <h2>Featured Projects</h2>
       {featuredProjectsList.map((project, idx) => (
         <Project key={idx} project={project} />
       ))}
