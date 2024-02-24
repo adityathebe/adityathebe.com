@@ -124,9 +124,8 @@
 @media screen and (max-width: 450px) {
   span.gatsby-resp-image-wrapper {
     /* Important because gatsby adds inline margin */
-    width: 100vw !important;
-    margin-left: -1.5em !important;
-    margin-right: -1.5em !important;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: calc(-50vw + 50%) !important;
   }
 }
 
