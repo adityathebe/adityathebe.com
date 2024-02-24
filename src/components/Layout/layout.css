@@ -137,6 +137,11 @@ figure,
   margin: 1em 0;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   -moz-font-feature-settings: 'kern' 1;
   -moz-osx-font-smoothing: grayscale;
@@ -152,6 +157,20 @@ body {
   font-kerning: normal;
   line-height: 1.75em;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#___gatsby,
+#gatsby-focus-wrapper,
+.main-wrapper {
+  height: 100%;
+}
+
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 figure > img {

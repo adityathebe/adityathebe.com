@@ -8,10 +8,12 @@ const IndexPage = () => (
   <Layout>
     <SEO title="About" keywords={['aditya thebe info', 'about aditya thebe']} />
     <div className="post-content">
-      <h1>About Me ...</h1>
+      <h1 style={{ margin: '0.5em 0' }}>About Me</h1>
+      <p>Hey, I am Aditya, a software engineer From Nepal.</p>
+
       <p>
-        I am a software engineer currently working remotely, from Nepal, as a Backend engineer for a startup overseas.
-        I'm pretty comfortable with NodeJS but recently my interest has shifted to the Go programming language.
+        At the moment, I'm enjoying building a Kubernetes Native Internal Developer Platform at{' '}
+        <a href="https://www.flanksource.com">Flanksource</a>.
       </p>
 
       <p>
@@ -25,17 +27,16 @@ const IndexPage = () => (
         find speed chess much more entertaining than any other format of chess because of how much of a rush the whole
         game is and all the hilarious blunders I and my opponent make.
       </p>
+
       <p>
-        I love playing guitar but certainly nowhere near as much as I used to. My friend, whose name I don't wanna
-        mention, but his name is Hillihang, lost my electric guitar and since then I've transitioned into playing an
-        acoustic guitar.
+        I <b>used</b> to play Guitar a lot but I don't have the time and passion for it as much these days.
       </p>
 
-      <p>I'm also a massive ArsenalFC fan. If there's an Arsenal game, you bet I'm watching it.</p>
+      <p>I'm also a massive Arsenal FC fan. If there's an Arsenal game, you bet I'm watching it.</p>
 
       <p>
-        I occasionally <a href="https://www.strava.com/athletes/42641291">run</a>, but nowhere near as much as I would
-        like to.
+        I used to <a href="https://www.strava.com/athletes/42641291">run</a>, but now I{' '}
+        <a href="https://hevy.com/user/adityathebe">workout</a> instead with an occasional cardio session.
       </p>
     </div>
   </Layout>

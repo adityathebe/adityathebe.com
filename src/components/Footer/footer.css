@@ -6,8 +6,9 @@ footer {
   flex-wrap: wrap;
   font-size: 0.8em;
   justify-content: space-between;
-  margin: 1em 0;
   padding-top: 1em;
+  margin-top: auto;
+  padding-block: 2em;
 }
 
 .site-footer a,
