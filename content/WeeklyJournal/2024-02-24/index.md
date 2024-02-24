@@ -15,7 +15,7 @@ keywords:
 
 ## Table of Contents
 
-1. [Git Aliases](#git-aliases)
+1. [Git](#git)
 2. [Software Engineers' salaries made public](#salaries-made-public)
 3. [SSH Signing keys](#ssh-signing-keys)
 4. [Unix Magic in Unicorn](#unix-magic-in-unicorn)
@@ -24,14 +24,41 @@ keywords:
 
 I can't believe it's been 3 years since my last weekly journal! It felt more like a year. Anyways, here's what I've learned so far this week.
 
-## Git Aliases
+## Git
 
-- Git branch better
-  https://gist.github.com/schacon/e9e743dee2e92db9a464619b99e94eff
+### Git configs
 
-- Video: https://www.youtube.com/watch?v=aolI_Rz0ZqY&list=WL&index=2&t=505s
+This week I added a tonne to my [git config](https://github.com/adityathebe/dotfiles/blob/0b0df993ce09fad38ca3ea45cc86a04209e059c3/.config/git/config) and it all started when I read [this blog post](https://jvns.ca/blog/2024/02/16/popular-git-config-options/) by Julia Evans. While I enjoyed a lot of those, my favorite one was
 
-- Force with lease (could be an article)
+```
+[push]
+	autoSetupRemote = true
+	default = current
+```
+
+At work, I spin off git branches every time. Small fixes, chores & features are all in their own branch. The first time you push a new branch to the remote, you need to set the upstream
+
+```
+git push -u origin <new-branch>
+```
+
+You're used to just doing `git push` and it's annoying to see this error every once in a while. With the above config, your new local branch is automatically mapped to a remote branch with the same name!
+
+### Inside git
+
+It always helps to know your tools better!
+
+- https://jvns.ca/blog/2024/01/26/inside-git/
+- https://youtu.be/hZS96dwKvt0?si=bbAaaeBx5yh6TGTp
+
+### Scott Chacon's awesome talk on git
+
+Scott Chacon is the co-founder of GitHub who's currently working on GitButler. His [talk on git at FOSDEM 2024](https://youtu.be/aolI_Rz0ZqY?si=vMju8wAUwQnA3JpN) is honestly one of my favorite tech talks. I just love geeks (or nerd ... what's the difference?) who are also great at public speaking and add a lot of humor 😁. The information/duration density in this video is pretty high!
+
+I'm not gonna write a lot about it here as I highly suggest you to watch the video but here are some of the highlights
+
+- Git branch better https://gist.github.com/schacon/e9e743dee2e92db9a464619b99e94eff
+- Force with lease _(`git push --force` but better)_
 
 ## Salaries made public
 
@@ -85,7 +112,7 @@ Sockets are one of the fundamental features to working with anything networking 
 
 ![](./ruby-sockets-select.png)
 
-### Signal
+### [Signal](https://www.gnu.org/software/coreutils/manual/html_node/Signal-specifications.html)
 
 I'm not sure I fully understood this section but the interesting bit here was how signals are handled by Unicorn - or more specifically asynchronous signals. Techniques like self-pipe and queuing were used but I didn't fully get it.
 
@@ -93,7 +120,3 @@ Some other cool use cases of signals were
 
 - Scaling workers using `TTIN` signals was also pretty cool.
 - Hot reloading with `USR2` signal.
-
-## References
-
-- https://www.gnu.org/software/coreutils/manual/html_node/Signal-specifications.html

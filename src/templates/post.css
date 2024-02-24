@@ -123,7 +123,6 @@
 /* Image full width on smaller screens */
 @media screen and (max-width: 450px) {
   span.gatsby-resp-image-wrapper {
-    padding-inline: 0;
     /* Important because gatsby adds inline margin */
     margin-left: calc(-50vw + 50%) !important;
     margin-right: calc(-50vw + 50%) !important;
