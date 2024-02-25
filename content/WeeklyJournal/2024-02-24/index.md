@@ -17,7 +17,7 @@ keywords:
 
 1. [Git](#git)
 2. [Software Engineers' salaries made public](#salaries-made-public)
-3. [SSH Signing keys](#ssh-signing-keys)
+3. [SSH Signing keys](#ssh-signing-key)
 4. [Unix Magic in Unicorn](#unix-magic-in-unicorn)
 
 </div>

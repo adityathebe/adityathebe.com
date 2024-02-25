@@ -10,6 +10,8 @@
 
 /* Nord theme color schemes */
 * {
+  --mobile-padding: 15px;
+
   /* snowstorm - nord */
   --nord-snowstorm-1: #d8dee9;
   --nord-snowstorm-2: #e5e9f0;
@@ -217,7 +219,7 @@ h1 {
 
 @media screen and (max-width: 450px) {
   .main-wrapper {
-    padding: 0.5em 1.5em;
+    padding: 10px var(--mobile-padding);
   }
 }
 
@@ -270,17 +272,18 @@ blockquote {
 /***************************/
 .gatsby-highlight > pre {
   font-size: 0.8em;
+  padding: 0.5em var(--mobile-padding);
   background-color: var(--nord-polar-night-2);
 }
 
 @media screen and (max-width: 450px) {
   .gatsby-highlight > pre[class*='language'] {
-    padding-inline: 1.8em;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
   }
 }
 
+/* Inline code blocks */
 :not(pre) > code[class='language-text'] {
   background-color: var(--code-bg);
   color: inherit;

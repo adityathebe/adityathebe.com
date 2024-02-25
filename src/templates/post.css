@@ -167,7 +167,7 @@ td {
 
 /* Table of contents */
 .table-of-contents {
-  padding: 1em;
+  padding: 1em var(--mobile-padding);
   margin: 1em 0;
   background-color: var(--table-of-contents-bg);
   border-radius: 8px;
@@ -179,7 +179,7 @@ td {
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
     border-radius: 0;
-    padding-inline: 1.5em;
+    padding-inline: var(--mobile-padding);
   }
 }
 
