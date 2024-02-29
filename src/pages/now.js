@@ -10,7 +10,7 @@ const IndexPage = () => (
     <div className="post-content">
       <h1 id="page-title">Now</h1>
       <ul>
-        <li>Working at <a href="flanksource.com">@Flanksource</a></li>
+        <li>Working at <a href="https://flanksource.com">@Flanksource</a></li>
         <li><a href="https://hevy.com/user/adityathebe">Working out</a></li>
         <li>Working on redesigning this website and adding new stuff</li>
         <li>Using neovim part-time. Hoping to move to it soon</li>
