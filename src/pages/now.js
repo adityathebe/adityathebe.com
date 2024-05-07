@@ -20,14 +20,10 @@ const IndexPage = () => (
         <li>
           Reading <a href="https://theartofpostgresql.com/">The Art Of PostgreSQL</a>
         </li>
-        <li>Playing Pubg</li>
-        <li>
-          Watching <a href="https://www.imdb.com/title/tt2788316/">Shogun</a>
-        </li>
       </ul>
     </div>
 
-    <p>Last Updated: 06 Apr 2024</p>
+    <p>Last Updated: 07 May 2024</p>
   </Layout>
 );
 
