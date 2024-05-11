@@ -1,11 +1,11 @@
 ---
-title: Setup DNS Over TLS with systemd-resolved
+title: Setup DNS Over TLS with systemd-resolved & Next DNS
 date: '2024-05-11'
 categories:
   - Networking
 slug: /systemd-resolved-dns-over-tls
 featuredImage: ./adguard-home.png
-description: Setup DNS over TLS wit systemd-resolved & network manager
+description: Setup DNS over TLS with systemd-resolved, NetworkManager and NextDNS
 ---
 
 I've been using Adguard home for a few years as my DNS resolver.
@@ -173,6 +173,10 @@ It has a free plan and offers
 - dns rewrites
 - safe browsing
 - ad blocking
+
+![NextDNS Analytics](./next-dns-analytics.png)_NextDNS Analytics_
+
+![NextDNS Analytics Traffic](./next-dns-analytics-traffic.png)_NextDNS Traffic Analytics_
 
 I updated `systemd-resolved` & `networkd` configs to use my private next dns resolver.
 
