@@ -77,6 +77,8 @@ To configure the upstream DNS server, I simply edited systemd-resolved config an
 enabled `DNSOverTLS`.
 
 ```text title="/etc/systemd/resolved.conf"
+# /etc/systemd/resolved.conf
+
 [Resolve]
 DNS=1.1.1.1#cloudflare-dns.com 1.0.0.1#cloudflare-dns.com
 DNSOverTLS=yes
@@ -135,29 +137,12 @@ Current DNS Server: 192.168.254.254
 
 I think I just needed to point my lan interface to use the same DNS server.
 
-### Configuring DNS on a specific interface
+I found this section quite confusing. `resolvectl status` shows that my LAN interface
+is using my router as the DNS server, however when I make a DNS query, it's still
+served by the cloudflare servers ...
 
-In `/etc/systemd/network`, I created a new file `10-enp5s0.network` where `enp5s0`
-is my lan interface. I don't think the file name really matters but this is probably
-the convention.
-
-```text title="10-enp5s0.network
-[Match]
-Name=enp5s0
-
-[Network]
-DNS=1.1.1.1#cloudflare-dns.com 9.9.9.9#dns.quad9.net 8.8.8.8#dns.google
-DNSOverTLS=yes
-```
-
-After this change, I restarted `systemd-resolved.service` but that had no change.
-Apparently, it was also necessary to restart `networkd`
-
-```bash
-sudo systemctl restart systemd-networkd
-```
-
-And finally, DoT setup was complete!
+For now, I've configured Network manager IPv4 & IPv6 method to point the DNS server
+to `127.0.0.1`.
 
 ## NextDNS
 
