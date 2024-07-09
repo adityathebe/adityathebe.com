@@ -4,7 +4,7 @@ date: '2024-07-09 23:40'
 categories:
   - Go
 slug: /setup-go-debugger-vscode
-featuredImage: ./vs-code-go-debugger.png
+featuredImage: ./vs-code-go-debugger.svg
 description: Setup debugger on VS Code for Golang
 keywords:
   - golang debugger
@@ -122,7 +122,7 @@ gcflags "all=-N -l"
 
 By default, Linux kernel will not allow a process to attach to another process if it's not running as root. Due to this reason, attaching a debugger to our running application will not work.
 
-To fix this, we need to modify the ptrace scope setting in the Linux kernel's Yama (Yet Another Module for Mandatory Access Control) security module.
+To fix this, we need to modify the ptrace scope setting in the Linux kernel's Yama security module.
 The ptrace scope setting determines which processes can use ptrace-based debugging tools on other processes. The value `0` sets it to the least restrictive mode, allowing any process to ptrace any other process.
 
 ```sh
