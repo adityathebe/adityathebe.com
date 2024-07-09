@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1e1e1e"/>
+  
+  <!-- VS Code window frame -->
+  <rect x="50" y="50" width="700" height="300" rx="10" ry="10" fill="#252526"/>
+  <rect x="50" y="50" width="700" height="30" rx="10" ry="10" fill="#3c3c3c"/>
+  <circle cx="70" cy="65" r="6" fill="#ff5f56"/>
+  <circle cx="90" cy="65" r="6" fill="#ffbd2e"/>
+  <circle cx="110" cy="65" r="6" fill="#27c93f"/>
+  
+  <!-- Code area -->
+  <rect x="60" y="90" width="460" height="250" fill="#1e1e1e"/>
+  
+  <!-- Go code snippet -->
+  <text x="70" y="120" font-family="Consolas, monospace" font-size="14" fill="#d4d4d4">
+    <tspan x="70" dy="0">package main</tspan>
+    <tspan x="70" dy="20">import "fmt"</tspan>
+    <tspan x="70" dy="20">func main() {</tspan>
+    <tspan x="70" dy="20">    x := 10</tspan>
+    <tspan x="70" dy="20" fill="#9cdcfe">    fmt</tspan><tspan fill="#d4d4d4">.</tspan><tspan fill="#dcdcaa">Printf</tspan><tspan fill="#d4d4d4">(</tspan><tspan fill="#ce9178">"x = %d\n"</tspan><tspan fill="#d4d4d4">, x)</tspan>
+    <tspan x="70" dy="20">    y := 20</tspan>
+    <tspan x="70" dy="20" fill="#9cdcfe">    fmt</tspan><tspan fill="#d4d4d4">.</tspan><tspan fill="#dcdcaa">Printf</tspan><tspan fill="#d4d4d4">(</tspan><tspan fill="#ce9178">"y = %d\n"</tspan><tspan fill="#d4d4d4">, y)</tspan>
+    <tspan x="70" dy="20">}</tspan>
+  </text>
+  
+  <!-- Breakpoint -->
+  <circle cx="62" cy="202" r="8" fill="#e51400"/>
+  
+  <!-- Debug panel -->
+  <rect x="530" y="90" width="210" height="250" fill="#252526"/>
+  <text x="540" y="110" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Debug Console</text>
+  <rect x="535" y="120" width="200" height="1" fill="#ffffff" opacity="0.1"/>
+  <text x="540" y="140" font-family="Consolas, monospace" font-size="12" fill="#d4d4d4">
+    <tspan x="540" dy="0">> x = 10</tspan>
+    <tspan x="540" dy="20">> y = 20</tspan>
+  </text>
+  
+  <!-- Variables panel -->
+  <rect x="535" y="180" width="200" height="80" fill="#333333" rx="5" ry="5"/>
+  <text x="545" y="200" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">Variables</text>
+  <text x="545" y="220" font-family="Consolas, monospace" font-size="12" fill="#9cdcfe">x</text>
+  <text x="600" y="220" font-family="Consolas, monospace" font-size="12" fill="#d4d4d4">10</text>
+  <text x="545" y="240" font-family="Consolas, monospace" font-size="12" fill="#9cdcfe">y</text>
+  <text x="600" y="240" font-family="Consolas, monospace" font-size="12" fill="#d4d4d4">20</text>
+  
+  <!-- Go logo -->
+  <path d="M750 330 C750 280, 700 250, 650 280 C630 260, 600 260, 580 280 C550 250, 500 280, 500 330" fill="none" stroke="#00ADD8" stroke-width="6"/>
+  
+  <!-- Title -->
+  <text x="400" y="380" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" font-weight="bold">Debugging Go in VS Code</text>
+</svg>
