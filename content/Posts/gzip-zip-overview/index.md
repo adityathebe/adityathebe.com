@@ -48,8 +48,8 @@ In the words of the creator himself
       --text-color: #ffffff;
       --arrow-color: #ffffff;
       --file-bg-color: #2a2a2a;
-      --tar-bg-color: #1a3a4a;
-      --gzip-bg-color: #1a3a1a;
+      --tar-bg-color: #3b4252;
+      --gzip-bg-color: #3a3a2a;
       --stroke-color: #ffffff;
     }
     text {
@@ -132,7 +132,7 @@ individually makes this possible. That's why you might have noticed, that on Win
       --text-color: #ffffff;
       --arrow-color: #ffffff;
       --file-bg-color: #2a2a2a;
-      --comp-bg-color: #1a3a4a;
+      --comp-bg-color: #3b4252;
       --zip-bg-color: #3a3a2a;
       --stroke-color: #ffffff;
     }
