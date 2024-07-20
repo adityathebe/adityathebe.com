@@ -248,7 +248,7 @@ Formats 0 & 8 are by far the most used ones - 8 more so.
 ## Use cases
 
 gzip (along with tar) is more common in the Unix world than zip.
-tar preserves all of the Unix unix file attributes, whereas zip was not designed to do that.
+tar preserves all of the Unix file attributes, whereas zip was not designed to do that.
 
 gzip also supports decompressing data streams which is why it's popular in network transfer.
 HTTP widely uses gzip.
