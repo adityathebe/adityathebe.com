@@ -1,5 +1,5 @@
 ---
-title: Understand Public Key Infrastructure & Public Key Certificates
+title: Understand Public Key Infrastructure & Certificates
 date: '2024-07-28 23:40'
 categories:
   - Cryptography
@@ -10,18 +10,18 @@ keywords:
   - SSL certificatese
 ---
 
-Public Key Cryptography has enabled us to securely communicate over an insecure channel. If Alice wants to send confidential data to Bob, she needs to somehow access Bob's public key and then encrypt the message with that public key. Only Bob (or anyone with possession of the public key's private key) can decrypt the message. And likewise, Bob encrypts the message with Alice's public key and only Alice can decrypt it. A secure communication channel is thus established.
+Public Key Cryptography has enabled us to establish a secure channel for communication in an untrusted enviroment. If Alice wants to send confidential data to Bob, she needs to somehow access Bob's public key and then encrypt the message with that public key. Only Bob (_or anyone in possession of the public key's private key_) can decrypt the message. And likewise, Bob encrypts the message with Alice's public key and only Alice can decrypt it. A secure communication channel is thus established.
 
 Let me ask you this - how does Alice guarantee that the public key is actually Bob's?
-Cuz remember, they are in an untrustworthy insecure enviroment.
+Cuz remember, they are in a potentially compromised enviroment.
 
 Usually, the public key is available in Bob's website.
 If Alice got Bob's public key from his website then she can be assured, **to some extent**, that the public key indeed belongs to Bob.
 She still cannot be 100% sure because who says the website is actually run by Bob and not some bad actor trying to impersonate him?
 
-To verify an identity in an untrustworthy enviroment, we need a Trusted entity that can do that for us.
+To verify an identity in an untrusted enviroment, we need a Trusted entity that can do that for us.
 We place absolute trust in that entity and blindly accept their identity claims without any doubt or reservation.
-If the trusted entity states that it is indeed Bob's public key then for all intents and purposes that is inded Bob's public key.
+If the trusted entity states that it is indeed Bob's public key then for all intents and purposes that is indeed Bob's public key.
 
 ## Certificate Authority
 
@@ -34,8 +34,8 @@ They do all the heavy lifiting of verifying the identity and then issue a signed
 
 ### Public Key Certificates
 
-A digital Certificate is a signed proof that states that a public key belongs to a certain identity.
-It's a way to bind a public key to a subject.
+A digital Certificate serves as a signed proof verifying that a public key belongs to a certain subject.
+It's a way to bind an identity to a public key.
 
 CAs are responsible for the creation, issuance, revocation, and management of Certificates.
 
@@ -72,7 +72,7 @@ Certificate:
 
 ```
 
-This is an actual TLS certificate for my website (stripped off for brevity).
+This is an actual TLS certificate for my website (_stripped off for brevity_).
 The CA that signed and issued this certificate is Cloudflare Inc.
 
 When you visit my website over HTTPs, your browser is presented with this very certificate.
@@ -83,13 +83,14 @@ And if it doesn't, then it'll show a warning and probably not load the website a
 
 In the real world there's a heirarchy of CAs.
 Root CAs sit at the very top level of the trust chain.
-For an entity to become a root CA, it needs to have enough "social" trust for OSs and applications to trust it and put it in their trusted root certificate store.
+For an entity to become a root CA, it needs to adhere to the strict requirements and guidelines of a Root Program which we'll get to in a minute.
 
 A few popular root CAs are
 
 - Internet Security Research Group (ISRG)
 - GlobalSign
 - DigiCert
+- CyberTrust
 
 ### Root Certificates
 
@@ -150,9 +151,9 @@ As you can see, on my Arch Linux machine there are `148` root certificates. On m
 The root certificates in the Trust Store of one OS may vary from another OS or from one web brower to another.
 For example: the root certificates trusted by Google Chrome may not completely overlap with the ones trusted by Firefox.
 
-### Root Programs
-
 What's the criteria for a root certificate to be included in an OS's or web brower's trusted store? Why is it that one root certificate that exist in Chrome doesn't exist in Firefox or vice-versa.
+
+### Root Programs
 
 The criteria is defined by a root program. One root program may have more strict requirements & guideliness than another and hence can have fewer root certificates in their trusted store. There are several major root programs:
 
@@ -161,18 +162,20 @@ The criteria is defined by a root program. One root program may have more strict
 - [Chrome](https://www.chromium.org/Home/chromium-security/root-ca-policy/)
 - [Mozilla](https://wiki.mozilla.org/CA)
 
-## Intermediate Certificate Authorities
+### Issuing Leaf certificates
 
-In practice, these root certificates do not directly issue certificates for the end users.
+In practice, the root certificates do not directly issue certificates for the end users.
 
-You see, to issue a signed certificate, you need the private key of the signing public key - i.e. private key for the root certificate.
+You see - to issue a signed certificate, you need the private key of the signing public key - i.e. private key for the root certificate.
 If a bad actor gets hold of the root CA's private key, then they can essentially create certificates for any website in the world.
 
-They are too valuable to be compromised. They are kept extremely safe and offline.
+They are too valuable to be compromised. They are kept extremely safe and offline; probably locked up in a cryptographically secure hardware device.
 
-So then how would you receive a TLS certificate for my domain from these root certificates?
+So then how would you receive a TLS certificate for your domain from these root certificates?
 
 That's where Intermediate Certificate Authorities, also known as "subordinate CAs" or just "intermediates", come in.
+
+## Intermediate Certificate Authorities
 
 The root CA must have intermediaries and they are the ones that remain online and issue millions of TLS certificates.
 If an Intermediate CA's private key is compromised, the damage surface is relatively smaller as it's only that particular certificate that needs to be revoked.
@@ -209,6 +212,7 @@ Certificate:
 
 The certificate you see above belongs to Cloudflare CA. It's the CA that signed my domain's TLS certificate and is issued by CyberTrust root CA.
 
+<!-- prettier-ignore -->
 <svg
 version="1.1"
 	xmlns="http://www.w3.org/2000/svg"
