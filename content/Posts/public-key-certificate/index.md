@@ -1,121 +1,94 @@
 ---
 title: Understand Public Key Infrastructure & Public Key Certificates
-date: '2024-07-27 23:40'
+date: '2024-07-28 23:40'
 categories:
   - Cryptography
-slug: /what-are-public-key-certificates
+slug: /public-key-infrastructures-and-certificates
 description: Setup and configure Go debugger in VS Code. Learn to create launch.json, attach to running processes, and troubleshoot common issues for effective Golang debugging in VS Code.
 keywords:
   - public key certificates
   - SSL certificatese
 ---
 
-> Prerequisites: basic understanding of Public Key cryptography.
+<div class="table-of-contents">
 
-A Certificate, in the world of Cryptography, is a way to bind a public key to an identity through a trusted 3rd party.
+1. [Certificate Authority (CA)](#certificate-authority)
+2. [Root CA](#root-certificate-authorities)
+3. [Intermediate CA](#intermediate-certificate-authorities)
 
-The image below shows a certificate that claims that the public key belongs to the entity `example.com`.
+</div>
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 115">
-  <rect x="10" y="10" width="90%" height="100" fill="none" stroke="var(--blockquote-bg)" stroke-width="1"/>
-  <text x="150" y="30" fill="var(--primary-text-color)" font-size="10" text-anchor="middle">Public Key Certificate</text>
-  <text x="30" y="50" fill="var(--primary-text-color)" font-size="6">Subject: example.com</text>
-  <text x="30" y="60" fill="var(--primary-text-color)" font-size="6">Issuer: Certificate Authority</text>
-  <text x="30" y="70" fill="var(--primary-text-color)" font-size="6">Valid from: 2024-01-01</text>
-  <text x="30" y="80" fill="var(--primary-text-color)" font-size="6">Valid to: 2025-01-01</text>
-  <rect x="30" y="85" width="75%" height="15" fill="var(--blockquote-bg)"/>
-  <text x="150" y="95" font-size="8" text-anchor="middle">Public Key: xyz</text>
-</svg>
+Public Key Cryptography has enabled us to securely communicate over an insecure channel. If Alice wants to send confidential data to Bob, she needs to somehow access Bob's public key and then encrypt the message with that public key. Only Bob (or anyone with possession of the public key's private key) can decrypt the message. And likewise, Bob encrypts the message with Alice's public key and only Alice can decrypt it. A secure communication channel is thus established.
 
-Throughout this article, we'll be using an analogy to explain the concept of Public Key Certificates.
+Let me ask you this - how does Alice guarantee that the public key is actually Bob's?
+Cuz remember, they are in a untrustworthy insecure enviroment.
 
-Let's say you are in a possession of a confidential data that you need to pass on to Mr Charles from Arizona.
-You personally do not know Mr Charles, but you do need to deliver the data to him & only to him.
-If the data falls into the wrong hands, there's gonna be severe consequences - this is mission critical!
+Usually, the public key is available in Bob's website.
+If Alice got Bob's public key from his website then she can be assured, **to some extent**, that the public key indeed belongs to Bob.
+She still cannot be 100% sure because who says the website is actually run by Bob and not some bad actor trying to impersonate him?
 
-Someone comes along and claim that they are Mr Charles. How do you verify that they are indeed Mr Charles?
+To verify an identity in an untrustworthy enviroment, we need a Trusted entity that can do that for us.
+We fully trust that entity and then take it with 100% certainty any identity claim it provides.
 
-Fortunately, you know Mrs Jessica in Arizona whom you trust 100%. And she happens to know our Mr Charles.
-She is 100% certain that that person claiming they are Mr Charles is indeed the Mr Charles we're looking for.
+If the trusted entity states that it is indeed Bob's public key then for all intents and purposes that is inded Bob's public key.
 
-This is how via a trusted 3rd party, we were able to verify an identity claim.
+## Certificate Authority
 
-Public Key Certificates work in exactly the same fashion. When it comes to certificates, a trusted 3rd party is always involved.
-The trusted 3rd party is called a Certificate Authority (CA).
+In the web, Certificate Authorities (CA) are such trusted entities.
+CAs are organizations that does this verification for us.
+They are responsible for the creation, issuance, revocation, and management of Certificates.
+They do all the heavy lifiting of verifying the identity and then issue a signed certificate which acts as a proof of identity.
 
-When someone presents a certificate signed by a CA we trust, we can be assured that the public they are presenting on the certificate indeed does belong to the subject in the certificate. In the image above, we can be rest assured that the public key: xyz belongs to the entity: example.com.
+If you need a TLS certificate for your domain, you need to prove to a trusted CA that you own the domain and then they sign & issue you a
+certificate. Anyone else that trust that CA can have full confidence that the certificate is valid.
 
-## Chain of Trusts
+### Public Key Certificates
 
-Now imagine, you run into a similar situation once again but this time you're to deliver a confidential message to Mr Smith in Ohio.
-However, you do not have anyone trusted in Ohio.
+A digital Certificate is a signed proof that states that a public key belongs to a certain identity.
+It's a way to bind a public key to a subject.
 
-Good thing Mrs Jessica knows Mr Pete in Ohio. She trusts him 100%. Mr Pete know everyone in Ohio and can verify that anyone claiming to be Mr Smith
-is indeed Mr Smith.
+Below is a TLS certificate that claims that the public key belongs to the entity `adityathebe.com`.
 
-This is how through a chain of trusted 3rd parties, you were able to verify an identity claim.
+```
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            0f:59:b4:d4:06:47:9a:1e:df:00:02:3b:48:6c:72:d5
+        Signature Algorithm: ecdsa-with-SHA256
+=====>  Issuer: C=US, O=Cloudflare, Inc., CN=Cloudflare Inc ECC CA-3
+        Validity
+            Not Before: Feb 24 00:00:00 2024 GMT
+            Not After : Dec 31 23:59:59 2024 GMT
+=====>  Subject: C=US, ST=California, L=San Francisco, O=Cloudflare, Inc., CN=adityathebe.com
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey
+                Public-Key: (256 bit)
+=============>    pub:
+                    04:7d:2f:37:6a:b6:09:08:e4:00:18:54:6a:10:95:
+                    25:c2:5a:09:a6:de:72:77:fe:ae:92:09:47:05:88:
+                    de:f8:9a:89:0d:46:90:a8:ba:5b:03:69:88:32:12:
+                    f5:ec:5a:42:51:7d:1e:93:60:d2:95:0d:5b:fa:fd:
+                    b6:fc:64:e6:75
+                ASN1 OID: prime256v1
+                NIST CURVE: P-256
+        X509v3 extensions:
+            ...
 
-## Public Key Infrastructure
+```
 
-Certificate Authorities work in the same manner. In the real world, this chain of trust is maintained via Public Key Infrastructure (PKI).
+This is an actual TLS certificate for my website (stripped off for brevity).
+The CA that signed and issued this certificate is Cloudflare Inc.
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-  <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
-    </marker>
-  </defs>
-  
-  <!-- Root CA -->
-  <rect x="350" y="50" width="100" height="60" rx="10" fill="#4CAF50"/>
-  <text x="400" y="85" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Root CA</text>
-  
-  <!-- Intermediate CA 1 -->
-  <rect x="200" y="200" width="120" height="60" rx="10" fill="#2196F3"/>
-  <text x="260" y="235" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Intermediate CA 1</text>
-  
-  <!-- Intermediate CA 2 -->
-  <rect x="480" y="200" width="120" height="60" rx="10" fill="#2196F3"/>
-  <text x="540" y="235" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Intermediate CA 2</text>
-  
-  <!-- End-user Cert 1 -->
-  <rect x="100" y="350" width="100" height="60" rx="10" fill="#FFC107"/>
-  <text x="150" y="385" font-family="Arial" font-size="14" fill="white" text-anchor="middle">End-user Cert 1</text>
-  
-  <!-- End-user Cert 2 -->
-  <rect x="250" y="350" width="100" height="60" rx="10" fill="#FFC107"/>
-  <text x="300" y="385" font-family="Arial" font-size="14" fill="white" text-anchor="middle">End-user Cert 2</text>
-  
-  <!-- End-user Cert 3 -->
-  <rect x="450" y="350" width="100" height="60" rx="10" fill="#FFC107"/>
-  <text x="500" y="385" font-family="Arial" font-size="14" fill="white" text-anchor="middle">End-user Cert 3</text>
-  
-  <!-- End-user Cert 4 -->
-  <rect x="600" y="350" width="100" height="60" rx="10" fill="#FFC107"/>
-  <text x="650" y="385" font-family="Arial" font-size="14" fill="white" text-anchor="middle">End-user Cert 4</text>
-  
-  <!-- Arrows -->
-  <line x1="400" y1="110" x2="260" y2="200" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <line x1="400" y1="110" x2="540" y2="200" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <line x1="260" y1="260" x2="150" y2="350" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <line x1="260" y1="260" x2="300" y2="350" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <line x1="540" y1="260" x2="500" y2="350" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <line x1="540" y1="260" x2="650" y2="350" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
-  
-  <!-- Legend -->
-  <rect x="650" y="50" width="20" height="20" fill="#4CAF50"/>
-  <text x="680" y="65" font-family="Arial" font-size="12" fill="#333">Root CA</text>
-  <rect x="650" y="80" width="20" height="20" fill="#2196F3"/>
-  <text x="680" y="95" font-family="Arial" font-size="12" fill="#333">Intermediate CA</text>
-  <rect x="650" y="110" width="20" height="20" fill="#FFC107"/>
-  <text x="680" y="125" font-family="Arial" font-size="12" fill="#333">End-user Certificate</text>
-</svg>
+When you visit my website over HTTPs, your browser is presented with this very certificate.
+If your browser or OS trusts Cloudflare Inc as a CA then it can trust the certificate.
+And if it doesn't, then it'll show a warning and probably not load the website at all.
 
-### 1. Root Certificate Authorities
+## Root Certificate Authorities
 
-Root CAs are organizations that are responsible for the creation, issuance, revocation, and management of Certificates.
-They sit at the very top level of the trust chain.
-For an entity to become a root CA, it needs to have enough "social" trust for Operating systems and applications to trust it and put it in their trusted root certificate store.
+In real world there's a heirarchy of CAs.
+Root CAs sit at the very top level of the trust chain.
+For an entity to become a root CA, it needs to have enough "social" trust for OSs and applications to trust it and put it in their trusted root certificate store.
 
 Some of the few popular root CAs are
 
@@ -123,7 +96,7 @@ Some of the few popular root CAs are
 - GlobalSign
 - DigiCert
 
-#### Root Certificates
+### Root Certificates
 
 A root certificate is a self-signed Certificate issued by a Root CA. They are also known as "trust anchors" or just "roots".
 A root CA can have several root certificates. Example: ISRG has 2 root certificates
@@ -146,7 +119,7 @@ As you can see, on my Arch Linux machine there are `148` root certificates. On m
 The root certificates in the Trust Store of one OS may vary from another OS or from one web brower to another.
 For example: the root certificates trusted by Google Chrome may not completely overlap with the ones trusted by Firefox.
 
-#### Root Programs
+### Root Programs
 
 What's the criteria for a root certificate to be included in an OS's or web brower's trusted store? Why is it that one root certificate that exist in Chrome doesn't exist in Firefox or vice-versa.
 
@@ -157,7 +130,7 @@ The criteria is defined by a root program. One root program may have more strict
 - [Chrome](https://www.chromium.org/Home/chromium-security/root-ca-policy/)
 - [Mozilla](https://wiki.mozilla.org/CA)
 
-### 2. Intermediate Certificate Authorities
+## Intermediate Certificate Authorities
 
 In practice, these root certificates do not directly issue certificates for the end users.
 
