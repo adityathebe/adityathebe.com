@@ -10,42 +10,37 @@ keywords:
   - SSL certificatese
 ---
 
-<div class="table-of-contents">
-
-1. [Certificate Authority (CA)](#certificate-authority)
-2. [Root CA](#root-certificate-authorities)
-3. [Intermediate CA](#intermediate-certificate-authorities)
-
-</div>
-
 Public Key Cryptography has enabled us to securely communicate over an insecure channel. If Alice wants to send confidential data to Bob, she needs to somehow access Bob's public key and then encrypt the message with that public key. Only Bob (or anyone with possession of the public key's private key) can decrypt the message. And likewise, Bob encrypts the message with Alice's public key and only Alice can decrypt it. A secure communication channel is thus established.
 
 Let me ask you this - how does Alice guarantee that the public key is actually Bob's?
-Cuz remember, they are in a untrustworthy insecure enviroment.
+Cuz remember, they are in an untrustworthy insecure enviroment.
 
 Usually, the public key is available in Bob's website.
 If Alice got Bob's public key from his website then she can be assured, **to some extent**, that the public key indeed belongs to Bob.
 She still cannot be 100% sure because who says the website is actually run by Bob and not some bad actor trying to impersonate him?
 
 To verify an identity in an untrustworthy enviroment, we need a Trusted entity that can do that for us.
-We fully trust that entity and then take it with 100% certainty any identity claim it provides.
-
+We place absolute trust in that entity and blindly accept their identity claims without any doubt or reservation.
 If the trusted entity states that it is indeed Bob's public key then for all intents and purposes that is inded Bob's public key.
 
 ## Certificate Authority
 
 In the web, Certificate Authorities (CA) are such trusted entities.
-CAs are organizations that does this verification for us.
-They are responsible for the creation, issuance, revocation, and management of Certificates.
-They do all the heavy lifiting of verifying the identity and then issue a signed certificate which acts as a proof of identity.
+They are "trusted" because they have gathered enough credibility in the society.
+One cannot simply become a CA - well they can but no one really trusts them.
 
-If you need a TLS certificate for your domain, you need to prove to a trusted CA that you own the domain and then they sign & issue you a
-certificate. Anyone else that trust that CA can have full confidence that the certificate is valid.
+CAs are organizations that does the identity verification for us.
+They do all the heavy lifiting of verifying the identity and then issue a signed digital document called "Certificate" which acts as a proof of identity.
 
 ### Public Key Certificates
 
 A digital Certificate is a signed proof that states that a public key belongs to a certain identity.
 It's a way to bind a public key to a subject.
+
+CAs are responsible for the creation, issuance, revocation, and management of Certificates.
+
+If you need a TLS certificate for your domain, you need to prove to a trusted CA that you own the domain and then they sign & issue you a
+certificate. Anyone else that trust that CA can have full confidence that the certificate is valid.
 
 Below is a TLS certificate that claims that the public key belongs to the entity `adityathebe.com`.
 
@@ -86,11 +81,11 @@ And if it doesn't, then it'll show a warning and probably not load the website a
 
 ## Root Certificate Authorities
 
-In real world there's a heirarchy of CAs.
+In the real world there's a heirarchy of CAs.
 Root CAs sit at the very top level of the trust chain.
 For an entity to become a root CA, it needs to have enough "social" trust for OSs and applications to trust it and put it in their trusted root certificate store.
 
-Some of the few popular root CAs are
+A few popular root CAs are
 
 - Internet Security Research Group (ISRG)
 - GlobalSign
