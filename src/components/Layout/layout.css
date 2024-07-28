@@ -72,7 +72,8 @@ html {
   --code-bg: var(--nord-snowstorm-2);
 
   --color-good: var(--nord-frost-2);
-  --color-good-secondary: var(--nord-frost-1);
+  --color-good-2: var(--nord-frost-1);
+  --color-good-3: var(--nord-aurora-3);
   --color-bad: var(--nord-aurora-1);
 }
 
@@ -106,7 +107,8 @@ html[data-theme='dark'] {
   --code-bg: var(--nord-polar-night-3);
 
   --color-good: var(--nord-frost-4);
-  --color-good-secondary: var(--nord-aurora-5);
+  --color-good-2: var(--nord-aurora-5);
+  --color-good-3: var(--nord-aurora-2);
   --color-bad: var(--nord-aurora-1);
 }
 
