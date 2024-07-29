@@ -23,6 +23,8 @@ Let me ask you this - how does Alice guarantee that the public key is actually B
 Cuz remember, they are in a potentially compromised environment.
 Who is to say that Eve - a malicious actor - didn't offer her public key to Alice claiming to be it of Bob's.
 
+## Shortcomings of Public Key Encryption
+
 If Alice doesn't verify that the public key is Bob's then she'll happily encrypt messages with Eve's key falsely believing that she's encrypting it for Bob.
 
 <!-- prettier-ignore -->
@@ -499,19 +501,15 @@ Each vendor has outlined a set of criteria for CAs to be considered trustworthy 
 - [Chrome](https://www.chromium.org/Home/chromium-security/root-ca-policy/)
 - [Mozilla](https://wiki.mozilla.org/CA)
 
-## Supporting Materials
+---
+
+## Supplementary Materials
 
 - [How digital certificates bind owners to their public key](https://www.youtube.com/watch?v=5rT6fZUwhG8)
 - [Certificates and Certificate Authority Explained](https://www.youtube.com/watch?v=x_I6Qc35PuQ)
+- https://www.checktls.com/showcas.html
 
 ## Further Reading
 
 - [Certificate Revocation](https://en.wikipedia.org/wiki/Certificate_revocation)
 - [Chain of Trust](https://en.wikipedia.org/wiki/Chain_of_trust)
-
-## References
-
-- https://www.thesslstore.com/blog/root-certificates-intermediate/
-- https://www.checktls.com/showcas.html
-- https://letsencrypt.org/certificates
-- https://www.agwa.name/blog/post/roots_intermediates_and_resellers
