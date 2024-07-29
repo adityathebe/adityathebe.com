@@ -106,9 +106,9 @@ html[data-theme='dark'] {
 
   --code-bg: var(--nord-polar-night-3);
 
-  --color-good: var(--nord-frost-4);
-  --color-good-2: var(--nord-aurora-5);
-  --color-good-3: var(--nord-aurora-2);
+  --color-good: #00838f;
+  --color-good-2: #00897b;
+  --color-good-3: var(--nord-frost-4); /*var(--nord-aurora-2);*/
   --color-bad: var(--nord-aurora-1);
 }
 
