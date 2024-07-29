@@ -4,7 +4,8 @@ date: '2024-07-29 22:00'
 categories:
   - Cryptography
 slug: /public-key-infrastructures-and-certificates
-description:
+featuredImage: ./pki.png
+description: Learn about about the shortcomings of public key encryption and the need for a trusted 3rd party - Certificate Authority.
 keywords:
   - public key certificates
   - SSL certificatese
