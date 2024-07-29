@@ -10,18 +10,18 @@ keywords:
   - SSL certificatese
 ---
 
-> This article is targeted towards new-comers looking to explore the foundations of PKIs.  
+> This article is targeted towards newcomers looking to explore the foundations of PKIs.  
 > It should be treated as the first chapter of PKI 101.  
 > Readers are assumed to have a basic understanding of Asymmetric Cryptography & TLS.
 
 Public Key encryption has enabled us to establish a secure channel for communication in an untrusted environment.
 
-If Alice wants to send confidential data to Bob, she needs to somehow obtain Bob's public key and then encrypt the message with that public key. Only Bob can decrypt the message. And likewise, Bob encrypts the message with Alice's public key and only Alice can decrypt it. A secure communication channel is thus established.
+If Alice wants to send confidential data to Bob, she needs to somehow obtain Bob's public key and then encrypt the message with that public key. Only Bob can decrypt the message. And likewise, Bob encrypts the message with Alice's public key, and only Alice can decrypt it. A secure communication channel is thus established.
 
-While **confidentiality** is indoubtedly achieved with encryption, **authenticity** isn't!
+While **confidentiality** is undoubtedly achieved with encryption, **authenticity** isn't!
 Let me ask you this - how does Alice guarantee that the public key is actually Bob's?
 Cuz remember, they are in a potentially compromised environment.
-Who is to say that Eve - a malicious actor - didn't offer her public key to Alice claiming to be it of Bob's.
+Who is to say that Eve - a malicious actor - didn't offer her public key to Alice claiming it to be of Bob's.
 
 ## Shortcomings of Public Key Encryption
 
@@ -295,11 +295,11 @@ If the trusted entity states that it is indeed Bob's public key then for all int
 
 ## Certificate Authority
 
-In the web, Certificate Authorities (CA) are organizations that **aim** to be such trusted entities.
+On the web, Certificate Authorities (CA) are organizations that **aim** to be such trusted entities.
 
-They do all the heavy lifiting of verifying the identity and then issue a signed digital document called "Certificate" which acts as a proof of identity.
+They do all the heavy lifting of verifying the identity and then issue a signed digital document called a "Certificate" which acts as proof of identity.
 
-When an unknown actor provides us with a certificate that was signed by a CA we trust, we can mathematically verify that the certificate was indeed certified by that CA and deem the certificate as valid. This eliminates a massive burden off of us in individually verifying the identity of every single public keys we deal with.
+When an unknown actor provides us with a certificate that was signed by a CA we trust, we can mathematically verify that the certificate was indeed certified by that CA and deem the certificate valid. This eliminates a massive burden off of us in individually verifying the identity of every single public key we deal with.
 We trust one (or more) CAs and then get the benefit of having the thousands/millions of public keys identified.
 
 In our example above, Bob requests a certificate from the Trusted entity and then instead of providing a public key to Alice, he provides her with the signed certificate. Alice can then extract the public key from the certificate after verifying that the certificate is valid.
@@ -485,7 +485,7 @@ cat /etc/ssl/certs/ca-certificates.crt | grep 'BEGIN CERTIFICATE' | wc -l
 148
 ```
 
-As you can see, on my Arch Linux machine there are `148` root certificates. On my Ubuntu server, there's `137`.
+As you can see, on my Arch Linux machine there are `148` root certificates. On my Ubuntu server, there are `137`.
 
 The set of CAs considered trustworthy isn't uniform across all OSs and web browsers.
 For example: the CAs trusted by Google Chrome may not be trusted by Firefox and vice-versa.
