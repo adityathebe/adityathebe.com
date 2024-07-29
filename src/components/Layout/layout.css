@@ -70,6 +70,11 @@ html {
   --table-of-contents-bg: var(--nord-snowstorm-3);
 
   --code-bg: var(--nord-snowstorm-2);
+
+  --color-good: var(--nord-frost-2);
+  --color-good-2: var(--nord-frost-1);
+  --color-good-3: var(--nord-aurora-3);
+  --color-bad: var(--nord-aurora-1);
 }
 
 html[data-theme='dark'] {
@@ -100,6 +105,11 @@ html[data-theme='dark'] {
   --table-of-contents-bg: var(--nord-polar-night-2);
 
   --code-bg: var(--nord-polar-night-3);
+
+  --color-good: #00838f;
+  --color-good-2: #00897b;
+  --color-good-3: var(--nord-frost-4); /*var(--nord-aurora-2);*/
+  --color-bad: var(--nord-aurora-1);
 }
 
 html[data-theme='dark'] img {
