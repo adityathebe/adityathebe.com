@@ -49,6 +49,13 @@ const IndexPage = () => {
           description
         }
       }
+
+      allDesktopYaml {
+        nodes {
+          name
+          description
+        }
+      }
     }
   `);
 
@@ -56,6 +63,7 @@ const IndexPage = () => {
   const sofwaresList = data.allSoftwaresYaml.nodes;
   const servicesList = data.allServicesYaml.nodes;
   const laptopSpecsList = data.allLaptopYaml.nodes;
+  const desktopSpecsList = data.allDesktopYaml.nodes;
 
   return (
     <Layout>
@@ -70,7 +78,10 @@ const IndexPage = () => {
       <h2>Services</h2>
       <UsesItem items={servicesList} />
 
-      <h2>System</h2>
+      <h2>Desktop</h2>
+      <UsesItem items={desktopSpecsList} />
+
+      <h2>Laptop</h2>
       <UsesItem items={laptopSpecsList} />
     </Layout>
   );

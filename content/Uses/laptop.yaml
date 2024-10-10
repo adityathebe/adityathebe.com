@@ -1,11 +1,8 @@
 - description: Model
   name: DELL XPS 7590
 
-- description: External Monitor
-  name: MSI Optix G273Q Series | 2560 x 1440 (QHD) | 165Hz | 27"
-
 - description: RAM
-  name: 2x16GB
+  name: 16GB
 
 - description: Processor
   name: Intel i5-9300H (4) @ 4.100GHz

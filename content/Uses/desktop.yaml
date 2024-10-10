@@ -1,0 +1,23 @@
+- description: Motherboard
+  name: Z790 GAMING PLUS WIFI (MS-7E06)
+
+- description: External Monitor
+  name: MSI Optix G273Q Series | 2560 x 1440 (QHD) | 165Hz | 27"
+
+- description: DDR5 RAM
+  name: 2x16GB
+
+- description: Processor
+  name: Intel(R) Core(TM) i9-14900K
+
+- description: GPU
+  name: XLR8 NVIDIA GeForce RTX 4060
+
+- description: OS
+  name: Arch Linux
+
+- description: SSD
+  name: Lexar SSD NM610PRO 500GB
+
+- description: Window Manager
+  name: bspwm

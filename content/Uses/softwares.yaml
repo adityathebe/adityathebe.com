@@ -1,10 +1,10 @@
 - name: Telegram
-  description: Instant Messaging (Personal)
+  description: Instant Messaging
   url: https://www.telegram.org
 
-- name: Discord
-  description: Instant Messaging (Communities - Go, Arsenal, Amass,...)
-  url: https://discord.com/
+- name: Restic
+  description: Best backup tool 
+  url: https://restic.com/
 
 - name: Brave
   description: Web Browser
@@ -14,9 +14,9 @@
   description: Music Player
   url: https://www.navidrome.org/
 
-- name: Newsboat
+- name: FreshRSS
   description: RSS Manager
-  url: https://newsboat.org
+  url: https://freshrss.org
 
 - name: Proxmox
   description: Virtualization
