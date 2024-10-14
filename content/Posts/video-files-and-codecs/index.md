@@ -138,6 +138,16 @@ Here's a list of codecs and their support on different Jellyfin clients
 ![](./jellyfin.org_docs_general_clients_codec-support_.png)
 _https://jellyfin.org/docs/general/clients/codec-support/_
 
+I have a handy function on my `.zshrc` that displays the file container format & the codec for a given media file.
+
+```sh
+video_info() {
+  echo "File Container: $(file -b --mime-type "$1")" && \
+  echo "Video Codec: $(ffprobe -v quiet -select_streams v:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 "$1")" && \
+  echo "Audio Codec: $(ffprobe -v quiet -select_streams a:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 "$1")"
+}
+```
+
 ## Who's responsible in supporting a codec
 
 - The media player application is responsible in supporting a given codec.
