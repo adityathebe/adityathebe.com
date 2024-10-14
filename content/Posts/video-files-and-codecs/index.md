@@ -119,6 +119,7 @@ To circle back to the original problem, the reason why some movies weren't suppo
 those movies were encoded with HEVC.
 
 ![HEVC encoded movie on Jellyfin](./extraction-2-movie-jellyfin-codec.png)
+_HEVC encoded movie on Jellyfin_
 
 My web browser (and most browsers today) doesn't [natively support hevc](https://caniuse.com/hevc)
 encoded media files. The Jellyfin server then has to convert the hevc encoded files to a format that the client supports.
@@ -130,3 +131,9 @@ is smooth. Or, they have run the transcode on the fly when the client starts str
 On the other hand, h264 encoded movies are natively supported by most browsers these days.
 
 ![AVC encoded movie on Jellyfin](./jaari-movie-jellyfin-codec.png)
+_AVC encoded movie on Jellyfin_
+
+Here's a list of codecs and their support on different Jellyfin clients
+
+![](./jellyfin.org_docs_general_clients_codec-support_.png)
+_https://jellyfin.org/docs/general/clients/codec-support/_
