@@ -1,10 +1,10 @@
 ---
-title: An intro to video files & codecs
-date: '2024-10-10'
+title: Video Files Demystified
+date: '2024-10-14'
 categories:
   - video
-slug: /video-files-and-codecs
-description: Learn to build a twitter bot with NodeJs and Javascript in under 50 lines of code.
+slug: /video-containers-and-codecs
+description: A Guide to Understanding Containers, Codecs, and Transcoding
 ---
 
 For the past couple of years I have been running Jellyfin on my [homelab](https://github.com/adityathebe/homelab); think of it as a self-hosted Neflix.
@@ -69,21 +69,28 @@ Some popular container formats are: `mp4`, `mkv`, `3gp`, `wEBm`, `flv`, `avi`, .
 
 Container formats differ from each other in various ways but here are some prominent defining characterstics
 
-| **Characteristic**          | **Description**                                                                                                                |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| **Compression**             | Different formats use various compression algorithms, such as H.264, VP8/VP9, or lossless codecs like FLAC.                    |
-| **Metadata support**        | Ability to store metadata, including subtitles, chapter markers, and custom tags.                                              |
-| **Audio and video tracks**  | Some formats support multiple audio and video streams, while others are limited to a single track.                             |
-| **Compatibility**           | Different formats have varying levels of compatibility with different devices, operating systems, or software applications.    |
-| **Licensing and royalties** | Container formats may be open-source (e.g., WebM, OGG/OGV), proprietary (e.g., MP4), or require royalties for use (e.g., FLV). |
+| **Characteristic**          | **Description**                                                                                                             |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **Compression**             | Different formats use various compression algorithms, such as H.264, VP8/VP9, or lossless codecs like FLAC.                 |
+| **Metadata support**        | Ability to store metadata, including subtitles, chapter markers, and custom tags.                                           |
+| **Audio and video tracks**  | Some formats support multiple audio and video streams, while others are limited to a single track.                          |
+| **Compatibility**           | Different formats have varying levels of compatibility with different devices, operating systems, or software applications. |
+| **Licensing and royalties** | Container formats may be open-source (e.g. mkv), royalty-free (e.g. webm), proprietary (e.g. MP4, QuickTime,)               |
 
 ## Codecs
 
-Codecs are notoriously difficult to implement (that's what I've read).
+Codecs are the algorithms that encode the raw video data and compress them. The output of a codec is what's put inside the
+containers. Codecs could also mean a hardware that is specifically designed to efficiently run the codecs.
 
-As a general user, it's helpful to be aware of the codecs of a video file because that will tell you whether your video player can play the video file or not.
-As a video provider, it's helpful to encode your videos in the most efficient but also with the most compatible codecs. Else the client will require transcoding.
-As a videographer, it's helpful to be mindful of the codec.
+Here are **some** of the most prominent characterstics of codecs to consider:
+
+| **Characteristic**    | **Description**                                                                                         |
+| --------------------- | ------------------------------------------------------------------------------------------------------- |
+| **Compression Ratio** | Amount of data reduction achieved by the codec, with higher ratios indicating better compression.       |
+| **Licensing**         | Whether the codec is open-source (free) or requires royalties or licenses from patent holders.          |
+| **Complexity**        | Computational resources required to encode and decode the video, affecting device performance.          |
+| **Color Space**       | Range of colors supported by the codec, impacting suitability for different applications (SD, HD, HDR). |
+| **Bit Depth**         | Number of bits used to represent each pixel's color information, affecting overall quality and detail.  |
 
 Some popular codecs are:
 
@@ -94,15 +101,32 @@ Some popular codecs are:
 | VP9                | _(Open source)_ developed by Google and YouTube uses this.                                                                                                                                                                           |
 | AV1                | _(Open source)_ relatively newer and the considered the future of video compression. Isn't supported widely.                                                                                                                         |
 
-## Encoders
+### Why it's important to be aware of the codec
 
-There are currently three AV1 encoders supported by FFmpeg: libaom (invoked with libaom-av1 in FFmpeg), SVT-AV1 (libsvtav1), and rav1e (librav1e).
+- **For General Users**: Understanding codecs helps you troubleshoot issues with video playback.
+  By knowing which codecs are supported by your media player, you can diagnose and potentially fix problems when a video file won't play.
 
-## Decoders are video players
+- **For Videographers**: Being mindful of the codec used in your footage ensures that you can work seamlessly with your preferred editing software or share your content without
+  conversion issues.
+  For instance, if you record with HEVC but Davinci Resolve doesn't support it, you'll need to purchase the codec to edit your files.
 
----
+- **For Video Providers**: Choosing efficient and compatible codecs for your videos saves time and resources by avoiding unnecessary transcoding requests from clients.
+  By encoding in a format that's widely supported, you can ensure that your content is accessible and easily playable on various devices and platforms.
 
-In short
+## Looking back at the original problem
 
-> the codecs define the compression and quality of the video content.
-> the containers then package the encoded video content. Not all codecs are supported by a container. Example: an mp4 file can contain an AV1 encoded video content but 3GP can't.
+To circle back to the original problem, the reason why some movies weren't supported by the Jellyfin Webapp was because
+those movies were encoded with HEVC.
+
+![HEVC encoded movie on Jellyfin](./extraction-2-movie-jellyfin-codec.png)
+
+My web browser (and most browsers today) doesn't [natively support hevc](https://caniuse.com/hevc)
+encoded media files. The Jellyfin server then has to convert the hevc encoded files to a format that the client supports.
+This process of converting a video file from one codec to another is called **Transcoding**.
+
+Most people running Jellyfin servers pre-transcode necessary files into h264 so all clients can support it and the playbook
+is smooth. Or, they have run the transcode on the fly when the client starts streaming.
+
+On the other hand, h264 encoded movies are natively supported by most browsers these days.
+
+![AVC encoded movie on Jellyfin](./jaari-movie-jellyfin-codec.png)
