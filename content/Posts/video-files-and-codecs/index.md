@@ -137,3 +137,10 @@ Here's a list of codecs and their support on different Jellyfin clients
 
 ![](./jellyfin.org_docs_general_clients_codec-support_.png)
 _https://jellyfin.org/docs/general/clients/codec-support/_
+
+## Who's responsible in supporting a codec
+
+- The media player application is responsible in supporting a given codec.
+- The operating system however provides system libraries and drivers that support various video codecs and facilitate communication between software and hardware components.
+  The application can either implement their own support for codec or use the OS's system libraries.
+- The hardware accelerates specific codec operations using GPUs, SoCs, or specialized A/V codec chips.
