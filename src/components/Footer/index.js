@@ -22,7 +22,7 @@ const Footer = () => {
   return (
     <footer className="site-footer">
       <div className="footer-col">
-        <span className="contact-list">© 2015-2024 {data.site.siteMetadata.author}</span>
+        <span className="contact-list">© 2015-2025 {data.site.siteMetadata.author}</span>
       </div>
 
       <div className="footer-col">
