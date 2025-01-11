@@ -1,11 +1,11 @@
 ---
-title: Building Container Images without Docker
+title: Dockerfile isn't the only way to create Container Images
 date: '2024-02-24 00:50'
 categories:
   - Containers
 slug: /building-container-images-without-docker
 featuredImage: ./containers.png
-description: Building container images without docker and Dockerfile.
+description: Dockerfiles are a common way to create container images, but they aren’t the only option
 ---
 
 On a [recent episode](https://changelog.com/shipit/91) of the [ShipIt Podcast](https://changelog.com/shipit), I learned that container images can be built without docker! This may be pretty obvious to someone with a foundational understanding of containers, but to me it was news.
