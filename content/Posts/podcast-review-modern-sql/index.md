@@ -1,6 +1,7 @@
 ---
 title: Podcast Notes & Review - Modern SQL
 date: '2025-01-11'
+modified_date: '2025-01-12'
 categories:
   - Postgres
   - SQL
@@ -12,7 +13,7 @@ description: My notes on an episode of postgres.fm
 > Episode: https://postgres.fm/episodes/modern-sql/transcript
 
 This was one of my favorite episodes of [postgres.fm](https://postgres.fm) - a podcast I regularly listen to.
-The guest - [Markus Winand](https://winand.at/) - had such a fresh perspective on the mundane and conventional wisdom of SQL that it honestly shifted my perspective 
+The guest - [Markus Winand](https://winand.at/) - had such a fresh perspective on the mundane and conventional wisdom of SQL that it honestly shifted my perspective
 and also inspired me to learn some newer features.
 
 Most of us think of SQL as a query language - I mean, its very name indicates that - however Markus presents a different view.
@@ -68,20 +69,19 @@ _https://learnsql.com/blog/history-of-sql-standards/_
 
 ## NULL handling
 
-Modern SQL also offers various ways to handle NULL values in unique constraints. Example: here are two new
-additions to `SQL:2023` regarding NULL value handling
+Modern SQL also offers various ways to handle NULL values. Example: here are some features in modern sql regarding NULL value handling
 
-- `IS DISTINCT FROM` is NULL safe comparison operator.
-- `NULLS DISTINCT` deals with how nulls are handled in unique contraints.
+- `IS DISTINCT FROM`/`IS NOT DISTINCT FROM` are NULL safe comparison operator.
+- `NULLS DISTINCT`/`NULLS NOT DISTINCT` deals with how nulls are handled in unique contraints.
 
-  ```sql
-  CREATE TABLE users (
-      email TEXT UNIQUE NULLS NOT DISTINCT,
-      backup_email TEXT UNIQUE NULLS NOT DISTINCT
-  );
-  ```
+```sql
+CREATE TABLE users (
+    email TEXT UNIQUE NULLS NOT DISTINCT,
+    backup_email TEXT UNIQUE NULLS NOT DISTINCT
+);
+```
 
-  Since Postgresql v15+, it's is now possible to have multiple rows with null values on a column with unique constraint.
+Since Postgresql v15+, it's is now possible to have multiple rows with null values on a column with unique constraint.
 
 <div class="section-notes">
 I'm only learning that NULL values in SQL have some nasty qwirks.
