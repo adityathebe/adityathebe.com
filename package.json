@@ -21,6 +21,7 @@
     "gatsby-transformer-remark": "^6.13.1",
     "gatsby-transformer-sharp": "^5.13.1",
     "gatsby-transformer-yaml": "^5.13.1",
+    "griddle-react": "^1.13.1",
     "prismjs": "^1.17.1",
     "prop-types": "^15.7.2",
     "react": "^18.2.0",
@@ -39,7 +40,8 @@
     "develop": "gatsby develop -H 0.0.0.0",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,23 @@
+.podcast-listening-history {
+  p {
+    font-size: 1em;
+  }
+
+  a {
+    color: inherit;
+    font-weight: inherit;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a:visited {
+    color: inherit;
+  }
+}
+
+.tier {
+  font-weight: bold;
+}

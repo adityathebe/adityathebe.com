@@ -40,6 +40,9 @@ const Navbar = () => {
           <Link className="page-link" to="/uses">
             Uses
           </Link>
+          <Link className="page-link" to="/reviews">
+            Reviews
+          </Link>
           <Link className="page-link" to="/portfolio">
             Portfolio
           </Link>
