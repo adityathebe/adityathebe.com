@@ -3,6 +3,7 @@ import React from 'react';
 
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
+import { Link } from 'gatsby';
 
 const LinksPage = () => (
   <Layout>
@@ -13,6 +14,12 @@ const LinksPage = () => (
       <a href="https://movies.adityathebe.com/users/adityathebe/dashboard" target="_blank">
         https://movies.adityathebe.com/users/adityathebe/dashboard
       </a>
+
+      <h2>TV Shows watch history</h2>
+      <Link to="/reviews/tv" >
+        /reviews/tv
+      </Link>
+
       <h2>Some of my favorite people in Tech</h2>
       <ul>
         <li>

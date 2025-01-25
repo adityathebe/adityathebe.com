@@ -29,7 +29,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     }
-  `).then(result => {
+  `).then((result) => {
     if (result.errors) {
       throw result.errors;
     }
@@ -37,7 +37,7 @@ exports.createPages = ({ graphql, actions }) => {
     // Create blog posts pages.
     const posts = result.data.allMarkdownRemark.edges;
 
-    posts.forEach(post => {
+    posts.forEach((post) => {
       let seoImage = '';
       if (post.node.frontmatter.featuredImage) {
         seoImage = post.node.frontmatter.featuredImage.publicURL;
@@ -50,7 +50,6 @@ exports.createPages = ({ graphql, actions }) => {
             isJournal: false,
           });
       }
-
 
       createPage({
         path: post.node.frontmatter.slug,
@@ -84,14 +83,14 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     }
-  `).then(result => {
+  `).then((result) => {
     if (result.errors) {
       throw result.errors;
     }
 
     // Create weekly journal pages.
     const posts = result.data.allMarkdownRemark.edges;
-    posts.forEach(post => {
+    posts.forEach((post) => {
       const seoImage = generateImage({
         title: post.node.frontmatter.title,
         slug: post.node.frontmatter.slug,
@@ -110,4 +109,21 @@ exports.createPages = ({ graphql, actions }) => {
   });
 
   return Promise.all([blogPosts, weeklyJournals]);
+};
+
+// Need to define the type explicity to handle nullable fields
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+
+  const typeDefs = `
+    type TvYaml implements Node {
+      title: String!    
+      status: String!   
+      tier: Float       
+      year: Int         
+      review: String    
+    }
+  `;
+
+  createTypes(typeDefs);
 };
