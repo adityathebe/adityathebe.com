@@ -1,0 +1,63 @@
+.tv-watch-history {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tv-show {
+  border-bottom: 1px solid #ddd;
+  padding: 1em 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.tv-show-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.tv-show-info {
+  flex: 1 1 200px;
+  min-width: 200px;
+}
+
+.tv-show-title {
+  margin: 0 0 8px 0;
+}
+
+.tv-show-title a {
+  text-decoration: none;
+  color: #007acc;
+}
+
+.tv-show-title a:hover {
+  text-decoration: underline;
+}
+
+.tv-show-date {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 8px;
+}
+
+.tv-show-rating {
+  color: #f5c518; /* Gold color for stars */
+  font-size: 1.1em;
+}
+
+.tv-show-review {
+  flex: 2 1 300px;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .tv-show-content {
+    flex-direction: column;
+  }
+
+  .tv-show-review {
+    margin-top: 16px;
+  }
+}

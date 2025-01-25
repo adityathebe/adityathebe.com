@@ -38,8 +38,12 @@ export default ({ project }) => {
         </div>
 
         <p className={'project_card__project_skills'}>
-          {project.skills.map((x) => {
-            return <span className="project-skill-tag">{'#' + x}</span>;
+          {project.skills.map((x, i) => {
+            return (
+              <span key={i} className="project-skill-tag">
+                {'#' + x}
+              </span>
+            );
           })}
         </p>
       </div>
