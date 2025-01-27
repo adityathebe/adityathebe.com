@@ -37,8 +37,13 @@
   tier: 7
   status: discontinued
 
-- title: Homeland
+- title: Tom Clancy's Jack Ryan
   tier: 3
+  status: completed
+  year: 2018
+
+- title: Homeland
+  tier: 2
   status: watching
   year: 2025
 
