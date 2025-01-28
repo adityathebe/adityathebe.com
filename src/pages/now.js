@@ -16,14 +16,19 @@ const IndexPage = () => (
         <li>
           <a href="https://hevy.com/user/adityathebe">Working out</a>
         </li>
-        <li>In the process of using neovim full-time</li>
         <li>
-          Reading <a href="https://theartofpostgresql.com/">The Art Of PostgreSQL</a>
+          Binging <a href="https://www.rottentomatoes.com/tv/homeland">Homeland (@season 4)</a>
+        </li>
+        <li>
+          Taking{' '}
+          <a href="https://www.youtube.com/playlist?list=PLSE8ODhjZXjYDBpQnSymaectKjxCy6BYq">
+            CMU Intro to Database Systems
+          </a>
         </li>
       </ul>
     </div>
 
-    <p>Last Updated: 07 May 2024</p>
+    <p>Last Updated: 28 Jan 2025</p>
   </Layout>
 );
 
