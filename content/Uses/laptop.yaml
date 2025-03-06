@@ -1,20 +1,8 @@
 - description: Model
-  name: DELL XPS 7590
-
-- description: RAM
-  name: 16GB
-
-- description: Processor
-  name: Intel i5-9300H (4) @ 4.100GHz
-
-- description: GPU
-  name: Intel UHD Graphics 630
-
-- description: OS
-  name: Arch Linux
-
-- description: SSD
-  name: 256GB M.2 PCIe NVMe Solid State Drive
+  name: Macbook Pro M4Pro 14" (24GB/512GB)
 
 - description: Window Manager
-  name: bspwm
+  name: Aerospace
+
+- description: Launcher
+  name: Raycast

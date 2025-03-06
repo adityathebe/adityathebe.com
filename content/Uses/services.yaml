@@ -1,10 +1,10 @@
 - name: Cloudflare
   description: Domain Provider & Host for this website.
 
-- name: Skiff
-  description: Free email hosting for this domain.
+- name: Fastmail
+  description: Email
 
-- name: Spotify Web
+- name: Apple Music
   description: Music Player
 
 - name: Bitwarden

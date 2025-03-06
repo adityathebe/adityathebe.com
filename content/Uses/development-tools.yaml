@@ -1,8 +1,8 @@
-- name: Alacritty
+- name: Ghostty
   description: Terminal Emulator
-  url: https://github.com/alacritty/alacritty
+  url: https://ghostty.org
 
-- name: ZSH with oh-my-zsh
+- name: ZSH
   description: Shell
   url: https://www.zsh.org/
 
@@ -22,14 +22,6 @@
   description: Text Editor - Primary
   url: https://code.visualstudio.com
 
-- name: Neovim & Astronvim
+- name: Neovim
   description: Text Editor - Secondary
   url: https://www.vim.org/
-
-- name: Docker
-  description: Container Management
-  url: https://www.docker.com
-
-- name: Git
-  description: Version Control
-  url: https://git-scm.com
