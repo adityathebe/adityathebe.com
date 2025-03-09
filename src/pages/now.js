@@ -16,6 +16,7 @@ const IndexPage = () => (
         <li>
           Learning to drive
         </li>
+        <li>Watching [The Night of](https://www.imdb.com/title/tt2401256/)</li>
         {/* <li>
           <a href="https://hevy.com/user/adityathebe">Working out</a>
         </li> */}
@@ -28,7 +29,7 @@ const IndexPage = () => (
       </ul>
     </div>
 
-    <p>Last Updated: 06 Mar, 2025</p>
+    <p>Last Updated: 09 Mar, 2025</p>
   </Layout>
 );
 
