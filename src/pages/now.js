@@ -16,7 +16,6 @@ const IndexPage = () => (
         <li>
           Learning to drive
         </li>
-        <li>Watching [The Night of](https://www.imdb.com/title/tt2401256/)</li>
         {/* <li>
           <a href="https://hevy.com/user/adityathebe">Working out</a>
         </li> */}
