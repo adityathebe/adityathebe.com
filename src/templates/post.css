@@ -1,3 +1,16 @@
+.year-heading {
+  font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
+  margin-top: 2.5em;
+  margin-bottom: 0.5em;
+  font-size: 1.5em;
+  color: var(--primary-text-color);
+  padding-bottom: 0.2em;
+}
+
+.year-heading:first-child {
+  margin-top: 0.5em;
+}
+
 .post-list {
   margin: 0;
   list-style: none;
