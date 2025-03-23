@@ -1,6 +1,7 @@
 ---
 title: Why I switched from Arch Linux to MacOS
 date: '2025-03-22 18:00'
+featuredImage: ./macbook-pro-m4-pro.png
 categories:
   - MacOS
   - Linux
