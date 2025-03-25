@@ -72,14 +72,12 @@ html {
   --code-block-bg-color: var(--nord-polar-night-1);
 
   --section-note-bg: #454545;
-  --section-note-color: #F0F5F9;
+  --section-note-color: #f0f5f9;
 
   --color-good: var(--nord-frost-2);
   --color-good-2: var(--nord-frost-1);
   --color-good-3: var(--nord-aurora-3);
   --color-bad: var(--nord-aurora-1);
-
-  --code-block-bg-color: var(--nord-polar-night-1);
 }
 
 html[data-theme='dark'] {
