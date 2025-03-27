@@ -23,7 +23,6 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  border-bottom: 1px solid var(--border-color-1);
   padding: 0.4em 0;
 }
 
@@ -61,13 +60,13 @@
 }
 
 .post-meta .post-tag {
-  border-radius: 5px;
+  border-radius: 0.5em;
   background: var(--tag-bg-color);
   display: inline-block;
-  font-size: 0.5em;
+  font-size: 0.8em;
   line-height: 0.8em;
-  padding: 5px;
-  color: var(--tag-color);
+  padding: 0.5em;
+  color: var(--primary-text-color);
 }
 
 .post-info {

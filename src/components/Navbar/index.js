@@ -35,10 +35,7 @@ const Navbar = () => {
 
         <div className="trigger">
           <Link className="page-link" to="/journal">
-            Weekly Journal
-          </Link>
-          <Link className="page-link" to="/uses">
-            Uses
+            Journal
           </Link>
           <Link className="page-link" to="/portfolio">
             Portfolio
@@ -48,6 +45,9 @@ const Navbar = () => {
           </Link>
           <Link className="page-link" to="/now">
             Now
+          </Link>
+          <Link className="page-link" to="/uses">
+            Uses
           </Link>
           <Link className="page-link" to="/links">
             Links

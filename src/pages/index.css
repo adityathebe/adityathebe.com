@@ -1,0 +1,35 @@
+.home-header {
+  text-align: center;
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 0 1rem;
+}
+
+.home-title {
+  font-family: 'Fraunces', serif;
+  font-size: 3rem;
+  margin: 0 0 1rem;
+  color: var(--text-title);
+}
+
+.home-description {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin: 0 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .home-header {
+    margin: 1rem auto;
+  }
+
+  .home-title {
+    font-size: 2rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .home-description {
+    font-size: 1rem;
+    margin: 0 0 1rem;
+  }
+}

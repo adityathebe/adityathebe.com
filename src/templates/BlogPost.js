@@ -30,7 +30,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
         <span className="post-meta">
           {post.frontmatter.categories.map((x, idx) => (
             <span key={idx} className="post-tag">
-              #{x}
+              {x}
             </span>
           ))}
         </span>
