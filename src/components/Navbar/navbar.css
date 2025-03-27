@@ -10,7 +10,6 @@ header {
   z-index: 2;
   position: relative;
   margin-bottom: 1em;
-  box-shadow: 0 3px 2px -2px var(--border-color-2);
 }
 
 .site-title {
