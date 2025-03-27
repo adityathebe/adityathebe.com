@@ -76,7 +76,7 @@ export default () => {
                   <div className="post-meta">
                     {edge.node.frontmatter.categories.map((x, idx) => (
                       <span key={idx} className="post-tag">
-                        #{x}
+                        {x}
                       </span>
                     ))}
                   </div>

@@ -50,8 +50,7 @@ html {
 
   --bg-color: #ffffff;
 
-  --tag-bg-color: #4c566a;
-  --tag-color: var(--nord3);
+  --tag-bg-color: #ebebeb;
 
   --border-color-1: #e8e8e8;
   --border-color-2: var(--nord-polar-night-1);
@@ -89,7 +88,6 @@ html[data-theme='dark'] {
   --bg-color: var(--nord1);
 
   --tag-bg-color: var(--nord-polar-night-2);
-  --tag-color: var(--nord-snowstorm-1);
 
   --border-color-1: #3b4252;
   --border-color-2: #434c5e;
