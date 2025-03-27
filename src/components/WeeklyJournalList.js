@@ -30,7 +30,7 @@ const WeeklyJournal = () => {
       {allMarkdownRemark.edges.map((edge) => {
         return (
           <li key={edge.node.id}>
-            <time className="post-date">{formatPostDate(edge.node.frontmatter.date)}</time>
+            <time className="post-date">{formatPostDate(edge.node.frontmatter.date).full}</time>
             <div className="post-item">
               <Link className="post-link" to={edge.node.frontmatter.slug}>
                 {edge.node.frontmatter.title}

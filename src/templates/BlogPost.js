@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
-import { formatReadingTime, formatPostDate } from '../utils/helper.js';
+import {  formatPostDate } from '../utils/helper.js';
 
 import './post.css';
 
@@ -23,8 +23,8 @@ const BlogPostTemplate = ({ data, pageContext }) => {
 
       <div className="post-each-info">
         <span className="post-date">
-          {formatPostDate(post.frontmatter.date)}
-          {post.frontmatter.modified_date ? ` (updated: ${formatPostDate(post.frontmatter.modified_date)})` : ''}
+          {formatPostDate(post.frontmatter.date).full}
+          {post.frontmatter.modified_date ? ` (updated: ${formatPostDate(post.frontmatter.modified_date).full})` : ''}
         </span>
 
         <span className="post-meta">
