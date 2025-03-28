@@ -1,6 +1,6 @@
 .home-header {
   text-align: center;
-  margin: 2rem auto;
+  margin: 4rem auto;
   max-width: 800px;
   padding: 0 1rem;
 }
@@ -13,7 +13,7 @@
 }
 
 .home-description {
-  font-size: 1.25rem;
+  font-size: 1em;
   color: var(--text-secondary);
   margin: 0 0 2rem;
 }

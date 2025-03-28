@@ -25,60 +25,59 @@ export default () => {
     }
   `);
 
-  const currentYear = new Date().getFullYear();
-  const lastYear = currentYear - 1;
-  
-  // Group posts into three categories: current year, last year, and older
-  const currentYearPosts = [];
-  const lastYearPosts = [];
-  const olderPosts = [];
+  // Group posts by year
+  const postsByYear = {};
   
   allMarkdownRemark.edges.forEach(edge => {
     const postYear = new Date(edge.node.frontmatter.date).getFullYear();
-    
-    if (postYear === currentYear) {
-      currentYearPosts.push(edge);
-    } else if (postYear === lastYear) {
-      lastYearPosts.push(edge);
-    } else {
-      olderPosts.push(edge);
+    if (!postsByYear[postYear]) {
+      postsByYear[postYear] = [];
     }
+    postsByYear[postYear].push(edge);
   });
 
-  // Create an array of groups to render
-  const postGroups = [
-    { title: currentYear.toString(), posts: currentYearPosts },
-    { title: lastYear.toString(), posts: lastYearPosts },
-    { title: "Older", posts: olderPosts }
-  ].filter(group => group.posts.length > 0); // Only show groups with posts
+  // Create an array of groups sorted by year (descending)
+  const postGroups = Object.entries(postsByYear)
+    .map(([year, posts]) => ({
+      title: year,
+      posts: posts
+    }))
+    .sort((a, b) => b.title - a.title);
 
   return (
     <div>
       {postGroups.map(group => (
-        <div key={group.title}>
+        <div key={group.title} className="post-group">
           <h2 className="year-heading">{group.title}</h2>
           <ul className="post-list">
             {group.posts.map(edge => (
               <li key={edge.node.id}>
-                <span className="post-date">
-                  {formatPostDate(
-                    edge.node.frontmatter.date, 
-                    'en-US', 
-                    group.title === "Older" 
-                  )}
-                </span>
+                <div className="post-content-wrapper">
+                  <span className="post-date">
+                    <span className="post-date-desktop">
+                      {formatPostDate(
+                        edge.node.frontmatter.date
+                      ).short}
+                    </span>
+                    <span className="post-date-mobile">
+                      {formatPostDate(
+                        edge.node.frontmatter.date
+                      ).full}
+                    </span>
+                  </span>
 
-                <div className="post-item">
-                  <Link className="post-link" to={edge.node.frontmatter.slug}>
-                    {edge.node.frontmatter.title}
-                  </Link>
+                  <div className="post-item">
+                    <Link className="post-link" to={edge.node.frontmatter.slug}>
+                      {edge.node.frontmatter.title}
+                    </Link>
 
-                  <div className="post-meta">
-                    {edge.node.frontmatter.categories.map((x, idx) => (
-                      <span key={idx} className="post-tag">
-                        {x}
-                      </span>
-                    ))}
+                    <div className="post-meta">
+                      {edge.node.frontmatter.categories.map((x, idx) => (
+                        <span key={idx} className="post-tag">
+                          {x}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </li>

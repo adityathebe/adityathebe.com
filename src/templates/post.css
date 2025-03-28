@@ -1,14 +1,26 @@
-.year-heading {
-  font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
-  margin-top: 2.5em;
-  margin-bottom: 0.5em;
-  font-size: 1.5em;
-  color: var(--primary-text-color);
-  padding-bottom: 0.2em;
+.post-group {
+  position: relative;
+  display: flex;
+  padding-top: 1rem;
 }
 
-.year-heading:first-child {
-  margin-top: 0.5em;
+.year-heading {
+  font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
+  font-size: 1em;
+  color: var(--primary-text-color);
+  margin: 0;
+  width: 100px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-weight: bold;
+  align-self: flex-start;
+}
+
+.post-content-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .post-list {
@@ -17,17 +29,21 @@
   font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .post-list li {
   display: flex;
   align-items: center;
-  gap: 20px;
   padding: 0.4em 0;
 }
 
 .post-list li:first-child {
   padding-top: 0;
+}
+
+.post-list li:not(:first-child) .year-heading {
+  visibility: hidden;
 }
 
 .post-list li:last-of-type {
@@ -48,9 +64,13 @@
 }
 
 .post-date {
-  font-size: 14px;
+  font-size: 1em;
   white-space: nowrap;
   color: var(--secondary-text-color);
+}
+
+.post-date-mobile {
+  display: none;
 }
 
 .post-meta {
@@ -105,8 +125,54 @@
 }
 
 @media screen and (max-width: 450px) {
+  .post-group {
+    flex-direction: column;
+    margin-bottom: 0;
+    padding-top: 0;
+  }
+
   .post-header {
     margin: 0.5em auto;
+  }
+
+  .post-content-wrapper {
+    margin-left: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .post-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .post-date-desktop {
+    display: none;
+  }
+
+  .post-date-mobile {
+    display: inline;
+  }
+
+  .post-date {
+    font-size: 0.8em;
+    color: var(--secondary-text-color);
+  }
+
+  .post-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 10px;
+  }
+
+  .post-list li a {
+    margin-left: 0;
+  }
+
+  .year-heading {
+    display: none;
   }
 }
 
@@ -204,37 +270,6 @@ td {
   justify-content: space-between;
   line-height: 20px;
   gap: 5px;
-}
-
-@media screen and (max-width: 450px) {
-  .post-list {
-    gap: 5px;
-  }
-
-  .post-list li {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-  }
-
-  .post-date {
-    font-size: 0.8em;
-    color: var(--secondary-text-color);
-  }
-
-  .post-item {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-bottom: 10px;
-  }
-
-  .post-list li a {
-    margin-left: 0;
-  }
-
-  .post-each-info {
-    flex-direction: column;
-  }
 }
 
 .section-notes {
