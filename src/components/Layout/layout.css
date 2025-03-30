@@ -69,6 +69,7 @@ html {
   --table-of-contents-bg: var(--nord-snowstorm-3);
 
   --code-bg: var(--nord-snowstorm-2);
+  --code-block-bg-color: var(--nord-polar-night-1);
 
   --section-note-bg: #454545;
   --section-note-color: #F0F5F9;
@@ -106,6 +107,7 @@ html[data-theme='dark'] {
   --table-of-contents-bg: var(--nord-polar-night-2);
 
   --code-bg: var(--nord-polar-night-3);
+  --code-block-bg-color: var(--nord-polar-night-2);
 
   --section-note-bg: #292e3b;
   --section-note-color: var(--primary-text-color);
@@ -284,14 +286,16 @@ blockquote {
 /***************************/
 .gatsby-highlight > pre {
   font-size: 0.8em;
-  padding: 0.5em var(--mobile-padding);
-  background-color: var(--nord-polar-night-2);
+  padding: 2em var(--mobile-padding);
+  background-color: var(--code-block-bg-color);
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 450px) {
   .gatsby-highlight > pre[class*='language'] {
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
+    border-radius: 0;
   }
 }
 
