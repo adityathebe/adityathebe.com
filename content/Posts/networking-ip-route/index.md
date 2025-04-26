@@ -77,9 +77,12 @@ Examples:
 I'll use an analogy of social network to explain this.
 
 Let's say you want to upload an image to Instagram. To do that, you need to have an Instagram account - there's no way around it.
-You need an entry point to connect to the internet. Likewise, to connect to a network, you need an interface.
+You need an entry point to connect to the Instagram world. Likewise, you need an interface to connect to a network.
 
-Your device can also have multiple network interfaces just like how you can have multiple social media accounts.
+#### Multiple interfaces
+
+You can have multiple social media accounts to connect to different social networks.
+Likewise, your device can also have multiple network interfaces to connect to different networks.
 Example, your laptop most likely has an ethernet port in addition to a wifi interface.
 
 #### Routing decision
@@ -87,7 +90,11 @@ Example, your laptop most likely has an ethernet port in addition to a wifi inte
 To upload an image you would visit Instagram - to make a tweet you would visit Twitter - to send an email you would log into your email provider.
 In a similar way, IP routing involves which network interface should be chosen to send out a packet.
 
-Similarly, your device needs a policy to decide whether to use the ethernet interface or the wifi interface to reach a destination like YouTube
+---
+
+Pretty cheesy analogy? I think so too. Nonetheless, I think it does help a little.
+
+Now, to answer the previous question, your device needs a policy to decide whether to use the ethernet interface or the wifi interface to reach a destination like YouTube.
 
 </div>
 
@@ -105,7 +112,7 @@ It's part of the `iproute2` software suite. It has several commands that manage 
 
 There are numerous more but these are the ones we'll be focusing on for this article.
 
-### See all interfaces on your system
+### View all interfaces on your system
 
 Try running `ip link` to see all the interfaces on your system.
 
@@ -134,9 +141,24 @@ I have two interfaces
 
 They are both active as shown by the "UP" flag inside the `<` and `>` brackets.
 
+### View IP addresses of all network interfaces
+
+To view the IP addresses associated with the interfaces, use `ip addr` command.
+
+```bash
+$ ip -br -c addr
+lo               UNKNOWN        127.0.0.1/8 ::1/128
+eth0             UP             10.99.99.8/24 metric 100 fe80::24f4:91ff:fe9d:2c86/64
+```
+
 ## IP destination types
 
-Finally, one last thing to keep in mind is the different types of destinations.
+Finally, one last thing to keep in mind is the different types of destinations. 
+
+A networking device must be aware of its own IP address, addresses that are directly reachable and the rest.
+Directly reachable means the destination is on the same network as your device. No routing is involved here. The network switch will properly forward the packet to the destination.
+
+For any other destination, the packet will be sent to a router.
 
 | Type                   | Description                                                               | Examples                                                            |
 | ---------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------- |
@@ -161,26 +183,30 @@ RPDB (Rules: priority-ordered)
       └──> Routes (prefix + metric ordered)
 ```
 
-### Route
+### A. Route
 
-A route is a policy that Linux kernel uses to decide the path of every single packet coming out of it.
+A route is an entry in the routing table that Linux kernel uses to decide where to send an outgoing packet via what interface based on the destination IP address.
 
 ```
 # dummy routes
-- route facebook.com via wifi
-- route youtube.com via ethernet
+- to reach (31.13.79.35/24) facebook.com send packets to the 10.99.99.1 (router) via wifi interface
+- to reach (142.250.194.174/24) youtube.com send packets to the 10.99.99.1 (router) via ethernet interface
 ```
 
-A route consists of the following key components:
+A route consists of the following components:
 
-| Component          | Description                                                                                                       |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------- |
-| Destination        | The destination IP address                                                                                        |
-| Gateway (Next hop) | A directly reachable destination to send the packet that'll eventually route the packet to the actual destination |
-| Interface          | The network interface to send the packet out of                                                                   |
-| Flags              | Flags associated with the route                                                                                   |
+| Component   | Description                                                                                                                                 |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Destination | The destination IP address                                                                                                                  |
+| Next hop    | When the destination is a remote IP, the next hop is the next router to send the packet to. Usually the [default gateway](#default-gateway) |
+| Interface   | The network interface to send the packet out                                                                                                |
+| Flags       | Special options (like UG meaning Up and Gateway).                                                                                           |
+| Metric      | A priority number â€” lower metric means higher priority if multiple routes match.                                                          |
 
-Use `ip route` to see all the routes on your system.
+#### `ip route`
+
+Use `ip route` to see all the routes on your system. _(This isn't entirely accurate as we'll see when we get into the routing table)_.
+Below is an example of actual routes on one of my virtual machines.
 
 ```bash
 $ ip route
@@ -190,35 +216,28 @@ default via 10.99.99.1 dev eth0 proto dhcp src 10.99.99.8 metric 100
 10.99.99.5 dev eth0 proto dhcp scope link src 10.99.99.8 metric 100
 ```
 
-The routes above tell you how to reach `10.99.99.1` and `10.99.99.5` from your system. They are on the same subnet as my device and are directly reachable.
-That's why there's no gateway specified on them. Any packets destined for these two addresses will be send out via the `eth0` interface as specified by `dev eth0` meaning device `eth0`.
+Here's a breakdown:
 
-#### Route scope
+There are 2 routes to the destination `10.99.99.1` and `10.99.99.5` that goes out via the `eth0` interface. They are on the same subnet as my device and are directly reachable.
+That's why there's no next hop specified on them as they can be reached in the very next hop.
 
-visibility of a route.
-
-- host (local)
-- link (connected networks)
-- global (remote)
+For any other destination, the packet will be sent to the default gateway, which is `10.99.99.1`, via `eth0` interface.
 
 #### Default Gateway
 
-For any other destination, the packet will be sent to the default gateway which is `10.99.99.1` as specified by `default via 10.99.99.1`.
-Essentially, default gateway is the fallback destination when no specific route is found. Think of it like the `default` case in a switch statement.
+Essentially, a default gateway is the fallback destination when no specific route is found. Think of it like the `default` case in a switch statement.
 
 ```go
 packet := new_packet()
+packet.src = "10.99.99.8"
 
 switch destination {
   case "10.99.99.1":
-    packet.src = "10.99.99.8"
-    send_via_eth0()
+    send_to_next_hop("10.99.99.1", via_eth0)
   case "10.99.99.5":
-    packet.src = "10.99.99.8"
-    send_via_eth0()
+    send_to_next_hop("10.99.99.5", via_eth0)
   default:
-    packet.src = "10.99.99.8"
-    send_via_default_gateway()
+    send_to_next_hop("10.99.99.1", via_eth0) // default gateway
 }
 ```
 
@@ -251,7 +270,7 @@ Once the packet is inside the ISP's network, protocols like BGP (Border Gateway 
 
 </div>
 
-### Routing Table
+### B. Routing Table
 
 A routing table is a collection of routes. You can have multiple routing tables on a single system upto 255 of them.
 By default, there are three routing tables:
@@ -281,7 +300,7 @@ default via 10.99.99.1 dev eth0 proto dhcp src 10.99.99.8 metric 100
 
 The main routing table contains routes for all other destinations (connected networks & remote destinations).
 
-### Rule
+### C. Rule
 
 A rule, on the other hand, tells which routing table to use for a given packet.
 Why do we need more than one routing table?
@@ -309,3 +328,5 @@ ip rule
 - https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking#team_device
 - https://youtu.be/zstdOS_6ajY?si=gCPBv2c_N-7aNssi
 - http://linux-ip.net/html/ch-routing.html
+
+<br>
