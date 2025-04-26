@@ -116,7 +116,7 @@
   margin: 0 auto;
   margin-bottom: 20px;
   max-width: 100%;
-  border: 1px solid var(--border-color-1);
+  /* border: 1px solid var(--border-color-1); */
 }
 
 .post-header {
