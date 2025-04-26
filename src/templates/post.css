@@ -290,6 +290,14 @@ td {
     background-color: var(--tag-bg-color);
     color: var(--primary-text-color);
   }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--section-note-color);
+  }
 }
 
 .section-notes a {
