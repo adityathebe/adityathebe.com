@@ -273,7 +273,7 @@ td {
 }
 
 .section-notes {
-  background: var(--tag-bg-color);
+  background: var(--section-note-bg);
   color: var(--section-note-color);
   padding: 1.3rem;
   margin: 2rem 0;
@@ -288,6 +288,7 @@ td {
 
   :not(pre) > code[class='language-text'] {
     background-color: var(--tag-bg-color);
+    color: var(--primary-text-color);
   }
 }
 
