@@ -12,13 +12,14 @@ keywords:
   - Networking
 ---
 
-If you want to dip your feet into networking, IP routing is a good place to start.
+If you're looking to dip your toes into networking, IP routing is a great place to start.
 I think it's the sweet spot because it's low level and at the same time, not very alien - we have all heard of IP addresses.
-And not just that but IP routing is something that's much more applicable and relevant than starting from the very low level like the physical layer and data link layer can be a bit daunting.
+And not just that but IP routing is something that's much more applicable and relevant than starting from the very low level like the physical layer and data link layer.
 
-In this article, we'll be covering how a linux system decides to route packets out of it.
+In this article, we'll be covering how a linux networking stack decides to route packets out of it.
 We'll not be covering how the packets traverse the internet to reach their destination.
 Although, the concepts we'll cover will apply there as well.
+
 In short, we'll be covering the decision making process of the linux system when it needs to send out a packet.
 
 <div class="section-notes">
@@ -46,16 +47,16 @@ This is exactly the question that we'll be covering in this article.
   - [View all interfaces on your system](#view-all-interfaces-on-your-system)
   - [View IP addresses of all network interfaces](#view-ip-addresses-of-all-network-interfaces)
 - [IP destination types](#ip-destination-types)
-- [Routing Policy Database (RPDB)](#routing-policy-database-rpdb)
-  - [Route](#route)
-    - [ip route](#ip-route)
-    - [ip route get](#ip-route-get)
-    - [Adding a new route](#adding-a-new-route)
-  - [Routing Table](#routing-table)
-    - [Local routing table](#local-routing-table)
-    - [main routing table](#main-routing-table)
-    - [default routing table](#default-routing-table)
-  - [Rule](#rule)
+- [Route](#route)
+  - [ip route](#ip-route)
+  - [ip route get](#ip-route-get)
+  - [Adding a new route](#adding-a-new-route)
+- [Routing Table](#routing-table)
+  - [local routing table](#local-routing-table)
+  - [main routing table](#main-routing-table)
+  - [default routing table](#default-routing-table)
+- [Rule](#rule)
+  - [Routing Policy Database (RPDB)](#routing-policy-database-rpdb)
 
 </div>
 
@@ -184,7 +185,8 @@ A networking device must be aware of
 - addresses that are directly reachable
 - and the rest.
 
-By **directly reachable** we mean the destination is on the same network as your device. No routing is involved here. The network switch will properly forward the packet to the destination using ARP.
+By **directly reachable** we mean the destination is on the same network as your device. No routing is involved here.
+Your device will use ARP to find the MAC address of the destination and send the packet directly to it.
 
 For any other destination, the packet will be sent to a router.
 
@@ -228,7 +230,7 @@ Use `ip route` to see all the routes on your system. _(This isn't entirely accur
 Below is an example of actual routes on my Linux machine.
 
 ```bash
-$ ip route
+$ ip route list
 
 default via 10.99.99.1 dev enp5s0 proto dhcp src 10.99.99.65 metric 100
 default via 192.168.254.254 dev wlo1 proto dhcp src 192.168.254.3 metric 600
@@ -364,7 +366,7 @@ $ sudo ip route del 34.117.59.81/32
 ## B. Routing Table
 
 A routing table is a collection of routes. You can have multiple routing tables on a single system.
-By default, there are three routing tables:
+By default, there are three built-in routing tables:
 
 - local
 - main (ip route uses this table by default)
@@ -393,7 +395,7 @@ $ cat /etc/iproute2/rt_tables
 
 </div>
 
-### Local routing table
+### local routing table
 
 The local routing table contains routes for local destinations (i.e. its own IP addresses).
 It's maintainted by the kernel itself and is used to route incoming packets or outgoing packets destined to the host itself.
@@ -474,7 +476,8 @@ RPDB (Rules: priority-ordered)
 ## References:
 
 - iproute2 manual pages: `man ip`
-- https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking#team_device
+- https://datahacker.blog/industry/technology-menu/networking/routes-and-rules/iproute-and-routing-tables
+- https://baturin.org/docs/iproute2/
 - https://youtu.be/zstdOS_6ajY?si=gCPBv2c_N-7aNssi
 - http://linux-ip.net/html/ch-routing.html
 
