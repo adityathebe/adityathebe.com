@@ -373,6 +373,25 @@ default via 10.99.99.1 dev eth0 proto dhcp src 10.99.99.65 metric 100
 
 The main routing table contains routes for all other destinations (connected networks & remote destinations).
 
+I couldn't find any command that lists out all the routing tables. Routing tables are defined in `/etc/iproute2/rt_tables` file. So just check that out.
+
+It's possible that file is not present on your system. My desktop didn't have it as well. Here's what it looks like in one of my vms.
+
+```bash
+$ cat /etc/iproute2/rt_tables
+#
+# reserved values
+#
+255     local
+254     main
+253     default
+0       unspec
+#
+# local
+#
+#1      inr.ruhep
+```
+
 ### C. Rule
 
 A rule, on the other hand, tells which routing table to use for a given packet.
