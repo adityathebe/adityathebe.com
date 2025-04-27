@@ -114,16 +114,22 @@ There are numerous more but these are the ones we'll be focusing on for this art
 
 ### View all interfaces on your system
 
-Try running `ip link` to see all the interfaces on your system.
+Try running `ip link` to see all the interfaces on your system. My Linux desktop has 2 physical interfaces and they are connected to different networks.
 
 ```bash
 $ ip link
 
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
-    link/ether 26:f4:91:9d:2c:86 brd ff:ff:ff:ff:ff:ff
-    altname enp0s18
+2: enp5s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether d8:43:ae:45:c5:62 brd ff:ff:ff:ff:ff:ff
+    altname enxd843ae45c562
+3: wlo1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DORMANT group default qlen 1000
+    link/ether f0:20:ff:21:57:cd brd ff:ff:ff:ff:ff:ff
+    altname wlp0s20f3
+    altname wlxf020ff2157cd
+4: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN mode DEFAULT group default
+    link/ether ea:d5:3b:18:3f:ad brd ff:ff:ff:ff:ff:ff
 ```
 
 There's a lot of information here. I like to use the `-br` and `-c` flags to get a colored brief output.
@@ -131,15 +137,19 @@ There's a lot of information here. I like to use the `-br` and `-c` flags to get
 ```bash
 $ ip -br -c link
 lo               UNKNOWN        00:00:00:00:00:00 <LOOPBACK,UP,LOWER_UP>
-eth0             UP             26:f4:91:9d:2c:86 <BROADCAST,MULTICAST,UP,LOWER_UP>
+enp5s0           UP             d8:43:ae:45:c5:62 <BROADCAST,MULTICAST,UP,LOWER_UP>
+wlo1             UP             f0:20:ff:21:57:cd <BROADCAST,MULTICAST,UP,LOWER_UP>
+docker0          DOWN           ea:d5:3b:18:3f:ad <NO-CARRIER,BROADCAST,MULTICAST,UP>
 ```
 
-I have two interfaces
+I have 4 interfaces
 
 - `lo` a loopback interface (virtual) with MAC address `00:00:00:00:00:00`
-- and `eth0` a physical interface connected to my home ISP with MAC address `26:f4:91:9d:2c:86`
+- `enp5s0` a physical interface connected to my home ISP with MAC address `d8:43:ae:45:c5:62`
+- `wlo1` a wifi interface with MAC address `f0:20:ff:21:57:cd`
+- `docker0` a virtual interface used by docker containers with MAC address `ea:d5:3b:18:3f:ad`
 
-They are both active as shown by the "UP" flag inside the `<` and `>` brackets.
+They are all enabled as shown by the "UP" flag inside the `<` and `>` brackets.
 
 ### View IP addresses of all network interfaces
 
@@ -148,23 +158,32 @@ To view the IP addresses associated with the interfaces, use `ip addr` command.
 ```bash
 $ ip -br -c addr
 lo               UNKNOWN        127.0.0.1/8 ::1/128
-eth0             UP             10.99.99.8/24 metric 100 fe80::24f4:91ff:fe9d:2c86/64
+enp5s0           UP             10.99.99.65/24 fe80::14ad:a0eb:c8f:c5b0/64
+wlo1             UP             192.168.254.3/24 fe80::5fd6:c815:261b:5df7/64
+docker0          DOWN           172.17.0.1/16
 ```
+
+As you can see, the wifi interface (wlo1) and ethernet interface (enp5s0) are connected to two different networks as they have IP addresses on different subnets - `10.99.99.0/24` and `192.168.254.0/24`.
 
 ## IP destination types
 
-Finally, one last thing to keep in mind is the different types of destinations. 
+Finally, one last thing to keep in mind is the different types of destinations.
 
-A networking device must be aware of its own IP address, addresses that are directly reachable and the rest.
-Directly reachable means the destination is on the same network as your device. No routing is involved here. The network switch will properly forward the packet to the destination.
+A networking device must be aware of
+
+- its own IP addresses
+- addresses that are directly reachable
+- and the rest.
+
+By **directly reachable** we mean the destination is on the same network as your device. No routing is involved here. The network switch will properly forward the packet to the destination using ARP.
 
 For any other destination, the packet will be sent to a router.
 
-| Type                   | Description                                                               | Examples                                                            |
-| ---------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| **local**              | These are the ip addresses of the network interfaces on your system       | The loopback address `127.0.0.1`, the local IP address `10.99.99.8` |
-| **connected networks** | These are the ip addresses of other devices connected to the same network | `10.99.99.65` considering my device's IP address is `10.99.99.8`    |
-| **remote**             | These are the ip addresses that is neither local nor connected networks   | `1.1.1.1`, `8.8.8.8`                                                |
+| Type                   | Description                                                               | Examples                                                                                 |
+| ---------------------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| **local**              | These are the ip addresses of the network interfaces on your system       | The loopback address `127.0.0.1`, the local IP addresses `10.99.99.65` & `192.168.254.3` |
+| **connected networks** | These are the ip addresses of other devices connected to the same network | Other devices on `10.99.99.0/24` and `192.168.254.0/24`                                  |
+| **remote**             | These are the ip addresses that are neither local nor connected networks  | `1.1.1.1`, `8.8.8.8`, ...                                                                |
 
 ---
 
@@ -211,17 +230,20 @@ Below is an example of actual routes on one of my virtual machines.
 ```bash
 $ ip route
 
-default via 10.99.99.1 dev eth0 proto dhcp src 10.99.99.8 metric 100
-10.99.99.1 dev eth0 proto dhcp scope link src 10.99.99.8 metric 100
-10.99.99.5 dev eth0 proto dhcp scope link src 10.99.99.8 metric 100
+default via 10.99.99.1 dev enp5s0 proto dhcp src 10.99.99.65 metric 100
+default via 192.168.254.254 dev wlo1 proto dhcp src 192.168.254.3 metric 600
+10.99.99.0/24 dev enp5s0 proto kernel scope link src 10.99.99.65 metric 100
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
+192.168.254.0/24 dev wlo1 proto kernel scope link src 192.168.254.3 metric 600
 ```
 
 Here's a breakdown:
 
-There are 2 routes to the destination `10.99.99.1` and `10.99.99.5` that goes out via the `eth0` interface. They are on the same subnet as my device and are directly reachable.
+There are 3 routes to the destinations `10.99.99.0/24` and `192.168.254.0/24` that goes out via the `enp5s0` and `wlo1` interfaces respectively.
+They are on the same subnet as my device and are directly reachable.
 That's why there's no next hop specified on them as they can be reached in the very next hop.
 
-For any other destination, the packet will be sent to the default gateway, which is `10.99.99.1`, via `eth0` interface.
+For any other destination, the packet will be sent to the default gateway, which is `10.99.99.1` for `enp5s0` and `192.168.254.254` for `wlo1`, via the respective interfaces.
 
 #### Default Gateway
 
@@ -229,7 +251,7 @@ Essentially, a default gateway is the fallback destination when no specific rout
 
 ```go
 packet := new_packet()
-packet.src = "10.99.99.8"
+packet.src = "10.99.99.65"
 
 switch destination {
   case "10.99.99.1":
@@ -249,14 +271,14 @@ You can even check which route a packet takes for a given destination using `ip 
 
 ```bash
 $ ip route get 10.99.99.3
-10.99.99.3 dev eth0 src 10.99.99.8 uid 1000
+10.99.99.3 dev eth0 src 10.99.99.65 uid 1000
 ```
 
 **Remote addresses**
 
 ```bash
 $ ip route get 1.1.1.1
-1.1.1.1 via 10.99.99.1 dev eth0 src 10.99.99.8 uid 1000
+1.1.1.1 via 10.99.99.1 dev eth0 src 10.99.99.65 uid 1000
 ```
 
 As you can see, `1.1.1.1` is not a device on the same subnet as my device. So, the packet will be sent to `10.99.99.1` - which is the default gateway.
@@ -281,8 +303,8 @@ By default, there are three routing tables:
 
 ```bash
 $ ip route show table local
-local 10.99.99.8 dev eth0 proto kernel scope host src 10.99.99.8
-broadcast 10.99.99.255 dev eth0 proto kernel scope link src 10.99.99.8
+local 10.99.99.65 dev eth0 proto kernel scope host src 10.99.99.65
+broadcast 10.99.99.255 dev eth0 proto kernel scope link src 10.99.99.65
 local 127.0.0.0/8 dev lo proto kernel scope host src 127.0.0.1
 local 127.0.0.1 dev lo proto kernel scope host src 127.0.0.1
 broadcast 127.255.255.255 dev lo proto kernel scope link src 127.0.0.1
@@ -292,10 +314,10 @@ The local routing table contains routes for local destinations (i.e. its own IP 
 
 ```bash
 $ ip route show table main
-default via 10.99.99.1 dev eth0 proto dhcp src 10.99.99.8 metric 100
-10.99.99.0/24 dev eth0 proto kernel scope link src 10.99.99.8 metric 100
-10.99.99.1 dev eth0 proto dhcp scope link src 10.99.99.8 metric 100
-10.99.99.5 dev eth0 proto dhcp scope link src 10.99.99.8 metric 100
+default via 10.99.99.1 dev eth0 proto dhcp src 10.99.99.65 metric 100
+10.99.99.0/24 dev eth0 proto kernel scope link src 10.99.99.65 metric 100
+10.99.99.1 dev eth0 proto dhcp scope link src 10.99.99.65 metric 100
+10.99.99.5 dev eth0 proto dhcp scope link src 10.99.99.65 metric 100
 ```
 
 The main routing table contains routes for all other destinations (connected networks & remote destinations).
