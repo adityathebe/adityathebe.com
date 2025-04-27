@@ -259,16 +259,28 @@ For any other destination, the packet will be sent to the default gateway, which
 Essentially, a default gateway is the fallback destination when no specific route is found. Think of it like the `default` case in a switch statement.
 
 ```go
-packet := new_packet()
-packet.src = "10.99.99.65"
+packet := new_packet(src="10.99.99.65", dst=destination)
 
 switch destination {
-  case "10.99.99.1":
-    send_to_next_hop("10.99.99.1", via_eth0)
+  case "10.99.99.0"..."10.99.99.255":
+    send_to_next_hop(destination, nexthop=none, interface="enp5s0")
   default:
-    send_to_next_hop("10.99.99.1", via_eth0) // default gateway
+    send_to_next_hop(destination, nexthop="10.99.99.1", interface="enp5s0") // default gateway
 }
 ```
+
+```go
+packet := new_packet(src="192.168.254.3", dst=destination)
+
+switch destination {
+  case "192.168.254.0"..."192.168.254.255":
+    send_to_next_hop(destination, nexthop=none, interface="wlo1")
+  default:
+    send_to_next_hop(destination, nexthop="192.168.254.254", interface="wlo1") // default gateway
+}
+```
+
+Next hop means the layer2 packet sends to the MAC address of the next hop. The IP packet still contains the original destination.
 
 ### Query the route for a destination
 
