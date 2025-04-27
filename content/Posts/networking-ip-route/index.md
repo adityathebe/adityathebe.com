@@ -1,9 +1,10 @@
 ---
 title: IP Routing in Linux
-date: '2025-04-27 12:00'
+date: '2025-04-27 14:45'
 categories:
   - Linux
   - Networking
+featuredImage: ./packet-confused-light.png
 slug: /ip-routing-in-linux/
 description: Learn how a linux system decides to route packets out of it
 keywords:
@@ -17,7 +18,7 @@ And not just that but IP routing is something that's much more applicable and re
 
 In this article, we'll be covering how a linux system decides to route packets out of it.
 We'll not be covering how the packets traverse the internet to reach their destination.
-Although, the concepts we'll cover will apply their as well.
+Although, the concepts we'll cover will apply there as well.
 In short, we'll be covering the decision making process of the linux system when it needs to send out a packet.
 
 <div class="section-notes">
@@ -152,7 +153,7 @@ docker0          DOWN           ea:d5:3b:18:3f:ad <NO-CARRIER,BROADCAST,MULTICAS
 
 I have 4 interfaces
 
-- `lo` a loopback interface (virtual) with MAC address `00:00:00:00:00:00`
+- `lo` a loopback interface (virtual). It's purely virtual and doesn't have a MAC address.
 - `enp5s0` a physical interface connected to my home ISP with MAC address `d8:43:ae:45:c5:62`
 - `wlo1` a wifi interface with MAC address `f0:20:ff:21:57:cd`
 - `docker0` a virtual interface used by docker containers with MAC address `ea:d5:3b:18:3f:ad`
@@ -187,37 +188,28 @@ By **directly reachable** we mean the destination is on the same network as your
 
 For any other destination, the packet will be sent to a router.
 
-| Type                   | Description                                                               | Examples                                                                                 |
-| ---------------------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| **local**              | These are the ip addresses of the network interfaces on your system       | The loopback address `127.0.0.1`, the local IP addresses `10.99.99.65` & `192.168.254.3` |
-| **connected networks** | These are the ip addresses of other devices connected to the same network | Other devices on `10.99.99.0/24` and `192.168.254.0/24`                                  |
-| **remote**             | These are the ip addresses that are neither local nor connected networks  | `1.1.1.1`, `8.8.8.8`, ...                                                                |
+| Type                   | Description                                                               | Examples                                                                                   |
+| ---------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| **local**              | These are the ip addresses of the network interfaces on your system       | The loopback address `127.0.0.1/8`, the local IP addresses `10.99.99.65` & `192.168.254.3` |
+| **connected networks** | These are the ip addresses of other devices connected to the same network | Other devices on `10.99.99.0/24` and `192.168.254.0/24`                                    |
+| **remote**             | These are the ip addresses that are neither local nor connected networks  | `1.1.1.1`, `8.8.8.8`, ...                                                                  |
 
 Alright, now let's get into the nitty gritty of routing.
 
 ---
 
-# Routing Policy Database (RPDB)
-
-Every Linux system contains a routing policy database. This database is where all the **routes** live.
-The routes are organized in a table - conveniently called the **routing table**.
-
-Then, there are also **rules** which tells the kernel which routing table to use for a given packet.
-
-```
-RPDB (Rules: priority-ordered)
- └──> Routing Table (chosen by rule)
-      └──> Routes (prefix + metric ordered)
-```
-
 ## A. Route
 
-A route is an entry in the routing table that Linux kernel uses to decide where to send an outgoing packet via what interface based on the destination IP address.
+A route is an entry in the routing table that Linux kernel uses to decide where to send a packet (next hop) via what interface based on the destination IP address.
+This applies to both incoming and outgoing packets.
 
 ```
+
 # dummy routes
-- to reach (31.13.79.35/24) facebook.com send packets to the 10.99.99.1 (router) via wifi interface
-- to reach (142.250.194.174/24) youtube.com send packets to the 10.99.99.1 (router) via ethernet interface
+
+- to reach (31.13.79.35/32) facebook.com send packets to the 10.99.99.1 (router) via wifi interface
+- to reach (142.250.194.174/32) youtube.com send packets to the 10.99.99.1 (router) via ethernet interface
+
 ```
 
 A route consists of the following components:
@@ -227,13 +219,13 @@ A route consists of the following components:
 | Destination | The destination IP address                                                                                                                  |
 | Next hop    | When the destination is a remote IP, the next hop is the next router to send the packet to. Usually the [default gateway](#default-gateway) |
 | Interface   | The network interface to send the packet out                                                                                                |
-| Flags       | Special options (like UG meaning Up and Gateway).                                                                                           |
+| Flags       | Special options (like UP, DOWN).                                                                                                            |
 | Metric      | A priority number - lower metric means higher priority if multiple routes match.                                                            |
 
 ### `ip route`
 
 Use `ip route` to see all the routes on your system. _(This isn't entirely accurate as we'll see when we get into the routing table)_.
-Below is an example of actual routes on one of my virtual machines.
+Below is an example of actual routes on my Linux machine.
 
 ```bash
 $ ip route
@@ -263,7 +255,7 @@ packet := new_packet(src="10.99.99.65", dst=destination)
 
 switch destination {
   case "10.99.99.0"..."10.99.99.255":
-    send_to_next_hop(destination, nexthop=none, interface="enp5s0")
+    send_to_next_hop(destination, nexthop=destination, interface="enp5s0")
   default:
     send_to_next_hop(destination, nexthop="10.99.99.1", interface="enp5s0") // default gateway
 }
@@ -274,7 +266,7 @@ packet := new_packet(src="192.168.254.3", dst=destination)
 
 switch destination {
   case "192.168.254.0"..."192.168.254.255":
-    send_to_next_hop(destination, nexthop=none, interface="wlo1")
+    send_to_next_hop(destination, nexthop=destination, interface="wlo1")
   default:
     send_to_next_hop(destination, nexthop="192.168.254.254", interface="wlo1") // default gateway
 }
@@ -290,14 +282,16 @@ You can even check which route a packet takes for a given destination using `ip 
 
 ```bash
 $ ip route get 10.99.99.3
-10.99.99.3 dev eth0 src 10.99.99.65 uid 1000
+10.99.99.3 dev enp5s0 src 10.99.99.65 uid 1000
+    cache
 ```
 
 **Remote addresses**
 
 ```bash
 $ ip route get 1.1.1.1
-1.1.1.1 via 10.99.99.1 dev eth0 src 10.99.99.65 uid 1000
+1.1.1.1 via 10.99.99.1 dev enp5s0 src 10.99.99.65 uid 1000
+    cache
 ```
 
 As you can see, `1.1.1.1` is not a device on the same subnet as my device. So, the packet will be sent to `10.99.99.1` - which is the default gateway.
@@ -349,6 +343,7 @@ Now, let's check which route this destination will use.
 ```bash
 $ ip route get 34.117.59.81
 34.117.59.81 via 192.168.254.254 dev wlo1 src 192.168.254.3 uid 1000
+    cache
 ```
 
 ```bash
@@ -357,15 +352,18 @@ $ curl -s https://ipinfo.io/ip
 ```
 
 And there it is — the public IP address has changed, confirming that traffic is now going through the Wi-Fi interface.
+
+> It's important to note that this route isn't persistent and will be lost after a reboot.
+
 Let's clean it up
 
 ```bash
-$ sudo ip route del 34.117.59.81
+$ sudo ip route del 34.117.59.81/32
 ```
 
 ## B. Routing Table
 
-A routing table is a collection of routes. You can have multiple routing tables on a single system upto 255 of them.
+A routing table is a collection of routes. You can have multiple routing tables on a single system.
 By default, there are three routing tables:
 
 - local
@@ -395,11 +393,10 @@ $ cat /etc/iproute2/rt_tables
 
 </div>
 
-### Why do we need more than one routing table?
-
 ### Local routing table
 
 The local routing table contains routes for local destinations (i.e. its own IP addresses).
+It's maintainted by the kernel itself and is used to route incoming packets or outgoing packets destined to the host itself.
 
 ```bash
 $ ip route show table local
@@ -415,7 +412,7 @@ local 192.168.254.3 dev wlo1 proto kernel scope host src 192.168.254.3
 broadcast 192.168.254.255 dev wlo1 proto kernel scope link src 192.168.254.3
 ```
 
-The `broadcast` entries are interesting ones. Broadcast IP addresses are addresses that belong to all the devices on the network.
+The `broadcast` entries are interesting ones. Broadcast IP addresses are special addresses that deliver packets to all the devices on the network.
 If you send a packet to a broadcast address, it will be sent to all the devices on the network. Hence - the name.
 
 ### main routing table
@@ -447,7 +444,7 @@ Dump terminated
 
 ## C. Rule
 
-A rule, on the other hand, tells which routing table to use for a given packet.
+A rule, determines which routing table to use for a given packet.
 Each rule has a priority, and rules are examined sequentially from rule 0 through rule 32767.
 
 ```bash
@@ -457,15 +454,26 @@ $ ip rule show
 32767:  from all lookup default
 ```
 
-The rule above tells that for all packets, the local routing table should be used.
+#### Routing Policy Database (RPDB)
 
-Precedence
+Rules live in a database called the Routing Policy Database (RPDB).
 
-- Longest prefix match
-- Metric (lowest metric wins)
+```
+RPDB (Rules: priority-ordered)
+ └──> Routing Table (chosen by rule)
+      └──> Routes (prefix + metric ordered)
+```
+
+## Things we didn't cover
+
+- Why do we need more than one routing table?
+- Routing cache
+- Route matching algorithm (longest prefix match and lowest metric wins)
+- Rule types (unicast, multicast, prohibit, blackhole, unreachable)
 
 ## References:
 
+- iproute2 manual pages: `man ip`
 - https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking#team_device
 - https://youtu.be/zstdOS_6ajY?si=gCPBv2c_N-7aNssi
 - http://linux-ip.net/html/ch-routing.html
