@@ -1,15 +1,14 @@
 ---
 title: IP Routing in Linux
-date: '2025-04-26 11:20'
+date: '2025-04-27 12:00'
 categories:
   - Linux
   - Networking
 slug: /ip-routing-in-linux/
-description: Learn how to create and manage network namespaces in Linux
+description: Learn how a linux system decides to route packets out of it
 keywords:
   - Linux
   - Networking
-  - Network Namespace
 ---
 
 If you want to dip your feet into networking, IP routing is a good place to start.
@@ -38,14 +37,23 @@ When you visit youtube.com, does it use the ethernet or the wifi? Would it be an
 
 This is exactly the question that we'll be covering in this article.
 
-<div class="table-of-contents" markdown="1">
+<div class="table-of-contents">
 
 - [Network Interface](#network-interface)
+  - [Virtual interfaces](#virtual-interfaces)
 - [ip tool](#ip-tool)
-  - [See all interfaces on your system](#see-all-interfaces-on-your-system)
+  - [View all interfaces on your system](#view-all-interfaces-on-your-system)
+  - [View IP addresses of all network interfaces](#view-ip-addresses-of-all-network-interfaces)
+- [IP destination types](#ip-destination-types)
 - [Routing Policy Database (RPDB)](#routing-policy-database-rpdb)
   - [Route](#route)
+    - [ip route](#ip-route)
+    - [ip route get](#ip-route-get)
+    - [Adding a new route](#adding-a-new-route)
   - [Routing Table](#routing-table)
+    - [Local routing table](#local-routing-table)
+    - [main routing table](#main-routing-table)
+    - [default routing table](#default-routing-table)
   - [Rule](#rule)
 
 </div>
@@ -185,11 +193,11 @@ For any other destination, the packet will be sent to a router.
 | **connected networks** | These are the ip addresses of other devices connected to the same network | Other devices on `10.99.99.0/24` and `192.168.254.0/24`                                  |
 | **remote**             | These are the ip addresses that are neither local nor connected networks  | `1.1.1.1`, `8.8.8.8`, ...                                                                |
 
----
-
 Alright, now let's get into the nitty gritty of routing.
 
-## Routing Policy Database (RPDB)
+---
+
+# Routing Policy Database (RPDB)
 
 Every Linux system contains a routing policy database. This database is where all the **routes** live.
 The routes are organized in a table - conveniently called the **routing table**.
@@ -202,7 +210,7 @@ RPDB (Rules: priority-ordered)
       └──> Routes (prefix + metric ordered)
 ```
 
-### A. Route
+## A. Route
 
 A route is an entry in the routing table that Linux kernel uses to decide where to send an outgoing packet via what interface based on the destination IP address.
 
@@ -222,7 +230,7 @@ A route consists of the following components:
 | Flags       | Special options (like UG meaning Up and Gateway).                                                                                           |
 | Metric      | A priority number - lower metric means higher priority if multiple routes match.                                                            |
 
-#### `ip route`
+### `ip route`
 
 Use `ip route` to see all the routes on your system. _(This isn't entirely accurate as we'll see when we get into the routing table)_.
 Below is an example of actual routes on one of my virtual machines.
@@ -246,7 +254,7 @@ That's why there's no next hop specified on them as they can be reached in the v
 
 For any other destination, the packet will be sent to the default gateway, which is `10.99.99.1` for `enp5s0` and `192.168.254.254` for `wlo1`, via the respective interfaces.
 
-#### Default Gateway
+### Default Gateway
 
 Essentially, a default gateway is the fallback destination when no specific route is found. Think of it like the `default` case in a switch statement.
 
@@ -262,7 +270,7 @@ switch destination {
 }
 ```
 
-#### Query the route for a destination
+### Query the route for a destination
 
 You can even check which route a packet takes for a given destination using `ip route get` command.
 
@@ -291,7 +299,7 @@ Once the packet is inside the ISP's network, protocols like BGP (Border Gateway 
 
 </div>
 
-#### Adding a new route
+### Adding a new route
 
 Let's get our hands dirty! I'll query [https://ipinfo.io/ip](https://ipinfo.io/ip/) to get my public IP address.
 
@@ -343,35 +351,16 @@ Let's clean it up
 $ sudo ip route del 34.117.59.81
 ```
 
-### B. Routing Table
+## B. Routing Table
 
 A routing table is a collection of routes. You can have multiple routing tables on a single system upto 255 of them.
 By default, there are three routing tables:
 
 - local
 - main (ip route uses this table by default)
-- default
+- default (often empty unless configured)
 
-```bash
-$ ip route show table local
-local 10.99.99.65 dev eth0 proto kernel scope host src 10.99.99.65
-broadcast 10.99.99.255 dev eth0 proto kernel scope link src 10.99.99.65
-local 127.0.0.0/8 dev lo proto kernel scope host src 127.0.0.1
-local 127.0.0.1 dev lo proto kernel scope host src 127.0.0.1
-broadcast 127.255.255.255 dev lo proto kernel scope link src 127.0.0.1
-```
-
-The local routing table contains routes for local destinations (i.e. its own IP addresses).
-
-```bash
-$ ip route show table main
-default via 10.99.99.1 dev eth0 proto dhcp src 10.99.99.65 metric 100
-10.99.99.0/24 dev eth0 proto kernel scope link src 10.99.99.65 metric 100
-10.99.99.1 dev eth0 proto dhcp scope link src 10.99.99.65 metric 100
-10.99.99.5 dev eth0 proto dhcp scope link src 10.99.99.65 metric 100
-```
-
-The main routing table contains routes for all other destinations (connected networks & remote destinations).
+<div class="section-notes">
 
 I couldn't find any command that lists out all the routing tables. Routing tables are defined in `/etc/iproute2/rt_tables` file. So just check that out.
 
@@ -392,10 +381,62 @@ $ cat /etc/iproute2/rt_tables
 #1      inr.ruhep
 ```
 
-### C. Rule
+</div>
+
+### Why do we need more than one routing table?
+
+### Local routing table
+
+The local routing table contains routes for local destinations (i.e. its own IP addresses).
+
+```bash
+$ ip route show table local
+
+local 10.99.99.65 dev enp5s0 proto kernel scope host src 10.99.99.65
+broadcast 10.99.99.255 dev enp5s0 proto kernel scope link src 10.99.99.65
+local 127.0.0.0/8 dev lo proto kernel scope host src 127.0.0.1
+local 127.0.0.1 dev lo proto kernel scope host src 127.0.0.1
+broadcast 127.255.255.255 dev lo proto kernel scope link src 127.0.0.1
+local 172.17.0.1 dev docker0 proto kernel scope host src 172.17.0.1
+broadcast 172.17.255.255 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
+local 192.168.254.3 dev wlo1 proto kernel scope host src 192.168.254.3
+broadcast 192.168.254.255 dev wlo1 proto kernel scope link src 192.168.254.3
+```
+
+The `broadcast` entries are interesting ones. Broadcast IP addresses are addresses that belong to all the devices on the network.
+If you send a packet to a broadcast address, it will be sent to all the devices on the network. Hence - the name.
+
+### main routing table
+
+The main routing table contains routes for all other destinations (connected networks & remote destinations).
+
+```bash
+$ ip route show table main
+
+default via 10.99.99.1 dev enp5s0 proto dhcp src 10.99.99.65 metric 100
+default via 192.168.254.254 dev wlo1 proto dhcp src 192.168.254.3 metric 600
+10.99.99.0/24 dev enp5s0 proto kernel scope link src 10.99.99.65 metric 100
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
+192.168.254.0/24 dev wlo1 proto kernel scope link src 192.168.254.3 metric 600
+```
+
+This is the default routing table that `ip route` uses.
+
+### default routing table
+
+I'm not sure what the purpose of this table is. It isn't even present on my system.
+
+```bash
+$ ip route show table default
+
+Error: ipv4: FIB table does not exist.
+Dump terminated
+```
+
+## C. Rule
 
 A rule, on the other hand, tells which routing table to use for a given packet.
-Why do we need more than one routing table?
+Each rule has a priority, and rules are examined sequentially from rule 0 through rule 32767.
 
 ```bash
 $ ip rule show
@@ -410,10 +451,6 @@ Precedence
 
 - Longest prefix match
 - Metric (lowest metric wins)
-
-```bash
-ip rule
-```
 
 ## References:
 
