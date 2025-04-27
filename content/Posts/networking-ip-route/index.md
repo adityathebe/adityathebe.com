@@ -220,7 +220,7 @@ A route consists of the following components:
 | Next hop    | When the destination is a remote IP, the next hop is the next router to send the packet to. Usually the [default gateway](#default-gateway) |
 | Interface   | The network interface to send the packet out                                                                                                |
 | Flags       | Special options (like UG meaning Up and Gateway).                                                                                           |
-| Metric      | A priority number â€” lower metric means higher priority if multiple routes match.                                                          |
+| Metric      | A priority number - lower metric means higher priority if multiple routes match.                                                            |
 
 #### `ip route`
 
@@ -239,8 +239,9 @@ default via 192.168.254.254 dev wlo1 proto dhcp src 192.168.254.3 metric 600
 
 Here's a breakdown:
 
-There are 3 routes to the destinations `10.99.99.0/24` and `192.168.254.0/24` that goes out via the `enp5s0` and `wlo1` interfaces respectively.
-They are on the same subnet as my device and are directly reachable.
+There are 3 routes and 2 default routes. The 3 routes target the connected networks (every device on the respective subnets) and the 2 default routes target the remote destinations.
+It's interesting to note that the wifi interface has a higher metric (600) than the ethernet interface (100). This means the kernel will prefer using ethernet to reach the destination!
+
 That's why there's no next hop specified on them as they can be reached in the very next hop.
 
 For any other destination, the packet will be sent to the default gateway, which is `10.99.99.1` for `enp5s0` and `192.168.254.254` for `wlo1`, via the respective interfaces.
@@ -256,8 +257,6 @@ packet.src = "10.99.99.65"
 switch destination {
   case "10.99.99.1":
     send_to_next_hop("10.99.99.1", via_eth0)
-  case "10.99.99.5":
-    send_to_next_hop("10.99.99.5", via_eth0)
   default:
     send_to_next_hop("10.99.99.1", via_eth0) // default gateway
 }
@@ -291,6 +290,58 @@ If the router doesn't have a route specified for `1.1.1.1`, it will send the pac
 Once the packet is inside the ISP's network, protocols like BGP (Border Gateway Protocol) may take over and figure out the best path to the destination.
 
 </div>
+
+#### Adding a new route
+
+Let's get our hands dirty! I'll query [https://ipinfo.io/ip](https://ipinfo.io/ip/) to get my public IP address.
+
+```bash
+$ curl -s https://ipinfo.io/ip
+43.231.211.110
+```
+
+In order to see which route this destination will use, we need to get the IP address for ipinfo.io.
+I'll use the `dig` command for it.
+
+```bash
+$ dig +short ipinfo.io
+34.117.59.81
+```
+
+Now, let's see which route this destination will use.
+
+```bash
+$ ip route get 34.117.59.81
+34.117.59.81 via 10.99.99.1 dev enp5s0 src 10.99.99.65 uid 1000
+    cache
+```
+
+Sure enough, it's using the ethernet interface.
+
+Let's add a new route so that this destination uses the wifi interface.
+
+```bash
+$ sudo ip route add 34.117.59.81/32 via 192.168.254.254 dev wlo1
+```
+
+Now, let's check which route this destination will use.
+
+```bash
+$ ip route get 34.117.59.81
+34.117.59.81 via 192.168.254.254 dev wlo1 src 192.168.254.3 uid 1000
+```
+
+```bash
+$ curl -s https://ipinfo.io/ip
+120.89.104.16
+```
+
+And there it is — the public IP address has changed, confirming that traffic is now going through the Wi-Fi interface.
+Let's clean it up
+
+```bash
+$ sudo ip route del 34.117.59.81
+```
 
 ### B. Routing Table
 
