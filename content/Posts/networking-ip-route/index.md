@@ -47,16 +47,19 @@ This is exactly the question that we'll be covering in this article.
   - [View all interfaces on your system](#view-all-interfaces-on-your-system)
   - [View IP addresses of all network interfaces](#view-ip-addresses-of-all-network-interfaces)
 - [IP destination types](#ip-destination-types)
-- [Route](#route)
+- [A. Route](#a-route)
   - [ip route](#ip-route)
-  - [ip route get](#ip-route-get)
+  - [Default Gateway](#default-gateway)
+  - [Query the route for a destination](#query-the-route-for-a-destination)
   - [Adding a new route](#adding-a-new-route)
-- [Routing Table](#routing-table)
+- [B. Routing Table](#b-routing-table)
   - [local routing table](#local-routing-table)
   - [main routing table](#main-routing-table)
   - [default routing table](#default-routing-table)
-- [Rule](#rule)
+- [C. Rule](#c-rule)
   - [Routing Policy Database (RPDB)](#routing-policy-database-rpdb)
+- [Things we didn't cover](#things-we-didnt-cover)
+- [References](#references)
 
 </div>
 
@@ -198,7 +201,17 @@ For any other destination, the packet will be sent to a router.
 
 Alright, now let's get into the nitty gritty of routing.
 
----
+IP routing in Linux is handled by the IP routing subsystem called **FIB** _(Forwarding Information Base)_.
+FIB is a general term, that's not specific to Linux, that refers to the data plane representation of a routing table.
+Cisco, BSD, etc. all use this term.
+
+The subsystem consists of 3 components that work together to route packets:
+
+- Routes
+- Routing table
+- Routing policy database (RPDB)
+
+> Routes live in the routing table and RPDB contains rules that determine which routing table to use for a given packet.
 
 ## A. Route
 
