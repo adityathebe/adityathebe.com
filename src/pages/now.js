@@ -14,10 +14,14 @@ const IndexPage = () => (
         <li>
           Working at <a href="https://flanksource.com">@Flanksource</a>
         </li>
-        <li>Getting into the roots of low-level networking fundamentals</li>
+        {/* <li>Getting into the roots of low-level networking fundamentals</li> */}
         <li>
-          Watching <a href="https://www.hbo.com/the-white-lotus">The White Lotus</a> &amp;{' '}
-          <a href="https://www.imdb.com/title/tt3581920/">The Last of Us</a>
+          Reading <a target='_blank' href='https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/'>
+            Designing Data-Intensive Applications
+          </a>
+        </li>
+        <li>
+          Watching <a target='_blank' href="https://www.imdb.com/title/tt3581920/">The Last of Us - Season 2</a>
         </li>
         {/* <li>
           <a href="https://hevy.com/user/adityathebe">Working out</a>
@@ -25,7 +29,7 @@ const IndexPage = () => (
       </ul>
     </div>
 
-    <p>Last Updated: 01 May, 2025</p>
+    <p>Last Updated: 17 May, 2025</p>
   </Layout>
 );
 
