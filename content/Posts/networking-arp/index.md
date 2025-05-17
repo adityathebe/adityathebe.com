@@ -1,10 +1,11 @@
 ---
 title: ARP - The DNS for IP addresses
-date: '2025-05-17 14:45'
+date: '2025-05-17 15:35'
 categories:
   - Linux
   - Networking
 slug: /address-resolution-protocol
+featuredImage: ./arp.png
 description: Address Resolution Protocol maps IP addresses to MAC addresses similar to how DNS maps domains to IP addresses.
 keywords:
   - Linux
