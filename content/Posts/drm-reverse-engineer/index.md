@@ -74,7 +74,7 @@ If I could figure out the encryption algorithm used then I could download all th
 
 ### Encryption algorithm
 
-The `/.drm` endpoint returned a 128 bit encryption key _(eg: 9036fb5d2f6af3c153acecd37bde6da7 in hexadecimal)_.
+The `/.drm` endpoint returned a 128-bit encryption key _(e.g. 9036fb5d2f6af3c153acecd37bde6da7 in hexadecimal)_.
 That's a strong signal that it's most likely using AES-128 - a very popular symmetric encryption algorithm.
 
 With the ciphertext (from `/<ContentID>/1080p/`) and the encryption key in hand, I tried decrypting it using `openssl`
@@ -136,14 +136,14 @@ There are some pretty interesting stuff in here. Let's go through them
 | Line | Directive                  | Description                                                   |
 | ---- | -------------------------- | ------------------------------------------------------------- |
 | 2    | `#EXT-X-VERSION:3`         | uses the extended version 3 of `m3u` that supports encryption |
-| 5    | `EXT-X-PLAYLIST-TYPE:VOD`  | Incidcates that each url points to a video                    |
+| 5    | `EXT-X-PLAYLIST-TYPE:VOD`  | Indicates that each url points to a video                     |
 | 6    | `EXT-X-KEY:METHOD=AES-128` | we see the encryption algorithm used - AES-128                |
 | 7    | `EXTINF:4.000000`          | Indicates that this segment is 4 seconds long                 |
 
 In the `EXT-X-KEY` directive, we can also see `IV=0x45454545454545454545454545454545`. That most likely represents the initialization vector of the AES-128 encryption.
 
 <div class="section-notes">
-AES-128 has different modes. The `ECB` mode that we tried earlier doesn't required an initialization vector. The `CBC` modes does require an IV.
+AES-128 has different modes. The `ECB` mode that we tried earlier doesn't require an initialization vector. The `CBC` modes does require an IV.
 </div>
 
 Let's try decrypting once again using the CBC mode
@@ -166,4 +166,18 @@ And finally piece them together with `ffmpeg`.
 
 You can find the source code at [github.com/adityathebe/drm](https://github.com/adityathebe/drm).
 
+--
+
+In hindsight this was pretty straightforward.
+The endpoints hinted the use of DRM and it turns out most modern DRM technologies use AES with 128-bit keys [_[1]_](#ref-1).
+
 > To validate the approach, I purchased another movie and successfully downloaded the entire film.
+
+## References
+
+<div id="ref-1">
+<i>[1]</i>. https://docs.axinom.com/services/drm/general/what-is-drm/
+</div>
+
+</br>
+</br>
