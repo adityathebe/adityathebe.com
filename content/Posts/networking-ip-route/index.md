@@ -130,7 +130,7 @@ There are numerous more but these are the ones we'll be focusing on for this art
 Try running `ip link` to see all the interfaces on your system. My Linux desktop has 2 physical interfaces and they are connected to different networks.
 
 ```bash
-$ ip link
+ip link
 
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -148,7 +148,7 @@ $ ip link
 There's a lot of information here. I like to use the `-br` and `-c` flags to get a colored brief output.
 
 ```bash
-$ ip -br -c link
+ip -br -c link
 lo               UNKNOWN        00:00:00:00:00:00 <LOOPBACK,UP,LOWER_UP>
 enp5s0           UP             d8:43:ae:45:c5:62 <BROADCAST,MULTICAST,UP,LOWER_UP>
 wlo1             UP             f0:20:ff:21:57:cd <BROADCAST,MULTICAST,UP,LOWER_UP>
@@ -169,7 +169,7 @@ They are all enabled as shown by the "UP" flag inside the `<` and `>` brackets.
 To view the IP addresses associated with the interfaces, use `ip addr` command.
 
 ```bash
-$ ip -br -c addr
+ip -br -c addr
 lo               UNKNOWN        127.0.0.1/8 ::1/128
 enp5s0           UP             10.99.99.65/24 fe80::14ad:a0eb:c8f:c5b0/64
 wlo1             UP             192.168.254.3/24 fe80::5fd6:c815:261b:5df7/64
@@ -243,7 +243,7 @@ Use `ip route` to see all the routes on your system. _(This isn't entirely accur
 Below is an example of actual routes on my Linux machine.
 
 ```bash
-$ ip route list
+ip route list
 
 default via 10.99.99.1 dev enp5s0 proto dhcp src 10.99.99.65 metric 100
 default via 192.168.254.254 dev wlo1 proto dhcp src 192.168.254.3 metric 600
@@ -296,7 +296,7 @@ You can even check which route a packet takes for a given destination using `ip 
 **Local addresses**
 
 ```bash
-$ ip route get 10.99.99.3
+ip route get 10.99.99.3
 10.99.99.3 dev enp5s0 src 10.99.99.65 uid 1000
     cache
 ```
@@ -304,7 +304,7 @@ $ ip route get 10.99.99.3
 **Remote addresses**
 
 ```bash
-$ ip route get 1.1.1.1
+ip route get 1.1.1.1
 1.1.1.1 via 10.99.99.1 dev enp5s0 src 10.99.99.65 uid 1000
     cache
 ```
@@ -325,7 +325,7 @@ Once the packet is inside the ISP's network, protocols like BGP (Border Gateway 
 Let's get our hands dirty! I'll query [https://ipinfo.io/ip](https://ipinfo.io/ip/) to get my public IP address.
 
 ```bash
-$ curl -s https://ipinfo.io/ip
+curl -s https://ipinfo.io/ip
 43.231.211.110
 ```
 
@@ -333,14 +333,14 @@ In order to see which route this destination will use, we need to get the IP add
 I'll use the `dig` command for it.
 
 ```bash
-$ dig +short ipinfo.io
+dig +short ipinfo.io
 34.117.59.81
 ```
 
 Now, let's see which route this destination will use.
 
 ```bash
-$ ip route get 34.117.59.81
+ip route get 34.117.59.81
 34.117.59.81 via 10.99.99.1 dev enp5s0 src 10.99.99.65 uid 1000
     cache
 ```
@@ -350,19 +350,19 @@ Sure enough, it's using the ethernet interface.
 Let's add a new route so that this destination uses the wifi interface.
 
 ```bash
-$ sudo ip route add 34.117.59.81/32 via 192.168.254.254 dev wlo1
+sudo ip route add 34.117.59.81/32 via 192.168.254.254 dev wlo1
 ```
 
 Now, let's check which route this destination will use.
 
 ```bash
-$ ip route get 34.117.59.81
+ip route get 34.117.59.81
 34.117.59.81 via 192.168.254.254 dev wlo1 src 192.168.254.3 uid 1000
     cache
 ```
 
 ```bash
-$ curl -s https://ipinfo.io/ip
+curl -s https://ipinfo.io/ip
 120.89.104.16
 ```
 
@@ -373,7 +373,7 @@ And there it is — the public IP address has changed, confirming that traffic i
 Let's clean it up
 
 ```bash
-$ sudo ip route del 34.117.59.81/32
+sudo ip route del 34.117.59.81/32
 ```
 
 ## B. Routing Table
@@ -392,7 +392,7 @@ I couldn't find any command that lists out all the routing tables. Routing table
 It's possible that file is not present on your system. My desktop didn't have it as well. Here's what it looks like in one of my vms.
 
 ```bash
-$ cat /etc/iproute2/rt_tables
+cat /etc/iproute2/rt_tables
 #
 # reserved values
 #
@@ -414,7 +414,7 @@ The local routing table contains routes for local destinations (i.e. its own IP 
 It's maintainted by the kernel itself and is used to route incoming packets or outgoing packets destined to the host itself.
 
 ```bash
-$ ip route show table local
+ip route show table local
 
 local 10.99.99.65 dev enp5s0 proto kernel scope host src 10.99.99.65
 broadcast 10.99.99.255 dev enp5s0 proto kernel scope link src 10.99.99.65
@@ -435,7 +435,7 @@ If you send a packet to a broadcast address, it will be sent to all the devices 
 The main routing table contains routes for all other destinations (connected networks & remote destinations).
 
 ```bash
-$ ip route show table main
+ip route show table main
 
 default via 10.99.99.1 dev enp5s0 proto dhcp src 10.99.99.65 metric 100
 default via 192.168.254.254 dev wlo1 proto dhcp src 192.168.254.3 metric 600
@@ -451,7 +451,7 @@ This is the default routing table that `ip route` uses.
 I'm not sure what the purpose of this table is. It isn't even present on my system.
 
 ```bash
-$ ip route show table default
+ip route show table default
 
 Error: ipv4: FIB table does not exist.
 Dump terminated
@@ -463,7 +463,7 @@ A rule, determines which routing table to use for a given packet.
 Each rule has a priority, and rules are examined sequentially from rule 0 through rule 32767.
 
 ```bash
-$ ip rule show
+ip rule show
 0:      from all lookup local
 32766:  from all lookup main
 32767:  from all lookup default

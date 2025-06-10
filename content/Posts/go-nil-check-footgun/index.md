@@ -46,7 +46,7 @@ Here's what went through my mind:
 Let's see what happens when we run the code.
 
 ```bash
-$ go run main.go
+go run main.go
 false
 ```
 

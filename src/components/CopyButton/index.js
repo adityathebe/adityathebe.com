@@ -33,7 +33,6 @@ const CopyButton = ({ textToCopy }) => {
           </svg>
         )}
       </span>
-      <span className="copy-text">{copied ? 'Copied!' : 'Copy'}</span>
     </button>
   );
 };
