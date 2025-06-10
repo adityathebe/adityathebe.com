@@ -312,6 +312,16 @@ blockquote {
   border-radius: 5px;
 }
 
+/* Shell code blocks - add $ prefix to first line */
+.gatsby-highlight pre[class*='language-shell'] code::before,
+.gatsby-highlight pre[class*='language-bash'] code::before,
+.gatsby-highlight pre[class*='language-sh'] code::before {
+  content: '$ ';
+  color: var(--nord-frost-3);
+  user-select: none;
+  font-weight: bold;
+}
+
 /************************/
 /*** THEME TRANSITION ***/
 /************************/
