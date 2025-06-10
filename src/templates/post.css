@@ -4,6 +4,10 @@
   padding-top: 1rem;
 }
 
+.post-group:last-child {
+  margin-bottom: 3rem;
+}
+
 .year-heading {
   font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
   font-size: 1em;
