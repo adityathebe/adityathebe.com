@@ -75,20 +75,22 @@ There are handful of softwares that provide the compiled binaries in a tar file.
 
 Once you download the tar file you should extract it with the `tar` command.
 
-```bash
+```sh
 # Extract an archive into a target directory:
 # tar xf source.tar -C directory
 
 # Extract Intellij Idea to /opt directory
-❯ sudo tar xf ideaIC-2019.3.2.tar.gz -C /opt
+sudo tar xf ideaIC-2019.3.2.tar.gz -C /opt
 ```
 
 If you look at the extracted directory you'll see a binary file. You may need to look a bit further if you do not find it in the main directory. Some softwares place the binary file in a `/bin` directory while some place them in the main directory itself. This directory structuring is unique to each software, but, more often than not, you'll find the binary file in the bin directory.
 
 Here's what the extracted directory of the Intellij tar file looks like
 
+```sh
+ls -al idea-IC-193.6015.39
 ```
-❯ ls -al idea-IC-193.6015.39
+```output
 total 68K
 drwxr-xr-x  8 root root 4.0K Jan 27 20:50 .
 drwxr-xr-x  4 root root 4.0K Jan 27 20:50 ..

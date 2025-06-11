@@ -93,7 +93,9 @@ I use this command to look for a few things
 - whether it was installed explicitly
 
 ```sh
-❯ pacman -Qi seahorse
+pacman -Qi seahorse
+```
+```output
 ...
 Depends On      : gtk3  gcr  ...
 Required By     : None

@@ -106,8 +106,10 @@ Media backups include all the photos, videos and my music library. The NAS is th
 
 The [previous ansible playbook](https://github.com/adityathebe/homelab/blob/main/ansible/truenas/playbooks/backup.yaml) also sets up a systemd timer on the NAS to perform daily backups to the external drive.
 
+```sh
+cat restic-backup.service
 ```
-$ cat restic-backup.service
+```output
 [Unit]
 Description=Restic backup
 
@@ -139,9 +141,10 @@ Then, as a 3rd offsite copy of the backup I, once again, use rclone to replicate
 
 ![](./media-backup-strategy.png)
 
+```sh
+sudo crontab -l
 ```
-$ sudo crontab -l
-
+```output
 #Ansible: sync arch backups to b2
 0 1 * * 2,5 rclone sync /home/admin/backups/arch b2:restic-backup-arch
 #Ansible: sync nas backups to b2

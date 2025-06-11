@@ -30,7 +30,7 @@ The remote is usually named `origin` so you will have another branch, in your lo
 Try `git branch -vv` to see all the branches and their tracking branches.
 
 ```sh
-$ git branch -vv
+git branch -vv
 * feat/notifications a84be78 [origin/feat/notifications] feat: add notifications
   main               2831500 [origin/main] chore: remove deadcode
 ```
@@ -44,7 +44,7 @@ Running `git fetch -p` (short for `git fetch --prune`) will delete the `origin/f
 If you list the remote branches again, you'll see that the branch is marked as **gone**.
 
 ```sh
-$ git branch -vv
+git branch -vv
 * feat/notifications a84be78 [origin/feat/notifications: gone] feat: add notifications
   main               2831500 [origin/main] chore: remove deadcode
 ```
@@ -89,7 +89,7 @@ I have this as an alias in my git config in `~/.config/git/config`
 Now, I can simply run `git pull && git fetch -p && git clean-gone` to clean up those stale branches.
 
 ```sh
-$ git pull && git fetch -p && git clean-gone
+git pull && git fetch -p && git clean-gone
 Deleted branch feat/notifications (was a84be78).
 ```
 

@@ -37,8 +37,10 @@ gitchangehist() {
 
 I ran this on my website's codebase and here's the result
 
+```sh
+gitchangehist
 ```
-❯ gitchangehist
+```output
 37 src/components/Layout/layout.css
 31 gatsby-config.js
 23 package.json
