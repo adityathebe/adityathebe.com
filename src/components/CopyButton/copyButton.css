@@ -123,28 +123,7 @@
 /* Mobile responsiveness */
 @media screen and (max-width: 450px) {
   .copy-button-container {
-    position: static;
-    display: flex;
-    justify-content: flex-end;
-    margin: 0.5rem 0;
-  }
-  
-  .copy-button {
-    opacity: 1;
-    position: static;
-    transform: translateY(0);
-  }
-  
-  .gatsby-highlight {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .gatsby-highlight > pre {
-    order: 2;
-  }
-  
-  .copy-button-container {
-    order: 1;
+    top: 0.25rem;
+    right: 0.25rem;
   }
 }
