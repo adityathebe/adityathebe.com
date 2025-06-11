@@ -18,21 +18,19 @@ On the contrary, [Github actually suggest using https over ssh](https://help.git
 
 First thing first - make sure you have a `~/.ssh` directory.
 
-```
-❯ mkdir ~/.ssh
+```sh
+mkdir ~/.ssh
 ```
 
 This is the file in which we'll store our keys and configuration for ssh.
 
 Create an ssh key pair with `ssh-keygen` command. It'll ask you for the key name - I'd suggest using `id_rsa_github` just to stay consistent with this post.
 
-```bash
-# First navigate to the ~/.ssh directory
-❯ cd ~/.ssh
+```sh
+cd ~/.ssh && ssh-keygen -t rsa -b 4096 -C "<your_email>"
+```
 
-# Generate the ssh key pair
-❯ ssh-keygen -t rsa -b 4096 -C "<your_email>"
-
+```output
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/gunners/.ssh/id_rsa): id_rsa_github
 Enter passphrase (empty for no passphrase):
@@ -51,8 +49,11 @@ Add a suitable title and copy all the content from the `id_rsa_github.pub` file 
 
 If you try to perform some remote actions, like cloning a repo, you'll get an error like this.
 
-```bash
-❯ git clone git@github.com:adityathebe/dotfiles.git
+```sh
+git clone git@github.com:adityathebe/dotfiles.git
+```
+
+```output
 Cloning into 'dotfiles'...
 git@github.com: Permission denied (publickey).
 fatal: Could not read from remote repository.
@@ -65,10 +66,12 @@ This is because git does not know where to look for the ssh key (Remember the `i
 
 So to let git know that you do indeed have an ssh key use these two commands
 
-```bash
-❯ eval "$(ssh-agent -s)"
+```sh
+eval "$(ssh-agent -s)"
+```
 
-❯ ssh-add ~/.ssh/id_rsa_github
+```sh
+ssh-add ~/.ssh/id_rsa_github
 ```
 
 Now you can perform any git remote actions.
@@ -81,14 +84,14 @@ You could add the keys manually again with the ssh-add command but I'll show you
 
 Now make sure you have the ~/.ssh/config file. If it's not there you can simply create it
 
-```
-❯ touch ~/.ssh/config
+```sh
+touch ~/.ssh/config
 ```
 
 It's important the config file has it's permission set to 600.
 
-```bash
-❯ chmod 600 ~/.ssh/config
+```sh
+chmod 600 ~/.ssh/config
 ```
 
 This config file is read by the ssh command on every execution.
@@ -109,9 +112,11 @@ You might still be prompted for your password. This happens if you initially clo
 
 #### 1. Check your existing remote's urls
 
-```bash
-❯ git remote -v
+```sh
+git remote -v
+```
 
+```output
 origin  https://github.com/adityathebe/www.adityathebe.com.git (fetch)
 origin  https://github.com/adityathebe/www.adityathebe.com.git (push)
 ```
@@ -122,15 +127,17 @@ Grab the ssh clone url from Github
 
 ![](./github-clone-with-ssh.png)
 
-```bash
-❯ git remote set-url origin git@github.com:adityathebe/www.adityathebe.com.git
+```sh
+git remote set-url origin git@github.com:adityathebe/www.adityathebe.com.git
 ```
 
 #### 3. Verify
 
-```bash
-❯ git remote -v
+```sh
+git remote -v
+```
 
+```output
 origin  git@github.com:adityathebe/www.adityathebe.com.git (fetch)
 origin  git@github.com:adityathebe/www.adityathebe.com.git (push)
 ```
