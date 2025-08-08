@@ -5,18 +5,18 @@ export function formatPostDate(date, lang = 'en-US') {
   }
 
   date = new Date(date);
-  const shortFormat = { 
-    day: '2-digit', 
-    month: 'short'
+  const shortFormat = {
+    day: '2-digit',
+    month: 'short',
   };
-  
-  const fullFormat = { 
+
+  const fullFormat = {
     ...shortFormat,
-    year: 'numeric'
+    year: 'numeric',
   };
-  
+
   return {
     short: date.toLocaleDateString(lang, shortFormat),
-    full: date.toLocaleDateString(lang, fullFormat)
+    full: date.toLocaleDateString(lang, fullFormat),
   };
 }

@@ -27,8 +27,8 @@ export default () => {
 
   // Group posts by year
   const postsByYear = {};
-  
-  allMarkdownRemark.edges.forEach(edge => {
+
+  allMarkdownRemark.edges.forEach((edge) => {
     const postYear = new Date(edge.node.frontmatter.date).getFullYear();
     if (!postsByYear[postYear]) {
       postsByYear[postYear] = [];
@@ -40,30 +40,22 @@ export default () => {
   const postGroups = Object.entries(postsByYear)
     .map(([year, posts]) => ({
       title: year,
-      posts: posts
+      posts: posts,
     }))
     .sort((a, b) => b.title - a.title);
 
   return (
     <div>
-      {postGroups.map(group => (
+      {postGroups.map((group) => (
         <div key={group.title} className="post-group">
           <h2 className="year-heading">{group.title}</h2>
           <ul className="post-list">
-            {group.posts.map(edge => (
+            {group.posts.map((edge) => (
               <li key={edge.node.id}>
                 <div className="post-content-wrapper">
                   <span className="post-date">
-                    <span className="post-date-desktop">
-                      {formatPostDate(
-                        edge.node.frontmatter.date
-                      ).short}
-                    </span>
-                    <span className="post-date-mobile">
-                      {formatPostDate(
-                        edge.node.frontmatter.date
-                      ).full}
-                    </span>
+                    <span className="post-date-desktop">{formatPostDate(edge.node.frontmatter.date).short}</span>
+                    <span className="post-date-mobile">{formatPostDate(edge.node.frontmatter.date).full}</span>
                   </span>
 
                   <div className="post-item">

@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
-import {  formatPostDate } from '../utils/helper.js';
+import { formatPostDate } from '../utils/helper.js';
 
 import './post.css';
 

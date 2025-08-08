@@ -16,9 +16,7 @@ const LinksPage = () => (
       </a>
 
       <h2>TV Shows watch history</h2>
-      <Link to="/reviews/tv" >
-        /reviews/tv
-      </Link>
+      <Link to="/reviews/tv">/reviews/tv</Link>
 
       <h2>Some of my favorite people in Tech</h2>
       <ul>
