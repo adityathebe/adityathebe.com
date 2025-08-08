@@ -6,7 +6,7 @@ import './nepalMap.css';
 const geoUrl = '/nepal-districts.json';
 
 /**
- * @param {{visitedDistricts?: {name: string, notes: string}[]}} props
+ * @param {{visitedDistricts?: {name: string,  notes: string}[]}} props
  */
 const NepalMap = ({ visitedDistricts = [] }) => {
   const [hoveredDistrict, setHoveredDistrict] = useState(/** @type {{name: string, info: any} | null} */ (null));
