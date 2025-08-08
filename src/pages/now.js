@@ -10,8 +10,7 @@ const IndexPage = () => (
     <div className="post-content">
       <h1 id="page-title">Now</h1>
       <ul>
-        {/* <li>🏠 In Kathmandu</li> */}
-        <li>Trekking Khumbu Region 🌲 🥾</li>
+        <li>🏠 In Kathmandu</li>
         <li>
           Working at <a href="https://flanksource.com">@Flanksource</a>
         </li>
@@ -26,7 +25,7 @@ const IndexPage = () => (
       </ul>
     </div>
 
-    <p>Last Updated: 2 June, 2025</p>
+    <p>Last Updated: 8 August, 2025</p>
   </Layout>
 );
 
