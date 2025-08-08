@@ -1,6 +1,5 @@
 // @ts-check
 const path = require('path');
-const generateImage = require('./gen-social-image');
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -41,14 +40,6 @@ exports.createPages = ({ graphql, actions }) => {
       let seoImage = '';
       if (post.node.frontmatter.featuredImage) {
         seoImage = post.node.frontmatter.featuredImage.publicURL;
-      } else {
-        seoImage =
-          '/' +
-          generateImage({
-            title: post.node.frontmatter.title,
-            slug: post.node.frontmatter.slug,
-            isJournal: false,
-          });
       }
 
       createPage({
@@ -91,18 +82,13 @@ exports.createPages = ({ graphql, actions }) => {
     // Create weekly journal pages.
     const posts = result.data.allMarkdownRemark.edges;
     posts.forEach((post) => {
-      const seoImage = generateImage({
-        title: post.node.frontmatter.title,
-        slug: post.node.frontmatter.slug,
-        isJournal: true,
-      });
 
       createPage({
         path: post.node.frontmatter.slug,
         component: weeklyJournalTemplate,
         context: {
           slug: post.node.frontmatter.slug,
-          seoImage: seoImage,
+          seoImage: '',
         },
       });
     });

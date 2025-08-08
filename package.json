@@ -5,8 +5,8 @@
   "version": "0.1.0",
   "author": "Aditya Thebe <contact@adityathebe.com>",
   "dependencies": {
-    "canvas": "^2.11.2",
-    "gatsby": "^5.13.3",
+    "@parcel/watcher": "^2.5.1",
+    "gatsby": "^5.14.6",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-feed": "^5.13.1",
     "gatsby-plugin-manifest": "^5.13.1",
