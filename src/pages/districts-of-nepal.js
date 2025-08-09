@@ -109,19 +109,7 @@ const DistrictsOfNepalPage = () => {
         featuredImage="districts-of-nepal.png"
       />
 
-      <div
-        style={{
-          height: '80vh',
-          margin: 0,
-          padding: 0,
-          marginLeft: 'calc(-50vw + 50%)',
-          marginRight: 'calc(-50vw + 50%)',
-          overflow: 'hidden',
-        }}
-        className="nepal-map-page-container"
-      >
-        <NepalMap visitedDistricts={visitedDistricts} />
-      </div>
+      <NepalMap visitedDistricts={visitedDistricts} />
 
       <p style={{ textAlign: 'center', marginTop: '20px' }}>
         Visited: {visitedDistricts.length}/77 ({Math.round((visitedDistricts.length / 77) * 100)}%)

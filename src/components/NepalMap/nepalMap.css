@@ -1,8 +1,9 @@
 .nepal-map-container {
-  width: 100%;
-  height: 100%;
-  margin: 0;
+  width: 100vw;
+  height: 80vh;
+  margin-left: calc(-50vw + 50%);
   padding: 0;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -17,8 +18,19 @@
 }
 
 .nepal-map-wrapper svg {
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+}
+
+/* Force SVG to be responsive on mobile */
+@media (max-width: 768px) {
+  .nepal-map-wrapper svg {
+    width: 100vw !important;
+    height: auto !important;
+    max-width: none !important;
+  }
 }
 
 .nepal-map-loading {
@@ -124,15 +136,25 @@
   font-weight: 600;
 }
 
+.nepal-map-page-container {
+  height: 80vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  overflow: hidden;
+  position: relative;
+}
+
 /* Mobile responsive styles */
 @media (max-width: 768px) {
-  .nepal-map-page-container {
-    height: 60vh !important;
-  }
-
   .nepal-map-container {
+    height: 60vh !important;
+    width: 100vw !important;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: calc(-50vw + 50%) !important;
     padding: 0;
-    height: 100%;
   }
 
   .nepal-map-wrapper {
