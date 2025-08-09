@@ -7,7 +7,7 @@ const WeeklyJournal = () => {
     {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/WeeklyJournal/" } }
-        sort: { order: DESC, fields: [frontmatter___date] }
+        sort: { frontmatter: { date: DESC } }
       ) {
         edges {
           node {

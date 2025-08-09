@@ -7,7 +7,7 @@ export default () => {
     {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/Posts/" } }
-        sort: { order: DESC, fields: [frontmatter___date] }
+        sort: { frontmatter: { date: DESC } }
       ) {
         edges {
           node {

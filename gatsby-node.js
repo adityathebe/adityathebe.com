@@ -10,7 +10,7 @@ exports.createPages = ({ graphql, actions }) => {
     {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/Posts/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { frontmatter: { date: DESC } }
         limit: 1000
       ) {
         edges {
@@ -59,7 +59,7 @@ exports.createPages = ({ graphql, actions }) => {
     {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/WeeklyJournal/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { frontmatter: { date: DESC } }
         limit: 1000
       ) {
         edges {
