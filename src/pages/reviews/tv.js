@@ -3,7 +3,7 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import Griddle, { plugins, RowDefinition, ColumnDefinition } from 'griddle-react';
 
-import SEO from '../../components/SEO';
+import { Head as SEOHead } from '../../components/SEO';
 import Layout from '../../components/Layout';
 import './tv.css';
 
@@ -13,10 +13,6 @@ const JustTableLayout = ({ Table }) => (
   </div>
 );
 
-/**
- * TV Reviews Page Component
- * @returns {JSX.Element}
- */
 const TV = () => {
   const data = useStaticQuery(graphql`
     query TvReviews {
@@ -40,7 +36,6 @@ const TV = () => {
 
   return (
     <Layout>
-      <SEO title="TV Reviews" />
       <section className="reviews">
         <h2>Viewing History</h2>
         <Griddle
@@ -90,6 +85,8 @@ const TV = () => {
 };
 
 export default TV;
+
+export const Head = () => <SEOHead title="TV Reviews" />;
 
 const EmptyHandler = ({ value }) => {
   if (!value) return <span>--</span>;
