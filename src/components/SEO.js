@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-function SEO({ description, meta, keywords, title, featuredImage }) {
+/**
+ * @param {{ description?: string, keywords?: string[], title?: string, featuredImage?: string }} props
+ */
+export function Head({ description = '', keywords = [], title = '', featuredImage = '' }) {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -19,69 +21,38 @@ function SEO({ description, meta, keywords, title, featuredImage }) {
 
   const metaDescription = description || site.siteMetadata.description;
   const fallbackSocialImage = site.siteMetadata.siteUrl + '/images/site_featured_aditya_thebe.jpg';
+  const pageTitle = title ? `${title} | ${site.siteMetadata.title}` : site.siteMetadata.title;
 
   return (
-    <Helmet
-      htmlAttributes={{ lang: 'en' }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `yandex-verification`,
-          content: `0e3d760f663fd964`,
-        },
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          property: `og:image`,
-          content: featuredImage || fallbackSocialImage,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-        {
-          name: `twitter:image`,
-          content: featuredImage || fallbackSocialImage,
-        },
-      ]
-        .concat(
-          keywords.length > 0
-            ? {
-                name: `keywords`,
-                content: keywords.join(`, `),
-              }
-            : []
-        )
-        .concat(meta)}
-    />
+    <>
+      <html lang="en" />
+      <title>{pageTitle}</title>
+      <meta name="yandex-verification" content="0e3d760f663fd964" />
+      <meta name="description" content={metaDescription} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:type" content="website" />
+      <meta property="og:image" content={featuredImage || fallbackSocialImage} />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:creator" content={site.siteMetadata.author} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:image" content={featuredImage || fallbackSocialImage} />
+      {keywords.length > 0 && <meta name="keywords" content={keywords.join(`, `)} />}
+    </>
   );
+}
+
+Head.propTypes = {
+  description: PropTypes.string,
+  keywords: PropTypes.arrayOf(PropTypes.string),
+  title: PropTypes.string,
+  featuredImage: PropTypes.string,
+};
+
+// Keep the old SEO component for backward compatibility during migration
+function SEO({ description, meta, keywords, title, featuredImage }) {
+  return null; // This component is now deprecated, use Head export instead
 }
 
 SEO.defaultProps = {
