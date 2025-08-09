@@ -8,17 +8,11 @@ import Footer from '../Footer/';
 import './layout.css';
 
 const Layout = ({ children }) => (
-  <div className='main-wrapper'>
+  <div className="main-wrapper">
     <Navbar />
-    <main className="page-content">
-      {children}
-    </main>
+    <main className="page-content">{children}</main>
     <Footer />
   </div>
 );
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default Layout;

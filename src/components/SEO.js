@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 
 /**
@@ -43,30 +42,4 @@ export function Head({ description = '', keywords = [], title = '', featuredImag
   );
 }
 
-Head.propTypes = {
-  description: PropTypes.string,
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string,
-  featuredImage: PropTypes.string,
-};
-
-// Keep the old SEO component for backward compatibility during migration
-function SEO({ description, meta, keywords, title, featuredImage }) {
-  return null; // This component is now deprecated, use Head export instead
-}
-
-SEO.defaultProps = {
-  meta: [],
-  keywords: [],
-  description: ``,
-};
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
-  featuredImage: PropTypes.string,
-};
-
-export default SEO;
+export default Head;
