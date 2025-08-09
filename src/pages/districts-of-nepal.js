@@ -105,8 +105,8 @@ const DistrictsOfNepalPage = () => {
       <SEO
         title="Districts of Nepal - Travel Map"
         keywords={['nepal districts', 'nepal travel', 'nepal map', 'districts visited', 'nepal geography']}
-        description="Interactive map showing all 77 districts of Nepal. Progress: 40/77 districts visited (52% complete)."
-        featuredImage="districts-of-nepal.png"
+        description="Explore an interactive visualization of Nepal's 77 districts, highlighting the ones I've visited."
+        featuredImage="/images/districts-of-nepal.png"
       />
 
       <NepalMap visitedDistricts={visitedDistricts} />
