@@ -2,7 +2,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import SEO from '../components/SEO';
+import Head from '../components/SEO';
 import Layout from '../components/Layout';
 import { formatPostDate } from '../utils/helper.js';
 
@@ -13,12 +13,11 @@ const BlogPostTemplate = ({ data, pageContext }) => {
   const siteUrl = data.site.siteMetadata.siteUrl;
   return (
     <Layout>
-      <SEO
+      <Head
         title={post.frontmatter.title}
         description={post.frontmatter.description}
         featuredImage={siteUrl + pageContext.seoImage}
         keywords={post.frontmatter.keywords ? post.frontmatter.keywords : []}
-        meta={[{ property: 'og:type', content: 'article' }]}
       />
 
       <div className="post-each-info">

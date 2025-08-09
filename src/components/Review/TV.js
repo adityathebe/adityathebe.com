@@ -21,7 +21,7 @@ export const ShowList = ({ shows }) => {
 
     return -1;
   });
-  
+
   return (
     <ul className="tv-watch-history">
       {shows.map((show) => (

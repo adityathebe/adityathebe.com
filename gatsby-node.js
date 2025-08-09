@@ -82,7 +82,6 @@ exports.createPages = ({ graphql, actions }) => {
     // Create weekly journal pages.
     const posts = result.data.allMarkdownRemark.edges;
     posts.forEach((post) => {
-
       createPage({
         path: post.node.frontmatter.slug,
         component: weeklyJournalTemplate,

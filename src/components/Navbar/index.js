@@ -14,7 +14,7 @@ const Navbar = () => {
 
       <nav className="site-nav">
         <input type="checkbox" id="nav-trigger" className="nav-trigger" />
-        <label htmlFor="nav-trigger">
+        <label htmlFor="nav-trigger" aria-label="Toggle navigation menu">
           <span className="menu-icon">
             <svg viewBox="0 0 18 15" width="18px" height="15px">
               <path
