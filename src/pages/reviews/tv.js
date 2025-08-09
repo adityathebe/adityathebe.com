@@ -97,7 +97,6 @@ const EmptyHandler = ({ value }) => {
 };
 
 const TierFormatter = ({ value }) => {
-  console.log(value);
   if (!value) return <span className="tier">--</span>;
   if (value < 2) {
     return <span className="tier">S</span>;
