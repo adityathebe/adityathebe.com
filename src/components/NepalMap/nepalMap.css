@@ -1,0 +1,85 @@
+.nepal-map-container {
+  width: 100vw;
+  height: 80vh;
+  margin-left: calc(-50vw + 50%);
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.nepal-map-wrapper {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.nepal-map-wrapper svg {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+}
+
+@media (max-width: 768px) {
+  .nepal-map-wrapper svg {
+    width: 100vw !important;
+    height: auto !important;
+  }
+}
+
+.nepal-map-tooltip {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color-1);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  min-width: 250px;
+  max-width: 300px;
+  z-index: 10;
+}
+
+.nepal-map-tooltip h3 {
+  margin: 0 0 10px 0;
+  color: var(--primary-text-color);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.nepal-map-tooltip p {
+  margin: 5px 0;
+  color: var(--secondary-text-color);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.nepal-map-tooltip-notes {
+  color: var(--color-good) !important;
+  font-weight: 600;
+}
+
+.not-visited-status {
+  color: var(--color-bad) !important;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .nepal-map-container {
+    height: 60vh;
+  }
+
+  .nepal-map-tooltip {
+    position: static;
+    margin-top: 20px;
+    max-width: none;
+    left: 10px !important;
+    right: 10px !important;
+    top: auto !important;
+  }
+}
