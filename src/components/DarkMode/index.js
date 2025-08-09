@@ -20,7 +20,8 @@ export default class DarkModeToggle extends React.Component {
 
     let currentTheme = localStorage.getItem('theme');
     if (!currentTheme) {
-      const prefersDarkMode = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const prefersDarkMode =
+        typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches;
       currentTheme = prefersDarkMode ? 'dark' : 'light';
     }
 
