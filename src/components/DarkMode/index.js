@@ -34,7 +34,7 @@ export default class DarkModeToggle extends React.Component {
   render() {
     return (
       <span className="theme-switch-wrapper">
-        <label className="theme-switch" htmlFor="checkbox">
+        <label className="theme-switch" htmlFor="checkbox" aria-label="Toggle dark mode">
           <input type="checkbox" id="checkbox" />
           <span className="slider round" />
         </label>

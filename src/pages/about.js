@@ -1,12 +1,12 @@
 // @ts-check
 import React from 'react';
 
-import SEO from '../components/SEO';
+import Head from '../components/SEO';
 import Layout from '../components/Layout';
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="About" keywords={['aditya thebe info', 'about aditya thebe']} />
+    <Head title="About" keywords={['aditya thebe info', 'about aditya thebe']} />
     <div className="post-content">
       <h1 id="page-title">About Me</h1>
       <p>Hey, I am Aditya, a software engineer From Nepal.</p>

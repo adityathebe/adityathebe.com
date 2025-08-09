@@ -2,7 +2,7 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
-import SEO from '../components/SEO';
+import Head from '../components/SEO';
 import Layout from '../components/Layout';
 
 import Project from '../components/Portfolio/Project';
@@ -48,7 +48,7 @@ const ProjectPage = () => {
 
   return (
     <Layout>
-      <SEO title="Portfolio" keywords={['aditya thebe portfolio', 'aditya thebe projects']} />
+      <Head title="Portfolio" keywords={['aditya thebe portfolio', 'aditya thebe projects']} />
       <h2>Featured Projects</h2>
       {featuredProjectsList.map((project, idx) => (
         <Project key={idx} project={project} />

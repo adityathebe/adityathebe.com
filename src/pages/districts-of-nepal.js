@@ -1,7 +1,7 @@
 // @ts-check
 import React from 'react';
 
-import SEO from '../components/SEO';
+import Head from '../components/SEO';
 import Layout from '../components/Layout';
 import NepalMap from '../components/NepalMap';
 
@@ -102,7 +102,7 @@ const DistrictsOfNepalPage = () => {
 
   return (
     <Layout>
-      <SEO
+      <Head
         title="Districts of Nepal - Travel Map"
         keywords={['nepal districts', 'nepal travel', 'nepal map', 'districts visited', 'nepal geography']}
         description="Explore an interactive visualization of Nepal's 77 districts, highlighting the ones I've visited."

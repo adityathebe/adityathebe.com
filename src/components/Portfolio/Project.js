@@ -10,7 +10,7 @@ function durationFormatter(duration) {
   return start + ' to ' + (end || 'ongoing');
 }
 
-export default ({ project }) => {
+const Project = ({ project }) => {
   const { sourceCodeUrl, demoUrl } = project;
   return (
     <div className="project-card">
@@ -50,3 +50,5 @@ export default ({ project }) => {
     </div>
   );
 };
+
+export default Project;

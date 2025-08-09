@@ -1,8 +1,8 @@
 import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
-import { formatReadingTime, formatPostDate } from '../utils/helper.js';
+import { formatPostDate } from '../utils/helper.js';
 
-export default () => {
+const PostList = () => {
   const { allMarkdownRemark } = useStaticQuery(graphql`
     {
       allMarkdownRemark(
@@ -80,3 +80,5 @@ export default () => {
     </div>
   );
 };
+
+export default PostList;
