@@ -106,11 +106,11 @@ const DistrictsOfNepalPage = () => {
         title="Districts of Nepal - Travel Map"
         keywords={['nepal districts', 'nepal travel', 'nepal map', 'districts visited', 'nepal geography']}
         description="Interactive map showing all 77 districts of Nepal. Progress: 40/77 districts visited (52% complete)."
-        featuredImage=""
+        featuredImage="districts-of-nepal.png"
       />
+
       <div
         style={{
-          width: '100vw',
           height: '80vh',
           margin: 0,
           padding: 0,
@@ -122,10 +122,10 @@ const DistrictsOfNepalPage = () => {
       >
         <NepalMap visitedDistricts={visitedDistricts} />
       </div>
-      <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '18px', fontWeight: '500' }}>
-        Districts Visited: {visitedDistricts.length} out of 77 ({Math.round((visitedDistricts.length / 77) * 100)}%
-        complete)
-      </div>
+
+      <p style={{ textAlign: 'center', marginTop: '20px' }}>
+        Visited: {visitedDistricts.length}/77 ({Math.round((visitedDistricts.length / 77) * 100)}%)
+      </p>
     </Layout>
   );
 };
