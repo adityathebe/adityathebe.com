@@ -2,7 +2,7 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
-import Head from '../components/SEO';
+import { Head as SEOHead } from '../components/SEO';
 import Layout from '../components/Layout';
 import './uses.css';
 
@@ -67,8 +67,6 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <Head title="Uses" keywords={['aditya thebe uses', 'aditya thebe tools']} />
-
       <h2>Development Tools</h2>
       <UsesItem items={devToolsList} />
 
@@ -86,5 +84,7 @@ const IndexPage = () => {
     </Layout>
   );
 };
+
+export const Head = () => <SEOHead title="Uses" keywords={['aditya thebe uses', 'aditya thebe tools']} />;
 
 export default IndexPage;

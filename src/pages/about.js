@@ -1,12 +1,11 @@
 // @ts-check
 import React from 'react';
 
-import Head from '../components/SEO';
+import { Head as SEOHead } from '../components/SEO';
 import Layout from '../components/Layout';
 
 const IndexPage = () => (
   <Layout>
-    <Head title="About" keywords={['aditya thebe info', 'about aditya thebe']} />
     <div className="post-content">
       <h1 id="page-title">About Me</h1>
       <p>Hey, I am Aditya, a software engineer From Nepal.</p>
@@ -41,5 +40,7 @@ const IndexPage = () => (
     </div>
   </Layout>
 );
+
+export const Head = () => <SEOHead title="About" keywords={['aditya thebe info', 'about aditya thebe']} />;
 
 export default IndexPage;

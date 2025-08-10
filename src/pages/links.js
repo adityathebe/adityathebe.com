@@ -1,13 +1,12 @@
 // @ts-check
 import React from 'react';
 
-import Head from '../components/SEO';
+import { Head as SEOHead } from '../components/SEO';
 import Layout from '../components/Layout';
 import { Link } from 'gatsby';
 
 const LinksPage = () => (
   <Layout>
-    <Head title="Links" keywords={['aditya thebe links']} />
     <div className="post-content">
       <h1 id="page-title">Links</h1>
       <h2>Movies watch history</h2>
@@ -66,5 +65,7 @@ const LinksPage = () => (
     </div>
   </Layout>
 );
+
+export const Head = () => <SEOHead title="Links" keywords={['aditya thebe links']} />;
 
 export default LinksPage;
