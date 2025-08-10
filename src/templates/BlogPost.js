@@ -8,9 +8,8 @@ import { formatPostDate } from '../utils/helper.js';
 
 import './post.css';
 
-const BlogPostTemplate = ({ data, pageContext }) => {
+const BlogPostTemplate = ({ data }) => {
   const post = data.markdownRemark;
-  const siteUrl = data.site.siteMetadata.siteUrl;
   return (
     <Layout>
       <div className="post-each-info">

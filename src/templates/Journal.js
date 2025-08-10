@@ -6,9 +6,8 @@ import { Head as SEOHead } from '../components/SEO';
 import Layout from '../components/Layout';
 import { formatPostDate } from '../utils/helper.js';
 
-const WeeklyJournalTemplate = ({ data, pageContext }) => {
+const WeeklyJournalTemplate = ({ data }) => {
   const journal = data.markdownRemark;
-  const siteUrl = data.site.siteMetadata.siteUrl;
   return (
     <Layout>
       <h1 className="post-header">{journal.frontmatter.title}</h1>

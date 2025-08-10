@@ -55,7 +55,7 @@ const ProjectPage = () => {
 
       <h2 style={{ marginTop: '2em' }}>Mini Projects</h2>
       <ul className="mini-projects-ul">
-        {miniProjectsList.map((project, idx) => (
+        {miniProjectsList.map((project) => (
           <li key={project.name}>
             <a href={project.link} target="_blank" rel="noopener noreferrer">
               <span className="mini-project-li-name">{project.name}</span>

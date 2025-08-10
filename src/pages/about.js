@@ -11,7 +11,7 @@ const IndexPage = () => (
       <p>Hey, I am Aditya, a software engineer From Nepal.</p>
 
       <p>
-        At the moment, I'm enjoying building a Kubernetes Native Internal Developer Platform at{' '}
+        At the moment, I&apos;m enjoying building a Kubernetes Native Internal Developer Platform at{' '}
         <a href="https://www.flanksource.com">Flanksource</a>.
       </p>
 
@@ -28,10 +28,10 @@ const IndexPage = () => (
       </p>
 
       <p>
-        I <b>used</b> to play Guitar a lot but I don't have the time and passion for it as much these days.
+        I <b>used</b> to play Guitar a lot but I don&apos;t have the time and passion for it as much these days.
       </p>
 
-      <p>I'm also a massive Arsenal FC fan. If there's an Arsenal game, you bet I'm watching it.</p>
+      <p>I&apos;m also a massive Arsenal FC fan. If there&apos;s an Arsenal game, you bet I&apos;m watching it.</p>
 
       <p>
         I used to <a href="https://www.strava.com/athletes/42641291">run</a>, but now I{' '}
