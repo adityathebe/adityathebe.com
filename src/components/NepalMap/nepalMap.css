@@ -24,6 +24,10 @@
   max-height: none !important;
 }
 
+.nepal-map-wrapper svg path {
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .nepal-map-wrapper svg {
     width: 100vw !important;
