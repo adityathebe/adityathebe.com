@@ -91,11 +91,11 @@
 }
 
 /* Remove gap between command and output blocks */
-.gatsby-highlight + .gatsby-highlight:has(pre[class*="language-output"]) {
+.gatsby-highlight + .gatsby-highlight:has(pre[class*='language-output']) {
   margin-top: 0 !important;
 }
 
-.gatsby-highlight pre[class*="language-output"] {
+.gatsby-highlight pre[class*='language-output'] {
   margin-top: 0 !important;
   border-top: 0.5px solid var(--nord-snowstorm-3) !important;
   border-top-left-radius: 0 !important;
@@ -105,11 +105,11 @@
 }
 
 /* Also remove bottom margin from the preceding command block */
-.gatsby-highlight:has(+ .gatsby-highlight pre[class*="language-output"]) {
+.gatsby-highlight:has(+ .gatsby-highlight pre[class*='language-output']) {
   margin-bottom: 0 !important;
 }
 
-.gatsby-highlight:has(+ .gatsby-highlight pre[class*="language-output"]) pre {
+.gatsby-highlight:has(+ .gatsby-highlight pre[class*='language-output']) pre {
   margin-bottom: 0 !important;
   border-bottom-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
@@ -126,9 +126,9 @@
     top: 0.25rem;
     right: 0.25rem;
   }
-  
+
   /* Add equal top and bottom padding to all code blocks on mobile */
-  .gatsby-highlight pre[class*="language"] {
+  .gatsby-highlight pre[class*='language'] {
     padding-top: 1.75rem !important;
     padding-bottom: 1.75rem !important;
   }
