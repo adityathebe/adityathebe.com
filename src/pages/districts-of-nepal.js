@@ -1,7 +1,7 @@
 // @ts-check
 import React from 'react';
 
-import SEO from '../components/SEO';
+import { Head as SEOHead } from '../components/SEO';
 import Layout from '../components/Layout';
 import NepalMap from '../components/NepalMap';
 
@@ -102,13 +102,6 @@ const DistrictsOfNepalPage = () => {
 
   return (
     <Layout>
-      <SEO
-        title="Districts of Nepal - Travel Map"
-        keywords={['nepal districts', 'nepal travel', 'nepal map', 'districts visited', 'nepal geography']}
-        description="Explore an interactive visualization of Nepal's 77 districts, highlighting the ones I've visited."
-        featuredImage="/images/districts-of-nepal.png"
-      />
-
       <NepalMap visitedDistricts={visitedDistricts} />
 
       <p style={{ textAlign: 'center', marginTop: '20px' }}>
@@ -117,5 +110,14 @@ const DistrictsOfNepalPage = () => {
     </Layout>
   );
 };
+
+export const Head = () => (
+  <SEOHead
+    title="Districts of Nepal - Travel Map"
+    keywords={['nepal districts', 'nepal travel', 'nepal map', 'districts visited', 'nepal geography']}
+    description="Explore an interactive visualization of Nepal's 77 districts, highlighting the ones I've visited."
+    featuredImage="/images/districts-of-nepal.png"
+  />
+);
 
 export default DistrictsOfNepalPage;

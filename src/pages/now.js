@@ -1,12 +1,11 @@
 // @ts-check
 import React from 'react';
 
-import SEO from '../components/SEO';
+import { Head as SEOHead } from '../components/SEO';
 import Layout from '../components/Layout';
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Now" keywords={['aditya thebe currently', 'aditya thebe now']} />
     <div className="post-content">
       <h1 id="page-title">Now</h1>
       <ul>
@@ -28,5 +27,7 @@ const IndexPage = () => (
     <p>Last Updated: 8 August, 2025</p>
   </Layout>
 );
+
+export const Head = () => <SEOHead title="Now" keywords={['aditya thebe currently', 'aditya thebe now']} />;
 
 export default IndexPage;
