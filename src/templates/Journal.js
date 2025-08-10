@@ -16,6 +16,7 @@ const WeeklyJournalTemplate = ({ data, pageContext }) => {
         description={journal.frontmatter.description}
         featuredImage={siteUrl + '/' + pageContext.seoImage}
         keywords={journal.frontmatter.keywords}
+        ogType="article"
       />
       <h1 className="post-header">{journal.frontmatter.title}</h1>
       <span className="post-meta">{formatPostDate(journal.frontmatter.date).full}</span>

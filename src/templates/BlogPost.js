@@ -18,6 +18,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
         description={post.frontmatter.description}
         featuredImage={siteUrl + pageContext.seoImage}
         keywords={post.frontmatter.keywords ? post.frontmatter.keywords : []}
+        ogType="article"
       />
 
       <div className="post-each-info">

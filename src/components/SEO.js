@@ -2,9 +2,9 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 /**
- * @param {{ description?: string, keywords?: string[], title?: string, featuredImage?: string }} props
+ * @param {{ description?: string, keywords?: string[], title?: string, featuredImage?: string, ogType?: string }} props
  */
-export function Head({ description = '', keywords = [], title = '', featuredImage = '' }) {
+export function Head({ description = '', keywords = [], title = '', featuredImage = '', ogType = 'website' }) {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -30,7 +30,7 @@ export function Head({ description = '', keywords = [], title = '', featuredImag
       <meta name="description" content={metaDescription} />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={metaDescription} />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={ogType} />
       <meta property="og:image" content={featuredImage || fallbackSocialImage} />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content={site.siteMetadata.author} />
