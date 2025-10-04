@@ -1,10 +1,11 @@
 // @ts-check
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
 import { Head as SEOHead } from '../components/SEO';
 import Layout from '../components/Layout';
 import { formatPostDate } from '../utils/helper.js';
+import { tagPath } from '../utils/tags.js';
 
 import './post.css';
 
@@ -20,9 +21,9 @@ const BlogPostTemplate = ({ data }) => {
 
         <span className="post-meta">
           {post.frontmatter.categories.map((x, idx) => (
-            <span key={idx} className="post-tag">
+            <Link key={idx} className="post-tag" to={tagPath(x)}>
               {x}
-            </span>
+            </Link>
           ))}
         </span>
       </div>

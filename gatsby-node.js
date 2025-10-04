@@ -1,11 +1,19 @@
 // @ts-check
 const path = require('path');
 
+const createTagSlug = (value) =>
+  value
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   // Create pages for blog posts
   const blogPostTemplate = path.resolve(`./src/templates/BlogPost.js`);
+  const tagTemplate = path.resolve(`./src/templates/Tag.js`);
   const blogPosts = graphql(`
     {
       allMarkdownRemark(
@@ -20,6 +28,7 @@ exports.createPages = ({ graphql, actions }) => {
               title
               date
               slug
+              categories
               featuredImage {
                 publicURL
               }
@@ -36,6 +45,8 @@ exports.createPages = ({ graphql, actions }) => {
     // Create blog posts pages.
     const posts = result.data.allMarkdownRemark.edges;
 
+    const tagMap = new Map();
+
     posts.forEach((post) => {
       let seoImage = '';
       if (post.node.frontmatter.featuredImage) {
@@ -48,6 +59,45 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           slug: post.node.frontmatter.slug,
           seoImage: seoImage,
+        },
+      });
+
+      const categories = post.node.frontmatter.categories || [];
+      categories
+        .map((category) => (category ? category.trim() : ''))
+        .filter(Boolean)
+        .forEach((category) => {
+          const slug = createTagSlug(category);
+          if (!slug) {
+            return;
+          }
+
+          if (!tagMap.has(slug)) {
+            tagMap.set(slug, {
+              label: category,
+              aliases: new Set([category]),
+            });
+            return;
+          }
+
+          const existing = tagMap.get(slug);
+          existing.aliases.add(category);
+
+          // Prefer alias with uppercase letters for display if available later
+          if (existing.label === existing.label.toLowerCase() && category !== category.toLowerCase()) {
+            existing.label = category;
+          }
+        });
+    });
+
+    tagMap.forEach(({ label, aliases }, slug) => {
+      createPage({
+        path: `/tags/${slug}/`,
+        component: tagTemplate,
+        context: {
+          tag: label,
+          tagSlug: slug,
+          tagAliases: Array.from(aliases),
         },
       });
     });
