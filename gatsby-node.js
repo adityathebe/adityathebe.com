@@ -74,7 +74,6 @@ exports.createPages = ({ graphql, actions }) => {
 
           if (!tagMap.has(slug)) {
             tagMap.set(slug, {
-              label: category,
               aliases: new Set([category]),
             });
             return;
@@ -82,20 +81,14 @@ exports.createPages = ({ graphql, actions }) => {
 
           const existing = tagMap.get(slug);
           existing.aliases.add(category);
-
-          // Prefer alias with uppercase letters for display if available later
-          if (existing.label === existing.label.toLowerCase() && category !== category.toLowerCase()) {
-            existing.label = category;
-          }
         });
     });
 
-    tagMap.forEach(({ label, aliases }, slug) => {
+    tagMap.forEach(({ aliases }, slug) => {
       createPage({
         path: `/tags/${slug}/`,
         component: tagTemplate,
         context: {
-          tag: label,
           tagSlug: slug,
           tagAliases: Array.from(aliases),
         },

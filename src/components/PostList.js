@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import { formatPostDate } from '../utils/helper.js';
-import { tagPath } from '../utils/tags.js';
+import { tagPath, formatTagLabel } from '../utils/tags.js';
 
 const PostList = () => {
   const { allMarkdownRemark } = useStaticQuery(graphql`
@@ -67,7 +67,7 @@ const PostList = () => {
                     <div className="post-meta">
                       {edge.node.frontmatter.categories.map((x, idx) => (
                         <Link key={idx} className="post-tag" to={tagPath(x)}>
-                          {x}
+                          {formatTagLabel(x)}
                         </Link>
                       ))}
                     </div>

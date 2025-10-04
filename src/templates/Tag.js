@@ -5,16 +5,16 @@ import { graphql, Link } from 'gatsby';
 import Layout from '../components/Layout';
 import { Head as SEOHead } from '../components/SEO';
 import { formatPostDate } from '../utils/helper.js';
-import { tagPath } from '../utils/tags.js';
+import { tagPath, formatTagLabel } from '../utils/tags.js';
 
 const TagTemplate = ({ data, pageContext }) => {
   const posts = data.allMarkdownRemark.edges;
-  const tagLabel = pageContext.tag;
+  const tagDisplayName = formatTagLabel(pageContext.tagSlug || pageContext.tagAliases?.[0] || '');
 
   return (
     <Layout>
       <div className="tag-page">
-        <h1 className="post-header">Posts tagged “{tagLabel}”</h1>
+        <h1 className="post-header">Posts tagged “{tagDisplayName}”</h1>
         {posts.length === 0 ? (
           <p>No posts found.</p>
         ) : (
@@ -35,7 +35,7 @@ const TagTemplate = ({ data, pageContext }) => {
                     <div className="post-meta">
                       {(node.frontmatter.categories || []).map((category, idx) => (
                         <Link key={idx} className="post-tag" to={tagPath(category)}>
-                          {category}
+                          {formatTagLabel(category)}
                         </Link>
                       ))}
                     </div>
@@ -51,12 +51,12 @@ const TagTemplate = ({ data, pageContext }) => {
 };
 
 export const Head = ({ pageContext }) => {
-  const tagLabel = pageContext.tag;
+  const tagDisplayName = formatTagLabel(pageContext.tagSlug || pageContext.tagAliases?.[0] || '');
   return (
     <SEOHead
-      title={`Aditya Thebe on ${tagLabel}`}
-      description={`Aditya Thebe on ${tagLabel}`}
-      keywords={[tagLabel]}
+      title={`Aditya Thebe on ${tagDisplayName}`}
+      description={`Aditya Thebe on ${tagDisplayName}`}
+      keywords={[tagDisplayName]}
       appendSiteTitle={false}
     />
   );

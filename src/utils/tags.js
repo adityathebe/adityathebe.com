@@ -6,3 +6,35 @@ export const tagSlug = (value = '') =>
     .replace(/^-+|-+$/g, '');
 
 export const tagPath = (value = '') => `/tags/${tagSlug(value)}/`;
+
+const TAG_DISPLAY_OVERRIDES = {
+  ai: 'AI',
+  cors: 'CORS',
+  http: 'HTTP',
+  javascript: 'JavaScript',
+  jwt: 'JWT',
+  macos: 'MacOS',
+  postgres: 'Postgres',
+  sql: 'SQL',
+  tcp: 'TCP',
+  sop: 'SOP',
+};
+
+const capitalize = (word) => word.charAt(0).toUpperCase() + word.slice(1);
+
+export const formatTagLabel = (value = '') => {
+  const slug = tagSlug(value);
+  if (!slug) {
+    return '';
+  }
+
+  if (TAG_DISPLAY_OVERRIDES[slug]) {
+    return TAG_DISPLAY_OVERRIDES[slug];
+  }
+
+  return slug
+    .split('-')
+    .filter(Boolean)
+    .map((word) => capitalize(word))
+    .join(' ');
+};
