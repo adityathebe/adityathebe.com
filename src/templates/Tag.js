@@ -52,7 +52,14 @@ const TagTemplate = ({ data, pageContext }) => {
 
 export const Head = ({ pageContext }) => {
   const tagLabel = pageContext.tag;
-  return <SEOHead title={`Posts tagged ${tagLabel}`} description={`Posts tagged ${tagLabel}`} keywords={[tagLabel]} />;
+  return (
+    <SEOHead
+      title={`Aditya Thebe on ${tagLabel}`}
+      description={`Aditya Thebe on ${tagLabel}`}
+      keywords={[tagLabel]}
+      appendSiteTitle={false}
+    />
+  );
 };
 
 export default TagTemplate;
