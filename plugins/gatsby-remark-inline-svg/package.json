@@ -1,0 +1,9 @@
+{
+  "name": "gatsby-remark-inline-svg",
+  "version": "1.0.0",
+  "description": "A Gatsby remark plugin to inline SVG files",
+  "main": "index.js",
+  "dependencies": {
+    "unist-util-visit": "^4.0.0"
+  }
+}

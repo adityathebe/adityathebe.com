@@ -39,6 +39,7 @@ module.exports = {
               inlineCodeMarker: '÷',
             },
           },
+          `gatsby-remark-inline-svg`,
         ],
       },
     },
