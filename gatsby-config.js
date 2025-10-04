@@ -19,6 +19,9 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: require.resolve('./plugins/remark-inline-svg'),
+          },
+          {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               icon: false,
