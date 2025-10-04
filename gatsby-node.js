@@ -1,12 +1,7 @@
 // @ts-check
 const path = require('path');
 
-const createTagSlug = (value) =>
-  value
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
+const { tagSlug } = require('./src/utils/tags.js');
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -67,7 +62,7 @@ exports.createPages = ({ graphql, actions }) => {
         .map((category) => (category ? category.trim() : ''))
         .filter(Boolean)
         .forEach((category) => {
-          const slug = createTagSlug(category);
+          const slug = tagSlug(category);
           if (!slug) {
             return;
           }
