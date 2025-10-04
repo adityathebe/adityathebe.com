@@ -9,13 +9,20 @@ const LinksPage = () => (
   <Layout>
     <div className="post-content">
       <h1 id="page-title">Links</h1>
+      <h2>Site</h2>
+      <ul>
+        <li>
+          <Link to="/tags">/tags</Link>
+        </li>
+        <li>
+          <Link to="/reviews/tv">/reviews/tv</Link>
+        </li>
+      </ul>
+
       <h2>Movies watch history</h2>
       <a href="https://movies.adityathebe.com/users/adityathebe/dashboard" target="_blank" rel="noreferrer">
         https://movies.adityathebe.com/users/adityathebe/dashboard
       </a>
-
-      <h2>TV Shows watch history</h2>
-      <Link to="/reviews/tv">/reviews/tv</Link>
 
       <h2>Some of my favorite people in Tech</h2>
       <ul>
