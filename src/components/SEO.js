@@ -8,9 +8,17 @@ import { useStaticQuery, graphql } from 'gatsby';
  * title?: string,
  * featuredImage?: string,
  * ogType?: string,
+ * appendSiteTitle?: boolean,
  * }} props
  */
-export function Head({ description = '', keywords = [], title = '', featuredImage = '', ogType = 'website' }) {
+export function Head({
+  description = '',
+  keywords = [],
+  title = '',
+  featuredImage = '',
+  ogType = 'website',
+  appendSiteTitle = true,
+}) {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -26,7 +34,11 @@ export function Head({ description = '', keywords = [], title = '', featuredImag
 
   const metaDescription = description || site.siteMetadata.description;
   const fallbackSocialImage = site.siteMetadata.siteUrl + '/images/site_featured_aditya_thebe.jpg';
-  const pageTitle = title ? `${title} | ${site.siteMetadata.title}` : site.siteMetadata.title;
+  const pageTitle = title
+    ? appendSiteTitle
+      ? `${title} | ${site.siteMetadata.title}`
+      : title
+    : site.siteMetadata.title;
 
   return (
     <>

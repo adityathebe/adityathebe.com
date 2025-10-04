@@ -1,11 +1,14 @@
 // @ts-check
 const path = require('path');
 
+const { tagSlug } = require('./src/utils/tags.js');
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   // Create pages for blog posts
   const blogPostTemplate = path.resolve(`./src/templates/BlogPost.js`);
+  const tagTemplate = path.resolve(`./src/templates/Tag.js`);
   const blogPosts = graphql(`
     {
       allMarkdownRemark(
@@ -20,6 +23,7 @@ exports.createPages = ({ graphql, actions }) => {
               title
               date
               slug
+              categories
               featuredImage {
                 publicURL
               }
@@ -36,6 +40,8 @@ exports.createPages = ({ graphql, actions }) => {
     // Create blog posts pages.
     const posts = result.data.allMarkdownRemark.edges;
 
+    const tagMap = new Map();
+
     posts.forEach((post) => {
       let seoImage = '';
       if (post.node.frontmatter.featuredImage) {
@@ -48,6 +54,38 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           slug: post.node.frontmatter.slug,
           seoImage: seoImage,
+        },
+      });
+
+      const categories = post.node.frontmatter.categories || [];
+      categories
+        .map((category) => (category ? category.trim() : ''))
+        .filter(Boolean)
+        .forEach((category) => {
+          const slug = tagSlug(category);
+          if (!slug) {
+            return;
+          }
+
+          if (!tagMap.has(slug)) {
+            tagMap.set(slug, {
+              aliases: new Set([category]),
+            });
+            return;
+          }
+
+          const existing = tagMap.get(slug);
+          existing.aliases.add(category);
+        });
+    });
+
+    tagMap.forEach(({ aliases }, slug) => {
+      createPage({
+        path: `/tags/${slug}/`,
+        component: tagTemplate,
+        context: {
+          tagSlug: slug,
+          tagAliases: Array.from(aliases),
         },
       });
     });
