@@ -5,6 +5,8 @@ const crypto = require('crypto');
 
 const DEFAULT_MODEL = 'text-embedding-3-small';
 const DEFAULT_CACHE_PATH = path.join(process.cwd(), 'data', 'related-posts-cache.json');
+const DEFAULT_CONTENT_LENGTH_LIMIT = 10_000;
+const DEFAULT_MIN_SCORE = 0.35;
 const CACHE_PATH = process.env.RELATED_POST_CACHE_PATH
   ? path.resolve(process.cwd(), process.env.RELATED_POST_CACHE_PATH)
   : DEFAULT_CACHE_PATH;
@@ -37,7 +39,7 @@ async function loadCache() {
 async function saveCache(cache) {
   const directory = path.dirname(CACHE_PATH);
   await fs.promises.mkdir(directory, { recursive: true });
-  await fs.promises.writeFile(CACHE_PATH, JSON.stringify(cache, null, 2));
+  await fs.promises.writeFile(CACHE_PATH, JSON.stringify(cache));
 }
 
 /**
@@ -120,7 +122,10 @@ function cosineSimilarity(a, b) {
  * @param {PostForEmbedding} post
  */
 function embeddingInput(post) {
-  const trimmedContent = post.content.length > 4000 ? `${post.content.slice(0, 4000)}...` : post.content;
+  const trimmedContent =
+    post.content.length > DEFAULT_CONTENT_LENGTH_LIMIT
+      ? `${post.content.slice(0, DEFAULT_CONTENT_LENGTH_LIMIT)}...`
+      : post.content;
   return `${post.title}\n\n${trimmedContent}`;
 }
 
@@ -143,7 +148,7 @@ async function getRelatedPosts(posts, options = {}) {
     if (options.minScore != null && Number.isFinite(options.minScore)) {
       return options.minScore;
     }
-    return 0.35;
+    return DEFAULT_MIN_SCORE;
   })();
 
   const cache = await loadCache();
