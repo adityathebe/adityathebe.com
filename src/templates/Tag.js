@@ -67,10 +67,7 @@ export default TagTemplate;
 export const pageQuery = graphql`
   query TagPage($tagAliases: [String!]!) {
     allMarkdownRemark(
-      filter: {
-        fileAbsolutePath: { regex: "/content/Posts/" }
-        frontmatter: { categories: { in: $tagAliases } }
-      }
+      filter: { fileAbsolutePath: { regex: "/content/Posts/" }, frontmatter: { categories: { in: $tagAliases } } }
       sort: { frontmatter: { date: DESC } }
     ) {
       edges {

@@ -11,7 +11,14 @@ import { useStaticQuery, graphql } from 'gatsby';
  * appendSiteTitle?: boolean,
  * }} props
  */
-export function Head({ description = '', keywords = [], title = '', featuredImage = '', ogType = 'website', appendSiteTitle = true }) {
+export function Head({
+  description = '',
+  keywords = [],
+  title = '',
+  featuredImage = '',
+  ogType = 'website',
+  appendSiteTitle = true,
+}) {
   const { site } = useStaticQuery(graphql`
     query {
       site {
