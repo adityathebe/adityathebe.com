@@ -7,9 +7,8 @@ slug: /how-to-clean-go-build-cache/
 featuredImage: ./go-build-cache-content.png
 description: For faster build time, the go command caches build outputs for reuse in future builds. This cache dir piles up, so make sure to clean it periodically.
 keywords:
-  - clear golang cache
-  - golang build cache
-  - remove golang cache
+  - performance
+  - disk management
 ---
 
 ## Useless Anecdote

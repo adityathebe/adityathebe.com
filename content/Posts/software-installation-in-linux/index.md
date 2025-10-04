@@ -3,7 +3,6 @@ title: A beginner's guide to installing softwares in a Linux system
 date: '2020-01-27 12:00'
 modified_date: '2020-01-27 19:30'
 categories:
-  - Tutorials
   - Linux
 slug: /how-to-install-softwares-in-linux/
 featuredImage: ./linux-software-installation.jpg

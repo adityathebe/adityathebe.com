@@ -3,7 +3,6 @@ title: Setup mpd on your Linux system as a User service
 date: '2020-01-24'
 modified_date: '2020-02-24 21:05'
 categories:
-  - Tutorials
   - Linux
 slug: /setup-mpd-in-linux-as-user-service/
 featuredImage: ./mpd-linux.png

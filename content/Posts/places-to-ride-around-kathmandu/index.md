@@ -3,6 +3,7 @@ title: 'Places To Go On A Ride Around Kathmandu'
 date: '2022-07-24'
 categories:
   - Motorcycle
+  - Travel
 comments: true
 slug: /places-to-ride-around-kathmandu/
 featuredImage: ./svartpilen.jpeg

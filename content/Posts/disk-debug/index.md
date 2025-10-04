@@ -2,7 +2,7 @@
 title: Debugging disk usage On Linux
 date: '2024-10-19'
 categories:
-  - linux
+  - Linux
 slug: /debug-disk-usage
 description: Here's how I am monitoring disk usage on Linux
 ---
