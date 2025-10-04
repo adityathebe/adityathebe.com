@@ -131,13 +131,6 @@ function embeddingInput(post) {
  * @returns {Promise<Record<string, RelatedPost[]>>}
  */
 async function getRelatedPosts(posts, options = {}) {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) {
-    console.warn('Skipping related posts: OPENAI_API_KEY is not set.');
-    return {};
-  }
-
-  const model = process.env.OPENAI_EMBEDDING_MODEL || DEFAULT_MODEL;
   const maxRelated = options.maxRelated ?? 4;
   const resolvedMinScore = (() => {
     const envValue = process.env.RELATED_POST_MIN_SCORE;
@@ -160,19 +153,37 @@ async function getRelatedPosts(posts, options = {}) {
    */
   const embeddings = {};
   let cacheChanged = false;
+  const postsToRefresh = [];
 
   for (const post of posts) {
     const hash = hashPost(post);
     const cached = cache[post.slug];
-    if (cached && cached.hash === hash && Array.isArray(cached.embedding)) {
+    if (cached && Array.isArray(cached.embedding)) {
       embeddings[post.slug] = cached.embedding;
-      continue;
+      if (cached.hash === hash) {
+        continue;
+      }
     }
 
-    const embedding = await fetchEmbedding(embeddingInput(post), apiKey, model);
-    cache[post.slug] = { hash, embedding };
-    embeddings[post.slug] = embedding;
-    cacheChanged = true;
+    postsToRefresh.push({ post, hash });
+  }
+
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (postsToRefresh.length > 0) {
+    if (!apiKey) {
+      console.warn(
+        `Skipping embedding refresh for ${postsToRefresh.length} post${postsToRefresh.length === 1 ? '' : 's'}: OPENAI_API_KEY is not set.`
+      );
+    } else {
+      const model = process.env.OPENAI_EMBEDDING_MODEL || DEFAULT_MODEL;
+      for (const { post, hash } of postsToRefresh) {
+        console.log(`Fetching embedding for post "${post.slug}" using model "${model}"...`);
+        const embedding = await fetchEmbedding(embeddingInput(post), apiKey, model);
+        cache[post.slug] = { hash, embedding };
+        embeddings[post.slug] = embedding;
+        cacheChanged = true;
+      }
+    }
   }
 
   if (cacheChanged) {
@@ -185,6 +196,7 @@ async function getRelatedPosts(posts, options = {}) {
   for (const source of posts) {
     const sourceEmbedding = embeddings[source.slug];
     if (!sourceEmbedding) {
+      console.warn(`No embedding available for post "${source.slug}", skipping related posts computation.`);
       continue;
     }
 
@@ -204,7 +216,13 @@ async function getRelatedPosts(posts, options = {}) {
       .sort((a, b) => b.score - a.score)
       .slice(0, maxRelated);
 
-    related[source.slug] = scored;
+    if (scored.length !== 0) {
+      console.log(
+        `Related posts for "${source.slug}":`,
+        scored.map((item) => `${item.slug} (${item.score.toFixed(3)})`).join(', ')
+      );
+      related[source.slug] = scored;
+    }
   }
 
   return related;
