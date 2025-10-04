@@ -3,6 +3,7 @@ title: Video Files Demystified
 date: '2024-10-14'
 categories:
   - video
+  - Compression
 slug: /video-containers-and-codecs
 description: A Guide to Understanding Containers, Codecs, and Transcoding
 ---

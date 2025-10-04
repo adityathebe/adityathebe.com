@@ -5,11 +5,12 @@ modified_date: '2021-05-09 11:40'
 categories:
   - Go
   - Aerospike
+  - Database
 slug: /aerospike-hands-on-golang/
 description: Get hands on introduction to Aerospike with Golang
 keywords:
-  - Aerospike tutorial
-  - Aerospike golang tutorial
+  - NoSQL
+  - database
 ---
 
 This is an extremely basic introduction to Aerospike. It's basically a compilation of resources to help you quickly get started.

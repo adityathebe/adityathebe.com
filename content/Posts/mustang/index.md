@@ -2,7 +2,8 @@
 title: 'Motorcycle Trip: Kathmandu to Mustang'
 date: '2025-03-08'
 categories:
-  - travel
+  - Motorcycle
+  - Travel
 slug: /mustang-motorcycle-trip
 featuredImage: ./mutang-lete.jpeg
 description: Jomson, Mustang Itenerary for a motorcycle trip

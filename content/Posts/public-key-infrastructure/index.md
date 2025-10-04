@@ -7,8 +7,9 @@ slug: /public-key-infrastructures-and-certificates
 featuredImage: ./pki.png
 description: Learn about about the shortcomings of public key encryption and the need for a trusted 3rd party - Certificate Authority.
 keywords:
-  - public key certificates
-  - SSL certificatese
+  - PKI
+  - certificates
+  - security
 ---
 
 > This article is targeted towards newcomers looking to explore the foundations of PKIs.  

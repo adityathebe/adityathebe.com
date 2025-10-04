@@ -3,7 +3,7 @@ title: |
   Git Hygiene: How to Automatically Delete Stale Local Branches
 date: '2025-03-27 21:25'
 categories:
-  - git
+  - Git
 featuredImage: ./git.png
 slug: /delete-stale-git-branches
 description: |

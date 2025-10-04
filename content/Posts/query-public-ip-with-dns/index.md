@@ -2,7 +2,7 @@
 title: A handy way to know your public IP Address with DNS servers
 date: '2020-02-10 08:45'
 categories:
-  - Tutorials
+  - Networking
 slug: /query-public-ip-with-DNS-servers/
 featuredImage: ./public-ipaddress.jpg
 description: You can use DNS servers to know your public address

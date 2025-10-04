@@ -2,7 +2,7 @@
 title: Twitter Bot Tutorial for Beginners In NodeJS
 date: '2018-11-07'
 categories:
-  - Tutorials
+  - JavaScript
 comments: true
 slug: /twitter-bot-tutorial-nodejs/
 featuredImage: ./twitter-bot-tutorial-featured.png
