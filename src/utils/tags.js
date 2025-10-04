@@ -1,11 +1,11 @@
-export const tagSlug = (value = '') =>
+const tagSlug = (value = '') =>
   value
     .toLowerCase()
     .trim()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
-export const tagPath = (value = '') => `/tags/${tagSlug(value)}/`;
+const tagPath = (value = '') => `/tags/${tagSlug(value)}/`;
 
 const TAG_DISPLAY_OVERRIDES = {
   ai: 'AI',
@@ -22,7 +22,7 @@ const TAG_DISPLAY_OVERRIDES = {
 
 const capitalize = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 
-export const formatTagLabel = (value = '') => {
+const formatTagLabel = (value = '') => {
   const slug = tagSlug(value);
   if (!slug) {
     return '';
@@ -37,4 +37,10 @@ export const formatTagLabel = (value = '') => {
     .filter(Boolean)
     .map((word) => capitalize(word))
     .join(' ');
+};
+
+module.exports = {
+  tagSlug,
+  tagPath,
+  formatTagLabel,
 };
