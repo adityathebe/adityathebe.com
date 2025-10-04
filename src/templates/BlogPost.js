@@ -9,8 +9,9 @@ import { tagPath, formatTagLabel } from '../utils/tags.js';
 
 import './post.css';
 
-const BlogPostTemplate = ({ data }) => {
+const BlogPostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark;
+  const relatedPosts = pageContext?.relatedPosts || [];
   return (
     <Layout>
       <div className="post-each-info">
@@ -31,6 +32,21 @@ const BlogPostTemplate = ({ data }) => {
       <h1 className="post-header">{post.frontmatter.title}</h1>
 
       <div className="post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
+
+      {relatedPosts.length > 0 ? (
+        <aside className="related-posts">
+          <h2 className="related-posts__title">Related posts</h2>
+          <ul className="related-posts__list">
+            {relatedPosts.map((related) => (
+              <li key={related.slug} className="related-posts__item">
+                <Link to={related.url} className="related-posts__link">
+                  {related.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      ) : null}
     </Layout>
   );
 };

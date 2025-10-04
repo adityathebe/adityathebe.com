@@ -192,6 +192,10 @@ body {
   flex-direction: column;
 }
 
+.page-content {
+  flex: 1 0 auto;
+}
+
 figure > img {
   display: block;
 }

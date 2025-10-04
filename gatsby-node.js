@@ -2,6 +2,7 @@
 const path = require('path');
 
 const { tagSlug } = require('./src/utils/tags.js');
+const { getRelatedPosts } = require('./utils/related-posts.js');
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -19,6 +20,7 @@ exports.createPages = ({ graphql, actions }) => {
         edges {
           node {
             id
+            rawMarkdownBody
             frontmatter {
               title
               date
@@ -32,13 +34,25 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     }
-  `).then((result) => {
+  `).then(async (result) => {
     if (result.errors) {
       throw result.errors;
     }
 
     // Create blog posts pages.
+    /**
+     * @type {Array<{ node: { id: string; rawMarkdownBody: string; frontmatter: { title: string; date: string; slug: string; categories?: Array<string>; featuredImage?: { publicURL: string } } } }>}
+     */
     const posts = result.data.allMarkdownRemark.edges;
+
+    const postSummaries = posts.map((post) => ({
+      slug: post.node.frontmatter.slug,
+      title: post.node.frontmatter.title,
+      content: post.node.rawMarkdownBody || '',
+      url: post.node.frontmatter.slug,
+    }));
+
+    const relatedMap = await getRelatedPosts(postSummaries, { maxRelated: 4, minScore: 0.6 });
 
     const tagMap = new Map();
 
@@ -54,6 +68,7 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           slug: post.node.frontmatter.slug,
           seoImage: seoImage,
+          relatedPosts: relatedMap[post.node.frontmatter.slug] || [],
         },
       });
 
