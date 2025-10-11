@@ -9,6 +9,10 @@ const tagPath = (value = '') => `/tags/${tagSlug(value)}/`;
 
 const TAG_DISPLAY_OVERRIDES = {
   ai: 'AI',
+  'ai-agents': 'AI Agents',
+  llm: 'LLM',
+  api: 'API',
+  cli: 'CLI',
   cors: 'CORS',
   http: 'HTTP',
   javascript: 'JavaScript',
