@@ -122,6 +122,30 @@
   color: var(--post-heading-color);
 }
 
+.post-content h1 {
+  font-size: 1.8em;
+}
+
+.post-content h2 {
+  font-size: 1.8em;
+}
+
+.post-content h3 {
+  font-size: 1.4em;
+}
+
+.post-content h4 {
+  font-size: 1.2em;
+}
+
+.post-content h5 {
+  font-size: 1.1em;
+}
+
+.post-content h6 {
+  font-size: 1em;
+}
+
 .post-content h1 a,
 .post-content h2 a,
 .post-content h3 a,
@@ -141,7 +165,7 @@
 }
 
 .post-header {
-  font-size: 1.5em;
+  font-size: 2em;
   margin: 0.5em auto;
 }
 
