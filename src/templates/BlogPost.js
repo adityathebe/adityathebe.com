@@ -31,6 +31,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
       </div>
 
       <h1 className="post-header">{post.frontmatter.title}</h1>
+      <hr />
 
       <div className="post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
 

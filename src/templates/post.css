@@ -113,6 +113,25 @@
   word-wrap: break-word;
 }
 
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  color: var(--post-heading-color);
+}
+
+.post-content h1 a,
+.post-content h2 a,
+.post-content h3 a,
+.post-content h4 a,
+.post-content h5 a,
+.post-content h6 a {
+  color: inherit;
+  border-bottom-color: currentColor;
+}
+
 .post-content img {
   max-width: 100%;
   margin: 0 auto;
@@ -124,7 +143,6 @@
 .post-header {
   font-size: 1.5em;
   margin: 0.5em auto;
-  color: var(--post-title-color);
 }
 
 @media screen and (max-width: 450px) {

@@ -67,20 +67,22 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <h2>Development Tools</h2>
-      <UsesItem items={devToolsList} />
+      <div className="post-content">
+        <h2>Development Tools</h2>
+        <UsesItem items={devToolsList} />
 
-      <h2>Softwares</h2>
-      <UsesItem items={sofwaresList} />
+        <h2>Softwares</h2>
+        <UsesItem items={sofwaresList} />
 
-      <h2>Services</h2>
-      <UsesItem items={servicesList} />
+        <h2>Services</h2>
+        <UsesItem items={servicesList} />
 
-      <h2>Desktop</h2>
-      <UsesItem items={desktopSpecsList} />
+        <h2>Desktop</h2>
+        <UsesItem items={desktopSpecsList} />
 
-      <h2>Laptop</h2>
-      <UsesItem items={laptopSpecsList} />
+        <h2>Laptop</h2>
+        <UsesItem items={laptopSpecsList} />
+      </div>
     </Layout>
   );
 };
