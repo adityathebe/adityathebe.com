@@ -15,7 +15,7 @@ export default class DarkModeToggle extends React.Component {
 
   componentDidMount() {
     const query = '.theme-switch input[type="checkbox"]';
-    const toggleSwitch = document.querySelector(query);
+    const toggleSwitch = /** @type {HTMLInputElement} */ (document.querySelector(query));
     toggleSwitch.addEventListener('change', this.switchTheme, false);
 
     let currentTheme = localStorage.getItem('theme');

@@ -2,7 +2,8 @@ import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import { formatPostDate } from '../utils/helper.js';
 import { tagPath, formatTagLabel } from '../utils/tags.js';
-import '../types/index.js';
+
+/** @typedef {import('../types/index.js').NodeEdge} NodeEdge */
 
 /**
  * @param {Object} props
@@ -31,7 +32,7 @@ const PostList = ({ contentPath = null, filterTag = null }) => {
   `);
 
   // Filter posts based on the contentPath prop or filterTag
-  /** @type {import('../types/index.js').NodeEdge[]} */
+  /** @type {NodeEdge[]} */
   let filteredEdges = data.allMarkdownRemark.edges;
 
   if (filterTag) {
@@ -72,7 +73,7 @@ const PostList = ({ contentPath = null, filterTag = null }) => {
       title: year,
       posts: posts,
     }))
-    .sort((a, b) => b.title - a.title);
+    .sort((a, b) => Number(b.title) - Number(a.title));
 
   return (
     <div>

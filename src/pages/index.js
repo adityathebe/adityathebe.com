@@ -13,7 +13,7 @@ const IndexPage = () => {
         <h1 className="home-title">Writing & Notes</h1>
         <p className="home-description">A mix of thoughts, learnings, and experiments</p>
       </div>
-      <PostList contentPath='/content/Posts' />
+      <PostList contentPath="/content/Posts" />
     </Layout>
   );
 };

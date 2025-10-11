@@ -1,6 +1,20 @@
+// @ts-check
 const fs = require('fs');
 const path = require('path');
 const visit = require('unist-util-visit');
+
+/**
+ * @typedef {Object} ImageNode
+ * @property {string} type
+ * @property {string} url
+ * @property {string} [alt]
+ */
+
+/**
+ * @typedef {Object} HtmlNode
+ * @property {string} type
+ * @property {string} value
+ */
 
 const escapeHtml = (str) =>
   str
@@ -23,7 +37,8 @@ module.exports = ({ markdownAST, markdownNode, getNode, reporter }, pluginOption
 
   visit(markdownAST, 'image', (node, index, parent) => {
     if (!parent) return;
-    const rawUrl = node.url || '';
+    const imageNode = /** @type {ImageNode} */ (node);
+    const rawUrl = imageNode.url || '';
     if (!rawUrl || /^(https?:)?\/\//i.test(rawUrl)) {
       return;
     }
@@ -56,7 +71,7 @@ module.exports = ({ markdownAST, markdownNode, getNode, reporter }, pluginOption
     if (wrapperClass) {
       attributes.push(`class="${escapeHtml(wrapperClass)}"`);
     }
-    const altText = node.alt ? escapeHtml(node.alt) : '';
+    const altText = imageNode.alt ? escapeHtml(imageNode.alt) : '';
     if (altText) {
       attributes.push('role="img"');
       attributes.push(`aria-label="${altText}"`);
@@ -66,10 +81,12 @@ module.exports = ({ markdownAST, markdownNode, getNode, reporter }, pluginOption
       ? `<${wrapperTag} ${attributes.join(' ')}>${svgContent}</${wrapperTag}>`
       : `<${wrapperTag}>${svgContent}</${wrapperTag}>`;
 
-    parent.children[index] = {
+    /** @type {HtmlNode} */
+    const htmlNode = {
       type: 'html',
       value: html,
     };
+    parent.children[index] = htmlNode;
   });
 
   return markdownAST;

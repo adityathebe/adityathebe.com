@@ -11,7 +11,7 @@ import './tv.css';
  *   date: string;
  *   review: string;
  * }> }} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
 export const ShowList = ({ shows }) => {
   shows.sort((a, b) => {
@@ -40,7 +40,7 @@ export const ShowList = ({ shows }) => {
  *   date: string;
  *   review: string;
  * }}} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
 export const TVShow = ({ show }) => {
   return (
@@ -68,7 +68,7 @@ export const TVShow = ({ show }) => {
 /**
  * Renders star icons based on the count.
  * @param {number} count - Number of stars.
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
 const renderStars = (count) => {
   const validCount = Math.max(0, Math.min(count, 5)); // Ensure count is between 0 and 5
