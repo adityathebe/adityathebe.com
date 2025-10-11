@@ -2,8 +2,14 @@ import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import { formatPostDate } from '../utils/helper.js';
 import { tagPath, formatTagLabel } from '../utils/tags.js';
+import '../types/index.js';
 
-const PostList = ({ contentPath = '/content/Posts/' }) => {
+/**
+ * @param {Object} props
+ * @param {string} [props.contentPath] - Path to filter content by (supports regex patterns)
+ * @param {string} [props.filterTag] - Tag to filter posts by (matches against frontmatter.categories)
+ */
+const PostList = ({ contentPath = null, filterTag = null }) => {
   const data = useStaticQuery(graphql`
     {
       allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
@@ -24,10 +30,28 @@ const PostList = ({ contentPath = '/content/Posts/' }) => {
     }
   `);
 
-  // Filter posts based on the contentPath prop
-  const filteredEdges = data.allMarkdownRemark.edges.filter((edge) =>
-    edge.node.fileAbsolutePath.includes(contentPath)
-  );
+  // Filter posts based on the contentPath prop or filterTag
+  /** @type {import('../types/index.js').NodeEdge[]} */
+  let filteredEdges = data.allMarkdownRemark.edges;
+
+  if (filterTag) {
+    // Filter by tag in frontmatter.categories
+    filteredEdges = filteredEdges.filter((edge) =>
+      edge.node.frontmatter.categories?.map((x) => x.toLowerCase()).includes(filterTag.toLowerCase())
+    );
+  }
+
+  if (contentPath) {
+    // Filter by content path (supports both string matching and regex patterns)
+    if (contentPath.includes('(') || contentPath.includes('|')) {
+      // Treat as regex pattern
+      const regex = new RegExp(contentPath);
+      filteredEdges = filteredEdges.filter((edge) => regex.test(edge.node.fileAbsolutePath));
+    } else {
+      // Simple string matching
+      filteredEdges = filteredEdges.filter((edge) => edge.node.fileAbsolutePath.includes(contentPath));
+    }
+  }
 
   const allMarkdownRemark = { edges: filteredEdges };
 
@@ -76,9 +100,7 @@ const PostList = ({ contentPath = '/content/Posts/' }) => {
                         </Link>
                       ))}
                       {edge.node.frontmatter.categories?.length > 4 && (
-                        <span className="post-tag post-tag-more">
-                          +{edge.node.frontmatter.categories.length - 4}
-                        </span>
+                        <span className="post-tag post-tag-more">+{edge.node.frontmatter.categories.length - 4}</span>
                       )}
                     </div>
                   </div>
