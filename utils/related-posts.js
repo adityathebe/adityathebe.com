@@ -11,10 +11,8 @@ const CACHE_PATH = process.env.RELATED_POST_CACHE_PATH
   ? path.resolve(process.cwd(), process.env.RELATED_POST_CACHE_PATH)
   : DEFAULT_CACHE_PATH;
 
-/**
- * @typedef {{ slug: string; title: string; content: string; url: string }} PostForEmbedding
- * @typedef {{ slug: string; title: string; score: number; url: string }} RelatedPost
- */
+/** @typedef {import('../src/types/index.js').PostForEmbedding} PostForEmbedding */
+/** @typedef {import('../src/types/index.js').RelatedPost} RelatedPost */
 
 /**
  * Load embeddings cache from disk.

@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react-jsx",
+    "skipLibCheck": true,
+    "esModuleInterop": true
+  },
+  "include": [
+    "src/**/*",
+    "utils/**/*",
+    "gatsby-node.js",
+    "gatsby-config.js",
+    "gatsby-browser.js",
+    "gatsby-ssr.js",
+    "plugins/**/*"
+  ]
+}
