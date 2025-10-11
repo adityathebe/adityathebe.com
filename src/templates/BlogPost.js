@@ -12,6 +12,7 @@ import './post.css';
 const BlogPostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark;
   const relatedPosts = pageContext?.relatedPosts || [];
+  const categories = Array.isArray(post.frontmatter.categories) ? post.frontmatter.categories : [];
   return (
     <Layout>
       <div className="post-each-info">
@@ -21,7 +22,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
         </span>
 
         <span className="post-meta">
-          {post.frontmatter.categories.map((x, idx) => (
+          {categories.map((x, idx) => (
             <Link key={idx} className="post-tag" to={tagPath(x)}>
               {formatTagLabel(x)}
             </Link>

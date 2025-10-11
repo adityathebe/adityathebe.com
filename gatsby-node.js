@@ -107,7 +107,6 @@ exports.createPages = ({ graphql, actions }) => {
   });
 
   // Create pages for weekly journals
-  const weeklyJournalTemplate = path.resolve(`./src/templates/Journal.js`);
   const weeklyJournals = graphql(`
     {
       allMarkdownRemark(
@@ -121,6 +120,7 @@ exports.createPages = ({ graphql, actions }) => {
             frontmatter {
               title
               date
+              categories
               slug
             }
           }
@@ -137,7 +137,7 @@ exports.createPages = ({ graphql, actions }) => {
     posts.forEach((post) => {
       createPage({
         path: post.node.frontmatter.slug,
-        component: weeklyJournalTemplate,
+        component: blogPostTemplate,
         context: {
           slug: post.node.frontmatter.slug,
           seoImage: '',
@@ -160,6 +160,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       tier: Float       
       year: Int         
       review: String    
+    }
+
+    type MarkdownRemarkFrontmatter {
+      categories: [String!] @default(value: [])
     }
   `;
 
