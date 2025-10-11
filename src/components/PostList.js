@@ -3,17 +3,15 @@ import { graphql, useStaticQuery, Link } from 'gatsby';
 import { formatPostDate } from '../utils/helper.js';
 import { tagPath, formatTagLabel } from '../utils/tags.js';
 
-const PostList = () => {
-  const { allMarkdownRemark } = useStaticQuery(graphql`
+const PostList = ({ contentPath = '/content/Posts/' }) => {
+  const data = useStaticQuery(graphql`
     {
-      allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/Posts/" } }
-        sort: { frontmatter: { date: DESC } }
-      ) {
+      allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
         edges {
           node {
             id
             timeToRead
+            fileAbsolutePath
             frontmatter {
               title
               date
@@ -25,6 +23,13 @@ const PostList = () => {
       }
     }
   `);
+
+  // Filter posts based on the contentPath prop
+  const filteredEdges = data.allMarkdownRemark.edges.filter((edge) =>
+    edge.node.fileAbsolutePath.includes(contentPath)
+  );
+
+  const allMarkdownRemark = { edges: filteredEdges };
 
   // Group posts by year
   const postsByYear = {};
@@ -65,7 +70,7 @@ const PostList = () => {
                     </Link>
 
                     <div className="post-meta">
-                      {edge.node.frontmatter.categories.map((x, idx) => (
+                      {edge.node.frontmatter.categories?.map((x, idx) => (
                         <Link key={idx} className="post-tag" to={tagPath(x)}>
                           {formatTagLabel(x)}
                         </Link>
