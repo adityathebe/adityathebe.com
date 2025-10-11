@@ -8,42 +8,60 @@ import { formatPostDate } from '../utils/helper.js';
 import { tagPath, formatTagLabel } from '../utils/tags.js';
 
 const TagTemplate = ({ data, pageContext }) => {
-  const posts = data.allMarkdownRemark.edges;
+  const allContent = data.allMarkdownRemark.edges;
   const tagDisplayName = formatTagLabel(pageContext.tagSlug || pageContext.tagAliases?.[0] || '');
+
+  // Separate posts and journals
+  const posts = allContent.filter(({ node }) => node.fileAbsolutePath.includes('/Posts/'));
+  const journals = allContent.filter(({ node }) => node.fileAbsolutePath.includes('/WeeklyJournal/'));
+
+  const renderList = (items, emptyMessage) => {
+    if (items.length === 0) {
+      return <p>{emptyMessage}</p>;
+    }
+    return (
+      <ul className="post-list">
+        {items.map(({ node }) => (
+          <li key={node.id}>
+            <div className="post-content-wrapper">
+              <span className="post-date">
+                <span className="post-date-desktop">{formatPostDate(node.frontmatter.date).short}</span>
+                <span className="post-date-mobile">{formatPostDate(node.frontmatter.date).full}</span>
+              </span>
+
+              <div className="post-item">
+                <Link className="post-link" to={node.frontmatter.slug}>
+                  {node.frontmatter.title}
+                </Link>
+
+                <div className="post-meta">
+                  {(node.frontmatter.categories || []).map((category, idx) => (
+                    <Link key={idx} className="post-tag" to={tagPath(category)}>
+                      {formatTagLabel(category)}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    );
+  };
 
   return (
     <Layout>
       <div className="tag-page">
-        <h1 className="post-header">Posts tagged “{tagDisplayName}”</h1>
-        {posts.length === 0 ? (
-          <p>No posts found.</p>
-        ) : (
-          <ul className="post-list">
-            {posts.map(({ node }) => (
-              <li key={node.id}>
-                <div className="post-content-wrapper">
-                  <span className="post-date">
-                    <span className="post-date-desktop">{formatPostDate(node.frontmatter.date).short}</span>
-                    <span className="post-date-mobile">{formatPostDate(node.frontmatter.date).full}</span>
-                  </span>
+        <h2 className="post-header">Posts tagged "{tagDisplayName}"</h2>
+        {renderList(posts, 'No posts found.')}
 
-                  <div className="post-item">
-                    <Link className="post-link" to={node.frontmatter.slug}>
-                      {node.frontmatter.title}
-                    </Link>
-
-                    <div className="post-meta">
-                      {(node.frontmatter.categories || []).map((category, idx) => (
-                        <Link key={idx} className="post-tag" to={tagPath(category)}>
-                          {formatTagLabel(category)}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+        {journals.length > 0 && (
+          <>
+            <h2 className="post-header" style={{ marginTop: '3rem' }}>
+              Weekly Journals tagged "{tagDisplayName}"
+            </h2>
+            {renderList(journals, 'No journals found.')}
+          </>
         )}
       </div>
     </Layout>
@@ -67,12 +85,16 @@ export default TagTemplate;
 export const pageQuery = graphql`
   query TagPage($tagAliases: [String!]!) {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/Posts/" }, frontmatter: { categories: { in: $tagAliases } } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/(Posts|WeeklyJournal)/" }
+        frontmatter: { categories: { in: $tagAliases } }
+      }
       sort: { frontmatter: { date: DESC } }
     ) {
       edges {
         node {
           id
+          fileAbsolutePath
           frontmatter {
             title
             date

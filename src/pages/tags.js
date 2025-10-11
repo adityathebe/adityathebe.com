@@ -10,7 +10,7 @@ import './tags.css';
 const TagsPage = () => {
   const { allMarkdownRemark } = useStaticQuery(graphql`
     {
-      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/content/Posts/" } }) {
+      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/content/(Posts|WeeklyJournal)/" } }) {
         edges {
           node {
             frontmatter {
