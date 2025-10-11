@@ -8,6 +8,11 @@ keywords:
   - protobuf
   - protocol buffer
   - sql in golang
+categories:
+  - go
+  - grpc
+  - protobuf
+  - sql
 ---
 
 <div class="table-of-contents">

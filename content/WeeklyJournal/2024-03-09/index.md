@@ -9,6 +9,12 @@ keywords:
   - dune
   - Rust
   - http
+categories:
+  - nixos
+  - homelab
+  - rust
+  - linux
+  - immich
 ---
 
 <div class="table-of-contents">

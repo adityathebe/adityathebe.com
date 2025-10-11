@@ -9,6 +9,14 @@ keywords:
   - ssh
   - gpg
   - salary
+categories:
+  - git
+  - salary
+  - unix
+  - ssh
+  - gpg
+  - security
+  - ipc
 ---
 
 <div class="table-of-contents">

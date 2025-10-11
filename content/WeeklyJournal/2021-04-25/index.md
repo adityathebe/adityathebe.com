@@ -9,6 +9,8 @@ keywords:
   - go type assertion
   - go slices declaration
   - empty slices in go
+categories:
+  - go
 ---
 
 <div class="table-of-contents">

@@ -6,6 +6,13 @@ description: This week I re-added simple analytics to my website and fixed a maj
 keywords:
   - gastbyjs web analytics
   - simple analytics with custom subdomains
+categories:
+  - security
+  - analytics
+  - gatsbyjs
+  - simple-analytics
+  - azure
+  - bitwarden
 ---
 
 <div class="table-of-contents">

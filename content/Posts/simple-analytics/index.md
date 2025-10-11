@@ -3,6 +3,7 @@ title: How I use SimpleAnalytics to monitor traffic on this blog
 date: '2024-12-07 16:00'
 categories:
   - Analytics
+  - simple-analytics
 slug: /simple-analytics
 description: 'My simple setup for checking blog stats: SimpleAnalytics + a custom Telegram bot'
 ---

@@ -7,6 +7,11 @@ keywords:
   - swapfiles on linux
   - lines of code in a project
   - X clipboard
+categories:
+  - linux
+  - swap-files
+  - cli
+  - x11
 ---
 
 <div class="table-of-contents">

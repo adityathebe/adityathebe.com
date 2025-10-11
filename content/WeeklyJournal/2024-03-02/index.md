@@ -9,6 +9,17 @@ keywords:
   - bcrypt
   - udev
   - nixos
+categories:
+  - neovim
+  - vim
+  - nixos
+  - linux
+  - homelab
+  - selfhost
+  - vitess
+  - system-initiative
+  - security
+  - bcrypt
 ---
 
 <div class="table-of-contents">

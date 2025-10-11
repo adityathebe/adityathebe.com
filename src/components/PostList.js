@@ -70,11 +70,16 @@ const PostList = ({ contentPath = '/content/Posts/' }) => {
                     </Link>
 
                     <div className="post-meta">
-                      {edge.node.frontmatter.categories?.map((x, idx) => (
+                      {edge.node.frontmatter.categories?.slice(0, 4).map((x, idx) => (
                         <Link key={idx} className="post-tag" to={tagPath(x)}>
                           {formatTagLabel(x)}
                         </Link>
                       ))}
+                      {edge.node.frontmatter.categories?.length > 4 && (
+                        <span className="post-tag post-tag-more">
+                          +{edge.node.frontmatter.categories.length - 4}
+                        </span>
+                      )}
                     </div>
                   </div>
                 </div>

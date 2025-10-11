@@ -6,6 +6,11 @@ description: Try out this git one-liners like a git ninja!
 keywords:
   - git tricks
   - npm install vs npm ci
+categories:
+  - git
+  - npm
+  - nodejs
+  - cli
 ---
 
 <div class="table-of-contents">
