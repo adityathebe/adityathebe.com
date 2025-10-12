@@ -60,20 +60,20 @@ const NepalMap = ({ visitedDistricts = [] }) => {
                     }}
                     style={{
                       default: {
-                        fill: visited ? 'var(--color-good)' : 'var(--nord2)',
+                        fill: visited ? 'var(--primary-color)' : 'var(--nord2)',
                         stroke: 'var(--secondary-text-color)',
                         strokeWidth: 0.5,
                         outline: 'none',
                       },
                       hover: {
-                        fill: visited ? 'var(--color-good)' : 'var(--nord3)',
+                        fill: visited ? 'var(--primary-color)' : 'var(--nord3)',
                         stroke: 'var(--secondary-text-color)',
                         strokeWidth: 1,
                         outline: 'none',
                         opacity: 0.8,
                       },
                       pressed: {
-                        fill: visited ? 'var(--color-good)' : 'var(--nord1)',
+                        fill: visited ? 'var(--primary-color)' : 'var(--nord1)',
                         stroke: 'var(--secondary-text-color)',
                         strokeWidth: 1,
                         outline: 'none',

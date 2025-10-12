@@ -58,9 +58,11 @@ html {
   --highlight-color-1: var(--nord-snowstorm-1);
   --highlight-color-rgb: 247, 238, 127;
 
+  --primary-color: var(--nord-aurora-1);
+
   --primary-text-color: #2e3440;
   --secondary-text-color: #3b4252;
-  --post-heading-color: var(--nord-aurora-1);
+  --post-heading-color: var(--primary-color);
   --post-subheading-color: var(--nord-aurora-2);
 
   --toggle-bg-color: var(--nord-polar-night-1);
@@ -84,9 +86,9 @@ html {
   --color-bad: var(--nord-aurora-1);
 
   /* Content type badge colors */
-  --badge-journal-bg: rgba(136, 192, 208, 0.15);
-  --badge-journal-text: #4a7c8e;
-  --badge-journal-border: rgba(136, 192, 208, 0.3);
+  --badge-journal-bg: rgba(191, 97, 106, 0.15);
+  --badge-journal-text: var(--primary-color);
+  --badge-journal-border: rgba(191, 97, 106, 0.3);
 }
 
 html[data-theme='dark'] {
@@ -105,9 +107,11 @@ html[data-theme='dark'] {
   --highlight-color-1: var(--nord-frost-4);
   --highlight-color-rgb: 236, 87, 89;
 
+  --primary-color: var(--nord-aurora-5);
+
   --primary-text-color: var(--nord-snowstorm-1);
   --secondary-text-color: var(--nord-snowstorm-2);
-  --post-heading-color: var(--nord-aurora-5);
+  --post-heading-color: var(--primary-color);
   --post-subheading-color: var(--nord-frost-2);
 
   --toggle-bg-color: var(--nord-snowstorm-3);
@@ -131,9 +135,9 @@ html[data-theme='dark'] {
   --color-bad: var(--nord-aurora-1);
 
   /* Content type badge colors (dark mode) */
-  --badge-journal-bg: rgba(136, 192, 208, 0.2);
-  --badge-journal-text: #88c0d0;
-  --badge-journal-border: rgba(136, 192, 208, 0.4);
+  --badge-journal-bg: rgba(180, 142, 173, 0.2);
+  --badge-journal-text: var(--primary-color);
+  --badge-journal-border: rgba(180, 142, 173, 0.4);
 }
 
 html[data-theme='dark'] img {
