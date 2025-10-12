@@ -3,6 +3,7 @@ import React from 'react';
 
 import Layout from '../components/Layout';
 import { Head as SEOHead } from '../components/SEO';
+import PageHeader from '../components/PageHeader';
 import PostList from '../components/PostList';
 import { formatTagLabel } from '../utils/tags.js';
 
@@ -19,10 +20,8 @@ const TagTemplate = ({ pageContext }) => {
 
   return (
     <Layout>
-      <div className="tag-page">
-        <h2 className="post-header">Tagged "{tagDisplayName}"</h2>
-        <PostList filterTag={filterTag} />
-      </div>
+      <PageHeader title={`Tagged "${tagDisplayName}"`} description={`Posts and notes on ${tagDisplayName}`} />
+      <PostList filterTag={filterTag} />
     </Layout>
   );
 };
