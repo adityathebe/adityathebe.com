@@ -18,6 +18,7 @@ const IndexPage = () => (
           <a
             target="_blank"
             href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/"
+            rel="noreferrer"
           >
             Designing Data-Intensive Applications
           </a>
