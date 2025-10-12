@@ -1,7 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import { formatPostDate } from '../utils/helper.js';
-import { tagPath, formatTagLabel } from '../utils/tags.js';
 
 /** @typedef {import('../types/index.js').NodeEdge} NodeEdge */
 
@@ -93,17 +92,6 @@ const PostList = ({ contentPath = null, filterTag = null }) => {
                     <Link className="post-link" to={edge.node.frontmatter.slug}>
                       {edge.node.frontmatter.title}
                     </Link>
-
-                    <div className="post-meta">
-                      {edge.node.frontmatter.categories?.slice(0, 4).map((x, idx) => (
-                        <Link key={idx} className="post-tag" to={tagPath(x)}>
-                          {formatTagLabel(x)}
-                        </Link>
-                      ))}
-                      {edge.node.frontmatter.categories?.length > 4 && (
-                        <span className="post-tag post-tag-more">+{edge.node.frontmatter.categories.length - 4}</span>
-                      )}
-                    </div>
                   </div>
                 </div>
               </li>
