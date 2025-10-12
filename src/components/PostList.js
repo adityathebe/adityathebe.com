@@ -80,22 +80,26 @@ const PostList = ({ contentPath = null, filterTag = null }) => {
         <div key={group.title} className="post-group">
           <h2 className="year-heading">{group.title}</h2>
           <ul className="post-list">
-            {group.posts.map((edge) => (
-              <li key={edge.node.id}>
-                <div className="post-content-wrapper">
-                  <span className="post-date">
-                    <span className="post-date-desktop">{formatPostDate(edge.node.frontmatter.date).short}</span>
-                    <span className="post-date-mobile">{formatPostDate(edge.node.frontmatter.date).full}</span>
-                  </span>
+            {group.posts.map((edge) => {
+              const isJournal = edge.node.fileAbsolutePath.includes('/WeeklyJournal/');
+              return (
+                <li key={edge.node.id}>
+                  <div className="post-content-wrapper">
+                    <span className="post-date">
+                      <span className="post-date-desktop">{formatPostDate(edge.node.frontmatter.date).short}</span>
+                      <span className="post-date-mobile">{formatPostDate(edge.node.frontmatter.date).full}</span>
+                    </span>
 
-                  <div className="post-item">
-                    <Link className="post-link" to={edge.node.frontmatter.slug}>
-                      {edge.node.frontmatter.title}
-                    </Link>
+                    <div className="post-item">
+                      <Link className="post-link" to={edge.node.frontmatter.slug}>
+                        {edge.node.frontmatter.title}
+                      </Link>
+                      {isJournal && <span className="post-tag">journal</span>}
+                    </div>
                   </div>
-                </div>
-              </li>
-            ))}
+                </li>
+              );
+            })}
           </ul>
         </div>
       ))}
