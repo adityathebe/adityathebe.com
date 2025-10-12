@@ -38,7 +38,7 @@ const Navbar = () => {
             Portfolio
           </Link>
           <Link className="page-link" to="/districts-of-nepal">
-            Districts of Nepal
+            Travel Map
           </Link>
           <Link className="page-link" to="/about">
             About
