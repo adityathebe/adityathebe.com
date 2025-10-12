@@ -87,14 +87,6 @@ html {
   --badge-journal-bg: rgba(136, 192, 208, 0.15);
   --badge-journal-text: #4a7c8e;
   --badge-journal-border: rgba(136, 192, 208, 0.3);
-
-  --badge-tutorial-bg: rgba(163, 190, 140, 0.15);
-  --badge-tutorial-text: #5a7a4a;
-  --badge-tutorial-border: rgba(163, 190, 140, 0.3);
-
-  --badge-note-bg: rgba(235, 203, 139, 0.15);
-  --badge-note-text: #8b7c3b;
-  --badge-note-border: rgba(235, 203, 139, 0.3);
 }
 
 html[data-theme='dark'] {
@@ -142,14 +134,6 @@ html[data-theme='dark'] {
   --badge-journal-bg: rgba(136, 192, 208, 0.2);
   --badge-journal-text: #88c0d0;
   --badge-journal-border: rgba(136, 192, 208, 0.4);
-
-  --badge-tutorial-bg: rgba(163, 190, 140, 0.2);
-  --badge-tutorial-text: #a3be8c;
-  --badge-tutorial-border: rgba(163, 190, 140, 0.4);
-
-  --badge-note-bg: rgba(235, 203, 139, 0.2);
-  --badge-note-text: #ebcb8b;
-  --badge-note-border: rgba(235, 203, 139, 0.4);
 }
 
 html[data-theme='dark'] img {
