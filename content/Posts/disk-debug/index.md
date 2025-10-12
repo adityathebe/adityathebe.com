@@ -51,7 +51,7 @@ In my case, the fact that the CPU usage is pretty low suggests that the high loa
 
 2 tools seem to be the universal choice to debug disk operations.
 
-## iotop
+### iotop
 
 `iotop` lists out all the processes and the amount of data those processes have read from or written to the disk.
 
@@ -87,7 +87,7 @@ I have sorted the list based on Disk Write. As you can see, `node` is the curren
 Unfortunately the biggest flaw with this tool is that if a process dies iotop removes it from the list.
 It would have been nice to be able to leave iotop running in the background for few hours and then inspect the output later. Due to this reason, this tool wasn't really that helpful to me and I couldn't find any other tool that does that.
 
-## iostat
+### iostat
 
 `iostat` is another tool that gives you the current disk read/s & write/s info along with couple of other similar metrics.
 

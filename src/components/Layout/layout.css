@@ -61,6 +61,7 @@ html {
   --primary-text-color: #2e3440;
   --secondary-text-color: #3b4252;
   --post-heading-color: var(--nord-aurora-1);
+  --post-subheading-color: var(--nord-aurora-2);
 
   --toggle-bg-color: var(--nord-polar-night-1);
   --toggle-btn-color: var(--nord-snowstorm-3);
@@ -102,6 +103,7 @@ html[data-theme='dark'] {
   --primary-text-color: var(--nord-snowstorm-1);
   --secondary-text-color: var(--nord-snowstorm-2);
   --post-heading-color: var(--nord-aurora-5);
+  --post-subheading-color: var(--nord-frost-2);
 
   --toggle-bg-color: var(--nord-snowstorm-3);
   --toggle-btn-color: var(--nord-polar-night-1);
