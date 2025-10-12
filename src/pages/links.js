@@ -20,7 +20,7 @@ const techPeople = [
   { name: 'Jon Gjengset', url: 'https://thesquareplanet.com' },
   { name: 'Filippo Valsorda', url: 'https://filippo.io/' },
   { name: 'Mat Ryer', url: 'https://x.com/matryer' },
-  { name: 'Julia Evans', url: 'https://juliaevans.ca' },
+  { name: 'Julia Evans', url: 'https://jvns.ca' },
   { name: 'Eli Bendersky', url: 'https://eli.thegreenplace.net' },
 ];
 
