@@ -8,7 +8,7 @@ categories:
   - doltgres
   - containers
   - claude-code
-  - codex
+  - codex-cli
 slug: /journal/working-with-ai-agents
 description: Parallel agents to brrrr ....
 ---
