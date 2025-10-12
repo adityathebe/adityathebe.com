@@ -95,7 +95,7 @@ const PostList = ({ contentPath = null, filterTag = null }) => {
                       <Link className="post-link" to={edge.node.frontmatter.slug}>
                         {edge.node.frontmatter.title}
                       </Link>
-                      {isJournal && <ContentTypeBadge type="journal" />}
+                      {isJournal && <ContentTypeBadge type="journal" to="/journal" />}
                     </div>
                   </div>
                 </li>
