@@ -37,14 +37,14 @@ const Navbar = () => {
           <Link className="page-link" to="/districts-of-nepal">
             Travel Map
           </Link>
+          <Link className="page-link" to="/uses">
+            Uses
+          </Link>
           <Link className="page-link" to="/about">
             About
           </Link>
           <Link className="page-link" to="/now">
             Now
-          </Link>
-          <Link className="page-link" to="/uses">
-            Uses
           </Link>
           <Link className="page-link" to="/links">
             Links
