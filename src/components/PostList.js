@@ -9,8 +9,9 @@ import ContentTypeBadge from './ContentTypeBadge';
  * @param {Object} props
  * @param {string} [props.contentPath] - Path to filter content by (supports regex patterns)
  * @param {string} [props.filterTag] - Tag to filter posts by (matches against frontmatter.categories)
+ * @param {boolean} [props.showContentTypeBadge] - Whether to show content type badges (default: true)
  */
-const PostList = ({ contentPath = null, filterTag = null }) => {
+const PostList = ({ contentPath = null, filterTag = null, showContentTypeBadge = true }) => {
   const data = useStaticQuery(graphql`
     {
       allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
@@ -95,7 +96,7 @@ const PostList = ({ contentPath = null, filterTag = null }) => {
                       <Link className="post-link" to={edge.node.frontmatter.slug}>
                         {edge.node.frontmatter.title}
                       </Link>
-                      {isJournal && <ContentTypeBadge type="journal" to="/journal" />}
+                      {showContentTypeBadge && isJournal && <ContentTypeBadge type="journal" to="/journal" />}
                     </div>
                   </div>
                 </li>
