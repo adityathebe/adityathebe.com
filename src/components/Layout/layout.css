@@ -75,6 +75,8 @@ html {
   --section-note-bg: #454545;
   --section-note-color: #f0f5f9;
 
+  --paragraph-break-color: rgba(0, 0, 0, 0.3);
+
   --color-good: var(--nord-frost-2);
   --color-good-2: var(--nord-frost-1);
   --color-good-3: var(--nord-aurora-3);
@@ -113,6 +115,8 @@ html[data-theme='dark'] {
 
   --section-note-bg: #292e3b;
   --section-note-color: var(--primary-text-color);
+
+  --paragraph-break-color: rgba(255, 255, 255, 0.3);
 
   --color-good: #00838f;
   --color-good-2: #00897b;

@@ -129,6 +129,11 @@
   color: var(--post-heading-color);
 }
 
+.post-content strong,
+.post-content b {
+  color: var(--post-heading-color);
+}
+
 .post-content h1 {
   font-size: 1.8em;
 }
@@ -434,4 +439,14 @@ td {
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   background-color: var(--section-note-color);
+}
+
+/* Paragraph break horizontal line */
+.paragraph-break {
+  display: block;
+  width: 15%;
+  height: 2px;
+  background: linear-gradient(to right, var(--paragraph-break-color), transparent);
+  border: none;
+  margin: 1.5em 0;
 }
