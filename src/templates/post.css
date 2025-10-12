@@ -64,17 +64,6 @@
   letter-spacing: -1px;
 }
 
-.post-item .post-tag {
-  border-radius: 0.5em;
-  background: var(--tag-bg-color);
-  display: inline-block;
-  font-size: 0.7em;
-  line-height: 0.8em;
-  padding: 0.4em 0.6em;
-  color: var(--primary-text-color);
-  text-decoration: none;
-}
-
 .post-date {
   font-size: 1em;
   white-space: nowrap;

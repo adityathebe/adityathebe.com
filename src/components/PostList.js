@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import { formatPostDate } from '../utils/helper.js';
+import ContentTypeBadge from './ContentTypeBadge';
 
 /** @typedef {import('../types/index.js').NodeEdge} NodeEdge */
 
@@ -94,7 +95,7 @@ const PostList = ({ contentPath = null, filterTag = null }) => {
                       <Link className="post-link" to={edge.node.frontmatter.slug}>
                         {edge.node.frontmatter.title}
                       </Link>
-                      {isJournal && <span className="post-tag">journal</span>}
+                      {isJournal && <ContentTypeBadge type="journal" />}
                     </div>
                   </div>
                 </li>

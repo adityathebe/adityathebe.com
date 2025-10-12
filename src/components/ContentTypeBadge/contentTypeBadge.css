@@ -1,0 +1,36 @@
+.content-type-badge {
+  display: inline-block;
+  font-size: 0.75em;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0.4em 0.7em;
+  border-radius: 0.35em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.content-type-badge--journal {
+  background: var(--badge-journal-bg);
+  color: var(--badge-journal-text);
+  border: 1px solid var(--badge-journal-border);
+}
+
+.content-type-badge--tutorial {
+  background: var(--badge-tutorial-bg);
+  color: var(--badge-tutorial-text);
+  border: 1px solid var(--badge-tutorial-border);
+}
+
+.content-type-badge--note {
+  background: var(--badge-note-bg);
+  color: var(--badge-note-text);
+  border: 1px solid var(--badge-note-border);
+}
+
+/* Default fallback for unknown types */
+.content-type-badge:not([class*='--']) {
+  background: var(--tag-bg-color);
+  color: var(--primary-text-color);
+  border: 1px solid var(--border-color-1);
+}
