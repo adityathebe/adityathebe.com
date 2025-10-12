@@ -9,22 +9,28 @@ const LinksPage = () => (
   <Layout>
     <div className="post-content">
       <h1 id="page-title">Links</h1>
-      <h2>Site</h2>
+      <h3>Site</h3>
       <ul>
         <li>
           <Link to="/tags">/tags</Link>
+          <span>: A list of all the tags</span>
         </li>
         <li>
           <Link to="/reviews/tv">/reviews/tv</Link>
+          <span>: A journal of all the TV shows I've watched with my ratings and reviews</span>
+        </li>
+        <li>
+          <Link to="/districts-of-nepal">/districts-of-nepal</Link>
+          <span>: An interactive map of the districts of Nepal marked with the ones I've visited</span>
         </li>
       </ul>
 
-      <h2>Movies watch history</h2>
+      <h3>Movies watch history</h3>
       <a href="https://movies.adityathebe.com/users/adityathebe/dashboard" target="_blank" rel="noreferrer">
         https://movies.adityathebe.com/users/adityathebe/dashboard
       </a>
 
-      <h2>Some of my favorite people in Tech</h2>
+      <h3>Some of my favorite people in Tech</h3>
       <ul>
         <li>
           Mitchell Hashimoto:{' '}

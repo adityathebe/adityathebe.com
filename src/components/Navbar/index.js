@@ -34,9 +34,6 @@ const Navbar = () => {
         </label>
 
         <div className="trigger">
-          <Link className="page-link" to="/districts-of-nepal">
-            Travel Map
-          </Link>
           <Link className="page-link" to="/uses">
             Uses
           </Link>
