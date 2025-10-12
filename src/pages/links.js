@@ -5,24 +5,37 @@ import { Head as SEOHead } from '../components/SEO';
 import Layout from '../components/Layout';
 import { Link } from 'gatsby';
 
+const siteLinks = [
+  { path: '/tags', description: 'A list of all the tags' },
+  { path: '/reviews/tv', description: "A journal of all the TV shows I've watched with my ratings and reviews" },
+  {
+    path: '/districts-of-nepal',
+    description: "An interactive map of the districts of Nepal marked with the ones I've visited",
+  },
+];
+
+const techPeople = [
+  { name: 'Mitchell Hashimoto', url: 'https://mitchellh.com/' },
+  { name: 'Thorsten Ball', url: 'https://thorstenball.com/' },
+  { name: 'Jon Gjengset', url: 'https://thesquareplanet.com' },
+  { name: 'Filippo Valsorda', url: 'https://filippo.io/' },
+  { name: 'Mat Ryer', url: 'https://x.com/matryer' },
+  { name: 'Julia Evans', url: 'https://juliaevans.ca' },
+  { name: 'Eli Bendersky', url: 'https://eli.thegreenplace.net' },
+];
+
 const LinksPage = () => (
   <Layout>
     <div className="post-content">
       <h1 id="page-title">Links</h1>
       <h3>Site</h3>
       <ul>
-        <li>
-          <Link to="/tags">/tags</Link>
-          <span>: A list of all the tags</span>
-        </li>
-        <li>
-          <Link to="/reviews/tv">/reviews/tv</Link>
-          <span>: A journal of all the TV shows I've watched with my ratings and reviews</span>
-        </li>
-        <li>
-          <Link to="/districts-of-nepal">/districts-of-nepal</Link>
-          <span>: An interactive map of the districts of Nepal marked with the ones I've visited</span>
-        </li>
+        {siteLinks.map((link) => (
+          <li key={link.path}>
+            <Link to={link.path}>{link.path}</Link>
+            <span>: {link.description}</span>
+          </li>
+        ))}
       </ul>
 
       <h3>Movies watch history</h3>
@@ -32,48 +45,13 @@ const LinksPage = () => (
 
       <h3>Some of my favorite people in Tech</h3>
       <ul>
-        <li>
-          Mitchell Hashimoto:{' '}
-          <a href="https://mitchellh.com/" target="_blank" rel="noreferrer">
-            https://mitchellh.com/
-          </a>
-        </li>
-        <li>
-          Thorsten Ball{' '}
-          <a href="https://thorstenball.com/" target="_blank" rel="noreferrer">
-            https://thorstenball.com/
-          </a>
-        </li>
-        <li>
-          Jon Gjengset{' '}
-          <a href="https://thesquareplanet.com" target="_blank" rel="noreferrer">
-            https://thesquareplanet.com
-          </a>
-        </li>
-        <li>
-          Filippo Valsorda{' '}
-          <a href="https://filippo.io/" target="_blank" rel="noreferrer">
-            https://filippo.io/
-          </a>
-        </li>
-        <li>
-          Mat Ryer{' '}
-          <a href="https://x.com/matryer" target="_blank" rel="noreferrer">
-            https://x.com/matryer
-          </a>
-        </li>
-        <li>
-          Julia Evans:{' '}
-          <a href="https://juliaevans.ca" target="_blank" rel="noreferrer">
-            https://juliaevans.ca
-          </a>
-        </li>
-        <li>
-          Eli Bendersky:{' '}
-          <a href="https://eli.thegreenplace.net" target="_blank" rel="noreferrer">
-            https://eli.thegreenplace.net
-          </a>
-        </li>
+        {techPeople.map((person) => (
+          <li key={person.name}>
+            <a href={person.url} target="_blank" rel="noreferrer">
+              {person.name}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   </Layout>
