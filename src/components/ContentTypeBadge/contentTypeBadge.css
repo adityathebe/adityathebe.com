@@ -1,0 +1,21 @@
+.content-type-badge {
+  display: inline-block;
+  font-size: 0.75em;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0.4em 0.7em;
+  border-radius: 0.35em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  background: var(--badge-journal-bg);
+  color: var(--badge-journal-text);
+  border: 1px solid var(--badge-journal-border);
+}
+
+.content-type-badge:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

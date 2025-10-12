@@ -10,7 +10,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <PageHeader title="Writing & Notes" description="A mix of thoughts, learnings, and experiments" />
-      <PostList contentPath="/content/Posts" />
+      <PostList contentPath="/content/(Posts|WeeklyJournal)" />
     </Layout>
   );
 };

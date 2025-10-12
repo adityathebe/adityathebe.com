@@ -82,6 +82,11 @@ html {
   --color-good-2: var(--nord-frost-1);
   --color-good-3: var(--nord-aurora-3);
   --color-bad: var(--nord-aurora-1);
+
+  /* Content type badge colors */
+  --badge-journal-bg: rgba(136, 192, 208, 0.15);
+  --badge-journal-text: #4a7c8e;
+  --badge-journal-border: rgba(136, 192, 208, 0.3);
 }
 
 html[data-theme='dark'] {
@@ -124,6 +129,11 @@ html[data-theme='dark'] {
   --color-good-2: #00897b;
   --color-good-3: var(--nord-frost-4); /*var(--nord-aurora-2);*/
   --color-bad: var(--nord-aurora-1);
+
+  /* Content type badge colors (dark mode) */
+  --badge-journal-bg: rgba(136, 192, 208, 0.2);
+  --badge-journal-text: #88c0d0;
+  --badge-journal-border: rgba(136, 192, 208, 0.4);
 }
 
 html[data-theme='dark'] img {

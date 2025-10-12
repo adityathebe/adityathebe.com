@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import { formatPostDate } from '../utils/helper.js';
+import ContentTypeBadge from './ContentTypeBadge';
 
 /** @typedef {import('../types/index.js').NodeEdge} NodeEdge */
 
@@ -8,8 +9,9 @@ import { formatPostDate } from '../utils/helper.js';
  * @param {Object} props
  * @param {string} [props.contentPath] - Path to filter content by (supports regex patterns)
  * @param {string} [props.filterTag] - Tag to filter posts by (matches against frontmatter.categories)
+ * @param {boolean} [props.showContentTypeBadge] - Whether to show content type badges (default: true)
  */
-const PostList = ({ contentPath = null, filterTag = null }) => {
+const PostList = ({ contentPath = null, filterTag = null, showContentTypeBadge = true }) => {
   const data = useStaticQuery(graphql`
     {
       allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
@@ -80,22 +82,26 @@ const PostList = ({ contentPath = null, filterTag = null }) => {
         <div key={group.title} className="post-group">
           <h2 className="year-heading">{group.title}</h2>
           <ul className="post-list">
-            {group.posts.map((edge) => (
-              <li key={edge.node.id}>
-                <div className="post-content-wrapper">
-                  <span className="post-date">
-                    <span className="post-date-desktop">{formatPostDate(edge.node.frontmatter.date).short}</span>
-                    <span className="post-date-mobile">{formatPostDate(edge.node.frontmatter.date).full}</span>
-                  </span>
+            {group.posts.map((edge) => {
+              const isJournal = edge.node.fileAbsolutePath.includes('/WeeklyJournal/');
+              return (
+                <li key={edge.node.id}>
+                  <div className="post-content-wrapper">
+                    <span className="post-date">
+                      <span className="post-date-desktop">{formatPostDate(edge.node.frontmatter.date).short}</span>
+                      <span className="post-date-mobile">{formatPostDate(edge.node.frontmatter.date).full}</span>
+                    </span>
 
-                  <div className="post-item">
-                    <Link className="post-link" to={edge.node.frontmatter.slug}>
-                      {edge.node.frontmatter.title}
-                    </Link>
+                    <div className="post-item">
+                      <Link className="post-link" to={edge.node.frontmatter.slug}>
+                        {edge.node.frontmatter.title}
+                      </Link>
+                      {showContentTypeBadge && isJournal && <ContentTypeBadge type="journal" to="/journal" />}
+                    </div>
                   </div>
-                </div>
-              </li>
-            ))}
+                </li>
+              );
+            })}
           </ul>
         </div>
       ))}

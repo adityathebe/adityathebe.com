@@ -10,7 +10,7 @@ const JournalPage = () => {
   return (
     <Layout>
       <PageHeader title="Weekly Journals" description="Reflections and updates from my week" />
-      <PostList contentPath="/content/WeeklyJournal/" />
+      <PostList contentPath="/content/WeeklyJournal/" showContentTypeBadge={false} />
     </Layout>
   );
 };
