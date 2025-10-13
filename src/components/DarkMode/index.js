@@ -4,6 +4,9 @@ import './darkModeToggle.css';
 
 export default class DarkModeToggle extends React.Component {
   switchTheme(e) {
+    // Add transition class for smooth animation
+    document.documentElement.classList.add('transition');
+    
     if (e.target.checked) {
       document.documentElement.setAttribute('data-theme', 'dark');
       localStorage.setItem('theme', 'dark');
@@ -11,6 +14,11 @@ export default class DarkModeToggle extends React.Component {
       document.documentElement.setAttribute('data-theme', 'light');
       localStorage.setItem('theme', 'light');
     }
+    
+    // Remove transition class after animation completes
+    setTimeout(() => {
+      document.documentElement.classList.remove('transition');
+    }, 500);
   }
 
   componentDidMount() {
