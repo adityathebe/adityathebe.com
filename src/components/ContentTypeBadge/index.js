@@ -14,6 +14,7 @@ const ContentTypeBadge = ({ type }) => {
   // Define routes for content types
   const routes = {
     journal: '/journal',
+    bitesize: '/bitesize',
   };
 
   const to = routes[type.toLowerCase()];
