@@ -4,6 +4,7 @@ title: |
 date: '2025-03-27 21:25'
 categories:
   - Git
+  - cli
 featuredImage: ./git.png
 slug: /delete-stale-git-branches
 description: |

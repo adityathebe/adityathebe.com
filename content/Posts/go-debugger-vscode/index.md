@@ -4,6 +4,7 @@ date: '2024-07-09 23:40'
 categories:
   - Go
   - debugger
+  - vs-code
 slug: /setup-go-debugger-vscode
 featuredImage: ./vs-code-go-debugger.svg
 description: Setup and configure Go debugger in VS Code. Learn to create launch.json, attach to running processes, and troubleshoot common issues for effective Golang debugging in VS Code.

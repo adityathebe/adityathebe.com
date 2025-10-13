@@ -9,6 +9,7 @@ categories:
   - swap-files
   - cli
   - x11
+  - git
 ---
 
 <div class="table-of-contents">

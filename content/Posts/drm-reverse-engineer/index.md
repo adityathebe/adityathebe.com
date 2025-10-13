@@ -4,6 +4,7 @@ date: '2025-05-24 19:00:00'
 categories:
   - Hacking
   - drm
+  - reverse-engineering
 slug: /download-drm-protected-video
 description: Here's how I obtained a DRM protected video with Go and FFMPEG.
 ---

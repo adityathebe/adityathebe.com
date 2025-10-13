@@ -7,6 +7,8 @@ categories:
   - Backups
   - Restic
   - backblaze
+  - rclone
+  - ansible
 slug: /backup-plan
 featuredImage: ./3-2-1-backup-rule.png
 description: The 3-2-1 backup strategy with Restic, Backblaze B2 and rclone.

@@ -4,6 +4,7 @@ date: '2021-01-15 15:00'
 categories:
   - CORS
   - SOP
+  - browser
 slug: /follow-redirection-on-cross-origin-requests/
 featuredImage: ./redirection-on-cross-origin-requests.png
 description: Follow redirection on a cross origin request on the browser using the Fetch API

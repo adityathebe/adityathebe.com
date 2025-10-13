@@ -4,6 +4,9 @@ date: '2024-02-24 00:50'
 categories:
   - Container
   - docker
+  - oci
+  - podman
+  - buildah
 slug: /building-container-images-without-docker
 featuredImage: ./containers.png
 description: Dockerfiles are a common way to create container images, but they aren’t the only option

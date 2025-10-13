@@ -12,6 +12,9 @@ categories:
   - container
   - claude-code
   - codex-cli
+  - docker
+  - macos
+  - postgres
 ---
 
 ## Coding agents roles and commands

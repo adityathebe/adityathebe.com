@@ -6,6 +6,7 @@ categories:
   - MacOS
   - Linux
   - Thoughts
+  - arch-linux
 slug: /switching-from-arch-linux-to-mac-os
 description: I recently bought a Macbook Pro and I've been using it exclusively as my development machine.
 ---

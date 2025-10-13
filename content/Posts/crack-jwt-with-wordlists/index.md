@@ -2,8 +2,10 @@
 title: Crack weak JWT HS256 secrets with a wordlist in Golang
 date: '2021-01-09 12:30'
 categories:
-  - JWT
-  - Hacking
+  - jwt
+  - hacking
+  - security
+  - cryptography
 slug: /crack-weak-jwt-symmetric-secrets-keys/
 featuredImage: ./crack-jwt-adityathebe.com.png
 description: JWT that uses HS256 algorithm should have strong secret. Weak secrets can be bruteforced or a dictionary attack can reveal the secret key

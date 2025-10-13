@@ -2,7 +2,8 @@
 title: My New Year's Resolution for 2023
 date: '2023-01-01 22:05'
 categories:
-  - Essay
+  - productivity
+  - thoughts
 slug: /my-new-years-resolution-2023/
 description: It's that time of the year again... Here's my New Year's resolution for 2023. Unlike previous ones, I'm going to stick to this one.
 featuredImage: ./aditya-thebe-focus.jpg

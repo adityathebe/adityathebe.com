@@ -3,6 +3,7 @@ title: Pitfall in JavaScript's Array.prototype.sort()
 date: '2021-02-09 20:45'
 categories:
   - JavaScript
+  - Algorithms
 slug: /array-sort-javascript-pitfall/
 featuredImage: ./javascript-arrays-featured-img.jpg
 description: Javascript has many obscure and weird behaviors. One of them is how Array.prototype.sort() functions.

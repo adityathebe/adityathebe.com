@@ -5,6 +5,8 @@ categories:
   - Linux
   - iotop
   - iostat
+  - debugging
+  - performance
 slug: /debug-disk-usage
 description: Here's how I am monitoring disk usage on Linux
 ---

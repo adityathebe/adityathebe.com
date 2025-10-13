@@ -3,10 +3,12 @@ title: Basic introduction to HTTP requests with TCP Sockets in NodeJs
 date: '2020-03-22 22:00'
 modified_date: '2020-09-07 14:30'
 categories:
-  - TCP
-  - HTTP
-  - Sockets
+  - tcp
+  - http
+  - sockets
   - nodejs
+  - networking
+  - javascript
 slug: /raw-http-request-with-sockets-nodejs/
 featuredImage: ./http.png
 description: Understand the structure of HTTP messages and how they work with network sockets in NodeJs 

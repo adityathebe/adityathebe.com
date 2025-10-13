@@ -12,6 +12,7 @@ categories:
   - gpg
   - security
   - ipc
+  - github
 ---
 
 <div class="table-of-contents">

@@ -11,6 +11,8 @@ categories:
   - simple-analytics
   - azure
   - bitwarden
+  - lastpass
+  - goatcounter
 ---
 
 <div class="table-of-contents">
