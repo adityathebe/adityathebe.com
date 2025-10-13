@@ -89,6 +89,10 @@ html {
   --badge-journal-bg: rgba(191, 97, 106, 0.15);
   --badge-journal-text: var(--primary-color);
   --badge-journal-border: rgba(191, 97, 106, 0.3);
+
+  --badge-bitesize-bg: rgba(136, 192, 208, 0.15);
+  --badge-bitesize-text: var(--primary-color);
+  --badge-bitesize-border: rgba(136, 192, 208, 0.3);
 }
 
 html[data-theme='dark'] {
@@ -138,6 +142,10 @@ html[data-theme='dark'] {
   --badge-journal-bg: rgba(180, 142, 173, 0.2);
   --badge-journal-text: var(--primary-color);
   --badge-journal-border: rgba(180, 142, 173, 0.4);
+
+  --badge-bitesize-bg: rgba(136, 192, 208, 0.2);
+  --badge-bitesize-text: var(--primary-color);
+  --badge-bitesize-border: rgba(136, 192, 208, 0.4);
 }
 
 html[data-theme='dark'] img {

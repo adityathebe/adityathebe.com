@@ -3,6 +3,7 @@ title: Dependency Injection In Go With Context API
 date: '2021-04-25 14:00'
 slug: /journal/5
 description: This week I share a couple of new things that I learned about Go
+contentType: journal
 keywords:
   - go dependency injection
   - go time format

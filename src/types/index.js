@@ -6,6 +6,7 @@
  * @property {string} node.fileAbsolutePath
  * @property {Object} node.frontmatter
  * @property {string} node.frontmatter.title
+ * @property {"journal"|"bitesize"} node.frontmatter.contentType
  * @property {string} node.frontmatter.date
  * @property {string} node.frontmatter.slug
  * @property {string[]} [node.frontmatter.categories]

@@ -7,11 +7,11 @@ import ContentTypeBadge from './ContentTypeBadge';
 
 /**
  * @param {Object} props
- * @param {string} [props.contentPath] - Path to filter content by (supports regex patterns)
  * @param {string} [props.filterTag] - Tag to filter posts by (matches against frontmatter.categories)
+ * @param {string} [props.filterContentType] - Content type to filter by (e.g., 'journal', 'bitesize')
  * @param {boolean} [props.showContentTypeBadge] - Whether to show content type badges (default: true)
  */
-const PostList = ({ contentPath = null, filterTag = null, showContentTypeBadge = true }) => {
+const PostList = ({ filterTag = null, filterContentType = null, showContentTypeBadge = true }) => {
   const data = useStaticQuery(graphql`
     {
       allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
@@ -19,12 +19,12 @@ const PostList = ({ contentPath = null, filterTag = null, showContentTypeBadge =
           node {
             id
             timeToRead
-            fileAbsolutePath
             frontmatter {
               title
               date
               slug
               categories
+              contentType
             }
           }
         }
@@ -32,7 +32,7 @@ const PostList = ({ contentPath = null, filterTag = null, showContentTypeBadge =
     }
   `);
 
-  // Filter posts based on the contentPath prop or filterTag
+  // Filter posts based on filterTag and filterContentType
   /** @type {NodeEdge[]} */
   let filteredEdges = data.allMarkdownRemark.edges;
 
@@ -43,16 +43,9 @@ const PostList = ({ contentPath = null, filterTag = null, showContentTypeBadge =
     );
   }
 
-  if (contentPath) {
-    // Filter by content path (supports both string matching and regex patterns)
-    if (contentPath.includes('(') || contentPath.includes('|')) {
-      // Treat as regex pattern
-      const regex = new RegExp(contentPath);
-      filteredEdges = filteredEdges.filter((edge) => regex.test(edge.node.fileAbsolutePath));
-    } else {
-      // Simple string matching
-      filteredEdges = filteredEdges.filter((edge) => edge.node.fileAbsolutePath.includes(contentPath));
-    }
+  if (filterContentType) {
+    // Filter by content type
+    filteredEdges = filteredEdges.filter((edge) => edge.node.frontmatter.contentType === filterContentType);
   }
 
   const allMarkdownRemark = { edges: filteredEdges };
@@ -83,7 +76,7 @@ const PostList = ({ contentPath = null, filterTag = null, showContentTypeBadge =
           <h2 className="year-heading">{group.title}</h2>
           <ul className="post-list">
             {group.posts.map((edge) => {
-              const isJournal = edge.node.fileAbsolutePath.includes('/WeeklyJournal/');
+              const contentType = edge.node.frontmatter.contentType;
               return (
                 <li key={edge.node.id}>
                   <div className="post-content-wrapper">
@@ -96,7 +89,7 @@ const PostList = ({ contentPath = null, filterTag = null, showContentTypeBadge =
                       <Link className="post-link" to={edge.node.frontmatter.slug}>
                         {edge.node.frontmatter.title}
                       </Link>
-                      {showContentTypeBadge && isJournal && <ContentTypeBadge type="journal" to="/journal" />}
+                      {showContentTypeBadge && contentType && <ContentTypeBadge type={contentType} />}
                     </div>
                   </div>
                 </li>

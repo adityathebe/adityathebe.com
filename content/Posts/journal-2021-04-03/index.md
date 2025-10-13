@@ -3,6 +3,7 @@ title: Number of lines of code in my website
 date: '2021-04-03 18:30'
 slug: /journal/3
 description: My website apparently has fewer lines of code than I expected
+contentType: journal
 keywords:
   - swapfiles on linux
   - lines of code in a project
