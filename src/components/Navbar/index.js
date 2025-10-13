@@ -1,15 +1,26 @@
 // @ts-check
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'gatsby';
 
 import './navbar.css';
 import DarkModeToggle from '../DarkMode';
 
+// Mobile breakpoint matching CSS media query
+const MOBILE_BREAKPOINT = 450;
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navRef = useRef(null);
 
-  // Handle clicks outside the navigation
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen((prev) => !prev);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false);
+  }, []);
+
+  // Handle clicks outside the navigation and escape key
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (navRef.current && !navRef.current.contains(event.target)) {
@@ -17,38 +28,39 @@ const Navbar = () => {
       }
     };
 
-    // Handle escape key
     const handleEscapeKey = (event) => {
       if (event.key === 'Escape') {
         setIsMenuOpen(false);
       }
     };
 
-    // Only add listeners on mobile screens (matching CSS media query)
-    const checkScreenSize = () => {
-      return window.innerWidth <= 450;
-    };
+    const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
 
-    if (isMenuOpen && checkScreenSize()) {
-      document.addEventListener('mousedown', handleClickOutside);
-      document.addEventListener('touchstart', handleClickOutside);
+    if (isMenuOpen && isMobile) {
+      document.addEventListener('pointerdown', handleClickOutside);
       document.addEventListener('keydown', handleEscapeKey);
-    }
 
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('touchstart', handleClickOutside);
-      document.removeEventListener('keydown', handleEscapeKey);
-    };
+      return () => {
+        document.removeEventListener('pointerdown', handleClickOutside);
+        document.removeEventListener('keydown', handleEscapeKey);
+      };
+    }
   }, [isMenuOpen]);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  // Handle window resize - close menu when switching to desktop view
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > MOBILE_BREAKPOINT && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isMenuOpen]);
 
   return (
     <header className="site-header" role="banner">
@@ -56,15 +68,21 @@ const Navbar = () => {
         Home
       </Link>
 
-      <nav className="site-nav" ref={navRef}>
+      <nav className="site-nav" ref={navRef} role="navigation">
         <input
           type="checkbox"
           id="nav-trigger"
           className="nav-trigger"
           checked={isMenuOpen}
           onChange={toggleMenu}
+          aria-hidden="true"
         />
-        <label htmlFor="nav-trigger" aria-label="Toggle navigation menu">
+        <label
+          htmlFor="nav-trigger"
+          aria-label="Toggle navigation menu"
+          aria-expanded={isMenuOpen}
+          aria-controls="navigation-menu"
+        >
           <span className="menu-icon">
             <svg viewBox="0 0 18 15" width="18px" height="15px">
               <path
@@ -83,7 +101,7 @@ const Navbar = () => {
           </span>
         </label>
 
-        <div className="trigger">
+        <div className="trigger" id="navigation-menu">
           <Link className="page-link" to="/uses" onClick={closeMenu}>
             Uses
           </Link>
