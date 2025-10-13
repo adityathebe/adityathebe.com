@@ -10,7 +10,7 @@ categories:
   - nixos
   - linux
   - homelab
-  - selfhost
+  - self-hosted
   - vitess
   - system-initiative
   - security

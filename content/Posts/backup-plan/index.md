@@ -3,7 +3,7 @@ title: My Backup Strategy
 date: '2024-02-03 20:55'
 modified_date: '2024-08-19 11:30'
 categories:
-  - Self Hosted
+  - self-hosted
   - Backups
   - Restic
   - backblaze
