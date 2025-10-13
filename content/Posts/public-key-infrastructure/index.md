@@ -3,7 +3,7 @@ title: Understand Public Key Infrastructure & Certificates
 date: '2024-07-29 22:00'
 categories:
   - Cryptography
-  - PKI
+  - pki
   - Certificate
 slug: /public-key-infrastructures-and-certificates
 featuredImage: ./pki.png
