@@ -3,6 +3,7 @@ title: All about Git & Unix
 date: '2024-02-24 23:00'
 slug: /journal/6
 description: This week I share a couple of new things that I learned about Git
+contentType: journal
 keywords:
   - git
   - unix

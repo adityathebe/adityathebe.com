@@ -4,13 +4,19 @@ import { Link } from 'gatsby';
 import './contentTypeBadge.css';
 
 /**
- * Badge component to display content type (e.g., journal, tutorial, etc.)
+ * Badge component to display content type (e.g., journal, bitesize, etc.)
  * @param {Object} props
  * @param {string} props.type - The content type to display
- * @param {string} [props.to] - Optional link destination
  */
-const ContentTypeBadge = ({ type, to }) => {
+const ContentTypeBadge = ({ type }) => {
   const className = `content-type-badge content-type-badge--${type.toLowerCase()}`;
+
+  // Define routes for content types
+  const routes = {
+    journal: '/journal',
+  };
+
+  const to = routes[type.toLowerCase()];
 
   if (to) {
     return (

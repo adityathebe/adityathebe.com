@@ -9,13 +9,22 @@
   white-space: nowrap;
   transition: all 0.2s ease;
   cursor: pointer;
-  background: var(--badge-journal-bg);
-  color: var(--badge-journal-text);
-  border: 1px solid var(--badge-journal-border);
 }
 
 .content-type-badge:hover {
   text-decoration: none;
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content-type-badge--journal {
+  background: var(--badge-journal-bg);
+  color: var(--badge-journal-text);
+  border: 1px solid var(--badge-journal-border);
+}
+
+.content-type-badge--bitesize {
+  background: var(--badge-bitesize-bg);
+  color: var(--badge-bitesize-text);
+  border: 1px solid var(--badge-bitesize-border);
 }

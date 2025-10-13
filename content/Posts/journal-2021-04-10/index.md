@@ -3,6 +3,7 @@ title: Git tricks & Deterministic builds on NPM install
 date: '2021-04-10 12:00'
 slug: /journal/4
 description: Try out this git one-liners like a git ninja!
+contentType: journal
 keywords:
   - git tricks
   - npm install vs npm ci

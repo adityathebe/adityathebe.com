@@ -1,6 +1,9 @@
 ---
 title: Running AI agents in parallel
 date: '2025-10-11 14:30'
+slug: /journal/working-with-ai-agents
+description: Parallel agents to brrrr ....
+contentType: journal
 categories:
   - ai
   - ai-agents
@@ -9,8 +12,6 @@ categories:
   - containers
   - claude-code
   - codex-cli
-slug: /journal/working-with-ai-agents
-description: Parallel agents to brrrr ....
 ---
 
 ## Coding agents roles and commands
