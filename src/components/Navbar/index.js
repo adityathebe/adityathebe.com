@@ -1,20 +1,88 @@
 // @ts-check
-import React from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'gatsby';
 
 import './navbar.css';
 import DarkModeToggle from '../DarkMode';
 
+// Mobile breakpoint matching CSS media query
+const MOBILE_BREAKPOINT = 450;
+
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navRef = useRef(null);
+
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen((prev) => !prev);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false);
+  }, []);
+
+  // Handle clicks outside the navigation and escape key
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    const handleEscapeKey = (event) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false);
+      }
+    };
+
+    const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+
+    if (isMenuOpen && isMobile) {
+      document.addEventListener('pointerdown', handleClickOutside);
+      document.addEventListener('keydown', handleEscapeKey);
+
+      return () => {
+        document.removeEventListener('pointerdown', handleClickOutside);
+        document.removeEventListener('keydown', handleEscapeKey);
+      };
+    }
+  }, [isMenuOpen]);
+
+  // Handle window resize - close menu when switching to desktop view
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > MOBILE_BREAKPOINT && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isMenuOpen]);
+
   return (
     <header className="site-header" role="banner">
       <Link className="site-title" to="/">
         Home
       </Link>
 
-      <nav className="site-nav">
-        <input type="checkbox" id="nav-trigger" className="nav-trigger" />
-        <label htmlFor="nav-trigger" aria-label="Toggle navigation menu">
+      <nav className="site-nav" ref={navRef} role="navigation">
+        <input
+          type="checkbox"
+          id="nav-trigger"
+          className="nav-trigger"
+          checked={isMenuOpen}
+          onChange={toggleMenu}
+          aria-hidden="true"
+        />
+        <label
+          htmlFor="nav-trigger"
+          aria-label="Toggle navigation menu"
+          aria-expanded={isMenuOpen}
+          aria-controls="navigation-menu"
+        >
           <span className="menu-icon">
             <svg viewBox="0 0 18 15" width="18px" height="15px">
               <path
@@ -33,17 +101,17 @@ const Navbar = () => {
           </span>
         </label>
 
-        <div className="trigger">
-          <Link className="page-link" to="/uses">
+        <div className="trigger" id="navigation-menu">
+          <Link className="page-link" to="/uses" onClick={closeMenu}>
             Uses
           </Link>
-          <Link className="page-link" to="/about">
+          <Link className="page-link" to="/about" onClick={closeMenu}>
             About
           </Link>
-          <Link className="page-link" to="/now">
+          <Link className="page-link" to="/now" onClick={closeMenu}>
             Now
           </Link>
-          <Link className="page-link" to="/links">
+          <Link className="page-link" to="/links" onClick={closeMenu}>
             Links
           </Link>
           <DarkModeToggle />
