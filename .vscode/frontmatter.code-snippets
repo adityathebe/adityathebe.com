@@ -1,0 +1,23 @@
+{
+	"Blog Post Frontmatter": {
+		"prefix": "frontmatter",
+		"scope": "markdown",
+		"body": [
+			"---",
+			"title: ${1:Title}",
+			"date: '${2:YYYY-MM-DD}'",
+			"categories:",
+			"  - ${3:Category 1}",
+			"slug: /${4:url-slug}",
+			"featuredImage: ./${5:image.png}",
+			"description: ${6:Brief description}",
+			"contentType: ${7:blog}",
+			"keywords:",
+			"  - ${8:keyword1}",
+			"---",
+			"",
+			"$0"
+		],
+		"description": "Insert blog post frontmatter template"
+	}
+}
