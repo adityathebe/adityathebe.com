@@ -2,6 +2,7 @@
 title: 'Fix invalid version: unknown revision from go get'
 date: '2025-10-13'
 contentType: bitesize
+featuredImage: image.png
 categories:
   - go
   - cache
@@ -24,6 +25,8 @@ If you run `go get` on a version that has just been released, then the proxy ser
 > The new version should be available within one minute..."
 >
 > \- https://proxy.golang.org/
+
+![Go Module Mirror](./module-mirror.svg)
 
 Use the `-x` flag to see what the command is doing under the hood.
 
