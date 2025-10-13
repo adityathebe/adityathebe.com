@@ -8,9 +8,6 @@ categories:
   - Database
 slug: /aerospike-hands-on-golang/
 description: Get hands on introduction to Aerospike with Golang
-keywords:
-  - NoSQL
-  - database
 ---
 
 This is an extremely basic introduction to Aerospike. It's basically a compilation of resources to help you quickly get started.

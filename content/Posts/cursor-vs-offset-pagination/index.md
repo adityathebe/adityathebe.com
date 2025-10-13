@@ -5,9 +5,6 @@ categories:
   - Database
 slug: /cursor-vs-offset-based-pagination/
 description: The basics of cursor vs offset based pagination
-keywords:
-  - pagination
-  - API design
 ---
 
 ## A. Offset-based Pagination

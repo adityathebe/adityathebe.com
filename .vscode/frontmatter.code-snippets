@@ -12,8 +12,6 @@
 			"featuredImage: ./${5:image.png}",
 			"description: ${6:Brief description}",
 			"contentType: ${7:blog}",
-			"keywords:",
-			"  - ${8:keyword1}",
 			"---",
 			"",
 			"$0"

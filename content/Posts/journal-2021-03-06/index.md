@@ -4,9 +4,6 @@ date: '2021-03-06 23:25'
 slug: /journal/2
 description: This week I re-added simple analytics to my website and fixed a major bug that was costing me $70 every month
 contentType: journal
-keywords:
-  - gastbyjs web analytics
-  - simple analytics with custom subdomains
 categories:
   - security
   - analytics

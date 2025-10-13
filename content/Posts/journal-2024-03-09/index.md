@@ -4,12 +4,6 @@ date: '2024-03-09 14:30'
 slug: /journal/8
 description: My NixOS Proxmox VM is ready to fly!
 contentType: journal
-keywords:
-  - immich
-  - nixos
-  - dune
-  - Rust
-  - http
 categories:
   - nixos
   - homelab

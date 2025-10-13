@@ -7,9 +7,6 @@ categories:
 featuredImage: ./packet-confused-light.png
 slug: /ip-routing-in-linux/
 description: Learn how a linux system decides to route packets out of it
-keywords:
-  - Linux
-  - Networking
 ---
 
 If you're looking to dip your toes into networking, IP routing is a great place to start.

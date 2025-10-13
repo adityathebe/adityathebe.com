@@ -6,9 +6,6 @@ categories:
 slug: /golang-nil-interface-check
 featuredImage: ./gopher-footgun.png
 description: I recently ran into this nasty bug in Go where an interface that was supposed to be nil wasn't.
-keywords:
-  - golang footgun
-  - nil interface
 ---
 
 ![Gopher](./gopher-footgun.png)

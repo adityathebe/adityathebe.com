@@ -4,11 +4,6 @@ date: '2021-02-27 17:00'
 slug: /journal/1
 description: This week I learned about ProtoBuf, gRPC & sql in Go
 contentType: journal
-keywords:
-  - grpc
-  - protobuf
-  - protocol buffer
-  - sql in golang
 categories:
   - go
   - grpc

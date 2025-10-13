@@ -3,13 +3,10 @@ title: How to setup debugger for Golang in VS Code
 date: '2024-07-09 23:40'
 categories:
   - Go
+  - debugger
 slug: /setup-go-debugger-vscode
 featuredImage: ./vs-code-go-debugger.svg
 description: Setup and configure Go debugger in VS Code. Learn to create launch.json, attach to running processes, and troubleshoot common issues for effective Golang debugging in VS Code.
-keywords:
-  - golang debugger
-  - delve
-  - vscode
 ---
 
 VS Code comes with a native debugger by default. If you have Go's debugger `delve` installed on your system

@@ -6,9 +6,6 @@ categories:
 slug: /my-new-years-resolution-2023/
 description: It's that time of the year again... Here's my New Year's resolution for 2023. Unlike previous ones, I'm going to stick to this one.
 featuredImage: ./aditya-thebe-focus.jpg
-keywords:
-  - New Year's Resolution
-  - focus
 ---
 
 For the past few days I have been trying to decide which of these two topics to begin learning first: databases or Kubernetes. I've grown a sudden interest in these topics because the companies that I want to work at had at least one of the above as a hard requirement - or sometimes both. Now, of course it's not the only reason why I'm interested in them. My interest goes beyond just fulfilling job requirements as they are both highly essential skills to have in any backend engineer's arsenal. But it was for sure the spark that ignited the interest/motivation in me.

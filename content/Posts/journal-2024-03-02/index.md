@@ -4,12 +4,6 @@ date: '2024-03-02 12:40'
 slug: /journal/7
 description: I did a lot of neovim work this week.
 contentType: journal
-keywords:
-  - vim
-  - neovim
-  - bcrypt
-  - udev
-  - nixos
 categories:
   - neovim
   - vim

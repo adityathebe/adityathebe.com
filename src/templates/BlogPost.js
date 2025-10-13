@@ -61,7 +61,7 @@ export const Head = ({ data, pageContext }) => {
       title={post.frontmatter.title}
       description={post.frontmatter.description}
       featuredImage={siteUrl + pageContext.seoImage}
-      keywords={post.frontmatter.keywords ? post.frontmatter.keywords : []}
+      keywords={post.frontmatter.categories ? post.frontmatter.categories : []}
       ogType="article"
     />
   );
@@ -87,7 +87,6 @@ export const pageQuery = graphql`
         }
         description
         categories
-        keywords
         modified_date
       }
       timeToRead

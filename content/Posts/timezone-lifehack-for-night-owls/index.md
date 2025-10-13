@@ -6,10 +6,6 @@ categories:
 slug: /timezone-lifehack-for-night-owls/
 description: Here's a silly but effective life hack for the night owls out there.
 featuredImage: ./quin-stevenson-unsplash.jpg
-keywords:
-  - night owl
-  - timezone
-  - lifehack
 ---
 
 How nice would it be to have a turn off switch for your body? I would turn myself off every night at around 9/10 pm. Hold on ... that didn't sound right. A "sleep switch" might be a more appropriate word. Yes - that sounds better. I would press the sleep button every night at 9/10pm.

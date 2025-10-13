@@ -4,12 +4,11 @@ date: '2025-05-17 15:35'
 categories:
   - Linux
   - Networking
+  - ARP
+  - DNS
 slug: /address-resolution-protocol
 featuredImage: ./arp.png
 description: Address Resolution Protocol maps IP addresses to MAC addresses similar to how DNS maps domains to IP addresses.
-keywords:
-  - Linux
-  - Networking
 ---
 
 In the OSI model, devices in layer 2 - like a Switch - work with MAC address while devices on layer 3 work with IP addresses.
