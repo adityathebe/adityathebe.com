@@ -27,7 +27,7 @@ const techPeople = [
 const LinksPage = () => (
   <Layout>
     <div className="post-content">
-      <h1 id="page-title">Links</h1>
+      <h1 id="page-title">🔗 Links</h1>
       <h3>Site</h3>
       <ul>
         {siteLinks.map((link) => (

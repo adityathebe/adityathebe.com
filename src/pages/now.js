@@ -7,7 +7,8 @@ import Layout from '../components/Layout';
 const IndexPage = () => (
   <Layout>
     <div className="post-content">
-      <h1 id="page-title">Now</h1>
+      <h1 id="page-title">🕰️ Now</h1>
+      <br />
       <ul>
         <li>🏠 In Kathmandu</li>
         <li>

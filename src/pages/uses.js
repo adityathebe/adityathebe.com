@@ -68,7 +68,8 @@ const IndexPage = () => {
   return (
     <Layout>
       <div className="post-content">
-        <h2>Development Tools</h2>
+        <h1 id="page-title">💻 Development Tools</h1>
+        <br />
         <UsesItem items={devToolsList} />
 
         <h2>Softwares</h2>
