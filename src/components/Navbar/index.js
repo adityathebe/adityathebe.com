@@ -1,19 +1,69 @@
 // @ts-check
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'gatsby';
 
 import './navbar.css';
 import DarkModeToggle from '../DarkMode';
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navRef = useRef(null);
+
+  // Handle clicks outside the navigation
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    // Handle escape key
+    const handleEscapeKey = (event) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false);
+      }
+    };
+
+    // Only add listeners on mobile screens (matching CSS media query)
+    const checkScreenSize = () => {
+      return window.innerWidth <= 450;
+    };
+
+    if (isMenuOpen && checkScreenSize()) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+      document.addEventListener('keydown', handleEscapeKey);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [isMenuOpen]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="site-header" role="banner">
       <Link className="site-title" to="/">
         Home
       </Link>
 
-      <nav className="site-nav">
-        <input type="checkbox" id="nav-trigger" className="nav-trigger" />
+      <nav className="site-nav" ref={navRef}>
+        <input
+          type="checkbox"
+          id="nav-trigger"
+          className="nav-trigger"
+          checked={isMenuOpen}
+          onChange={toggleMenu}
+        />
         <label htmlFor="nav-trigger" aria-label="Toggle navigation menu">
           <span className="menu-icon">
             <svg viewBox="0 0 18 15" width="18px" height="15px">
@@ -34,16 +84,16 @@ const Navbar = () => {
         </label>
 
         <div className="trigger">
-          <Link className="page-link" to="/uses">
+          <Link className="page-link" to="/uses" onClick={closeMenu}>
             Uses
           </Link>
-          <Link className="page-link" to="/about">
+          <Link className="page-link" to="/about" onClick={closeMenu}>
             About
           </Link>
-          <Link className="page-link" to="/now">
+          <Link className="page-link" to="/now" onClick={closeMenu}>
             Now
           </Link>
-          <Link className="page-link" to="/links">
+          <Link className="page-link" to="/links" onClick={closeMenu}>
             Links
           </Link>
           <DarkModeToggle />
