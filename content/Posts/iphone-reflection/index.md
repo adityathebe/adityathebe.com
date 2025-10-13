@@ -3,6 +3,9 @@ title: 'Reflecting on My iPhone Experience: The Good and the Bad'
 date: '2024-12-29'
 categories:
   - Thoughts
+  - Apple
+  - ios
+  - android
 slug: /reflection-on-iphone-experience
 description: My experience as an Android user moving to Apple.
 ---
@@ -62,7 +65,6 @@ So here are a few pros and cons from **personal** experience.
 - Beautiful fonts and coherent UI experience. As a Linux user, a consistent UI is something that really stands out to me because you rarely experience that in the Linux world.
 
 - **Privacy**
-
   - Fine grained permissions for apps. I especially like that you can selectively allow which photos an app can access instead of allowing it your entire gallery or nothing at all. Also, you can select if you want to provide precise or imprecise location permission to apps but I think Android also has this maybe...
 
   - **Sign in with apple** allows me to regsiter with a unique pseudonymous email address.
@@ -99,7 +101,6 @@ _Based on your usage/experience you might probably not experience some of these.
   Now I need to flip my phone.
 
 - **Keyboard**
-
   - Worst auto completion by far! Keyboards on android not only have extremely good auto suggestions but can also remember custom words which is really handy when you use english letters for Nepali words.
 
   - Hard to place a cursor in the middle of a word. You need to slide the cursor.
@@ -107,7 +108,6 @@ _Based on your usage/experience you might probably not experience some of these.
   - Copy / Paste / Select All are atrocious!
 
 - **Ecosystem**
-
   - Premium ecosystem. Apps that were free on android were behind paywall on App Store. This isn't really on iOS thing but if people are gonna boast about the ecosystem it's fair to mention all aspects of it. Example: I used to heavily use Syncthing to sync files between my computer and phone (like music and ebooks).
 
     This isn't a problem for me anymore as now I have NAS (network attached storage) that I can connect to from the Files app. And now, I also don't mind paying for apps.
@@ -139,7 +139,6 @@ _Based on your usage/experience you might probably not experience some of these.
 - Can't decline calls sometimes - there's just no decline button - WTF! I'm sure there's a setting somewhere to enable this but the fact that I need to configure this in the first place is kinda wild!
 
 - Nit picks
-
   - **Notifications**. I remember hating this a lot when I first started using iOS but honestly it's fine now.
 
   - **Battery**. I know I can't really complain about the battery after using a used 5 year old model but still the battery really really sucks.

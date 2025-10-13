@@ -4,6 +4,7 @@ date: '2024-12-06 22:00'
 categories:
   - Postgres
   - Database
+  - SQL
 slug: /postgres-parameter-gotcha
 description: A hidden quirk in PostgreSQL's SET LOCAL command and how it unexpectedly affected our Row Level Security policy.
 ---

@@ -3,6 +3,8 @@ title: Understand Public Key Infrastructure & Certificates
 date: '2024-07-29 22:00'
 categories:
   - Cryptography
+  - PKI
+  - Certificate
 slug: /public-key-infrastructures-and-certificates
 featuredImage: ./pki.png
 description: Learn about about the shortcomings of public key encryption and the need for a trusted 3rd party - Certificate Authority.

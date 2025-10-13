@@ -9,16 +9,22 @@ const tagPath = (value = '') => `/tags/${tagSlug(value)}/`;
 
 const TAG_DISPLAY_OVERRIDES = {
   'ai-agents': 'AI Agents',
+  'api-design': 'API Design',
   'codex-cli': 'Codex CLI',
   ai: 'AI',
+  iproute2: 'iproute2',
   api: 'API',
   arp: 'ARP',
   cli: 'CLI',
   cors: 'CORS',
   devops: 'DevOps',
+  dig: 'dig',
   dns: 'DNS',
   docker: 'Docker',
+  drm: 'DRM',
   git: 'Git',
+  iotop: 'iotop',
+  iostat: 'iostat',
   gpg: 'GPG',
   http: 'HTTP',
   ipc: 'IPC',
@@ -33,6 +39,9 @@ const TAG_DISPLAY_OVERRIDES = {
   sop: 'SOP',
   sql: 'SQL',
   ssh: 'SSH',
+  tls: 'TLS',
+  sudo: 'sudo',
+  'systemd-resolved': 'systemd-resolved',
   tcp: 'TCP',
 };
 

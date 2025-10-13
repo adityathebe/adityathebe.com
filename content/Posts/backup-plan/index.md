@@ -5,6 +5,8 @@ modified_date: '2024-08-19 11:30'
 categories:
   - Self Hosted
   - Backups
+  - Restic
+  - backblaze
 slug: /backup-plan
 featuredImage: ./3-2-1-backup-rule.png
 description: The 3-2-1 backup strategy with Restic, Backblaze B2 and rclone.

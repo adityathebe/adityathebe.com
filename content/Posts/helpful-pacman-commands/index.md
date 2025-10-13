@@ -3,6 +3,8 @@ title: Pacman for newbies
 date: '2023-01-19 13:45'
 categories:
   - Linux
+  - arch-linux
+  - pacman
 slug: /pacman-for-newbies/
 featuredImage: ./pacman.jpg
 description: A list of commonly used commands for the Pacman package manager.
@@ -95,6 +97,7 @@ I use this command to look for a few things
 ```sh
 pacman -Qi seahorse
 ```
+
 ```output
 ...
 Depends On      : gtk3  gcr  ...

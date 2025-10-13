@@ -3,6 +3,7 @@ title: No, your sudo password is not incorrect
 date: '2024-07-18 23:50'
 categories:
   - Linux
+  - sudo
 slug: /incorrect-sudo-password
 description: sudo rejects password that is correct 
 ---

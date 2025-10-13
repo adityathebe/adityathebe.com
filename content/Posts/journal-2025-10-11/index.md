@@ -9,7 +9,7 @@ categories:
   - ai-agents
   - llm
   - doltgres
-  - containers
+  - container
   - claude-code
   - codex-cli
 ---

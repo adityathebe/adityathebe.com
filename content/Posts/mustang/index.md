@@ -4,6 +4,7 @@ date: '2025-03-08'
 categories:
   - Motorcycle
   - Travel
+  - Mustang
 slug: /mustang-motorcycle-trip
 featuredImage: ./mutang-lete.jpeg
 description: Jomson, Mustang Itenerary for a motorcycle trip

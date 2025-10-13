@@ -6,6 +6,7 @@ categories:
   - TCP
   - HTTP
   - Sockets
+  - node-js
 slug: /raw-http-request-with-sockets-nodejs/
 featuredImage: ./http.png
 description: Understand the structure of HTTP messages and how they work with network sockets in NodeJs 

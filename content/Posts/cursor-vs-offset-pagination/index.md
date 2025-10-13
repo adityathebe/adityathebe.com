@@ -3,6 +3,7 @@ title: Cursor-based pagination vs Offset-based pagination
 date: '2021-05-01 18:45'
 categories:
   - Database
+  - api-design
 slug: /cursor-vs-offset-based-pagination/
 description: The basics of cursor vs offset based pagination
 ---

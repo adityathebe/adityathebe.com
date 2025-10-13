@@ -4,6 +4,7 @@ date: '2025-04-27 14:45'
 categories:
   - Linux
   - Networking
+  - iproute2
 featuredImage: ./packet-confused-light.png
 slug: /ip-routing-in-linux/
 description: Learn how a linux system decides to route packets out of it

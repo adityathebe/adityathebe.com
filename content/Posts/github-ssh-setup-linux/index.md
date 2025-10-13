@@ -4,6 +4,7 @@ date: '2020-01-24 23:30'
 categories:
   - Git
   - Linux
+  - ssh
 slug: /configure-ssh-key-github/
 featuredImage: ./ssh-github.png
 description: Set up ssh keys on your github account

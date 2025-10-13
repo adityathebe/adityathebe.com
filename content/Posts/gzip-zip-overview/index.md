@@ -4,6 +4,9 @@ date: '2024-07-20 12:30'
 categories:
   - Linux
   - Compression
+  - zip
+  - tar
+  - gzip
 slug: /gzip-zip-overview
 description: This blog post explores the differences between gzip and zip, two popular file compression formats
 ---

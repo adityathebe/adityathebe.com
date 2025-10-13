@@ -2,7 +2,8 @@
 title: Dockerfile isn't the only way to create Container Images
 date: '2024-02-24 00:50'
 categories:
-  - Containers
+  - Container
+  - docker
 slug: /building-container-images-without-docker
 featuredImage: ./containers.png
 description: Dockerfiles are a common way to create container images, but they aren’t the only option

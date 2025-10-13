@@ -3,6 +3,7 @@ title: Setup DNS Over TLS with systemd-resolved & Next DNS
 date: '2024-05-11'
 categories:
   - Networking
+  - systemd-resolved
 slug: /systemd-resolved-dns-over-tls
 featuredImage: ./adguard-home.png
 description: Setup DNS over TLS with systemd-resolved, NetworkManager and NextDNS
