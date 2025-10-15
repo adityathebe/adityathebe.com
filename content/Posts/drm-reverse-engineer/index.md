@@ -180,6 +180,3 @@ The endpoints hinted the use of DRM and it turns out most modern DRM technologie
 <div id="ref-1">
 <i>[1]</i>. https://docs.axinom.com/services/drm/general/what-is-drm/
 </div>
-
-</br>
-</br>

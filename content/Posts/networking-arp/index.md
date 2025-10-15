@@ -215,4 +215,3 @@ listening on enp8s0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 <div id="ref-3">
 <i>[3]</i>. A broadcast address in layer 2 is - <code>FF:FF:FF:FF:FF:FF</code>. It's an address that doesn't belong to a single device but any message sent to that address is delivered to all the devices.
 </div>
-</br>

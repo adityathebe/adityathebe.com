@@ -62,5 +62,3 @@ Here's a very not-so-detailed itenerary.
 - Ensure your rental bike has new tyres. We experienced three punctures in three days.
 - Workshops in the region do not repair tubes - they only sell new ones.
 - Each replacement tube cost us around Rs 1,000.
-
-<br>

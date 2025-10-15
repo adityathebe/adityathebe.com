@@ -64,8 +64,6 @@ sudo pacman -Rns <package-name>
 sudo pacman -Sc
 ```
 
-</br>
-
 ## Still basics but rarely used
 
 These are a list of commands that you probably wouldn't use on a daily basis.

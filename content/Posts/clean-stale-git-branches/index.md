@@ -93,5 +93,3 @@ Now, I can simply run `git pull && git fetch -p && git clean-gone` to clean up t
 git pull && git fetch -p && git clean-gone
 Deleted branch feat/notifications (was a84be78).
 ```
-
-<br>

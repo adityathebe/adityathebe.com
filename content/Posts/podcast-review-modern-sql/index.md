@@ -138,5 +138,3 @@ Data types like `json`, `jsonb`, `boolean`, ... have 3 use cases
 - API Layer
   - where json can be very handy (json_array_agg)
   - we don't want normalization in API Layer (normalization is fine for the disk)
-
-</br>

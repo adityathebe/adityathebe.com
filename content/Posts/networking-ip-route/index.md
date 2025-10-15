@@ -532,5 +532,3 @@ RPDB (Rules: priority-ordered)
 - https://baturin.org/docs/iproute2/
 - https://youtu.be/zstdOS_6ajY?si=gCPBv2c_N-7aNssi
 - http://linux-ip.net/html/ch-routing.html
-
-<br>

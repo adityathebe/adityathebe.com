@@ -162,5 +162,3 @@ Some of the cons that I've decided to remove from the list because they have bee
 - FaceID as a rider. Face id works on masks and helmets on newer iPhones.
 
 I'm not going to mention Siri in here because I don't really use it and I also didn't really use Google Assistant.
-
-<br>
