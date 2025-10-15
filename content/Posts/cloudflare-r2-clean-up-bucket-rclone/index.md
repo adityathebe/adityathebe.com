@@ -2,11 +2,12 @@
 title: Delete all files in a Cloudflare R2 bucket using rclone
 date: '2025-10-15'
 categories:
-  - backup
+  - backups
   - rclone
   - cloudflare
   - r2
   - s3
+  - object-storage
 slug: /delete-cloudflare-r2-bucket-files-using-rclone
 featuredImage: ./featured-image.png
 description: Brief description
