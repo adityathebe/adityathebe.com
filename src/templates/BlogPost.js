@@ -33,10 +33,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
       </div>
 
       <h1 className="post-header">{post.frontmatter.title}</h1>
-      <hr />
-
       <div className="post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
-      <hr />
       <RelatedPosts relatedPosts={relatedPosts} />
     </Layout>
   );
@@ -48,21 +45,29 @@ const BlogPostTemplate = ({ data, pageContext }) => {
  * @returns
  */
 function RelatedPosts({ relatedPosts }) {
+  if (relatedPosts.length === 0) {
+    return null;
+  }
+
   return (
-    <div className="post-content">
-      {relatedPosts.length > 0 ? (
-        <aside className="related-posts">
-          <h2>Related posts</h2>
-          <ul>
-            {relatedPosts.map((related) => (
-              <li key={related.slug}>
-                <Link to={related.url}>{related.title}</Link>
-              </li>
-            ))}
-          </ul>
-        </aside>
-      ) : null}
-    </div>
+    <>
+      <br />
+      <hr />
+      <div className="post-content">
+        {relatedPosts.length > 0 ? (
+          <aside className="related-posts">
+            <h2>Related posts</h2>
+            <ul>
+              {relatedPosts.map((related) => (
+                <li key={related.slug}>
+                  <Link to={related.url}>{related.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        ) : null}
+      </div>
+    </>
   );
 }
 

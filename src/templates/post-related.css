@@ -1,0 +1,47 @@
+.post-content .related-posts h2 {
+  color: var(--related-post-title);
+  font-size: 1.4em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding-left: 1.2em;
+  margin-bottom: 0.5em;
+  position: relative;
+}
+
+.post-content .related-posts h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image:
+    linear-gradient(var(--related-post-title), var(--related-post-title)),
+    linear-gradient(var(--related-post-title), var(--related-post-title)),
+    linear-gradient(var(--related-post-title), var(--related-post-title)),
+    linear-gradient(var(--related-post-title), var(--related-post-title));
+  background-size:
+    2px 100%,
+    100% 2px,
+    2px 70%,
+    2px 70%;
+  background-position:
+    center center,
+    center center,
+    center center,
+    center center;
+  background-repeat: no-repeat;
+  animation: sparkle-spin 4s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes sparkle-spin {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}

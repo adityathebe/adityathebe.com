@@ -42,12 +42,11 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop -H 0.0.0.0",
+    "dev": "gatsby develop -H 0.0.0.0",
     "format": "prettier --write \"*.{js,jsx,css}\" \"src/**/*.{js,jsx,css}\"",
     "lint": "eslint src --ext .js,.jsx",
     "lint:fix": "eslint src --ext .js,.jsx --fix",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
+    "start": "gatsby serve --port 8000",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit"
   },

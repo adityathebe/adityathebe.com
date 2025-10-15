@@ -85,6 +85,8 @@ html {
   --color-good-3: var(--nord-aurora-3);
   --color-bad: var(--nord-aurora-1);
 
+  --related-post-title: var(--nord-frost-3);
+
   /* Content type badge colors */
   --badge-journal-bg: rgba(191, 97, 106, 0.15);
   --badge-journal-text: var(--primary-color);
@@ -137,6 +139,8 @@ html[data-theme='dark'] {
   --color-good-2: #00897b;
   --color-good-3: var(--nord-frost-4); /*var(--nord-aurora-2);*/
   --color-bad: var(--nord-aurora-1);
+
+  --related-post-title: var(--nord-aurora-3);
 
   /* Content type badge colors (dark mode) */
   --badge-journal-bg: rgba(180, 142, 173, 0.2);
