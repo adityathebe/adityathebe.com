@@ -13,6 +13,19 @@ description: Brief description
 contentType: bitesize
 ---
 
+<div class='post-tldr'>
+
+## TLDR
+
+This post explains how to delete all files in a Cloudflare R2 bucket using rclone instead of the web UI or AWS CLI.
+
+Quick steps:
+
+1.  **Get credentials**: Create an Account API Token in R2 dashboard with "Object Read & Write" permission
+2.  **Configure rclone**: Add R2 credentials to `~/.config/rclone/rclone.conf` with `type=s3`, `provider=Cloudflare`
+3.  **Delete files**: Run rclone delete r2:/bucket-name/ -P
+</div>
+
 Object storage services do not allow deleting a bucket without deleting all the files in it first.
 R2's web UI doesn't allow a "Select All" button that would make deleting just 2 clicks away.
 If you have tons and tons of file, don't even think about using the web UI to clean up the bucket.

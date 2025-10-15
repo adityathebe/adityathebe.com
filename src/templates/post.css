@@ -1,3 +1,5 @@
+@import './post-tldr.css';
+
 .post-group {
   position: relative;
   display: flex;
