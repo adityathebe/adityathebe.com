@@ -62,7 +62,7 @@
   transform: translateY(-50%);
   width: 4px;
   height: 0;
-  background: linear-gradient(180deg, var(--nord-frost-3), var(--nord-frost-2));
+  background: var(--primary-color);
   transition: height 0.2s ease;
   border-radius: 2px;
 }
@@ -72,7 +72,7 @@
 }
 
 .tag-link:hover .tag-name {
-  color: var(--nord-frost-3);
+  color: var(--primary-color);
   transform: translateX(0.5rem);
 }
 

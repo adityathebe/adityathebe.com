@@ -10,6 +10,7 @@ categories:
   - rust
   - linux
   - immich
+  - self-hosted
 ---
 
 <div class="table-of-contents">

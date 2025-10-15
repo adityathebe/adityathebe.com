@@ -102,6 +102,9 @@ const Navbar = () => {
         </label>
 
         <div className="trigger" id="navigation-menu">
+          <Link className="page-link" to="/tags" onClick={closeMenu}>
+            Tags
+          </Link>
           <Link className="page-link" to="/uses" onClick={closeMenu}>
             Uses
           </Link>

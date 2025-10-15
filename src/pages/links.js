@@ -6,7 +6,6 @@ import Layout from '../components/Layout';
 import { Link } from 'gatsby';
 
 const siteLinks = [
-  { path: '/tags', description: 'A list of all the tags' },
   { path: '/reviews/tv', description: "A journal of all the TV shows I've watched with my ratings and reviews" },
   {
     path: '/districts-of-nepal',
