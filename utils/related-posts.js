@@ -6,7 +6,7 @@ const crypto = require('crypto');
 const DEFAULT_MODEL = 'text-embedding-3-small';
 const DEFAULT_CACHE_PATH = path.join(process.cwd(), 'data', 'related-posts-cache.json');
 const DEFAULT_CONTENT_LENGTH_LIMIT = 10_000;
-const DEFAULT_MIN_SCORE = 0.35;
+const DEFAULT_MIN_SCORE = 0.50;
 const CACHE_PATH = process.env.RELATED_POST_CACHE_PATH
   ? path.resolve(process.cwd(), process.env.RELATED_POST_CACHE_PATH)
   : DEFAULT_CACHE_PATH;

@@ -9,6 +9,8 @@ import { tagPath, formatTagLabel } from '../utils/tags.js';
 
 import './post.css';
 
+/** @typedef {import('../types/index.js').RelatedPost} RelatedPost */
+
 const BlogPostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark;
   const relatedPosts = pageContext?.relatedPosts || [];
@@ -34,24 +36,35 @@ const BlogPostTemplate = ({ data, pageContext }) => {
       <hr />
 
       <div className="post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
+      <hr />
+      <RelatedPosts relatedPosts={relatedPosts} />
+    </Layout>
+  );
+};
 
+/**
+ *
+ * @param {{ relatedPosts: RelatedPost[] }} props
+ * @returns
+ */
+function RelatedPosts({ relatedPosts }) {
+  return (
+    <div className="post-content">
       {relatedPosts.length > 0 ? (
         <aside className="related-posts">
-          <h2 className="related-posts__title">Related posts</h2>
-          <ul className="related-posts__list">
+          <h2>Related posts</h2>
+          <ul>
             {relatedPosts.map((related) => (
-              <li key={related.slug} className="related-posts__item">
-                <Link to={related.url} className="related-posts__link">
-                  {related.title}
-                </Link>
+              <li key={related.slug}>
+                <Link to={related.url}>{related.title}</Link>
               </li>
             ))}
           </ul>
         </aside>
       ) : null}
-    </Layout>
+    </div>
   );
-};
+}
 
 export const Head = ({ data, pageContext }) => {
   const post = data.markdownRemark;
