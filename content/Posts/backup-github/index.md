@@ -5,6 +5,7 @@ categories:
   - backup
   - self-hosted
   - github
+  - git
 slug: /backup-github
 featuredImage: ./image.png
 description:
