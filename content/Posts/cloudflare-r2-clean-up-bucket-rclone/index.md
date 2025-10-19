@@ -10,7 +10,7 @@ categories:
   - object-storage
 slug: /delete-cloudflare-r2-bucket-files-using-rclone
 featuredImage: ./featured-image.png
-description: Brief description
+description: How to quickly delete all files from a Cloudflare R2 bucket using rclone instead of the web UI or AWS CLI
 contentType: bitesize
 ---
 
@@ -28,11 +28,10 @@ Quick steps:
 </div>
 
 Object storage services do not allow deleting a bucket without deleting all the files in it first.
-R2's web UI doesn't allow a "Select All" button that would make deleting just 2 clicks away.
-If you have tons and tons of file, don't even think about using the web UI to clean up the bucket.
+R2's web UI doesn't have a "Select All" button that would make deletion a simple 2-click process.
+If you have tons and tons of files, the web UI becomes impractical for bucket cleanup.
 
-Clouflare suggests using the aws cli, however I prefer using `rclone` - https://rclone.org/ simply because I can use one tool with one interface and connect to all sort of cloud service and not just object storage services like minio, s3, backblaze b2, ...
-For example: I have upload photos to Google photos using rclone, downloaded files from Google drive, ...
+Cloudflare suggests using the AWS CLI, but I prefer `rclone` (https://rclone.org/) because it provides a unified interface for many cloud services - not just object storage like MinIO, S3, and Backblaze B2, but also services like Google Photos and Google Drive. For example, I've used rclone to upload photos to Google Photos and download files from Google Drive.
 
 `rclone` has a massive list of services that it supports. See here - https://rclone.org/#providers.
 Install `rclone` (guide: https://rclone.org/install/) and let's begin by creating an access key for your bucket.
@@ -69,9 +68,9 @@ rclone listremotes --long
 r2:                  s3
 ```
 
-## Deleting bucket
+## Emptying the bucket
 
-My bucket is named `longhorn` so this is the comand I ran. The `-P` flag shows the progress.
+My bucket is named `longhorn` so this is the command I ran. The `-P` flag shows the progress.
 
 ```sh
 rclone delete r2:/longhorn/ -P
