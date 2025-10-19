@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"For context, today's date is $(date). Please use this as the current date for all time-relative questions.\""
+          }
+        ]
+      }
+    ]
+  }
+}
