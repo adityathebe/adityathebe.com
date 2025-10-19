@@ -11,7 +11,7 @@ const TAG_DISPLAY_OVERRIDES = {
   'ai-agents': 'AI Agents',
   'api-design': 'API Design',
   'codex-cli': 'Codex CLI',
-  'self-hosted': 'self hosted',
+  'self-hosted': 'Self Hosted',
   'systemd-resolved': 'systemd-resolved',
   'vs-code': 'VS Code',
   ai: 'AI',
