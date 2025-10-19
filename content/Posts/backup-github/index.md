@@ -38,9 +38,9 @@ GitHub's automated systems can flag accounts without warning, and appeals can ta
 
 ## Backup with gickup
 
-I'm using [gickup](https://github.com/cooperspencer/gickup) to backup my repositories hosted on GitHub. I run it on Kubernetes as a [CronJob](https://github.com/adityathebe/homelab/blob/main/kubernetes/apps/default/gickup/helmrelease.yaml), but you can also use gickup's built-in cron support by setting the cron field in its config file.
+I'm using [gickup](https://github.com/cooperspencer/gickup) to backup my repositories hosted on GitHub. I run it on Kubernetes as a [CronJob](https://github.com/adityathebe/homelab/blob/main/kubernetes/apps/default/gickup/helmrelease.yaml), but you can also use gickup's built-in cron runner.
 
-I run daily backups—if a repository has been updated recently, chances are I have a local copy anyway.
+I schedule daily backups, which is sufficient since actively developed repos are typically already cloned on my machine.
 
 I'm currently backing up to the local filesystem, which is backed up separately but gickup also offers backing up to various remotes like - GitLab, Gitea, Gogs, OneDev, Sourcehut, S3.
 
@@ -73,7 +73,7 @@ destination:
 Key points:
 
 - **Source**: All my GitHub repositories (excluding a few large ones)
-- **Mirror mode**: Equivalent to `git clone --mirror`, this creates a complete backup including all branches, tags, and special refs like pull requests. Unlike a regular or bare clone, it captures GitHub's entire repository state, not just the visible branches.
+- **Mirror mode**: This backs up all git refs (branches, tags, and pull request refs)
 - **Structured**: Creates organized folders for each repository
 
 Once configured, it's completely hands-off.
