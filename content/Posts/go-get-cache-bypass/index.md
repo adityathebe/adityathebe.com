@@ -15,20 +15,32 @@ description: |
 `go get` by default talks to a proxy server - https://proxy.golang.org.
 The proxy server then fetches the module, caches it and returns it to you.
 
-> "it may take up to 30 minutes for the mirror's cache to expire and fresh data about the version to become available"
->
-> \- https://proxy.golang.org/
+If you request a version before it's published, the proxy gets a 404 and caches that negative response.
+You'll then encounter an error like this:
 
-If you run `go get` on a version that has just been released, then the proxy server might get a 404 itself and cache that response.
+```sh
+go get github.com/flanksource/duty@v1.0.1111
+```
+
+```output
+go: github.com/flanksource/duty@v1.0.1111: reading github.com/flanksource/duty/go.mod at revision v1.0.1111: unknown revision v1.0.1111
+```
+
+I've run into this issue even when running `go get` immediately after a new release.
+According to the proxy documentation, new versions may not show up immediately but should be available within one minute:
 
 > "In order to improve our services' caching and serving latencies, new versions may not show up right away ...
 > The new version should be available within one minute..."
 >
 > \- https://proxy.golang.org/
 
-![Go Module Mirror](./module-mirror.svg)
+This poisoned cache can persist even after the version is published, which is why you may still get 404 errors for up to 30 minutes even after a release.
 
-Use the `-x` flag to see what the command is doing under the hood.
+> "it may take up to 30 minutes for the mirror's cache to expire and fresh data about the version to become available"
+>
+> \- https://proxy.golang.org/
+
+To understand what's happening behind the scenes, use the `-x` flag to see which servers `go get` contacts:
 
 ```sh
 go get -x github.com/labstack/echo
@@ -47,8 +59,11 @@ go get -x github.com/labstack/echo
 
 As you can see, every request goes through the proxy.
 
-You can override the default proxy to another using the `GOPROXY` env var.
-But there's also the `direct` directive which doesn't use any proxy server and hits the module repository directly.
+## The Solution
+
+To bypass the poisoned cache, you can override the default proxy using the `GOPROXY` environment variable. Setting it to `direct` skips all proxy servers and fetches directly from the module repository.
+
+![Go Module Mirror](./module-mirror.svg)
 
 ```sh
 GOPROXY=direct go get -x github.com/labstack/echo
@@ -62,6 +77,8 @@ cd /Users/aditya/go/pkg/mod/cache/vcs/84bf749277ea54683052733eb9a9f7ea7f43e18090
 1.158s # cd /Users/aditya/go/pkg/mod/cache/vcs/84bf749277ea54683052733eb9a9f7ea7f43e18090bed6ec5b8281cdee0a1f11; git ls-remote -q https://github.com/labstack/echo
 cd /Users/aditya/go/pkg/mod/cache/vcs/84bf749277ea54683052733eb9a9f7ea7f43e18090bed6ec5b8281cdee0a1f11; git init --bare
 ```
+
+Now `go get` clones the repository directly using Git, completely bypassing the proxy cache and fetching the latest version from the source.
 
 ## References
 
