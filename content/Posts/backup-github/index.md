@@ -45,6 +45,8 @@ I schedule daily backups, which is sufficient since actively developed repos are
 
 I'm currently backing up to the local filesystem, which is backed up separately but gickup also offers backing up to various remotes like - GitLab, Gitea, Gogs, OneDev, Sourcehut, S3.
 
+> **Disclaimer**: This post is not sponsored or affiliated with gickup in any way. I'm sharing my personal backup solution that works for me. See the "Alternative Tools" section at the end for other options.
+
 ## Setup
 
 1. **Create a GitHub Personal Access Token** with `repo` scope - https://github.com/settings/personal-access-tokens
@@ -90,3 +92,13 @@ Cloning into 'nvim'...
 done.
 admin@truenas[/mnt/mega/aditya/backups]$
 ```
+
+## Alternative Tools
+
+While I use gickup, there are several other tools available for backing up GitHub repositories:
+
+- **[git-backup](https://github.com/ChappIO/git-backup)** - A simple tool for backing up git repositories
+- **[Gitea mirror feature](https://www.reddit.com/r/selfhosted/comments/u6dww1/a_simple_way_to_backup_all_your_github_and_gitlab/i580m8f/)** - Use Gitea's built-in mirroring capabilities to backup repositories
+- **[GitHub-Backup](https://github.com/clockfort/GitHub-Backup)** - Another backup solution for GitHub repositories
+
+_Note: I haven't personally tested these alternatives, but they may better suit your specific needs._
