@@ -28,3 +28,9 @@
   color: var(--badge-bitesize-text);
   border: 1px solid var(--badge-bitesize-border);
 }
+
+.content-type-badge--til {
+  background: var(--badge-til-bg);
+  color: var(--badge-til-text);
+  border: 1px solid var(--badge-til-border);
+}
