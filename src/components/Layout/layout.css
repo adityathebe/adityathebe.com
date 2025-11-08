@@ -95,6 +95,10 @@ html {
   --badge-bitesize-bg: rgba(136, 192, 208, 0.15);
   --badge-bitesize-text: var(--primary-color);
   --badge-bitesize-border: rgba(136, 192, 208, 0.3);
+
+  --badge-til-bg: rgba(163, 190, 140, 0.15);
+  --badge-til-text: var(--primary-color);
+  --badge-til-border: rgba(163, 190, 140, 0.3);
 }
 
 html[data-theme='dark'] {
@@ -150,6 +154,10 @@ html[data-theme='dark'] {
   --badge-bitesize-bg: rgba(136, 192, 208, 0.2);
   --badge-bitesize-text: var(--primary-color);
   --badge-bitesize-border: rgba(136, 192, 208, 0.4);
+
+  --badge-til-bg: rgba(163, 190, 140, 0.2);
+  --badge-til-text: var(--primary-color);
+  --badge-til-border: rgba(163, 190, 140, 0.4);
 }
 
 html[data-theme='dark'] img {
