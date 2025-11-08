@@ -16,10 +16,7 @@ const TILPage = () => {
 };
 
 export const Head = () => (
-  <SEOHead
-    title="TIL"
-    keywords={['aditya thebe til', 'adityathebe today i learned', 'aditya thebe learnings']}
-  />
+  <SEOHead title="TIL" keywords={['aditya thebe til', 'adityathebe today i learned', 'aditya thebe learnings']} />
 );
 
 export default TILPage;
