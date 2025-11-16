@@ -10,7 +10,7 @@ const DistrictsOfNepalPage = () => {
   const visitedDistricts = [
     // Province 1 (Koshi Province)
     // { name: 'Bhojpur', notes: '' },
-    // { name: 'Dhankuta', notes: '' },
+    { name: 'Dhankuta', notes: 'Dhankuta Bazaar, Hile' },
     { name: 'Ilam', notes: 'Ilam, Kanyam, Fikkal' },
     { name: 'Jhapa', notes: 'Born & raised' },
     // { name: 'Khotang', notes: '' },
@@ -21,7 +21,7 @@ const DistrictsOfNepalPage = () => {
     { name: 'Solukhumbu', notes: 'Lukla, Namche Bazar, Everest Base Camp, Kala Patthar' },
     { name: 'Sunsari', notes: 'Itahari, Dharan' },
     { name: 'Taplejung', notes: 'Taplejung, Pathibhara Temple' },
-    // { name: 'Terhathum', notes: '' },
+    { name: 'Terhathum', notes: 'Basantapur' },
     { name: 'Udayapur', notes: 'Gaighat' },
 
     // Province 2 (Madhesh Province)
