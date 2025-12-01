@@ -14,16 +14,17 @@ const IndexPage = () => (
         <li>
           Working at <a href="https://flanksource.com">@Flanksource</a>
         </li>
-        <li>
-          Reading{' '}
-          <a
-            target="_blank"
-            href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/"
-            rel="noreferrer"
-          >
-            Designing Data-Intensive Applications
-          </a>
-        </li>
+        <li>Watching <a href="https://www.imdb.com/title/tt2802850/">Fargo</a></li>
+        {/* <li> */}
+        {/*   Reading{' '} */}
+        {/*   <a */}
+        {/*     target="_blank" */}
+        {/*     href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/" */}
+        {/*     rel="noreferrer" */}
+        {/*   > */}
+        {/*     Designing Data-Intensive Applications */}
+        {/*   </a> */}
+        {/* </li> */}
         {/* <li>
           <a href="https://hevy.com/user/adityathebe">Working out</a>
         </li> */}
