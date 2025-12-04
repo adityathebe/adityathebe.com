@@ -9,10 +9,9 @@ contentType: til
 ---
 
 TIL that Go uses `uint32` instead of `uint8` or just `bool`.
-At first glance, that seems counterintuitive because ideally a bool is just a bit. Why's do we need the additional 31 more bits?
+At first glance, that seems counterintuitive because ideally a bool is just a bit. Why do we need the extra 31 bits?
 
-**The reason is that - most CPU can perform atomic operations efficiently for 32-bit/64-bit word-sized values.
-Some CPUs can perform atomic operations even on a single byte, however that may be inefficient in terms of speed and memory.**
+**The runtime picks a 32-bit slot so it can rely on the same word-sized compare-and-swap instruction on every architecture Go supports. Some CPUs expose byte-sized atomics, but others do not guarantee them (or require strict alignment), so Go standardizes on word-aligned storage instead.**
 
 ```go
 // A Bool is an atomic boolean value.
