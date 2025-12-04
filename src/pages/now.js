@@ -14,7 +14,9 @@ const IndexPage = () => (
         <li>
           Working at <a href="https://flanksource.com">@Flanksource</a>
         </li>
-        <li>Watching <a href="https://www.imdb.com/title/tt2802850/">Fargo</a></li>
+        <li>
+          Watching <a href="https://www.imdb.com/title/tt2802850/">Fargo Season II</a>
+        </li>
         {/* <li> */}
         {/*   Reading{' '} */}
         {/*   <a */}
@@ -31,7 +33,7 @@ const IndexPage = () => (
       </ul>
     </div>
 
-    <p>Last Updated: 8 August, 2025</p>
+    <p>Last Updated: 4 Dec, 2025</p>
   </Layout>
 );
 
