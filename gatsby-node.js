@@ -10,64 +10,40 @@ exports.createPages = async ({ graphql, actions }) => {
   const blogPostTemplate = path.resolve(`./src/templates/BlogPost.js`);
   const tagTemplate = path.resolve(`./src/templates/Tag.js`);
 
-  // Fetch both blog posts and journals
-  const [blogPostsResult, journalsResult] = await Promise.all([
-    graphql(`
-      {
-        allMarkdownRemark(
-          filter: { fileAbsolutePath: { regex: "/content/Posts/" } }
-          sort: { frontmatter: { date: DESC } }
-          limit: 1000
-        ) {
-          edges {
-            node {
-              id
-              rawMarkdownBody
-              frontmatter {
-                title
-                date
-                slug
-                categories
-                featuredImage {
-                  publicURL
-                }
+  // Fetch blog posts
+  const blogPostsResult = await graphql(`
+    {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/Posts/" } }
+        sort: { frontmatter: { date: DESC } }
+        limit: 1000
+      ) {
+        edges {
+          node {
+            id
+            rawMarkdownBody
+            frontmatter {
+              title
+              date
+              slug
+              categories
+              featuredImage {
+                publicURL
               }
             }
           }
         }
       }
-    `),
-    graphql(`
-      {
-        allMarkdownRemark(
-          filter: { fileAbsolutePath: { regex: "/content/WeeklyJournal/" } }
-          sort: { frontmatter: { date: DESC } }
-          limit: 1000
-        ) {
-          edges {
-            node {
-              id
-              frontmatter {
-                title
-                date
-                categories
-                slug
-              }
-            }
-          }
-        }
-      }
-    `),
-  ]);
+    }
+  `);
 
-  if (blogPostsResult.errors || journalsResult.errors) {
-    throw blogPostsResult.errors || journalsResult.errors;
+  if (blogPostsResult.errors) {
+    throw blogPostsResult.errors;
   }
 
   const posts = blogPostsResult.data.allMarkdownRemark.edges;
-  const journals = journalsResult.data.allMarkdownRemark.edges;
 
-  // Build shared tagMap from both posts and journals
+  // Build tagMap from posts
   const tagMap = new Map();
 
   const addCategoriesToTagMap = (categories) => {
@@ -122,22 +98,7 @@ exports.createPages = async ({ graphql, actions }) => {
     addCategoriesToTagMap(categories);
   });
 
-  // Create journal pages and add to tagMap
-  journals.forEach((journal) => {
-    createPage({
-      path: journal.node.frontmatter.slug,
-      component: blogPostTemplate,
-      context: {
-        slug: journal.node.frontmatter.slug,
-        seoImage: '',
-      },
-    });
-
-    const categories = journal.node.frontmatter.categories || [];
-    addCategoriesToTagMap(categories);
-  });
-
-  // Create tag pages from the shared tagMap
+  // Create tag pages
   tagMap.forEach(({ aliases }, slug) => {
     createPage({
       path: `/tags/${slug}/`,
