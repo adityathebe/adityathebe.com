@@ -15,6 +15,19 @@ const IndexPage = ({ data }) => {
     <Layout>
       <div className="post-content">
         <h1 id="page-title">{title}</h1>
+
+        <iframe
+          src="https://listenbrainz.org/user/adityathebe/embed/playing-now/"
+          scrolling="no"
+          style={{
+            width: '100%',
+            maxWidth: '100%',
+            height: '110px',
+            marginTop: '1rem',
+            border: 0,
+          }}
+        ></iframe>
+
         <div dangerouslySetInnerHTML={{ __html: now?.html || '' }} />
       </div>
 
