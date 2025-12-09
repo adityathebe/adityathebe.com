@@ -36,6 +36,9 @@ const PostList = ({ filterTag = null, filterContentType = null, showContentTypeB
   /** @type {NodeEdge[]} */
   let filteredEdges = data.allMarkdownRemark.edges;
 
+  // Exclude the /now page from the list
+  filteredEdges = filteredEdges.filter((edge) => edge.node.frontmatter.slug !== '/now');
+
   if (filterTag) {
     // Filter by tag in frontmatter.categories
     filteredEdges = filteredEdges.filter((edge) =>
