@@ -14,7 +14,7 @@ import ContentTypeBadge from './ContentTypeBadge';
 const PostList = ({ filterTag = null, filterContentType = null, showContentTypeBadge = true }) => {
   const data = useStaticQuery(graphql`
     {
-      allMdx(sort: { frontmatter: { date: DESC } }) {
+      allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
           node {
             id
@@ -28,7 +28,7 @@ const PostList = ({ filterTag = null, filterContentType = null, showContentTypeB
           }
         }
       }
-      allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
           node {
             id

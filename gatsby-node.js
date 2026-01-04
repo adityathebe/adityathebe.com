@@ -15,7 +15,7 @@ exports.createPages = async ({ graphql, actions }) => {
     {
       allMdx(
         filter: { internal: { contentFilePath: { regex: "/content/Posts/" } } }
-        sort: { frontmatter: { date: DESC } }
+        sort: { fields: [frontmatter___date], order: DESC }
         limit: 1000
       ) {
         edges {
@@ -39,7 +39,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/Posts/" } }
-        sort: { frontmatter: { date: DESC } }
+        sort: { fields: [frontmatter___date], order: DESC }
         limit: 1000
       ) {
         edges {
@@ -153,6 +153,11 @@ exports.createSchemaCustomization = ({ actions }) => {
       tier: Float       
       year: Int         
       review: String    
+    }
+
+    type Mdx implements Node {
+      frontmatter: MdxFrontmatter
+      body: String
     }
 
     type MarkdownRemarkFrontmatter {

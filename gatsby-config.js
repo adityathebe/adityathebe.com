@@ -140,7 +140,7 @@ module.exports = {
             },
             query: `
               {
-                allMdx(sort: {frontmatter: {date: DESC}}) {
+                allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
                   edges {
                     node {
                       excerpt(pruneLength: 100000)
@@ -153,7 +153,7 @@ module.exports = {
                     }
                   }
                 }
-                allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
+                allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
                   edges {
                     node {
                       html
