@@ -1,17 +1,85 @@
 // @ts-check
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import Griddle, { plugins, RowDefinition, ColumnDefinition } from 'griddle-react';
+import { flexRender, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 
 import { Head as SEOHead } from '../../components/SEO';
 import Layout from '../../components/Layout';
 import './tv.css';
 
-const JustTableLayout = ({ Table }) => (
-  <div>
-    <Table />
-  </div>
-);
+const ReviewsTable = ({ rows, defaultSorting }) => {
+  const [sorting, setSorting] = React.useState(defaultSorting);
+
+  const columns = React.useMemo(
+    () => [
+      {
+        accessorKey: 'title',
+        header: 'Name',
+        cell: (info) => info.getValue(),
+      },
+      {
+        accessorKey: 'tier',
+        header: 'Tier',
+        cell: (info) => <TierFormatter value={info.getValue()} />,
+      },
+      {
+        accessorKey: 'review',
+        header: 'Review',
+        cell: (info) => <EmptyHandler value={info.getValue()} />,
+      },
+      {
+        accessorKey: 'year',
+        header: 'Watched',
+        cell: (info) => info.getValue(),
+      },
+    ],
+    []
+  );
+
+  const table = useReactTable({
+    data: rows,
+    columns,
+    state: { sorting },
+    onSortingChange: setSorting,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+  });
+
+  return (
+    <div className="reviews-table">
+      <table>
+        <thead>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <th key={header.id} colSpan={header.colSpan}>
+                  {header.isPlaceholder ? null : (
+                    <button type="button" className="table-sort" onClick={header.column.getToggleSortingHandler()}>
+                      {flexRender(header.column.columnDef.header, header.getContext())}
+                      <span className="table-sort-indicator">
+                        {header.column.getIsSorted() === 'asc' ? ' ↑' : ''}
+                        {header.column.getIsSorted() === 'desc' ? ' ↓' : ''}
+                      </span>
+                    </button>
+                  )}
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody>
+          {table.getRowModel().rows.map((row) => (
+            <tr key={row.id}>
+              {row.getVisibleCells().map((cell) => (
+                <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
 const TV = () => {
   const data = useStaticQuery(graphql`
@@ -32,53 +100,17 @@ const TV = () => {
   const discontinued = shows.filter((show) => show.status === 'discontinued');
   const completed = shows.filter((show) => show.status !== 'discontinued');
 
-  const sortProperties = [{ id: 'tier', sortAscending: true }];
+  const defaultSorting = [{ id: 'tier', desc: false }];
 
   return (
     <Layout>
       <div className="post-content">
         <section className="reviews">
           <h2>Viewing History</h2>
-          <Griddle
-            data={completed}
-            plugins={[plugins.LocalPlugin]}
-            components={{
-              Layout: JustTableLayout,
-            }}
-            sortProperties={sortProperties}
-            pageProperties={{
-              currentPage: 0,
-              pageSize: 100,
-            }}
-          >
-            <RowDefinition>
-              <ColumnDefinition id="title" title="Name" order={1} />
-              <ColumnDefinition id="tier" title="Tier" customComponent={TierFormatter} />
-              <ColumnDefinition id="review" title="Review" customComponent={EmptyHandler} />
-              <ColumnDefinition id="year" title="Watched" />
-            </RowDefinition>
-          </Griddle>
+          <ReviewsTable rows={completed} defaultSorting={defaultSorting} />
 
           <h1>Discontinued</h1>
-          <Griddle
-            data={discontinued}
-            plugins={[plugins.LocalPlugin]}
-            components={{
-              Layout: JustTableLayout,
-            }}
-            sortProperties={sortProperties}
-            pageProperties={{
-              currentPage: 0,
-              pageSize: 100, // Sets default page size to 100
-            }}
-          >
-            <RowDefinition>
-              <ColumnDefinition id="title" title="Name" order={1} />
-              <ColumnDefinition id="tier" title="Tier" customComponent={TierFormatter} />
-              <ColumnDefinition id="review" title="Review" customComponent={EmptyHandler} />
-              <ColumnDefinition id="year" title="Watched" />
-            </RowDefinition>
-          </Griddle>
+          <ReviewsTable rows={discontinued} defaultSorting={defaultSorting} />
         </section>
         <br></br>
       </div>

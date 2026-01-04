@@ -15,6 +15,24 @@ export const onRouteUpdate = () => {
   setTimeout(addCopyButtonsToCodeBlocks, 100);
 };
 
+export const onClientEntry = () => {
+  if (process.env.NODE_ENV !== 'development') {
+    return;
+  }
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      registrations.forEach((registration) => registration.unregister());
+    });
+  }
+};
+
+export const onServiceWorkerUpdateReady = () => {
+  if (process.env.NODE_ENV === 'production') {
+    window.location.reload();
+  }
+};
+
 function addCopyButtonsToCodeBlocks() {
   const codeBlocks = document.querySelectorAll('.gatsby-highlight');
 

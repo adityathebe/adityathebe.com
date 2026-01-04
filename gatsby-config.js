@@ -15,6 +15,38 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-transformer-yaml`,
     {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: require.resolve('./plugins/remark-inline-svg'),
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              icon: false,
+            },
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+            },
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              aliases: {
+                sh: 'shell',
+              },
+              inlineCodeMarker: '÷',
+            },
+          },
+        ],
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
@@ -89,20 +121,39 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map((edge) => {
+            serialize: ({ query: { site, allMdx, allMarkdownRemark } }) => {
+              const mdxEdges = allMdx?.edges || [];
+              const markdownEdges = allMarkdownRemark?.edges || [];
+              return [...mdxEdges, ...markdownEdges].map((edge) => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.frontmatter.description,
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.frontmatter.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.frontmatter.slug,
-                  custom_elements: [{ 'content:encoded': edge.node.html }],
+                  custom_elements: [
+                    {
+                      'content:encoded': edge.node.excerpt || edge.node.html || edge.node.rawMarkdownBody || '',
+                    },
+                  ],
                 });
               });
             },
             query: `
               {
-                allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
+                allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+                  edges {
+                    node {
+                      excerpt(pruneLength: 100000)
+                      frontmatter {
+                        slug
+                        title
+                        date
+                        description
+                      }
+                    }
+                  }
+                }
+                allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
                   edges {
                     node {
                       html

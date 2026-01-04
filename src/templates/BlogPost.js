@@ -11,8 +11,9 @@ import './post.css';
 
 /** @typedef {import('../types/index.js').RelatedPost} RelatedPost */
 
-const BlogPostTemplate = ({ data, pageContext }) => {
-  const post = data.markdownRemark;
+const BlogPostTemplate = ({ data, pageContext, children }) => {
+  const post = data.mdx || data.markdownRemark;
+  const isMdx = Boolean(data.mdx);
   const relatedPosts = pageContext?.relatedPosts || [];
   const categories = Array.isArray(post.frontmatter.categories) ? post.frontmatter.categories : [];
   return (
@@ -33,7 +34,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
       </div>
 
       <h1 className="post-header">{post.frontmatter.title}</h1>
-      <div className="post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
+      <div className="post-content">{isMdx ? children : <div dangerouslySetInnerHTML={{ __html: post.html }} />}</div>
       <RelatedPosts relatedPosts={relatedPosts} />
     </Layout>
   );
@@ -72,7 +73,7 @@ function RelatedPosts({ relatedPosts }) {
 }
 
 export const Head = ({ data, pageContext }) => {
-  const post = data.markdownRemark;
+  const post = data.mdx || data.markdownRemark;
   const siteUrl = data.site.siteMetadata.siteUrl;
   return (
     <SEOHead
@@ -88,10 +89,23 @@ export const Head = ({ data, pageContext }) => {
 export default BlogPostTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlug($slug: String!, $id: String) {
     site {
       siteMetadata {
         siteUrl
+      }
+    }
+    mdx(id: { eq: $id }) {
+      id
+      frontmatter {
+        title
+        date
+        featuredImage {
+          publicURL
+        }
+        description
+        categories
+        modified_date
       }
     }
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
@@ -107,7 +121,6 @@ export const pageQuery = graphql`
         categories
         modified_date
       }
-      timeToRead
     }
   }
 `;

@@ -14,11 +14,24 @@ import ContentTypeBadge from './ContentTypeBadge';
 const PostList = ({ filterTag = null, filterContentType = null, showContentTypeBadge = true }) => {
   const data = useStaticQuery(graphql`
     {
-      allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+      allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
           node {
             id
-            timeToRead
+            frontmatter {
+              title
+              date
+              slug
+              categories
+              contentType
+            }
+          }
+        }
+      }
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+        edges {
+          node {
+            id
             frontmatter {
               title
               date
@@ -34,7 +47,7 @@ const PostList = ({ filterTag = null, filterContentType = null, showContentTypeB
 
   // Filter posts based on filterTag and filterContentType
   /** @type {NodeEdge[]} */
-  let filteredEdges = data.allMarkdownRemark.edges;
+  let filteredEdges = [...(data.allMdx?.edges || []), ...(data.allMarkdownRemark?.edges || [])];
 
   // Exclude the /now page from the list
   filteredEdges = filteredEdges.filter((edge) => edge.node.frontmatter.slug !== '/now');
@@ -51,12 +64,16 @@ const PostList = ({ filterTag = null, filterContentType = null, showContentTypeB
     filteredEdges = filteredEdges.filter((edge) => edge.node.frontmatter.contentType === filterContentType);
   }
 
-  const allMarkdownRemark = { edges: filteredEdges };
+  filteredEdges.sort(
+    (a, b) => new Date(b.node.frontmatter.date).getTime() - new Date(a.node.frontmatter.date).getTime()
+  );
+
+  const allPosts = { edges: filteredEdges };
 
   // Group posts by year
   const postsByYear = {};
 
-  allMarkdownRemark.edges.forEach((edge) => {
+  allPosts.edges.forEach((edge) => {
     const postYear = new Date(edge.node.frontmatter.date).getFullYear();
     if (!postsByYear[postYear]) {
       postsByYear[postYear] = [];
