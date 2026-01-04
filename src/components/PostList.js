@@ -64,7 +64,9 @@ const PostList = ({ filterTag = null, filterContentType = null, showContentTypeB
     filteredEdges = filteredEdges.filter((edge) => edge.node.frontmatter.contentType === filterContentType);
   }
 
-  filteredEdges.sort((a, b) => new Date(b.node.frontmatter.date) - new Date(a.node.frontmatter.date));
+  filteredEdges.sort(
+    (a, b) => new Date(b.node.frontmatter.date).getTime() - new Date(a.node.frontmatter.date).getTime()
+  );
 
   const allPosts = { edges: filteredEdges };
 
