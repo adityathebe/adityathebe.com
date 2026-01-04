@@ -14,6 +14,10 @@ const JustTableLayout = ({ Table }) => (
 );
 
 const TV = () => {
+  const [isBrowser, setIsBrowser] = React.useState(false);
+  React.useEffect(() => {
+    setIsBrowser(true);
+  }, []);
   const data = useStaticQuery(graphql`
     query TvReviews {
       allTvYaml {
@@ -39,46 +43,54 @@ const TV = () => {
       <div className="post-content">
         <section className="reviews">
           <h2>Viewing History</h2>
-          <Griddle
-            data={completed}
-            plugins={[plugins.LocalPlugin]}
-            components={{
-              Layout: JustTableLayout,
-            }}
-            sortProperties={sortProperties}
-            pageProperties={{
-              currentPage: 0,
-              pageSize: 100,
-            }}
-          >
-            <RowDefinition>
-              <ColumnDefinition id="title" title="Name" order={1} />
-              <ColumnDefinition id="tier" title="Tier" customComponent={TierFormatter} />
-              <ColumnDefinition id="review" title="Review" customComponent={EmptyHandler} />
-              <ColumnDefinition id="year" title="Watched" />
-            </RowDefinition>
-          </Griddle>
+          {isBrowser ? (
+            <Griddle
+              data={completed}
+              plugins={[plugins.LocalPlugin]}
+              components={{
+                Layout: JustTableLayout,
+              }}
+              sortProperties={sortProperties}
+              pageProperties={{
+                currentPage: 0,
+                pageSize: 100,
+              }}
+            >
+              <RowDefinition>
+                <ColumnDefinition id="title" title="Name" order={1} />
+                <ColumnDefinition id="tier" title="Tier" customComponent={TierFormatter} />
+                <ColumnDefinition id="review" title="Review" customComponent={EmptyHandler} />
+                <ColumnDefinition id="year" title="Watched" />
+              </RowDefinition>
+            </Griddle>
+          ) : (
+            <p>Loading table...</p>
+          )}
 
           <h1>Discontinued</h1>
-          <Griddle
-            data={discontinued}
-            plugins={[plugins.LocalPlugin]}
-            components={{
-              Layout: JustTableLayout,
-            }}
-            sortProperties={sortProperties}
-            pageProperties={{
-              currentPage: 0,
-              pageSize: 100, // Sets default page size to 100
-            }}
-          >
-            <RowDefinition>
-              <ColumnDefinition id="title" title="Name" order={1} />
-              <ColumnDefinition id="tier" title="Tier" customComponent={TierFormatter} />
-              <ColumnDefinition id="review" title="Review" customComponent={EmptyHandler} />
-              <ColumnDefinition id="year" title="Watched" />
-            </RowDefinition>
-          </Griddle>
+          {isBrowser ? (
+            <Griddle
+              data={discontinued}
+              plugins={[plugins.LocalPlugin]}
+              components={{
+                Layout: JustTableLayout,
+              }}
+              sortProperties={sortProperties}
+              pageProperties={{
+                currentPage: 0,
+                pageSize: 100, // Sets default page size to 100
+              }}
+            >
+              <RowDefinition>
+                <ColumnDefinition id="title" title="Name" order={1} />
+                <ColumnDefinition id="tier" title="Tier" customComponent={TierFormatter} />
+                <ColumnDefinition id="review" title="Review" customComponent={EmptyHandler} />
+                <ColumnDefinition id="year" title="Watched" />
+              </RowDefinition>
+            </Griddle>
+          ) : (
+            <p>Loading table...</p>
+          )}
         </section>
         <br></br>
       </div>
@@ -89,6 +101,8 @@ const TV = () => {
 export default TV;
 
 export const Head = () => <SEOHead title="TV Reviews" />;
+
+export const config = () => () => ({ ssr: false });
 
 const EmptyHandler = ({ value }) => {
   if (!value) return <span>--</span>;

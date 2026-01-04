@@ -8,8 +8,17 @@ import { tagSlug, tagPath, formatTagLabel } from '../utils/tags.js';
 import './tags.css';
 
 const TagsPage = () => {
-  const { allMarkdownRemark } = useStaticQuery(graphql`
+  const { allMdx, allMarkdownRemark } = useStaticQuery(graphql`
     {
+      allMdx(filter: { internal: { contentFilePath: { regex: "/content/(Posts|WeeklyJournal)/" } } }) {
+        edges {
+          node {
+            frontmatter {
+              categories
+            }
+          }
+        }
+      }
       allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/content/(Posts|WeeklyJournal)/" } }) {
         edges {
           node {
@@ -24,7 +33,10 @@ const TagsPage = () => {
 
   // Aggregate tags and count posts
   const tagCounts = {};
-  allMarkdownRemark.edges.forEach((edge) => {
+  const mdxEdges = allMdx?.edges || [];
+  const markdownEdges = allMarkdownRemark?.edges || [];
+
+  [...mdxEdges, ...markdownEdges].forEach((edge) => {
     const categories = edge.node.frontmatter.categories || [];
     categories.forEach((category) => {
       if (!category) return;

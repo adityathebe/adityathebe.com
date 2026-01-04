@@ -5,11 +5,13 @@
   "version": "0.1.0",
   "author": "Aditya Thebe <contact@adityathebe.com>",
   "dependencies": {
+    "@mdx-js/react": "^2.3.0",
     "@parcel/watcher": "^2.5.1",
     "gatsby": "^5.14.6",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-feed": "^5.13.1",
     "gatsby-plugin-manifest": "^5.13.1",
+    "gatsby-plugin-mdx": "^5.13.1",
     "gatsby-plugin-offline": "^6.13.1",
     "gatsby-plugin-react-helmet": "^6.13.1",
     "gatsby-plugin-sharp": "^5.13.1",
@@ -27,7 +29,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "react-simple-maps": "^3.0.0"
+    "react-simple-maps": "^3.0.0",
+    "sharp": "^0.32.6"
+  },
+  "optionalDependencies": {
+    "@parcel/watcher-linux-arm64-glibc": "^2.5.1"
   },
   "devDependencies": {
     "eslint": "^9.33.0",

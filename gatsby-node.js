@@ -13,6 +13,30 @@ exports.createPages = async ({ graphql, actions }) => {
   // Fetch blog posts
   const blogPostsResult = await graphql(`
     {
+      allMdx(
+        filter: { internal: { contentFilePath: { regex: "/content/Posts/" } } }
+        sort: { frontmatter: { date: DESC } }
+        limit: 1000
+      ) {
+        edges {
+          node {
+            id
+            body
+            internal {
+              contentFilePath
+            }
+            frontmatter {
+              title
+              date
+              slug
+              categories
+              featuredImage {
+                publicURL
+              }
+            }
+          }
+        }
+      }
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/Posts/" } }
         sort: { frontmatter: { date: DESC } }
@@ -41,7 +65,9 @@ exports.createPages = async ({ graphql, actions }) => {
     throw blogPostsResult.errors;
   }
 
-  const posts = blogPostsResult.data.allMarkdownRemark.edges;
+  const mdxPosts = blogPostsResult.data.allMdx?.edges || [];
+  const markdownPosts = blogPostsResult.data.allMarkdownRemark?.edges || [];
+  const posts = [...mdxPosts, ...markdownPosts];
 
   // Build tagMap from posts
   const tagMap = new Map();
@@ -72,13 +98,17 @@ exports.createPages = async ({ graphql, actions }) => {
   const postSummaries = posts.map((post) => ({
     slug: post.node.frontmatter.slug,
     title: post.node.frontmatter.title,
-    content: post.node.rawMarkdownBody || '',
+    content: post.node.body || post.node.rawMarkdownBody || '',
     url: post.node.frontmatter.slug,
   }));
 
   const relatedMap = await getRelatedPosts(postSummaries, { maxRelated: 4, minScore: 0.6 });
 
   posts.forEach((post) => {
+    const isMdx = Boolean(post.node.internal?.contentFilePath);
+    const pageComponent = isMdx
+      ? `${blogPostTemplate}?__contentFilePath=${post.node.internal.contentFilePath}`
+      : blogPostTemplate;
     let seoImage = '';
     if (post.node.frontmatter.featuredImage) {
       seoImage = post.node.frontmatter.featuredImage.publicURL;
@@ -86,8 +116,9 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: post.node.frontmatter.slug,
-      component: blogPostTemplate,
+      component: pageComponent,
       context: {
+        id: isMdx ? post.node.id : null,
         slug: post.node.frontmatter.slug,
         seoImage: seoImage,
         relatedPosts: relatedMap[post.node.frontmatter.slug] || [],
@@ -125,7 +156,25 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
 
     type MarkdownRemarkFrontmatter {
+      title: String
+      description: String
+      date: Date @dateformat
+      modified_date: Date @dateformat
+      slug: String
+      contentType: String
       categories: [String!] @default(value: [])
+      featuredImage: File @fileByRelativePath
+    }
+
+    type MdxFrontmatter {
+      title: String
+      description: String
+      date: Date @dateformat
+      modified_date: Date @dateformat
+      slug: String
+      contentType: String
+      categories: [String!] @default(value: [])
+      featuredImage: File @fileByRelativePath
     }
   `;
 
