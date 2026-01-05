@@ -30,9 +30,9 @@ Generally, whenever I need to download a video, I grab the URL and pass that on 
 yt-dlp 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
 ```
 
-<div class="section-notes">
+<SectionNote>
 <code>yt-dlp</code> is a command line tool that can download videos from pretty much any website. I use it to download videos from Reddit, Instagram Reels, TikTok, Facebook and most often from YouTube.
-</div>
+</SectionNote>
 
 For other websites, I open the developer tools, go to the network tab, filter by media, and then grab the video stream URL.
 
@@ -130,9 +130,9 @@ The file was around 4000-5000 lines long
 
 Now that's something! It's a `m3u8` file which contains a list of urls to all the segments of the video file.
 
-<div class="section-notes">
+<SectionNote>
 An M3U file is a plain text file that specifies the locations of one or more media files. Although originally designed for audio files, such as MP3, it is commonly used to point media players to audio and video sources, including online sources.
-</div>
+</SectionNote>
 There are some pretty interesting stuff in here. Let's go through them
 
 | Line | Directive                  | Description                                                   |
@@ -144,9 +144,9 @@ There are some pretty interesting stuff in here. Let's go through them
 
 In the `EXT-X-KEY` directive, we can also see `IV=0x45454545454545454545454545454545`. That most likely represents the initialization vector of the AES-128 encryption.
 
-<div class="section-notes">
+<SectionNote>
 AES-128 has different modes. The `ECB` mode that we tried earlier doesn't require an initialization vector. The `CBC` modes does require an IV.
-</div>
+</SectionNote>
 
 Let's try decrypting once again using the CBC mode
 

@@ -1,15 +1,21 @@
 // @ts-check
 import React from 'react';
+import { MDXProvider } from '@mdx-js/react';
 import { graphql, Link } from 'gatsby';
 
 import { Head as SEOHead } from '../components/SEO';
 import Layout from '../components/Layout';
+import SectionNote from '../components/SectionNote';
 import { formatPostDate } from '../utils/helper.js';
 import { tagPath, formatTagLabel } from '../utils/tags.js';
 
 import './post.css';
 
 /** @typedef {import('../types/index.js').RelatedPost} RelatedPost */
+
+const mdxComponents = {
+  SectionNote,
+};
 
 const BlogPostTemplate = ({ data, pageContext, children }) => {
   const post = data.mdx || data.markdownRemark;
@@ -34,7 +40,13 @@ const BlogPostTemplate = ({ data, pageContext, children }) => {
       </div>
 
       <h1 className="post-header">{post.frontmatter.title}</h1>
-      <div className="post-content">{isMdx ? children : <div dangerouslySetInnerHTML={{ __html: post.html }} />}</div>
+      <div className="post-content">
+        {isMdx ? (
+          <MDXProvider components={mdxComponents}>{children}</MDXProvider>
+        ) : (
+          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        )}
+      </div>
       <RelatedPosts relatedPosts={relatedPosts} />
     </Layout>
   );
