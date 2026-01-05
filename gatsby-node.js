@@ -4,6 +4,17 @@ const path = require('path');
 const { tagSlug } = require('./src/utils/tags.js');
 const { getRelatedPosts } = require('./utils/related-posts.js');
 
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        '@/components': path.resolve(__dirname, 'src/components'),
+        '@/lib/utils': path.resolve(__dirname, 'src/lib/utils'),
+      },
+    },
+  });
+};
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
