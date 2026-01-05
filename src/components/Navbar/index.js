@@ -62,13 +62,21 @@ const Navbar = () => {
     };
   }, [isMenuOpen]);
 
+  const links = [
+    { url: '/tags', label: 'Tags' },
+    { url: '/uses', label: 'Uses' },
+    { url: '/about', label: 'About' },
+    { url: '/now', label: 'Now' },
+    { url: '/links', label: 'Links' },
+  ];
+
   return (
-    <header className="site-header" role="banner">
-      <Link className="site-title" to="/">
+    <header className="my-4 flex justify-between" role="banner">
+      <Link className="text-lg" to="/">
         Home
       </Link>
 
-      <nav className="site-nav" ref={navRef} role="navigation">
+      <nav className="site-nav relative" ref={navRef} role="navigation">
         <input
           type="checkbox"
           id="nav-trigger"
@@ -82,6 +90,7 @@ const Navbar = () => {
           aria-label="Toggle navigation menu"
           aria-expanded={isMenuOpen}
           aria-controls="navigation-menu"
+          className="relative z-3"
         >
           <span className="menu-icon">
             <svg viewBox="0 0 18 15" width="18px" height="15px">
@@ -101,22 +110,15 @@ const Navbar = () => {
           </span>
         </label>
 
-        <div className="trigger" id="navigation-menu">
-          <Link className="page-link" to="/tags" onClick={closeMenu}>
-            Tags
-          </Link>
-          <Link className="page-link" to="/uses" onClick={closeMenu}>
-            Uses
-          </Link>
-          <Link className="page-link" to="/about" onClick={closeMenu}>
-            About
-          </Link>
-          <Link className="page-link" to="/now" onClick={closeMenu}>
-            Now
-          </Link>
-          <Link className="page-link" to="/links" onClick={closeMenu}>
-            Links
-          </Link>
+        <div
+          className="trigger absolute top-0 right-0 z-2 flex border border-(--border-color-1) bg-(--bg-color) sm:rounded-md sm:border-0"
+          id="navigation-menu"
+        >
+          {links.map(({ url, label }) => (
+            <Link key={url} className="block pr-2 pl-6 sm:mr-4 sm:pl-0" to={url} onClick={closeMenu}>
+              {label}
+            </Link>
+          ))}
           <DarkModeToggle />
         </div>
       </nav>
