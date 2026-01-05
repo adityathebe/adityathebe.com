@@ -5,7 +5,6 @@ import { flexRender, getCoreRowModel, getSortedRowModel, useReactTable } from '@
 
 import { Head as SEOHead } from '../../components/SEO';
 import Layout from '../../components/Layout';
-import './tv.css';
 
 const ReviewsTable = ({ rows, defaultSorting }) => {
   const [sorting, setSorting] = React.useState(defaultSorting);
@@ -46,7 +45,7 @@ const ReviewsTable = ({ rows, defaultSorting }) => {
   });
 
   return (
-    <div className="reviews-table">
+    <div>
       <table>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -54,9 +53,9 @@ const ReviewsTable = ({ rows, defaultSorting }) => {
               {headerGroup.headers.map((header) => (
                 <th key={header.id} colSpan={header.colSpan}>
                   {header.isPlaceholder ? null : (
-                    <button type="button" className="table-sort" onClick={header.column.getToggleSortingHandler()}>
+                    <button type="button" className="inline-flex" onClick={header.column.getToggleSortingHandler()}>
                       {flexRender(header.column.columnDef.header, header.getContext())}
-                      <span className="table-sort-indicator">
+                      <span>
                         {header.column.getIsSorted() === 'asc' ? ' ↑' : ''}
                         {header.column.getIsSorted() === 'desc' ? ' ↓' : ''}
                       </span>
@@ -128,30 +127,30 @@ const EmptyHandler = ({ value }) => {
 };
 
 const TierFormatter = ({ value }) => {
-  if (!value) return <span className="tier">--</span>;
+  if (!value) return <span>--</span>;
   if (value < 2) {
-    return <span className="tier">S</span>;
+    return <span>S</span>;
   } else if (value < 3) {
-    return <span className="tier">A+</span>;
+    return <span>A+</span>;
   }
 
   switch (value) {
     case 3:
-      return <span className="tier">A</span>;
+      return <span>A</span>;
 
     case 4:
-      return <span className="tier">A-</span>;
+      return <span>A-</span>;
 
     case 5:
-      return <span className="tier">B</span>;
+      return <span>B</span>;
 
     case 6:
-      return <span className="tier">C</span>;
+      return <span>C</span>;
 
     case 7:
-      return <span className="tier">D</span>;
+      return <span>D</span>;
 
     default:
-      return <span className="tier">F</span>;
+      return <span>F</span>;
   }
 };
