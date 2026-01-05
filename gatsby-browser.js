@@ -8,6 +8,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import CopyButton from './src/components/CopyButton';
 
+import './src/styles/global.css';
 require('prismjs/themes/prism-tomorrow.css');
 
 export const onRouteUpdate = () => {
