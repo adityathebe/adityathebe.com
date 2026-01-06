@@ -9,7 +9,7 @@
     "@parcel/watcher": "^2.5.1",
     "@tailwindcss/postcss": "^4.1.18",
     "@tanstack/react-table": "^8.21.3",
-    "gatsby": "^5.14.6",
+    "gatsby": "5.15.0",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-feed": "^5.13.1",
     "gatsby-plugin-manifest": "^5.13.1",
@@ -41,7 +41,7 @@
   },
   "packageManager": "bun@1.2.15",
   "devDependencies": {
-    "eslint": "^9.33.0",
+    "eslint": "7.32.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
