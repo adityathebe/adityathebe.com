@@ -1,7 +1,6 @@
 // @ts-check
 const fs = require('fs');
 const path = require('path');
-const visit = require('unist-util-visit');
 
 /**
  * @typedef {Object} ImageNode
@@ -24,7 +23,8 @@ const escapeHtml = (str) =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 
-module.exports = ({ markdownAST, markdownNode, getNode, reporter }, pluginOptions = {}) => {
+module.exports = async ({ markdownAST, markdownNode, getNode, reporter }, pluginOptions = {}) => {
+  const { visit } = await import('unist-util-visit');
   const fileNode = getNode(markdownNode.parent);
   if (!fileNode || !fileNode.absolutePath) {
     reporter && reporter.warn('remark-inline-svg: unable to determine file path for markdown node.');
