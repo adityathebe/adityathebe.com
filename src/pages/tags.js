@@ -56,28 +56,6 @@ const TagsPage = () => {
   // Convert to array and sort by count (descending)
   const tags = Object.values(tagCounts).sort((a, b) => b.count - a.count);
 
-  const linkClasses = [
-    'group flex justify-between items-center py-2 no-underline',
-    'transition-all duration-200 relative',
-    'text-inherit hover:text-inherit visited:text-inherit active:text-inherit',
-    "before:content-[''] before:absolute before:-left-2 before:top-1/2 before:-translate-y-1/2",
-    'before:w-1 before:h-0 before:bg-[var(--primary-color)]',
-    'before:transition-all before:duration-200 before:rounded-sm',
-    'hover:before:h-[60%]',
-  ].join(' ');
-
-  const tagNameClasses = [
-    'text-base font-semibold text-[var(--primary-text-color)]',
-    "font-['JetBrains_Mono',sans-serif] tracking-tight",
-    'transition-all duration-200',
-    'group-hover:text-[var(--primary-color)] group-hover:translate-x-2',
-  ].join(' ');
-
-  const tagCountClasses = [
-    'text-[0.85em] text-[var(--secondary-text-color)]',
-    "font-['JetBrains_Mono',sans-serif]",
-  ].join(' ');
-
   return (
     <Layout>
       <div className="py-4">
@@ -93,9 +71,14 @@ const TagsPage = () => {
         <ul className="list-none m-0 p-0 max-w-[600px] mx-auto">
           {tags.map((tag) => (
             <li key={tag.slug} className="border-b border-[var(--border-color-1)] last:border-b-0">
-              <Link to={tagPath(tag.displayName)} className={linkClasses}>
-                <span className={tagNameClasses}>{tag.displayName}</span>
-                <span className={tagCountClasses}>
+              <Link
+                to={tagPath(tag.displayName)}
+                className="group flex justify-between items-center py-2 no-underline transition-all duration-200 relative text-inherit hover:text-inherit visited:text-inherit active:text-inherit before:content-[''] before:absolute before:-left-2 before:top-1/2 before:-translate-y-1/2 before:w-1 before:h-0 before:bg-[var(--primary-color)] before:transition-all before:duration-200 before:rounded-sm hover:before:h-[60%]"
+              >
+                <span className="text-base font-semibold text-[var(--primary-text-color)] font-['JetBrains_Mono',sans-serif] tracking-tight transition-all duration-200 group-hover:text-[var(--primary-color)] group-hover:translate-x-2">
+                  {tag.displayName}
+                </span>
+                <span className="text-[0.85em] text-[var(--secondary-text-color)] font-['JetBrains_Mono',sans-serif]">
                   {tag.count} {tag.count === 1 ? 'post' : 'posts'}
                 </span>
               </Link>
