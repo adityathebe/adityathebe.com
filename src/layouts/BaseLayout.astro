@@ -1,5 +1,4 @@
 ---
-import { ClientRouter } from 'astro:transitions';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
@@ -20,7 +19,6 @@ import 'prismjs/themes/prism-tomorrow.css';
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Sanchez:ital@0;1&display=swap"
     />
-    <ClientRouter />
     <script is:inline>
       (() => {
         const storedTheme = localStorage.getItem('theme');
@@ -205,19 +203,11 @@ import 'prismjs/themes/prism-tomorrow.css';
         enforceHistoryPush();
       };
 
-      document.addEventListener('astro:before-swap', (event) => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        if (currentTheme) {
-          event.newDocument.documentElement.setAttribute('data-theme', currentTheme);
-        }
-
-        const nextToggle = event.newDocument.querySelector('.theme-switch input[type="checkbox"]');
-        if (nextToggle) {
-          nextToggle.checked = currentTheme === 'dark';
-        }
-      });
-
-      document.addEventListener('astro:page-load', onPageLoad);
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', onPageLoad);
+      } else {
+        onPageLoad();
+      }
     </script>
   </body>
 </html>
