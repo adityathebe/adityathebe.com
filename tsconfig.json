@@ -1,28 +1,13 @@
 {
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
     "noEmit": true,
-    "target": "ES2020",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "resolveJsonModule": true,
-    "forceConsistentCasingInFileNames": true,
-    "jsx": "react-jsx",
-    "skipLibCheck": true,
-    "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "src/**/*",
-    "utils/**/*",
-    "gatsby-node.js",
-    "gatsby-config.js",
-    "gatsby-browser.js",
-    "gatsby-ssr.js",
-    "plugins/**/*"
-  ]
+  "include": ["src/**/*", "utils/**/*", "plugins/**/*", "astro.config.mjs"]
 }

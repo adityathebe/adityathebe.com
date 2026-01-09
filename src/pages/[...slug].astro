@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import SectionNote from '../components/SectionNote.astro';
+import { formatPostDate } from '../utils/helper.js';
+import { tagPath, formatTagLabel } from '../utils/tags.js';
+import { getAllPosts } from '../utils/posts.js';
+import { getRelatedPostsMap } from '../utils/related-posts-map.js';
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  const relatedMap = await getRelatedPostsMap();
+
+  return posts.map((post) => {
+    const slug = post.frontmatter.slug.replace(/^\/|\/$/g, '');
+    return {
+      params: { slug: slug || undefined },
+      props: {
+        post,
+        relatedPosts: relatedMap?.[post.frontmatter.slug] || [],
+      },
+    };
+  });
+}
+
+const { post, relatedPosts } = Astro.props;
+const { frontmatter, Content } = post;
+const categories = Array.isArray(frontmatter.categories) ? frontmatter.categories : [];
+const postDate = frontmatter.date ? formatPostDate(frontmatter.date).full : '';
+const updatedDate = frontmatter.modified_date ? formatPostDate(frontmatter.modified_date).full : '';
+const components = { SectionNote };
+---
+
+<BaseLayout>
+  <SEO
+    slot="head"
+    title={frontmatter.title}
+    description={frontmatter.description}
+    featuredImage={frontmatter.featuredImage || ''}
+    keywords={frontmatter.categories || []}
+    ogType="article"
+  />
+
+  <div class="post-each-info">
+    <span class="post-date">
+      {postDate}
+      {updatedDate ? ` (updated: ${updatedDate})` : ''}
+    </span>
+
+    <span class="post-meta">
+      {categories.map((category) => (
+        <a class="post-tag" href={tagPath(category)}>
+          {formatTagLabel(category)}
+        </a>
+      ))}
+    </span>
+  </div>
+
+  <h1 class="post-header">{frontmatter.title}</h1>
+  <div class="post-content">
+    {frontmatter.filePath?.endsWith('.mdx') ? <Content components={components} /> : <Content />}
+  </div>
+
+  {relatedPosts && relatedPosts.length > 0 ? (
+    <>
+      <br />
+      <hr />
+      <div class="post-content">
+        <aside class="related-posts">
+          <h2>Related posts</h2>
+          <ul>
+            {relatedPosts.map((related) => (
+              <li>
+                <a href={related.url}>{related.title}</a>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      </div>
+    </>
+  ) : null}
+</BaseLayout>

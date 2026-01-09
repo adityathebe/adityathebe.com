@@ -1,0 +1,10 @@
+---
+import './SectionNote/index.css';
+
+const { className = '' } = Astro.props;
+const classes = ['section-notes', className].filter(Boolean).join(' ');
+---
+
+<aside class={classes} role="note">
+  <slot />
+</aside>

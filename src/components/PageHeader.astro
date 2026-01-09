@@ -1,0 +1,10 @@
+---
+import './PageHeader/index.css';
+
+const { title, description } = Astro.props;
+---
+
+<div class="home-header">
+  <h1 class="home-title">{title}</h1>
+  {description ? <p class="home-description">{description}</p> : null}
+</div>

@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PostList from '../components/PostList.astro';
+---
+
+<BaseLayout>
+  <SEO
+    slot="head"
+    title="TIL"
+    keywords={['aditya thebe til', 'adityathebe today i learned', 'aditya thebe learnings']}
+  />
+  <PageHeader title="TIL" description="Today I Learned - quick notes and discoveries" />
+  <PostList filterContentType="til" showContentTypeBadge={false} />
+</BaseLayout>

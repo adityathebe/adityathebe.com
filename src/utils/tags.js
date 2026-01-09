@@ -75,8 +75,4 @@ const formatTagLabel = (value = '') => {
     .join(' ');
 };
 
-module.exports = {
-  tagSlug,
-  tagPath,
-  formatTagLabel,
-};
+export { tagSlug, tagPath, formatTagLabel };

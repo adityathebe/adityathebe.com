@@ -1,40 +1,32 @@
 {
   "name": "adityathebe-com",
   "private": true,
-  "description": "Gatsby blog for adityathebe.com",
+  "description": "Astro blog for adityathebe.com",
   "version": "0.1.0",
+  "type": "module",
   "author": "Aditya Thebe <contact@adityathebe.com>",
   "dependencies": {
-    "@mdx-js/react": "^2.3.0",
+    "@astrojs/mdx": "^4.0.4",
+    "@astrojs/react": "^4.0.3",
+    "@astrojs/rss": "^4.0.1",
+    "@astrojs/sitemap": "^3.2.1",
     "@parcel/watcher": "^2.5.1",
     "@tailwindcss/postcss": "^4.1.18",
     "@tanstack/react-table": "^8.21.3",
-    "gatsby": "5.15.0",
-    "gatsby-image": "^3.11.0",
-    "gatsby-plugin-feed": "^5.13.1",
-    "gatsby-plugin-manifest": "^5.13.1",
-    "gatsby-plugin-mdx": "^5.13.1",
-    "gatsby-plugin-offline": "^6.13.1",
-    "gatsby-plugin-postcss": "^6.15.0",
-    "gatsby-plugin-react-helmet": "^6.13.1",
-    "gatsby-plugin-sharp": "^5.13.1",
-    "gatsby-plugin-sitemap": "^6.13.1",
-    "gatsby-remark-autolink-headers": "^6.13.1",
-    "gatsby-remark-images": "^7.13.1",
-    "gatsby-remark-prismjs": "^7.13.1",
-    "gatsby-source-filesystem": "^5.13.1",
-    "gatsby-transformer-remark": "^6.13.1",
-    "gatsby-transformer-sharp": "^5.13.1",
-    "gatsby-transformer-yaml": "^5.13.1",
+    "astro": "^5.5.0",
+    "gray-matter": "^4.0.3",
     "postcss": "^8.5.6",
     "prismjs": "^1.17.1",
-    "prop-types": "^15.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
     "react-simple-maps": "^3.0.0",
-    "sharp": "^0.32.6",
-    "tailwindcss": "^4.1.18"
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-prism-plus": "^1.6.3",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.0",
+    "tailwindcss": "^4.1.18",
+    "unist-util-visit": "^5.0.0",
+    "yaml": "^2.5.0"
   },
   "optionalDependencies": {
     "@parcel/watcher-linux-arm64-glibc": "^2.5.1"
@@ -49,17 +41,14 @@
     "prettier-plugin-tailwindcss": "^0.7.2"
   },
   "keywords": [
-    "gatsby"
+    "astro"
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "dev": "gatsby develop -H 0.0.0.0",
-    "format": "prettier --write \"*.{js,jsx,css}\" \"src/**/*.{js,jsx,css}\"",
-    "lint": "eslint src --ext .js,.jsx",
-    "lint:fix": "eslint src --ext .js,.jsx --fix",
-    "start": "gatsby serve --port 8000",
-    "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit"
+    "build": "astro build",
+    "dev": "astro dev --host 0.0.0.0",
+    "preview": "astro preview --host 0.0.0.0 --port 8000",
+    "format": "prettier --write \"*.{js,jsx,astro,css,md,mdx}\" \"src/**/*.{js,jsx,astro,css,md,mdx}\"",
+    "typecheck": "astro check"
   }
 }

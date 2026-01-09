@@ -159,8 +159,6 @@ html[data-theme='dark'] img {
   filter: brightness(0.8) contrast(1.2);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Sanchez:ital@0;1&display=swap');
-
 body,
 h1,
 h2,
@@ -271,6 +269,7 @@ h1 {
 .main-wrapper {
   max-width: 960px;
   margin: 0 auto;
+  width: 100%;
 }
 
 @media screen and (max-width: 450px) {

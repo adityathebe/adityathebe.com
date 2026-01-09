@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PostList from '../components/PostList.astro';
+---
+
+<BaseLayout>
+  <SEO slot="head" title="Weekly Journals" keywords={['weekly journal', 'aditya thebe journal']} />
+  <PageHeader title="Weekly Journals" description="Reflections and updates from my week" />
+  <PostList filterContentType="journal" showContentTypeBadge={false} />
+</BaseLayout>

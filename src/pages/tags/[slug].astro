@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import PostList from '../../components/PostList.astro';
+import { getAllPosts } from '../../utils/posts.js';
+import { tagSlug, formatTagLabel } from '../../utils/tags.js';
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  const tagMap = new Map();
+
+  posts.forEach((post) => {
+    const categories = post.frontmatter.categories || [];
+    categories
+      .map((category) => (category ? category.trim() : ''))
+      .filter(Boolean)
+      .forEach((category) => {
+        const slug = tagSlug(category);
+        if (!slug) return;
+        if (!tagMap.has(slug)) {
+          tagMap.set(slug, new Set([category]));
+          return;
+        }
+        tagMap.get(slug).add(category);
+      });
+  });
+
+  return Array.from(tagMap.entries()).map(([slug, aliases]) => ({
+    params: { slug },
+    props: {
+      tagSlug: slug,
+      tagAliases: Array.from(aliases),
+    },
+  }));
+}
+
+const { tagSlug: slug, tagAliases } = Astro.props;
+const tagDisplayName = formatTagLabel(slug || tagAliases?.[0] || '');
+const filterTag = tagAliases?.[0] || slug;
+---
+
+<BaseLayout>
+  <SEO
+    slot="head"
+    title={`Aditya Thebe on ${tagDisplayName}`}
+    description={`Aditya Thebe on ${tagDisplayName}`}
+    keywords={[tagDisplayName]}
+    appendSiteTitle={false}
+  />
+  <PageHeader title={`Tagged "${tagDisplayName}"`} description={`Posts and notes on ${tagDisplayName}`} />
+  <PostList filterTag={filterTag} />
+</BaseLayout>

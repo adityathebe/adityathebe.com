@@ -1,0 +1,30 @@
+---
+import fs from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { parse as parseYaml } from 'yaml';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import ReviewsTable from '../../components/ReviewsTable.jsx';
+
+const tvPath = fileURLToPath(new URL('../../../content/Reviews/tv.yaml', import.meta.url));
+const raw = await fs.readFile(tvPath, 'utf8');
+const shows = parseYaml(raw) || [];
+
+const discontinued = shows.filter((show) => show.status === 'discontinued');
+const completed = shows.filter((show) => show.status !== 'discontinued');
+const defaultSorting = [{ id: 'tier', desc: false }];
+---
+
+<BaseLayout>
+  <SEO slot="head" title="TV Reviews" />
+  <div class="post-content">
+    <section class="reviews">
+      <h2>Viewing History</h2>
+      <ReviewsTable client:load rows={completed} defaultSorting={defaultSorting} />
+
+      <h1>Discontinued</h1>
+      <ReviewsTable client:load rows={discontinued} defaultSorting={defaultSorting} />
+    </section>
+    <br />
+  </div>
+</BaseLayout>

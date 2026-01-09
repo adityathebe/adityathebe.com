@@ -1,0 +1,80 @@
+---
+import fs from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { parse as parseYaml } from 'yaml';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import './uses.css';
+
+const usesDir = new URL('../../content/Uses/', import.meta.url);
+
+const loadYaml = async (filename) => {
+  const filePath = fileURLToPath(new URL(filename, usesDir));
+  const raw = await fs.readFile(filePath, 'utf8');
+  return parseYaml(raw) || [];
+};
+
+const [devToolsList, softwaresList, servicesList, laptopSpecsList, desktopSpecsList] = await Promise.all([
+  loadYaml('development-tools.yaml'),
+  loadYaml('softwares.yaml'),
+  loadYaml('services.yaml'),
+  loadYaml('laptop.yaml'),
+  loadYaml('desktop.yaml'),
+]);
+---
+
+<BaseLayout>
+  <SEO slot="head" title="Uses" keywords={['aditya thebe uses', 'aditya thebe tools']} />
+  <div class="post-content">
+    <h1 id="page-title">💻 Development Tools</h1>
+    <br />
+    <ul class="uses-list">
+      {devToolsList.map(({ name, description, url }) => (
+        <li class="uses-list-item">
+          <span>{description}</span>
+          <span>{url ? <a href={url}>{name}</a> : <u>{name}</u>}</span>
+        </li>
+      ))}
+    </ul>
+
+    <h2>Softwares</h2>
+    <ul class="uses-list">
+      {softwaresList.map(({ name, description, url }) => (
+        <li class="uses-list-item">
+          <span>{description}</span>
+          <span>{url ? <a href={url}>{name}</a> : <u>{name}</u>}</span>
+        </li>
+      ))}
+    </ul>
+
+    <h2>Services</h2>
+    <ul class="uses-list">
+      {servicesList.map(({ name, description, url }) => (
+        <li class="uses-list-item">
+          <span>{description}</span>
+          <span>{url ? <a href={url}>{name}</a> : <u>{name}</u>}</span>
+        </li>
+      ))}
+    </ul>
+
+    <h2>Desktop</h2>
+    <ul class="uses-list">
+      {desktopSpecsList.map(({ name, description, url }) => (
+        <li class="uses-list-item">
+          <span>{description}</span>
+          <span>{url ? <a href={url}>{name}</a> : <u>{name}</u>}</span>
+        </li>
+      ))}
+    </ul>
+
+    <h2>Laptop</h2>
+    <ul class="uses-list">
+      {laptopSpecsList.map(({ name, description, url }) => (
+        <li class="uses-list-item">
+          <span>{description}</span>
+          <span>{url ? <a href={url}>{name}</a> : <u>{name}</u>}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>

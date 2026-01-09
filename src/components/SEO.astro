@@ -1,0 +1,39 @@
+---
+import site from '../data/site.js';
+
+const {
+  description = '',
+  keywords = [],
+  title = '',
+  featuredImage = '',
+  ogType = 'website',
+  appendSiteTitle = true,
+} = Astro.props;
+
+const metaDescription = description || site.description;
+const pageTitle = title ? (appendSiteTitle ? `${title} | ${site.title}` : title) : site.title;
+const resolvedImage = (() => {
+  if (featuredImage) {
+    if (featuredImage.startsWith('http')) {
+      return featuredImage;
+    }
+    if (featuredImage.startsWith('/')) {
+      return `${site.siteUrl}${featuredImage}`;
+    }
+  }
+  return `${site.siteUrl}${site.defaultSocialImage}`;
+})();
+---
+
+<title>{pageTitle}</title>
+<meta name="description" content={metaDescription} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={metaDescription} />
+<meta property="og:type" content={ogType} />
+<meta property="og:image" content={resolvedImage} />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content={site.author} />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={metaDescription} />
+<meta name="twitter:image" content={resolvedImage} />
+{keywords.length > 0 ? <meta name="keywords" content={keywords.join(', ')} /> : null}

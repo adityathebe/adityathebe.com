@@ -1,0 +1,196 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import '../components/Layout/layout.css';
+import '../components/CopyButton/copyButton.css';
+import '../templates/post.css';
+import 'prismjs/themes/prism-tomorrow.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Sanchez:ital@0;1&display=swap"
+    />
+    <ClientRouter />
+    <script is:inline>
+      (() => {
+        const storedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+    <slot name="head" />
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <Navbar />
+      <main class="page-content">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+
+    <script async defer src="https://stats.adityathebe.com/latest.js"></script>
+    <script is:inline>
+      const MOBILE_BREAKPOINT = 450;
+
+      const applyStoredTheme = () => {
+        const storedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+        return theme;
+      };
+
+      const setupThemeToggle = () => {
+        const toggle = document.querySelector('.theme-switch input[type="checkbox"]');
+        if (!toggle) return;
+        if (!toggle.dataset.bound) {
+          toggle.addEventListener('change', (event) => {
+            const isDark = event.target.checked;
+            const theme = isDark ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+          });
+          toggle.dataset.bound = 'true';
+        }
+
+        const currentTheme = applyStoredTheme();
+        toggle.checked = currentTheme === 'dark';
+      };
+
+      const setupNavMenu = () => {
+        const nav = document.querySelector('.site-nav');
+        const checkbox = nav?.querySelector('.nav-trigger');
+        if (!nav || !checkbox) return;
+
+        if (window.__navListenersBound) {
+          return;
+        }
+        window.__navListenersBound = true;
+
+        const closeMenu = () => {
+          const currentCheckbox = document.querySelector('.site-nav .nav-trigger');
+          if (currentCheckbox) {
+            currentCheckbox.checked = false;
+          }
+        };
+
+        document.addEventListener('pointerdown', (event) => {
+          const currentNav = document.querySelector('.site-nav');
+          if (currentNav && !currentNav.contains(event.target)) {
+            closeMenu();
+          }
+        });
+
+        document.addEventListener('click', (event) => {
+          const link = event.target?.closest?.('.site-nav a');
+          if (link) {
+            closeMenu();
+          }
+        });
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            closeMenu();
+          }
+        });
+
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > MOBILE_BREAKPOINT) {
+            closeMenu();
+          }
+        });
+      };
+
+      const setupCopyButtons = () => {
+        const blocks = document.querySelectorAll('.gatsby-highlight');
+        blocks.forEach((block) => {
+          if (block.querySelector('.copy-button-container')) {
+            return;
+          }
+
+          const preElement = block.querySelector('pre');
+          if (!preElement) return;
+
+          const code = preElement.textContent || '';
+          const buttonContainer = document.createElement('div');
+          buttonContainer.className = 'copy-button-container';
+
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'copy-button';
+          button.setAttribute('aria-label', 'Copy code to clipboard');
+          button.setAttribute('title', 'Copy to clipboard');
+          button.innerHTML = `
+            <span class="copy-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" fill="none"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" fill="none"></path>
+              </svg>
+            </span>
+          `;
+
+          button.addEventListener('click', async () => {
+            try {
+              await navigator.clipboard.writeText(code);
+              button.classList.add('copied');
+              button.setAttribute('title', 'Copied!');
+              button.querySelector('.copy-icon').innerHTML = `
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20,6 9,17 4,12" fill="none"></polyline>
+                </svg>
+              `;
+              setTimeout(() => {
+                button.classList.remove('copied');
+                button.setAttribute('title', 'Copy to clipboard');
+                button.querySelector('.copy-icon').innerHTML = `
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" fill="none"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" fill="none"></path>
+                  </svg>
+                `;
+              }, 2000);
+            } catch (error) {
+              console.error('Failed to copy text:', error);
+            }
+          });
+
+          buttonContainer.appendChild(button);
+          block.appendChild(buttonContainer);
+        });
+      };
+
+      const onPageLoad = () => {
+        applyStoredTheme();
+        setupThemeToggle();
+        setupNavMenu();
+        setupCopyButtons();
+      };
+
+      document.addEventListener('astro:before-swap', (event) => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        if (currentTheme) {
+          event.newDocument.documentElement.setAttribute('data-theme', currentTheme);
+        }
+
+        const nextToggle = event.newDocument.querySelector('.theme-switch input[type="checkbox"]');
+        if (nextToggle) {
+          nextToggle.checked = currentTheme === 'dark';
+        }
+      });
+
+      document.addEventListener('astro:page-load', onPageLoad);
+    </script>
+  </body>
+</html>

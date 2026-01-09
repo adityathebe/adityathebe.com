@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import { getAllPosts } from '../../utils/posts.js';
+import { tagSlug, tagPath, formatTagLabel } from '../../utils/tags.js';
+import '../tags.css';
+
+const posts = await getAllPosts();
+const tagCounts = {};
+
+posts.forEach((post) => {
+  const categories = post.frontmatter.categories || [];
+  categories.forEach((category) => {
+    if (!category) return;
+    const slug = tagSlug(category);
+    if (!slug) return;
+
+    if (!tagCounts[slug]) {
+      tagCounts[slug] = {
+        slug,
+        displayName: formatTagLabel(category),
+        count: 0,
+      };
+    }
+
+    tagCounts[slug].count += 1;
+  });
+});
+
+const tags = Object.values(tagCounts).sort((a, b) => b.count - a.count);
+---
+
+<BaseLayout>
+  <SEO
+    slot="head"
+    title="Topics"
+    description="Explore all topics and tags from Aditya Thebe's blog"
+    keywords={['topics', 'tags', 'categories', 'blog']}
+  />
+
+  <div class="tags-page">
+    <div class="tags-header">
+      <h1 class="tags-title">Explore Topics</h1>
+      <p class="tags-description">
+        {tags.length} {tags.length === 1 ? 'topic' : 'topics'} across all posts
+      </p>
+    </div>
+
+    <ul class="tags-list">
+      {tags.map((tag) => (
+        <li class="tag-item">
+          <a href={tagPath(tag.displayName)} class="tag-link">
+            <span class="tag-name">{tag.displayName}</span>
+            <span class="tag-count">
+              {tag.count} {tag.count === 1 ? 'post' : 'posts'}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>

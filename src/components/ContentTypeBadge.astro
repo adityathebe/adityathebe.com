@@ -1,0 +1,21 @@
+---
+import './ContentTypeBadge/contentTypeBadge.css';
+
+const { type } = Astro.props;
+const normalized = type ? type.toLowerCase() : '';
+const routes = {
+  journal: '/journal',
+  bitesize: '/bitesize',
+  til: '/til',
+};
+const href = routes[normalized];
+const className = `content-type-badge content-type-badge--${normalized}`;
+---
+
+{href ? (
+  <a href={href} class={className}>
+    {type}
+  </a>
+) : (
+  <span class={className}>{type}</span>
+)}

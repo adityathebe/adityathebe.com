@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import NepalMap from '../components/NepalMap/index.jsx';
+
+const visitedDistricts = [
+  { name: 'Dhankuta', notes: 'Dhankuta Bazaar, Hile' },
+  { name: 'Ilam', notes: 'Ilam, Kanyam, Fikkal' },
+  { name: 'Jhapa', notes: 'Born & raised' },
+  { name: 'Morang', notes: 'Pathari, Urlabari' },
+  { name: 'Panchthar', notes: 'Sadhutar' },
+  { name: 'Solukhumbu', notes: 'Lukla, Namche Bazar, Everest Base Camp, Kala Patthar' },
+  { name: 'Sunsari', notes: 'Itahari, Dharan' },
+  { name: 'Taplejung', notes: 'Taplejung, Pathibhara Temple' },
+  { name: 'Terhathum', notes: 'Basantapur' },
+  { name: 'Udayapur', notes: 'Gaighat' },
+  { name: 'Dhanusha', notes: 'Janakpur, Dhalkebar' },
+  { name: 'Mahottari', notes: 'Bardibas' },
+  { name: 'Saptari', notes: 'Highway ride from Lahan to Koshi Barrage' },
+  { name: 'Sarlahi', notes: 'Lalbandi' },
+  { name: 'Siraha', notes: 'Lahan, Mirchaiya' },
+  { name: 'Bhaktapur', notes: 'Bhaktapur, Nagarkot' },
+  { name: 'Chitawan', notes: 'Narayanghat, Sauraha, Mugling' },
+  { name: 'Dhading', notes: 'Malekhu, Dharke' },
+  { name: 'Dolakha', notes: 'Kalinchowk, Jiri, Charikot' },
+  { name: 'Kathmandu', notes: 'Kathmandu' },
+  { name: 'Kabhrepalanchok', notes: 'Dhulikhel, Banepa, Dolalghat' },
+  { name: 'Lalitpur', notes: 'Lalitpur' },
+  { name: 'Makawanpur', notes: 'Chitlang, Markhu, Kulekhani' },
+  { name: 'Nuwakot', notes: 'Nuwakot' },
+  { name: 'Sindhuli', notes: 'SindhuliGadi, khurkot' },
+  { name: 'Sindhupalchok', notes: 'Tatopani,Kodari, Barhabise' },
+  { name: 'Baglung', notes: 'Baglung' },
+  { name: 'Gorkha', notes: 'Manakamana Temple' },
+  { name: 'Kaski', notes: 'Pokhara, Mardi Himal' },
+  { name: 'Lamjung', notes: 'Besishahar' },
+  { name: 'Manang', notes: 'Manang, Tilicho Lake' },
+  { name: 'Mustang', notes: 'Lete, Jomsom, Marpha, Muktinath' },
+  { name: 'Myagdi', notes: 'Beni, Tatopani' },
+  { name: 'Parbat', notes: 'Kushma' },
+  { name: 'Tanahu', notes: 'Damauli, Bandipur' },
+  { name: 'Palpa', notes: 'Tansen' },
+];
+---
+
+<BaseLayout>
+  <SEO
+    slot="head"
+    title="Districts of Nepal - Travel Map"
+    keywords={['nepal districts', 'nepal travel', 'nepal map', 'districts visited', 'nepal geography']}
+    description="Explore an interactive visualization of Nepal's 77 districts, highlighting the ones I've visited."
+    featuredImage="/images/districts-of-nepal.png"
+  />
+
+  <NepalMap client:load visitedDistricts={visitedDistricts} />
+
+  <p style={`text-align:center;margin-top:20px;`}>
+    Visited: {visitedDistricts.length}/77 ({Math.round((visitedDistricts.length / 77) * 100)}%)
+  </p>
+</BaseLayout>

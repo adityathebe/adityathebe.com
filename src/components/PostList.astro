@@ -1,0 +1,66 @@
+---
+import { getAllPosts } from '../utils/posts.js';
+import { formatPostDate } from '../utils/helper.js';
+import ContentTypeBadge from './ContentTypeBadge.astro';
+
+const { filterTag = null, filterContentType = null, showContentTypeBadge = true } = Astro.props;
+const posts = await getAllPosts();
+
+let filtered = posts.filter((post) => post.frontmatter.slug !== '/now');
+
+if (filterTag) {
+  const tagLower = filterTag.toLowerCase();
+  filtered = filtered.filter((post) =>
+    post.frontmatter.categories?.map((tag) => tag.toLowerCase()).includes(tagLower)
+  );
+}
+
+if (filterContentType) {
+  filtered = filtered.filter((post) => post.frontmatter.contentType === filterContentType);
+}
+
+const postsByYear = {};
+filtered.forEach((post) => {
+  const year = post.frontmatter.date ? post.frontmatter.date.getFullYear() : 'Unknown';
+  if (!postsByYear[year]) {
+    postsByYear[year] = [];
+  }
+  postsByYear[year].push(post);
+});
+
+const postGroups = Object.entries(postsByYear)
+  .map(([year, yearPosts]) => ({ title: year, posts: yearPosts }))
+  .sort((a, b) => Number(b.title) - Number(a.title));
+---
+
+<div>
+  {postGroups.map((group) => (
+    <div class="post-group">
+      <h2 class="year-heading">{group.title}</h2>
+      <ul class="post-list">
+        {group.posts.map((post) => {
+          const { frontmatter } = post;
+          const contentType = frontmatter.contentType;
+          const dates = frontmatter.date ? formatPostDate(frontmatter.date) : null;
+          return (
+            <li>
+              <div class="post-content-wrapper">
+                <span class="post-date">
+                  <span class="post-date-desktop">{dates ? dates.short : ''}</span>
+                  <span class="post-date-mobile">{dates ? dates.full : ''}</span>
+                </span>
+
+                <div class="post-item">
+                  <a class="post-link" href={frontmatter.slug}>
+                    {frontmatter.title}
+                  </a>
+                  {showContentTypeBadge && contentType ? <ContentTypeBadge type={contentType} /> : null}
+                </div>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  ))}
+</div>

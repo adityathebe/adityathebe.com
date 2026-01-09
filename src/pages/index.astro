@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PostList from '../components/PostList.astro';
+---
+
+<BaseLayout>
+  <SEO slot="head" title="Home" keywords={['aditya thebe', 'adityathebe', 'aditya thebe blog']} />
+  <PageHeader title="Writing & Notes" description="A mix of thoughts, learnings, and experiments" />
+  <PostList />
+</BaseLayout>
