@@ -171,11 +171,38 @@ import 'prismjs/themes/prism-tomorrow.css';
         });
       };
 
+      const enforceHistoryPush = () => {
+        document.querySelectorAll('a[href]').forEach((anchor) => {
+          const href = anchor.getAttribute('href');
+          if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) {
+            return;
+          }
+
+          if (anchor.hasAttribute('data-astro-history') || anchor.hasAttribute('data-astro-reload')) {
+            return;
+          }
+
+          let url;
+          try {
+            url = new URL(href, window.location.origin);
+          } catch (error) {
+            return;
+          }
+
+          if (url.origin !== window.location.origin) {
+            return;
+          }
+
+          anchor.setAttribute('data-astro-history', 'push');
+        });
+      };
+
       const onPageLoad = () => {
         applyStoredTheme();
         setupThemeToggle();
         setupNavMenu();
         setupCopyButtons();
+        enforceHistoryPush();
       };
 
       document.addEventListener('astro:before-swap', (event) => {
