@@ -4,6 +4,9 @@
   "description": "Astro blog for adityathebe.com",
   "version": "0.1.0",
   "type": "module",
+  "engines": {
+    "node": ">=20.11.0"
+  },
   "author": "Aditya Thebe <contact@adityathebe.com>",
   "dependencies": {
     "@astrojs/mdx": "^4.0.4",
