@@ -17,6 +17,7 @@ const IndexPage = ({ data }) => {
         <h1 id="page-title">{title}</h1>
 
         <iframe
+          title="Currently playing music on ListenBrainz"
           src="https://listenbrainz.org/user/adityathebe/embed/playing-now/"
           scrolling="no"
           style={{
