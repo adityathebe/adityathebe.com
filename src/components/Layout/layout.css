@@ -127,7 +127,7 @@ html[data-theme='dark'] {
   --table-of-contents-bg: var(--nord-polar-night-2);
 
   --code-bg: var(--nord-polar-night-3);
-  --code-block-bg-color: var(--nord-polar-night-2);
+  --code-block-bg-color: #24292e;
 
   --section-note-bg: #292e3b;
   --section-note-color: var(--primary-text-color);
