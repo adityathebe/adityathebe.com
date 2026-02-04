@@ -1,11 +1,12 @@
 // @ts-check
-import React from 'react';
+import React, { useRef } from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { graphql, Link } from 'gatsby';
 
 import { Head as SEOHead } from '../components/SEO';
 import Layout from '../components/Layout';
 import SectionNote from '../components/SectionNote';
+import { TableOfContentsSidebar, MobileTableOfContents } from '../components/TableOfContents';
 import { formatPostDate } from '../utils/helper.js';
 import { tagPath, formatTagLabel } from '../utils/tags.js';
 
@@ -22,32 +23,48 @@ const BlogPostTemplate = ({ data, pageContext, children }) => {
   const isMdx = Boolean(data.mdx);
   const relatedPosts = pageContext?.relatedPosts || [];
   const categories = Array.isArray(post.frontmatter.categories) ? post.frontmatter.categories : [];
+  const contentRef = useRef(null);
+
+  // Extract table of contents from MDX (structured) or MarkdownRemark (HTML)
+  const tocItems = data.mdx?.tableOfContents?.items || [];
+  const tocHtml = data.markdownRemark?.tableOfContents || '';
+
+  const hasTOC = tocItems.length > 0 || tocHtml;
+
   return (
     <Layout>
-      <div className="post-each-info">
-        <span className="post-date">
-          {formatPostDate(post.frontmatter.date).full}
-          {post.frontmatter.modified_date ? ` (updated: ${formatPostDate(post.frontmatter.modified_date).full})` : ''}
-        </span>
+      <div className="post-layout">
+        {hasTOC && <TableOfContentsSidebar items={tocItems} html={tocHtml} contentRef={contentRef} maxDepth={3} />}
+        <div className="post-main-content" ref={contentRef}>
+          <div className="post-each-info">
+            <span className="post-date">
+              {formatPostDate(post.frontmatter.date).full}
+              {post.frontmatter.modified_date
+                ? ` (updated: ${formatPostDate(post.frontmatter.modified_date).full})`
+                : ''}
+            </span>
 
-        <span className="post-meta">
-          {categories.map((x, idx) => (
-            <Link key={idx} className="post-tag" to={tagPath(x)}>
-              {formatTagLabel(x)}
-            </Link>
-          ))}
-        </span>
-      </div>
+            <span className="post-meta">
+              {categories.map((x, idx) => (
+                <Link key={idx} className="post-tag" to={tagPath(x)}>
+                  {formatTagLabel(x)}
+                </Link>
+              ))}
+            </span>
+          </div>
 
-      <h1 className="post-header">{post.frontmatter.title}</h1>
-      <div className="post-content">
-        {isMdx ? (
-          <MDXProvider components={mdxComponents}>{children}</MDXProvider>
-        ) : (
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        )}
+          <h1 className="post-header">{post.frontmatter.title}</h1>
+          {hasTOC && <MobileTableOfContents items={tocItems} html={tocHtml} contentRef={contentRef} maxDepth={3} />}
+          <div className="post-content">
+            {isMdx ? (
+              <MDXProvider components={mdxComponents}>{children}</MDXProvider>
+            ) : (
+              <div dangerouslySetInnerHTML={{ __html: post.html }} />
+            )}
+          </div>
+          <RelatedPosts relatedPosts={relatedPosts} />
+        </div>
       </div>
-      <RelatedPosts relatedPosts={relatedPosts} />
     </Layout>
   );
 };
@@ -109,6 +126,7 @@ export const pageQuery = graphql`
     }
     mdx(id: { eq: $id }) {
       id
+      tableOfContents(maxDepth: 3)
       frontmatter {
         title
         date
@@ -123,6 +141,7 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       id
       html
+      tableOfContents(pathToSlugField: "frontmatter.slug")
       frontmatter {
         title
         date

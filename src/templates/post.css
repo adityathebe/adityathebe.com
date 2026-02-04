@@ -346,3 +346,25 @@ td {
   border: none;
   margin: 1.5em 0;
 }
+
+/*************************/
+/***** TOC SIDEBAR LAYOUT *****/
+/*************************/
+
+/* Main layout - content stays centered, TOC is outside */
+.post-layout {
+  position: relative;
+  /* Keep original max-width from .main-wrapper */
+}
+
+/* Main content area - unchanged from original */
+.post-main-content {
+  /* Content stays at its original width and position */
+}
+
+/* Ensure headings have IDs for TOC linking */
+.post-content h2[id],
+.post-content h3[id],
+.post-content h4[id] {
+  scroll-margin-top: 80px; /* Offset for sticky header when scrolling */
+}
