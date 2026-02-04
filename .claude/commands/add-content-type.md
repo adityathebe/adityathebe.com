@@ -1,3 +1,0 @@
-- add support in here src/components/ContentTypeBadge/contentTypeBadge.css
-- add support in here src/components/ContentTypeBadge/index.js
-- add a page to list all $1 posts. See @src/pages/bitesize.js
