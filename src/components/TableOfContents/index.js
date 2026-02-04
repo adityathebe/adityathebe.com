@@ -78,36 +78,39 @@ const useTableOfContents = ({ contentRef, setIsExpanded }) => {
   const lastActiveIdRef = useRef('');
 
   // Scroll to heading with offset for sticky header
-  const scrollToHeading = useCallback((id) => {
-    if (typeof document === 'undefined' || !contentRef.current) return;
+  const scrollToHeading = useCallback(
+    (id) => {
+      if (typeof document === 'undefined' || !contentRef.current) return;
 
-    // Pause observer during programmatic scroll
-    isProgrammaticScrollRef.current = true;
-    setActiveId(id);
-    lastActiveIdRef.current = id;
+      // Pause observer during programmatic scroll
+      isProgrammaticScrollRef.current = true;
+      setActiveId(id);
+      lastActiveIdRef.current = id;
 
-    // Collapse mobile TOC after clicking
-    if (setIsExpanded) setIsExpanded(false);
+      // Collapse mobile TOC after clicking
+      if (setIsExpanded) setIsExpanded(false);
 
-    const element = contentRef.current.querySelector(`[id="${id}"]`);
-    if (element) {
-      const offset = 80; // Height of sticky header + padding
-      const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
-      const y = elementTop - offset;
+      const element = contentRef.current.querySelector(`[id="${id}"]`);
+      if (element) {
+        const offset = 80; // Height of sticky header + padding
+        const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
+        const y = elementTop - offset;
 
-      window.scrollTo({ top: y, behavior: 'smooth' });
+        window.scrollTo({ top: y, behavior: 'smooth' });
 
-      // Update URL hash without polluting history
-      if (typeof window !== 'undefined') {
-        window.history.replaceState(null, '', `#${id}`);
+        // Update URL hash without polluting history
+        if (typeof window !== 'undefined') {
+          window.history.replaceState(null, '', `#${id}`);
+        }
       }
-    }
 
-    // Re-enable observer after animation completes
-    setTimeout(() => {
-      isProgrammaticScrollRef.current = false;
-    }, 600);
-  }, [contentRef, setIsExpanded]);
+      // Re-enable observer after animation completes
+      setTimeout(() => {
+        isProgrammaticScrollRef.current = false;
+      }, 600);
+    },
+    [contentRef, setIsExpanded]
+  );
 
   // Setup IntersectionObserver
   useEffect(() => {
@@ -197,18 +200,11 @@ const TOCContent = ({ items = [], html, activeId, onClick, maxDepth }) => {
   if (html) {
     return <div className="toc-html-content" dangerouslySetInnerHTML={{ __html: html }} />;
   }
-  
+
   return (
     <ul className="toc-list">
       {items.map((item) => (
-        <TOCItem
-          key={item.url}
-          item={item}
-          activeId={activeId}
-          onClick={onClick}
-          depth={1}
-          maxDepth={maxDepth}
-        />
+        <TOCItem key={item.url} item={item} activeId={activeId} onClick={onClick} depth={1} maxDepth={maxDepth} />
       ))}
     </ul>
   );
@@ -281,11 +277,7 @@ export const MobileTableOfContents = ({ items = [], html, contentRef, maxDepth =
 
   return (
     <div className="toc-mobile" ref={mobileTocRef}>
-      <button
-        className="toc-mobile-toggle"
-        onClick={() => setIsExpanded(!isExpanded)}
-        aria-expanded={isExpanded}
-      >
+      <button className="toc-mobile-toggle" onClick={() => setIsExpanded(!isExpanded)} aria-expanded={isExpanded}>
         <span>{isExpanded ? '−' : '+'}</span>
         <span>Table of Contents</span>
       </button>

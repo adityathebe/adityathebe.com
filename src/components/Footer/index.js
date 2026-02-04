@@ -19,14 +19,14 @@ const Footer = () => {
   `);
 
   return (
-    <footer className="flex flex-col items-center gap-4 border-t text-sm mt-12 py-8 md:flex-row md:justify-between md:items-start">
+    <footer className="mt-12 flex flex-col items-center gap-4 border-t py-8 text-sm md:flex-row md:items-start md:justify-between">
       <div className="footer-col">
-        <span className="contact-list list-none ml-0">© 2015-2026 {data.site.siteMetadata.author}</span>
+        <span className="contact-list ml-0 list-none">© 2015-2026 {data.site.siteMetadata.author}</span>
       </div>
 
       <div className="footer-col">
         Subscribe{' '}
-        <a href="/rss.xml" rel="noopener noreferrer" className="underline text-primary-text-color hover:underline">
+        <a href="/rss.xml" rel="noopener noreferrer" className="text-primary-text-color underline hover:underline">
           via RSS
         </a>
       </div>

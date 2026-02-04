@@ -34,14 +34,14 @@ const BlogPostTemplate = ({ data, pageContext, children }) => {
   return (
     <Layout>
       <div className="post-layout">
-        {hasTOC && (
-          <TableOfContentsSidebar items={tocItems} html={tocHtml} contentRef={contentRef} maxDepth={3} />
-        )}
+        {hasTOC && <TableOfContentsSidebar items={tocItems} html={tocHtml} contentRef={contentRef} maxDepth={3} />}
         <div className="post-main-content" ref={contentRef}>
           <div className="post-each-info">
             <span className="post-date">
               {formatPostDate(post.frontmatter.date).full}
-              {post.frontmatter.modified_date ? ` (updated: ${formatPostDate(post.frontmatter.modified_date).full})` : ''}
+              {post.frontmatter.modified_date
+                ? ` (updated: ${formatPostDate(post.frontmatter.modified_date).full})`
+                : ''}
             </span>
 
             <span className="post-meta">
@@ -54,9 +54,7 @@ const BlogPostTemplate = ({ data, pageContext, children }) => {
           </div>
 
           <h1 className="post-header">{post.frontmatter.title}</h1>
-          {hasTOC && (
-            <MobileTableOfContents items={tocItems} html={tocHtml} contentRef={contentRef} maxDepth={3} />
-          )}
+          {hasTOC && <MobileTableOfContents items={tocItems} html={tocHtml} contentRef={contentRef} maxDepth={3} />}
           <div className="post-content">
             {isMdx ? (
               <MDXProvider components={mdxComponents}>{children}</MDXProvider>
