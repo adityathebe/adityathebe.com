@@ -69,7 +69,8 @@ const TOCItem = ({ item, activeId, onClick, depth, maxDepth }) => {
  * Shared hook for TOC logic
  * @param {Object} params
  * @param {React.RefObject<HTMLElement>} params.contentRef
- * @param {function} params.setIsExpanded
+ * @param {(expanded: boolean) => void} [params.setIsExpanded]
+ * @returns {{ activeId: string, scrollToHeading: (id: string) => void }}
  */
 const useTableOfContents = ({ contentRef, setIsExpanded }) => {
   const [activeId, setActiveId] = useState('');
@@ -193,7 +194,7 @@ const useTableOfContents = ({ contentRef, setIsExpanded }) => {
  * @param {TOCItem[]} [props.items]
  * @param {string} [props.html]
  * @param {string} props.activeId
- * @param {function} props.onClick
+ * @param {(id: string) => void} props.onClick
  * @param {number} props.maxDepth
  */
 const TOCContent = ({ items = [], html, activeId, onClick, maxDepth }) => {
