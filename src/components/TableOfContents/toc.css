@@ -1,0 +1,215 @@
+/* Table of Contents Sidebar Styles */
+
+.toc-sidebar {
+  display: none;
+  width: 220px;
+  position: fixed;
+  left: calc(50% - 480px - 240px); /* Position to the left of the 960px centered content */
+  top: 50%;
+  transform: translateY(-50%);
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color-1) transparent;
+  z-index: 10;
+}
+
+.toc-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.toc-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.toc-sidebar::-webkit-scrollbar-thumb {
+  background-color: var(--border-color-1);
+  border-radius: 2px;
+}
+
+.toc-container {
+  padding: 1rem 0;
+}
+
+.toc-title {
+  font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--secondary-text-color);
+  margin: 0 0 0.75rem 0;
+  padding: 0 0.5rem;
+}
+
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.toc-list.nested {
+  margin-top: 0.25rem;
+}
+
+.toc-item {
+  margin: 0;
+}
+
+.toc-link {
+  display: block;
+  padding: 0.35rem 0.5rem;
+  color: var(--secondary-text-color);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  border-radius: 0 4px 4px 0;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+/* Depth-based indentation */
+.toc-link.depth-1 {
+  padding-left: 0.5rem;
+}
+
+.toc-link.depth-2 {
+  padding-left: 1rem;
+  font-size: 0.75rem;
+}
+
+.toc-link.depth-3 {
+  padding-left: 1.5rem;
+  font-size: 0.75rem;
+}
+
+.toc-link:hover {
+  color: var(--primary-text-color);
+  background-color: var(--table-of-contents-bg);
+  text-decoration: none;
+}
+
+.toc-link.active {
+  color: var(--primary-color);
+  border-left-color: var(--primary-color);
+  background-color: var(--table-of-contents-bg);
+  font-weight: 600;
+}
+
+/* HTML-based TOC styles (MarkdownRemark) */
+.toc-html-content ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.toc-html-content ul ul {
+  margin-top: 0.25rem;
+  padding-left: 0.5rem;
+}
+
+.toc-html-content li {
+  margin: 0;
+}
+
+.toc-html-content li p {
+  margin: 0;
+}
+
+.toc-html-content a {
+  display: block;
+  padding: 0.35rem 0.5rem;
+  color: var(--secondary-text-color);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  border-radius: 0 4px 4px 0;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.toc-html-content a:hover {
+  color: var(--primary-text-color);
+  background-color: var(--table-of-contents-bg);
+  text-decoration: none;
+}
+
+/* Desktop: Show sidebar - only when there's enough space */
+/* Positioned at left: calc(50% - 480px - 240px), so need 1440px minimum */
+@media screen and (min-width: 1440px) {
+  .toc-sidebar {
+    display: block;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .toc-link.active {
+    outline: 2px solid var(--primary-color);
+    outline-offset: -2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .toc-link {
+    transition: none;
+  }
+}
+
+/*************************/
+/***** MOBILE TOC *****/
+/*************************/
+
+.toc-mobile {
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.toc-mobile-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--table-of-contents-bg);
+  border: 1px solid var(--border-color-1);
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-text-color);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.toc-mobile-toggle:hover {
+  background-color: var(--border-color-1);
+}
+
+.toc-mobile-toggle span:first-child {
+  font-size: 1.2rem;
+  line-height: 1;
+  width: 1rem;
+  text-align: center;
+}
+
+.toc-mobile-content {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background-color: var(--table-of-contents-bg);
+  border-radius: 8px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* Desktop: Hide mobile TOC - show sidebar instead */
+@media screen and (min-width: 1440px) {
+  .toc-mobile {
+    display: none;
+  }
+}
