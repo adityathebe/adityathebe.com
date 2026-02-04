@@ -19,13 +19,6 @@ I just found out about a shortcut you can use to avoid this typing. I've only tr
 
 ## Steps to configure shortcuts
 
-<div class="table-of-contents">
-
-1. [Right click on the address bar](#address-bar)
-2. ["**Add**" a new site search](#add)
-3. [Configure shortcut](#configure)
-
-</div>
 
 1. Right click on the address bar. Click on the "**Manage search engines & Site search**" context menu. <a name="address-bar"></a>
 

@@ -17,19 +17,6 @@ categories:
   - bcrypt
 ---
 
-<div class="table-of-contents">
-
-## Table of Contents
-
-- [Website updates](#website-updates)
-- [Developing on a Virtual machine](#developing-on-a-vm)
-- [NixOS](#nixos)
-- [Self Hosting Podcast](#self-hosting-podcast)
-- [Neovim](#neovim)
-- [Logictech udev rule](#preventing-logictech-from-waking-up)
-- [BCrypt](#bcrypt-72-bytes-limit)
-
-</div>
 
 ## Website updates
 

@@ -15,16 +15,6 @@ categories:
   - github
 ---
 
-<div class="table-of-contents">
-
-## Table of Contents
-
-1. [Git](#git)
-2. [Software Engineers' salaries made public](#salaries-made-public)
-3. [SSH Signing keys](#ssh-signing-key)
-4. [Unix Magic in Unicorn](#unix-magic-in-unicorn)
-
-</div>
 
 I can't believe it's been 3 years since my last weekly journal! It felt more like a year. Anyways, here's what I've learned so far this week.
 

@@ -11,16 +11,6 @@ categories:
   - sql
 ---
 
-<div class="table-of-contents">
-
-## Table of Contents
-
-1. [Weekly Journals](#weekly-journals)
-2. [GRPC and Protocol Buffers](#grpc-protobuf)
-3. [Go's Defer Panic and Recover](#go-defer-panic-recover)
-4. [SQL in Go](#sql-in-go)
-
-</div>
 
 ## Weekly Journals <a name="weekly-journals"></a>
 
