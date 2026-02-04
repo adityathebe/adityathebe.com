@@ -37,29 +37,6 @@ When you visit youtube.com, does it use the ethernet or the wifi? Would it be an
 
 This is exactly the question that we'll be covering in this article.
 
-<div class="table-of-contents">
-
-- [Network Interface](#network-interface)
-  - [Virtual interfaces](#virtual-interfaces)
-- [ip tool](#ip-tool)
-  - [View all interfaces on your system](#view-all-interfaces-on-your-system)
-  - [View IP addresses of all network interfaces](#view-ip-addresses-of-all-network-interfaces)
-- [IP destination types](#ip-destination-types)
-- [A. Route](#a-route)
-  - [ip route](#ip-route)
-  - [Default Gateway](#default-gateway)
-  - [Query the route for a destination](#query-the-route-for-a-destination)
-  - [Adding a new route](#adding-a-new-route)
-- [B. Routing Table](#b-routing-table)
-  - [local routing table](#local-routing-table)
-  - [main routing table](#main-routing-table)
-  - [default routing table](#default-routing-table)
-- [C. Rule](#c-rule)
-  - [Routing Policy Database (RPDB)](#routing-policy-database-rpdb)
-- [Things we didn't cover](#things-we-didnt-cover)
-- [References](#references)
-
-</div>
 
 ## Network Interface
 

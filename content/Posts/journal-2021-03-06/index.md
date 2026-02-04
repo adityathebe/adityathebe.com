@@ -15,19 +15,6 @@ categories:
   - goatcounter
 ---
 
-<div class="table-of-contents">
-
-## Table of Contents
-
-1. [Security Stuffs](#security)
-   - Using TLS as a mechanism to attack web-based systems
-   - Migrated away from Lastpass to Bitwarden
-2. [Website Analytics](#web-analytics)
-   - Bypass ad-blockers with a custom subdomain
-   - A better way to embed external script in GatsbyJS
-3. [Fixed a bug in Subdomain-Takeover scanner to reduce Azure cost](#azure-subdomain-takeover)
-
-</div>
 
 ## Security Stuffs <a name="security"></a>
 

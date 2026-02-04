@@ -11,15 +11,6 @@ categories:
   - cli
 ---
 
-<div class="table-of-contents">
-
-## Table of Contents
-
-1. [Find the files in a git repository that have changed the most](#git-most-changed-file)
-2. [List all the strings in a git repository](#git-strings)
-3. [NPM install that respects package-lock.json](#npm-ci)
-
-</div>
 
 ## Find the files in a git repository that have changed the most <a name="git-most-changed-file"></a>
 

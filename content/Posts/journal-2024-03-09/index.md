@@ -13,18 +13,6 @@ categories:
   - self-hosted
 ---
 
-<div class="table-of-contents">
-
-## Table of Contents
-
-1. [NixOS setup progress](#nixos-setup-progress)
-2. [Upgrade Immich](#upgrade-immich)
-3. [Dune Two](#dune-two)
-4. [Learning Rust](#learning-rust)
-5. [Mapping CAPS key to CTRL](#mapping-caps-key-to-ctrl)
-6. [Building an HTTP server from scratch - CodeCrafters](#building-an-http-server-from-scratch---codecrafters)
-
-</div>
 
 ## NixOS setup progress
 

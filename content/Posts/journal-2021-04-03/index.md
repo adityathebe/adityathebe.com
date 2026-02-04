@@ -12,15 +12,6 @@ categories:
   - git
 ---
 
-<div class="table-of-contents">
-
-## Table of Contents
-
-1. [Swapfiles to the rescue](#swapfiles)
-2. [Number of lines in a git repo](#cloc)
-3. [Copy image from X clipboard to file](#x-clipboard-image)
-
-</div>
 
 ## Swapfiles to the rescue <a name="swapfiles"></a>
 

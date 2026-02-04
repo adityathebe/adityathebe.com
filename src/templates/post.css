@@ -309,26 +309,7 @@ td {
 }
 
 /* Table of contents */
-.table-of-contents {
-  padding: 1em var(--mobile-padding);
-  margin: 1em 0;
-  background-color: var(--table-of-contents-bg);
-  border-radius: 8px;
-}
 
-@media screen and (max-width: 450px) {
-  .table-of-contents {
-    min-width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    border-radius: 0;
-    padding-inline: var(--mobile-padding);
-  }
-}
-
-.table-of-contents li p {
-  margin-bottom: 0;
-}
 
 .post-each-info {
   display: flex;

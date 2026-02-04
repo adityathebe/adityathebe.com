@@ -8,16 +8,6 @@ categories:
   - go
 ---
 
-<div class="table-of-contents">
-
-## Table of Contents
-
-1. [Dependecy injection in Go with Context API](#ctx-dependency-injection)
-2. [Go Type conversion vs Type assertion](#assertion-and-conversion)
-3. [Time formats in Go](#go-time-formats)
-4. [Declaring emtpy slices in Go](#declaring-empty-slices)
-
-</div>
 
 ### 1. Dependecy injection in Go with Context API <a name="ctx-dependency-injection"></a>
 
