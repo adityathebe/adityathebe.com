@@ -1,0 +1,42 @@
+version: '3'
+
+tasks:
+  new_post:
+    desc: 'Create a new post template in content/Posts. Usage: task new_post TITLE="My Post Title"'
+    requires:
+      vars: [TITLE]
+    env:
+      POST_TITLE: '{{.TITLE}}'
+    cmds:
+      - |
+        set -eu
+
+        title=$POST_TITLE
+        yaml_title=$(printf '%s' "$title" | sed 's/"/\\"/g')
+        slug=$(printf '%s' "$title" \
+          | tr '[:upper:]' '[:lower:]' \
+          | sed -E 's/[^a-z0-9]+/-/g; s/^-+//; s/-+$//')
+
+        post_dir="content/Posts/$slug"
+        post_file="$post_dir/index.md"
+
+        if [ -e "$post_file" ]; then
+          echo "Post already exists: $post_file" >&2
+          exit 1
+        fi
+
+        mkdir -p "$post_dir"
+        cat > "$post_file" <<EOF
+        ---
+        title: "$yaml_title"
+        date: '$(date +%F)'
+        categories:
+          - uncategorized
+        slug: /$slug
+        description: ""
+        ---
+
+        Write your post here.
+        EOF
+
+        echo "Created $post_file"
