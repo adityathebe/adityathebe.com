@@ -14,6 +14,7 @@ const TAG_DISPLAY_OVERRIDES = {
   'self-hosted': 'Self Hosted',
   'systemd-resolved': 'systemd-resolved',
   'vs-code': 'VS Code',
+  oidc: 'OIDC',
   ai: 'AI',
   api: 'API',
   arp: 'ARP',
