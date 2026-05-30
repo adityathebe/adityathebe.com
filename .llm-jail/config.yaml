@@ -1,4 +1,0 @@
-binds:
-  - .cache
-  - node_modules
-  - public
