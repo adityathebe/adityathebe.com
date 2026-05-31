@@ -171,3 +171,45 @@ They come in two flavors (some are both):
 
 - Mutating — modify the incoming object. e.g. ServiceAccount injects a default service account; AlwaysPullImages rewrites imagePullPolicy to Always.
 - Validating — accept or reject. e.g. ResourceQuota checks the pod's resource requests against the namespace quota.
+
+## Watch Events vs Event Objects
+
+Kubernetes has two kinds of events which are unfortunately both named events but they are very different.
+
+**Watch Events** are transient notifications that the API server streams to listeners that are watching a particular resource type.
+These events aren't stored anywhere, they are just a one-time notification that's sent to the listeners.
+They stream messages like: ADDED, MODIFIED, DELETED along with the full snapshot of the object.
+
+**Event Object** on the other hand is a "real" kubernetes resource like Pods or ConfigMaps, and is stored in etcd.
+It's merely a way for controllers to log changes or events on an object.
+Although, unlike other objects, these event objects have a TTL of 1 hour after which they get purged from etcd.
+The TTL is controlled by the API server flag `--event-ttl`
+
+## Resource Version vs Generation
+
+`.metadata.resourceVersion` (string) and `.metadata.generation` (number) may appear as if they are both tracking the
+version of the object at any given time and that's true but they are tracking versions of different things of the object.
+When you update the object spec, both generation and resourceVersion is incremented.
+
+However, the `generation` is only incremented when the spec changes. Whereas resourceVersion is incremented on any change
+to the object - example: status, labels, annotations, etc.
+The increment on generation is also very predictable - it's incremented by 1 when the spec changes.
+
+`resourceVersion` is a string which contains a number but it doesn't have to be a number - it's just an implementation detail of etcd.
+In etcd-backed clusters, the resourceVersion is commonly derived from the etcd revision, which advances whenever data changes in the cluster.
+That means you can have an object with `resourceVersion: 1` and then the next change on that object could be `resourceVersion: 20`
+because there were 19 other changes in the cluster.
+
+### What are they for?
+
+Why does kubernetes have two fields to track versions because it appears that resourceVersion alone should be enough.
+Because they are intended for different purpose.
+
+_resourceVersion_ is for optimisitc concurrency. Operators update the resource without obtaining a lock and and the API server
+compares the resourceVersion in the udpate request with the resourceVersion in etcds and returns a conflict error if
+the two do not match.
+
+_generation_ is for controllers to catch up on the spec. Controllers often maintain `.status.observedGeneration` to record
+which generation they last reconciled.
+That's why it's always important to compare the two when looking at the status of an object, because if they don't match
+you might get the wrong idea of where the object actually is.
