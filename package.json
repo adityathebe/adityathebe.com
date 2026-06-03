@@ -33,6 +33,7 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-simple-maps": "^3.0.0",
+    "remark-gfm": "3",
     "sharp": "^0.32.6",
     "tailwindcss": "^4.1.18"
   },

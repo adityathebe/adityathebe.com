@@ -1,3 +1,5 @@
+const remarkGfm = require('remark-gfm').default;
+
 module.exports = {
   siteMetadata: {
     title: `Aditya Thebe`,
@@ -19,6 +21,9 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`],
+        mdxOptions: {
+          remarkPlugins: [remarkGfm],
+        },
         gatsbyRemarkPlugins: [
           {
             resolve: require.resolve('./plugins/remark-inline-svg'),
@@ -122,7 +127,9 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMdx, allMarkdownRemark } }) => {
+            /** @param {{ query: { site: any, allMdx?: any, allMarkdownRemark?: any } }} args */
+            serialize: (args) => {
+              const { site, allMdx, allMarkdownRemark } = args.query;
               const mdxEdges = allMdx?.edges || [];
               const markdownEdges = allMarkdownRemark?.edges || [];
               return [...mdxEdges, ...markdownEdges].map((edge) => {
