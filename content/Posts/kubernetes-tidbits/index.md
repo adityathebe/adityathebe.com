@@ -73,9 +73,11 @@ Monitoring agents and log shippers mounting `/proc`, `/sys`, `/var/log`, etc.
 
 A CNI plugin writes config to `/etc/cni/net.d`.
 
-## Kubectl diff
+## Kubectl Commands
 
 I'm only learning about this command after more than 3 years of using kubernetes.
+
+### diff
 
 ```sh
 kubectl diff -f fixtures/plugins/golang.yaml
@@ -104,6 +106,18 @@ diff -u -N /var/folders/6c/1xcmj9z9523bn3gkh2mk530r0000gn/T/LIVE-1476133807/miss
    conditions:
    - lastTransitionTime: "2026-05-19T14:52:47Z"
 ```
+
+### proxy
+
+```sh
+kubectl proxy
+```
+
+```output
+Starting to serve on 127.0.0.1:8001
+```
+
+This command creates a proxy for the API server. The proxy authenticates itself using kubeconfig credential.
 
 ## Secrets vs ConfigMap
 
@@ -157,12 +171,6 @@ What's the purpose of `runAsNonRoot` when you can specify a non-root user id via
 `runAsNonRoot` is a guardrail.
 When set, the container will fail to come up if run with a root user.
 
-## Security Principles
-
-- Defense in depth
-- Principle of least privilege
-- Reduce attack surface
-
 ## Pod Admission Controllers
 
 There's no single monolithic pod validator.
@@ -213,3 +221,48 @@ _generation_ is for controllers to catch up on the spec. Controllers often maint
 which generation they last reconciled.
 That's why it's always important to compare the two when looking at the status of an object, because if they don't match
 you might get the wrong idea of where the object actually is.
+
+## Kind vs Resource
+
+Kind is the type of object that is returned by or received by Kubernetes API endpoints.
+Many Kinds represent persisted objects stored in `etcd`, such as `Pod`,
+`Deployment`, and `ConfigMap`, but not all Kinds are persisted.
+Some are request/response or operational API types. For example, `Status`, `TokenReview`, `SubjectAccessReview`, and `Scale` are API object kinds,
+but they are not normal top-level persisted workload/config objects like `Pod` or `Deployment`.
+
+Resource, on the other hand, is the API-facing name used in REST paths. They are lowercased and usually plural.
+Examples: `pods`, `deployments`, `services`.
+
+`kubectl get pods` requests the `pods` resource, for example: `GET /api/v1/namespaces/default/pods`
+
+### GroupVersionKind vs GroupVersionResource
+
+A GroupVersionResource (GVR) uniquely defines an HTTP path.
+
+![Group Version Resource](./gvr.png)
+_Fig: Programming Kubernetes Book_
+
+A GroupVersionKind (GVK) uniquely defines a kind.
+A cluster can have two kinds with the same name.
+Example: The cluster bewlo has two `Node` kinds but they are under different group version.
+
+```sh
+kubectl api-resources | rg Node
+```
+
+```output
+NAME                                SHORTNAMES        APIVERSION                               NAMESPACED   KIND
+nodes                               no                v1                                       false        Node
+nodes                               lhn               longhorn.io/v1beta2                      true         Node
+```
+
+### Rest Mapping
+
+When a client needs to access an object identified by a GVK, it must determine which GVR serves that object type.
+This process of mapping a GVK to a GVR is called REST mapping.
+
+For example: `apps/v1, Kind=Deployment` maps to `apps/v1, Resource=deployments`
+
+The GVR is then used to construct REST paths such as: `/apis/apps/v1/namespaces/default/deployments/nginx`
+
+## Managed Fields & Server-side apply
