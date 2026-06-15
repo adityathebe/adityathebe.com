@@ -265,4 +265,28 @@ For example: `apps/v1, Kind=Deployment` maps to `apps/v1, Resource=deployments`
 
 The GVR is then used to construct REST paths such as: `/apis/apps/v1/namespaces/default/deployments/nginx`
 
+## Resource Versioning
+
+> Not to be confused with an object's `.metadata.resourceVersion`
+
+Kubernetes api groups have a standard versioning policy.
+Commonly, groups have alpha, beta and Generally Available (GA) versions.
+Example: Group apps has `v1`,`v1beta1` and `v1beta2`.
+
+Contrary to what one minght think, even a stable version of a resource can have experimental fields that may be
+removed in future releases.
+Example: batch/v1 Job has `.spec.ttlSecondsAfterFinished` which was marked as alpha.
+As of now (v1.33) it's considered GA.
+
+```go
+type JobSpec struct {
+    ...
+    // This field is alpha-level and is only honored by servers that
+    // enable the TTLAfterFinished feature.
+    TTLSecondsAfterFinished *int32 `json:"ttlSecondsAfterFinished,omitempty"
+}
+```
+
+> Pods and many other types that were added to Kubernetes very early on are part of the core group—often also called the legacy group—which is represented by the empty string. Hence, apiVersion is just set to "v1.”
+
 ## Managed Fields & Server-side apply
