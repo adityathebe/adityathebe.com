@@ -1,6 +1,16 @@
 version: '3'
 
 tasks:
+  dev:
+    desc: 'Start Gatsby dev server in Docker (http://localhost:8000)'
+    cmds:
+      - docker compose -f docker-compose.dev.yml up --build
+
+  clean:
+    desc: 'Clean Gatsby cache and public dirs inside the Docker container'
+    cmds:
+      - docker compose -f docker-compose.dev.yml run --rm app npx gatsby clean
+
   new_post:
     desc: 'Create a new post template in content/Posts. Usage: task new_post TITLE="My Post Title"'
     requires:

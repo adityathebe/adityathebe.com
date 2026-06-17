@@ -1,5 +1,4 @@
-.cache
-Dockerfile
 node_modules
+.cache
 public
-README.md
+.git

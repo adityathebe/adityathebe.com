@@ -1,0 +1,27 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      # Mount host source for live reload — edits on host reflect inside container
+      - .:/app
+
+      # Shield node_modules: without this, the .:/app mount would hide the
+      # container's installed dependencies, breaking Gatsby/imports
+      - node_modules:/app/node_modules
+
+      # Persist Gatsby build cache across restarts (speeds up rebuilds)
+      # To fully clean: docker compose down -v
+      - gatsby_cache:/app/.cache
+      - gatsby_public:/app/public
+    ports:
+      - "8000:8000"   # Gatsby dev server
+      - "9929:9929"   # Gatsby HMR WebSocket
+    environment:
+      - NODE_ENV=development
+
+volumes:
+  node_modules:
+  gatsby_cache:
+  gatsby_public:
