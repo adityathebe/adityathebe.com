@@ -6,15 +6,17 @@
 }
 
 .home-title {
-  font-family: 'Fraunces', serif;
+  font-family: Inter, SF Pro Text, SF Pro Display, Segoe UI, Helvetica Neue, Arial, system-ui, sans-serif;
   font-size: 3rem;
   margin: 0 0 1rem;
-  color: var(--text-title);
+  color: var(--primary-text-color);
+  letter-spacing: -0.03em;
+  font-weight: 800;
 }
 
 .home-description {
   font-size: 1em;
-  color: var(--text-secondary);
+  color: var(--secondary-text-color);
   margin: 0 0 2rem;
 }
 

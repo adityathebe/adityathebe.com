@@ -94,7 +94,7 @@
   font-size: 1em;
   font-weight: 600;
   color: var(--primary-text-color);
-  font-family: 'JetBrains Mono', sans-serif;
+  font-family: Inter, SF Pro Text, SF Pro Display, Segoe UI, Helvetica Neue, Arial, system-ui, sans-serif;
   letter-spacing: -0.02em;
   transition: all 0.2s ease;
 }
@@ -102,5 +102,5 @@
 .tag-count {
   font-size: 0.85em;
   color: var(--secondary-text-color);
-  font-family: 'JetBrains Mono', sans-serif;
+  font-family: Inter, SF Pro Text, SF Pro Display, Segoe UI, Helvetica Neue, Arial, system-ui, sans-serif;
 }

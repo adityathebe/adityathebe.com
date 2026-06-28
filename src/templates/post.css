@@ -8,15 +8,17 @@
 }
 
 .year-heading {
-  font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
-  font-size: 1em;
-  color: var(--primary-text-color);
+  font-family: Berkeley Mono, SFMono-Regular, SF Mono, JetBrains Mono, IBM Plex Mono, ui-monospace, monospace;
+  font-size: 0.9em;
+  color: var(--secondary-text-color);
   margin: 0;
   width: 100px;
   position: sticky;
   top: 0;
   z-index: 1;
-  font-weight: bold;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
   align-self: flex-start;
 }
 
@@ -29,10 +31,11 @@
 .post-list {
   margin: 0;
   list-style: none;
-  font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
+  font-family: Berkeley Mono, SFMono-Regular, SF Mono, JetBrains Mono, IBM Plex Mono, ui-monospace, monospace;
   display: flex;
   flex-direction: column;
   flex: 1;
+  font-size: 0.9em;
 }
 
 .post-list li {
@@ -61,7 +64,7 @@
 .post-item {
   display: inline;
   line-height: 25px;
-  letter-spacing: -1px;
+  letter-spacing: -0.03em;
 }
 
 .post-item > * {
@@ -70,7 +73,7 @@
 }
 
 .post-date {
-  font-size: 1em;
+  font-size: 0.85em;
   white-space: nowrap;
   color: var(--secondary-text-color);
 }
@@ -119,10 +122,11 @@
 }
 
 .post-content {
-  font-size: 1em;
-  font-family: 'Sanchez', serif;
+  font-size: 1.05em;
+  font-family: New York, Iowan Old Style, Palatino Linotype, Book Antiqua, Georgia, ui-serif, serif;
   color: var(--primary-text-color);
   word-wrap: break-word;
+  line-height: 1.78;
 }
 
 .post-content h1,
@@ -305,7 +309,7 @@ table {
 th,
 td {
   padding: 0.2em 1em;
-  border: 2px solid var(--nord3);
+  border: 2px solid var(--border-color-1);
 }
 
 /* Table of contents */

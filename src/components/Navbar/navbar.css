@@ -1,6 +1,6 @@
 header {
-  font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
-  letter-spacing: -1px;
+  font-family: Inter, SF Pro Text, SF Pro Display, Segoe UI, Helvetica Neue, Arial, system-ui, sans-serif;
+  letter-spacing: -0.02em;
 }
 
 .site-nav {

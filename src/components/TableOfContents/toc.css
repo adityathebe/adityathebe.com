@@ -32,11 +32,11 @@
 }
 
 .toc-title {
-  font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-family: Inter, SF Pro Text, SF Pro Display, Segoe UI, Helvetica Neue, Arial, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.12em;
   color: var(--secondary-text-color);
   margin: 0 0 0.75rem 0;
   padding: 0 0.5rem;
@@ -46,8 +46,8 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
-  font-size: 0.8rem;
+  font-family: Inter, SF Pro Text, SF Pro Display, Segoe UI, Helvetica Neue, Arial, system-ui, sans-serif;
+  font-size: 0.84rem;
   line-height: 1.5;
 }
 
@@ -103,8 +103,8 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
-  font-size: 0.8rem;
+  font-family: Inter, SF Pro Text, SF Pro Display, Segoe UI, Helvetica Neue, Arial, system-ui, sans-serif;
+  font-size: 0.84rem;
   line-height: 1.5;
 }
 
@@ -179,7 +179,7 @@
   background-color: var(--table-of-contents-bg);
   border: 1px solid var(--border-color-1);
   border-radius: 8px;
-  font-family: 'JetBrains Mono', sans-serif, 'Helvetica Neue', Helvetica, Arial;
+  font-family: Inter, SF Pro Text, SF Pro Display, Segoe UI, Helvetica Neue, Arial, system-ui, sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--primary-text-color);

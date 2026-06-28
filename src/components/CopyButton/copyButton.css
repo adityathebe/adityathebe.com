@@ -87,7 +87,7 @@
 
 /* Theme adjustments - use consistent color for both themes */
 .copy-button {
-  color: var(--nord-snowstorm-3);
+  color: var(--secondary-text-color);
 }
 
 /* Remove gap between command and output blocks */
@@ -97,7 +97,7 @@
 
 .gatsby-highlight pre[class*='language-output'] {
   margin-top: 0 !important;
-  border-top: 0.5px solid var(--nord-snowstorm-3) !important;
+  border-top: 0.5px solid var(--border-color-1) !important;
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
   padding-top: 0.75rem !important;
