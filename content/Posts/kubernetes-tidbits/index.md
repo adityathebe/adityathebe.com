@@ -7,6 +7,9 @@ slug: /kubernetes-tidbits
 description: A list of kubernetes FAQs or lesser known information about it
 ---
 
+![](./pokhara.jpg)
+_Fewa Lake, Pokhara_
+
 I learn new things about Kubernetes everyday. This is where I'll note them down and keep it updated.
 
 ## Labels Vs Annotations
