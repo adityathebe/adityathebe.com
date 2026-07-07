@@ -20,6 +20,43 @@ const Navbar = () => {
     setIsMenuOpen(false);
   }, []);
 
+  useEffect(() => {
+    const navElement = navRef.current;
+
+    if (!navElement) {
+      return undefined;
+    }
+
+    const updateVisualViewportOffset = () => {
+      const visualViewport = window.visualViewport;
+      const bottomOffset = visualViewport
+        ? Math.max(0, window.innerHeight - visualViewport.height - visualViewport.offsetTop)
+        : 0;
+      const centerOffset = visualViewport
+        ? visualViewport.offsetLeft + visualViewport.width / 2 - window.innerWidth / 2
+        : 0;
+
+      navElement.style.setProperty('--visual-viewport-bottom-offset', `${Math.round(bottomOffset)}px`);
+      navElement.style.setProperty('--visual-viewport-center-offset', `${Math.round(centerOffset)}px`);
+    };
+
+    updateVisualViewportOffset();
+
+    window.addEventListener('resize', updateVisualViewportOffset);
+    window.addEventListener('orientationchange', updateVisualViewportOffset);
+    window.visualViewport?.addEventListener('resize', updateVisualViewportOffset);
+    window.visualViewport?.addEventListener('scroll', updateVisualViewportOffset);
+
+    return () => {
+      window.removeEventListener('resize', updateVisualViewportOffset);
+      window.removeEventListener('orientationchange', updateVisualViewportOffset);
+      window.visualViewport?.removeEventListener('resize', updateVisualViewportOffset);
+      window.visualViewport?.removeEventListener('scroll', updateVisualViewportOffset);
+      navElement.style.removeProperty('--visual-viewport-bottom-offset');
+      navElement.style.removeProperty('--visual-viewport-center-offset');
+    };
+  }, []);
+
   // Handle clicks outside the navigation and escape key
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -71,51 +108,39 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="my-4 flex justify-between" role="banner">
-      <Link className="text-lg" to="/">
+    <header className="site-header my-4 flex justify-between" role="banner">
+      <Link className="site-home-link text-lg" to="/">
         Home
       </Link>
 
       <nav className="site-nav relative" ref={navRef} role="navigation">
-        <input
-          type="checkbox"
-          id="nav-trigger"
-          className="nav-trigger"
-          checked={isMenuOpen}
-          onChange={toggleMenu}
-          aria-hidden="true"
-        />
-        <label
-          htmlFor="nav-trigger"
-          aria-label="Toggle navigation menu"
-          aria-expanded={isMenuOpen}
-          aria-controls="navigation-menu"
-          className="relative z-3"
-        >
-          <span className="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path
-                fill="#424242"
-                d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"
-              />
-              <path
-                fill="#424242"
-                d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"
-              />
-              <path
-                fill="#424242"
-                d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"
-              />
+        <div className="mobile-nav-controls">
+          <Link className="mobile-home-button" to="/" onClick={closeMenu} aria-label="Home">
+            <svg className="mobile-home-icon" viewBox="0 0 18 18" aria-hidden="true">
+              <path d="M3.5 8.3 9 3.7l5.5 4.6" />
+              <path d="M5.2 7.5v6.2h7.6V7.5" />
+              <path d="M7.8 13.7v-3h2.4v3" />
             </svg>
-          </span>
-        </label>
+          </Link>
+          <span className="mobile-nav-divider" aria-hidden="true" />
+          <button
+            type="button"
+            className="mobile-menu-button"
+            onClick={toggleMenu}
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMenuOpen}
+            aria-controls="navigation-menu"
+          >
+            <svg className="mobile-menu-icon" viewBox="0 0 18 18" aria-hidden="true">
+              <path className="mobile-menu-line mobile-menu-line-top" d="M5 7h8" />
+              <path className="mobile-menu-line mobile-menu-line-bottom" d="M5 11h8" />
+            </svg>
+          </button>
+        </div>
 
-        <div
-          className="trigger absolute top-0 right-0 z-2 flex border border-(--border-color-1) bg-(--bg-color) sm:rounded-md sm:border-0"
-          id="navigation-menu"
-        >
+        <div className={`nav-menu${isMenuOpen ? ' is-open' : ''}`} id="navigation-menu">
           {links.map(({ url, label }) => (
-            <Link key={url} className="block pr-2 pl-6 sm:mr-4 sm:pl-0" to={url} onClick={closeMenu}>
+            <Link key={url} className="nav-link" to={url} onClick={closeMenu}>
               {label}
             </Link>
           ))}
