@@ -38,6 +38,8 @@ html {
 }
 
 html {
+  color-scheme: light;
+
   /* snowstorm - nord */
   --nord1: var(--nord-snowstorm-1);
   --nord2: var(--nord-snowstorm-2);
@@ -104,6 +106,8 @@ html {
 }
 
 html[data-theme='dark'] {
+  color-scheme: dark;
+
   --nord1: #101112;
   --nord2: #17191a;
   --nord3: #1f2224;
