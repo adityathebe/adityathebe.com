@@ -19,7 +19,14 @@
   padding: 0.2em 0.4em;
   border-radius: 3px;
   font-size: 0.9em;
-  font-family: Berkeley Mono, SFMono-Regular, SF Mono, JetBrains Mono, IBM Plex Mono, ui-monospace, monospace;
+  font-family:
+    Berkeley Mono,
+    SFMono-Regular,
+    SF Mono,
+    JetBrains Mono,
+    IBM Plex Mono,
+    ui-monospace,
+    monospace;
 }
 
 /* Dark mode — only override what variables can't express (shadow intensity) */

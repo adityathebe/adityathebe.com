@@ -225,7 +225,14 @@ body {
   -webkit-text-size-adjust: 100%;
   background-color: var(--bg-color);
   color: var(--primary-text-color);
-  font-family: New York, Iowan Old Style, Palatino Linotype, Book Antiqua, Georgia, ui-serif, serif;
+  font-family:
+    New York,
+    Iowan Old Style,
+    Palatino Linotype,
+    Book Antiqua,
+    Georgia,
+    ui-serif,
+    serif;
   font-feature-settings: 'kern' 1;
   font-kerning: normal;
   line-height: 1.75em;
@@ -298,7 +305,15 @@ h4,
 h5,
 h6 {
   font-weight: 700;
-  font-family: Inter, SF Pro Text, SF Pro Display, Segoe UI, Helvetica Neue, Arial, system-ui, sans-serif;
+  font-family:
+    Inter,
+    SF Pro Text,
+    SF Pro Display,
+    Segoe UI,
+    Helvetica Neue,
+    Arial,
+    system-ui,
+    sans-serif;
   color: var(--primary-text-color);
   letter-spacing: -0.03em;
 }
@@ -363,8 +378,17 @@ blockquote {
   }
 }
 
-code, kbd, samp {
-  font-family: Berkeley Mono, SFMono-Regular, SF Mono, JetBrains Mono, IBM Plex Mono, ui-monospace, monospace;
+code,
+kbd,
+samp {
+  font-family:
+    Berkeley Mono,
+    SFMono-Regular,
+    SF Mono,
+    JetBrains Mono,
+    IBM Plex Mono,
+    ui-monospace,
+    monospace;
 }
 
 /***************************/
@@ -376,7 +400,14 @@ code, kbd, samp {
   background-color: var(--code-block-bg-color);
   color: var(--code-block-text-color);
   border-radius: 10px;
-  font-family: Berkeley Mono, SFMono-Regular, SF Mono, JetBrains Mono, IBM Plex Mono, ui-monospace, monospace;
+  font-family:
+    Berkeley Mono,
+    SFMono-Regular,
+    SF Mono,
+    JetBrains Mono,
+    IBM Plex Mono,
+    ui-monospace,
+    monospace;
 }
 
 .gatsby-highlight code[class*='language-'],
@@ -452,7 +483,14 @@ code, kbd, samp {
   padding: 0.25em 0.3em;
   border: 1px solid var(--border-color-2);
   border-radius: 5px;
-  font-family: Berkeley Mono, SFMono-Regular, SF Mono, JetBrains Mono, IBM Plex Mono, ui-monospace, monospace;
+  font-family:
+    Berkeley Mono,
+    SFMono-Regular,
+    SF Mono,
+    JetBrains Mono,
+    IBM Plex Mono,
+    ui-monospace,
+    monospace;
 }
 
 /* Shell code blocks - add $ prefix to first line */
