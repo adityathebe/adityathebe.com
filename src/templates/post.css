@@ -8,7 +8,14 @@
 }
 
 .year-heading {
-  font-family: Berkeley Mono, SFMono-Regular, SF Mono, JetBrains Mono, IBM Plex Mono, ui-monospace, monospace;
+  font-family:
+    Berkeley Mono,
+    SFMono-Regular,
+    SF Mono,
+    JetBrains Mono,
+    IBM Plex Mono,
+    ui-monospace,
+    monospace;
   font-size: 0.9em;
   color: var(--secondary-text-color);
   margin: 0;
@@ -31,7 +38,14 @@
 .post-list {
   margin: 0;
   list-style: none;
-  font-family: Berkeley Mono, SFMono-Regular, SF Mono, JetBrains Mono, IBM Plex Mono, ui-monospace, monospace;
+  font-family:
+    Berkeley Mono,
+    SFMono-Regular,
+    SF Mono,
+    JetBrains Mono,
+    IBM Plex Mono,
+    ui-monospace,
+    monospace;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -123,7 +137,14 @@
 
 .post-content {
   font-size: 1.05em;
-  font-family: New York, Iowan Old Style, Palatino Linotype, Book Antiqua, Georgia, ui-serif, serif;
+  font-family:
+    New York,
+    Iowan Old Style,
+    Palatino Linotype,
+    Book Antiqua,
+    Georgia,
+    ui-serif,
+    serif;
   color: var(--primary-text-color);
   word-wrap: break-word;
   line-height: 1.78;
