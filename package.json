@@ -34,7 +34,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "react-simple-maps": "^3.0.0",
     "remark-gfm": "3",
     "sharp": "^0.35.2",
     "tailwindcss": "^4.1.18"
@@ -44,10 +43,12 @@
   },
   "packageManager": "bun@1.2.15",
   "devDependencies": {
+    "d3-geo": "^3.1.1",
     "eslint": "7.32.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "mapshaper": "^0.7.59",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.7.2"
   },
@@ -56,6 +57,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "generate:nepal-map": "node utils/generate-nepal-map.mjs",
     "build": "gatsby build",
     "dev": "gatsby develop -H 0.0.0.0",
     "format": "prettier --write \"*.{js,jsx,css}\" \"src/**/*.{js,jsx,css}\"",

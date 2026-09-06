@@ -9,7 +9,6 @@
   height: 80vh;
   margin-left: calc(-50vw + 50%);
   padding: 0;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -27,26 +26,38 @@ html[data-theme='dark'] .nepal-map-container {
   flex: 1;
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 .nepal-map-wrapper svg {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: none !important;
-  max-height: none !important;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
-.nepal-map-wrapper svg path {
+.nepal-map-district {
+  fill: var(--map-unvisited-color);
+  stroke: var(--map-border-color);
+  stroke-width: 0.75;
+  stroke-linejoin: round;
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .nepal-map-wrapper svg {
-    width: 100vw !important;
-    height: auto !important;
-  }
+.nepal-map-district.visited {
+  fill: var(--map-visited-color);
+}
+
+.nepal-map-district.active {
+  fill: var(--map-unvisited-hover-color);
+  stroke-width: 1;
+}
+
+.nepal-map-district.visited.active {
+  fill: var(--map-visited-hover-color);
+}
+
+.nepal-map-district:focus-visible {
+  outline: 2px solid var(--primary-text-color);
+  outline-offset: 3px;
 }
 
 .nepal-map-tooltip {
@@ -89,15 +100,18 @@ html[data-theme='dark'] .nepal-map-container {
 
 @media (max-width: 768px) {
   .nepal-map-container {
-    height: 60vh;
+    min-height: 60vh;
+    height: auto;
+  }
+
+  .nepal-map-wrapper svg {
+    height: auto;
   }
 
   .nepal-map-tooltip {
     position: static;
-    margin-top: 20px;
+    margin: 20px 10px 0;
+    min-width: 0;
     max-width: none;
-    left: 10px !important;
-    right: 10px !important;
-    top: auto !important;
   }
 }
