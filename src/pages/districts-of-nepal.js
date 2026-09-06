@@ -44,7 +44,7 @@ const DistrictsOfNepalPage = () => {
     { name: 'Lalitpur', notes: 'Lalitpur' },
     { name: 'Makawanpur', notes: 'Chitlang, Markhu, Kulekhani' },
     { name: 'Nuwakot', notes: 'Nuwakot' },
-    // { name: 'Ramechhap', notes: '' },
+    { name: 'Ramechhap', notes: 'Sailung Hills' },
     // { name: 'Rasuwa', notes: '' },
     { name: 'Sindhuli', notes: 'SindhuliGadi, khurkot' },
     { name: 'Sindhupalchok', notes: 'Tatopani,Kodari, Barhabise' },

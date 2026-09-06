@@ -1,4 +1,10 @@
 .nepal-map-container {
+  --map-border-color: #aeb4b9;
+  --map-unvisited-color: var(--nord2);
+  --map-unvisited-hover-color: var(--nord1);
+  --map-visited-color: var(--primary-color);
+  --map-visited-hover-color: #5d6c73;
+
   width: 100vw;
   height: 80vh;
   margin-left: calc(-50vw + 50%);
@@ -6,6 +12,14 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+html[data-theme='dark'] .nepal-map-container {
+  --map-border-color: #42484b;
+  --map-unvisited-color: var(--nord4);
+  --map-unvisited-hover-color: #33383a;
+  --map-visited-color: #527786;
+  --map-visited-hover-color: #6692a3;
 }
 
 .nepal-map-wrapper {

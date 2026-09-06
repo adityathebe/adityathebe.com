@@ -60,24 +60,22 @@ const NepalMap = ({ visitedDistricts = [] }) => {
                     }}
                     style={{
                       default: {
-                        fill: visited ? 'var(--primary-color)' : 'var(--nord2)',
-                        stroke: 'var(--secondary-text-color)',
-                        strokeWidth: 0.5,
+                        fill: visited ? 'var(--map-visited-color)' : 'var(--map-unvisited-color)',
+                        stroke: 'var(--map-border-color)',
+                        strokeWidth: 0.75,
                         outline: 'none',
                       },
                       hover: {
-                        fill: visited ? 'var(--primary-color)' : 'var(--nord3)',
-                        stroke: 'var(--secondary-text-color)',
+                        fill: visited ? 'var(--map-visited-hover-color)' : 'var(--map-unvisited-hover-color)',
+                        stroke: 'var(--map-border-color)',
                         strokeWidth: 1,
                         outline: 'none',
-                        opacity: 0.8,
                       },
                       pressed: {
-                        fill: visited ? 'var(--primary-color)' : 'var(--nord1)',
-                        stroke: 'var(--secondary-text-color)',
+                        fill: visited ? 'var(--map-visited-hover-color)' : 'var(--map-unvisited-hover-color)',
+                        stroke: 'var(--map-border-color)',
                         strokeWidth: 1,
                         outline: 'none',
-                        opacity: 0.7,
                       },
                     }}
                   />
