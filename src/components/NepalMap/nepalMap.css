@@ -62,15 +62,16 @@ html[data-theme='dark'] .nepal-map-container {
 
 .nepal-map-tooltip {
   position: absolute;
-  top: 20px;
-  right: 20px;
   background: var(--bg-color);
   border: 1px solid var(--border-color-1);
   border-radius: 8px;
   padding: 16px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   min-width: 250px;
-  max-width: 300px;
+  max-width: min(300px, calc(100% - 32px));
+  max-height: calc(100% - 32px);
+  overflow-y: auto;
+  pointer-events: none;
   z-index: 10;
 }
 
@@ -107,10 +108,16 @@ html[data-theme='dark'] .nepal-map-container {
     height: auto;
   }
 
+  .nepal-map-district:focus {
+    outline: none;
+  }
+
   .nepal-map-tooltip {
     position: static;
     margin: 20px 10px 0;
     min-width: 0;
     max-width: none;
+    max-height: none;
+    transform: none !important;
   }
 }
