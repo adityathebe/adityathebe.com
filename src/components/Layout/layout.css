@@ -326,6 +326,7 @@ h1 {
 .main-wrapper {
   max-width: 960px;
   margin: 0 auto;
+  padding: 0 var(--mobile-padding);
 }
 
 @media screen and (max-width: 450px) {
