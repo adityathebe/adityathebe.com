@@ -13,16 +13,6 @@ const siteLinks = [
   },
 ];
 
-const techPeople = [
-  { name: 'Mitchell Hashimoto', url: 'https://mitchellh.com/' },
-  { name: 'Thorsten Ball', url: 'https://thorstenball.com/' },
-  { name: 'Jon Gjengset', url: 'https://thesquareplanet.com' },
-  { name: 'Filippo Valsorda', url: 'https://filippo.io/' },
-  { name: 'Mat Ryer', url: 'https://x.com/matryer' },
-  { name: 'Julia Evans', url: 'https://jvns.ca' },
-  { name: 'Eli Bendersky', url: 'https://eli.thegreenplace.net' },
-];
-
 const LinksPage = () => (
   <Layout>
     <div className="post-content">
@@ -41,17 +31,6 @@ const LinksPage = () => (
       <a href="https://movies.adityathebe.com/users/adityathebe/dashboard" target="_blank" rel="noreferrer">
         https://movies.adityathebe.com/users/adityathebe/dashboard
       </a>
-
-      <h3>Some of my favorite people in Tech</h3>
-      <ul>
-        {techPeople.map((person) => (
-          <li key={person.name}>
-            <a href={person.url} target="_blank" rel="noreferrer">
-              {person.name}
-            </a>
-          </li>
-        ))}
-      </ul>
     </div>
   </Layout>
 );
