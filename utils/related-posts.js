@@ -6,7 +6,7 @@ const crypto = require('crypto');
 const DEFAULT_MODEL = 'text-embedding-3-small';
 const DEFAULT_CACHE_PATH = path.join(process.cwd(), 'data', 'related-posts-cache.json');
 const DEFAULT_CONTENT_LENGTH_LIMIT = 10_000;
-const DEFAULT_MIN_SCORE = 0.50;
+const DEFAULT_MIN_SCORE = 0.6;
 const CACHE_PATH = process.env.RELATED_POST_CACHE_PATH
   ? path.resolve(process.cwd(), process.env.RELATED_POST_CACHE_PATH)
   : DEFAULT_CACHE_PATH;
@@ -16,7 +16,7 @@ const CACHE_PATH = process.env.RELATED_POST_CACHE_PATH
 
 /**
  * Load embeddings cache from disk.
- * @returns {Promise<Record<string, { hash: string; embedding: number[] }>>}
+ * @returns {Promise<Record<string, { hash: string; model: string; embedding: number[] }>>}
  */
 async function loadCache() {
   try {
@@ -32,7 +32,7 @@ async function loadCache() {
 
 /**
  * Persist embeddings cache to disk.
- * @param {Record<string, { hash: string; embedding: number[] }>} cache
+ * @param {Record<string, { hash: string; model: string; embedding: number[] }>} cache
  */
 async function saveCache(cache) {
   const directory = path.dirname(CACHE_PATH);
@@ -98,7 +98,10 @@ async function fetchEmbedding(input, apiKey, model = DEFAULT_MODEL) {
  * @param {number[]} b
  */
 function cosineSimilarity(a, b) {
-  const length = Math.min(a.length, b.length);
+  if (a.length !== b.length) {
+    throw new Error(`Cannot compare embeddings of different lengths (${a.length} vs ${b.length})`);
+  }
+  const length = a.length;
   let dot = 0;
   let normA = 0;
   let normB = 0;
@@ -148,6 +151,7 @@ async function getRelatedPosts(posts, options = {}) {
     }
     return DEFAULT_MIN_SCORE;
   })();
+  const model = process.env.OPENAI_EMBEDDING_MODEL || DEFAULT_MODEL;
 
   const cache = await loadCache();
 
@@ -161,7 +165,9 @@ async function getRelatedPosts(posts, options = {}) {
   for (const post of posts) {
     const hash = hashPost(post);
     const cached = cache[post.slug];
-    if (cached && Array.isArray(cached.embedding)) {
+    // Embeddings from different models live in different vector spaces, so
+    // only reuse a cached embedding produced by the current model.
+    if (cached && cached.model === model && Array.isArray(cached.embedding)) {
       embeddings[post.slug] = cached.embedding;
       if (cached.hash === hash) {
         continue;
@@ -178,11 +184,10 @@ async function getRelatedPosts(posts, options = {}) {
         `Skipping embedding refresh for ${postsToRefresh.length} post${postsToRefresh.length === 1 ? '' : 's'}: OPENAI_API_KEY is not set.`
       );
     } else {
-      const model = process.env.OPENAI_EMBEDDING_MODEL || DEFAULT_MODEL;
       for (const { post, hash } of postsToRefresh) {
         console.log(`Fetching embedding for post "${post.slug}" using model "${model}"...`);
         const embedding = await fetchEmbedding(embeddingInput(post), apiKey, model);
-        cache[post.slug] = { hash, embedding };
+        cache[post.slug] = { hash, model, embedding };
         embeddings[post.slug] = embedding;
         cacheChanged = true;
       }

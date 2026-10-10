@@ -1,0 +1,196 @@
+{
+  "/anatomy-of-go-slices/": [
+    {
+      "slug": "/journal/5",
+      "score": 0.657
+    }
+  ],
+  "/backup-github": [
+    {
+      "slug": "/backup-plan",
+      "score": 0.636
+    },
+    {
+      "slug": "/configure-ssh-key-github/",
+      "score": 0.613
+    }
+  ],
+  "/backup-plan": [
+    {
+      "slug": "/backup-github",
+      "score": 0.636
+    }
+  ],
+  "/configure-ssh-key-github/": [
+    {
+      "slug": "/backup-github",
+      "score": 0.613
+    }
+  ],
+  "/hands-on-introduction-to-digital-fingerprints/": [
+    {
+      "slug": "/public-key-infrastructures-and-certificates",
+      "score": 0.646
+    }
+  ],
+  "/introducing-weekly-journals/": [
+    {
+      "slug": "/my-new-years-resolution-2023/",
+      "score": 0.642
+    }
+  ],
+  "/journal/1": [
+    {
+      "slug": "/journal/5",
+      "score": 0.614
+    },
+    {
+      "slug": "/journal/8",
+      "score": 0.61
+    }
+  ],
+  "/journal/2": [
+    {
+      "slug": "/simple-analytics",
+      "score": 0.685
+    },
+    {
+      "slug": "/journal/7",
+      "score": 0.65
+    },
+    {
+      "slug": "/journal/8",
+      "score": 0.635
+    },
+    {
+      "slug": "/journal/4",
+      "score": 0.61
+    }
+  ],
+  "/journal/4": [
+    {
+      "slug": "/journal/2",
+      "score": 0.61
+    },
+    {
+      "slug": "/journal/7",
+      "score": 0.609
+    }
+  ],
+  "/journal/5": [
+    {
+      "slug": "/anatomy-of-go-slices/",
+      "score": 0.657
+    },
+    {
+      "slug": "/journal/1",
+      "score": 0.614
+    }
+  ],
+  "/journal/6": [
+    {
+      "slug": "/journal/7",
+      "score": 0.688
+    },
+    {
+      "slug": "/journal/8",
+      "score": 0.65
+    }
+  ],
+  "/journal/7": [
+    {
+      "slug": "/journal/8",
+      "score": 0.725
+    },
+    {
+      "slug": "/journal/6",
+      "score": 0.688
+    },
+    {
+      "slug": "/journal/2",
+      "score": 0.65
+    },
+    {
+      "slug": "/journal/working-with-ai-agents",
+      "score": 0.64
+    }
+  ],
+  "/journal/8": [
+    {
+      "slug": "/journal/7",
+      "score": 0.725
+    },
+    {
+      "slug": "/journal/6",
+      "score": 0.65
+    },
+    {
+      "slug": "/journal/working-with-ai-agents",
+      "score": 0.648
+    },
+    {
+      "slug": "/journal/2",
+      "score": 0.635
+    }
+  ],
+  "/journal/working-with-ai-agents": [
+    {
+      "slug": "/journal/8",
+      "score": 0.648
+    },
+    {
+      "slug": "/journal/7",
+      "score": 0.64
+    }
+  ],
+  "/kathmandu-university-twitter-bot/": [
+    {
+      "slug": "/twitter-bot-tutorial-nodejs/",
+      "score": 0.619
+    }
+  ],
+  "/mustang-motorcycle-trip": [
+    {
+      "slug": "/places-to-ride-around-kathmandu/",
+      "score": 0.697
+    }
+  ],
+  "/my-new-years-resolution-2023/": [
+    {
+      "slug": "/introducing-weekly-journals/",
+      "score": 0.642
+    },
+    {
+      "slug": "/journal/8",
+      "score": 0.623
+    },
+    {
+      "slug": "/journal/7",
+      "score": 0.601
+    }
+  ],
+  "/places-to-ride-around-kathmandu/": [
+    {
+      "slug": "/mustang-motorcycle-trip",
+      "score": 0.697
+    }
+  ],
+  "/public-key-infrastructures-and-certificates": [
+    {
+      "slug": "/hands-on-introduction-to-digital-fingerprints/",
+      "score": 0.646
+    }
+  ],
+  "/simple-analytics": [
+    {
+      "slug": "/journal/2",
+      "score": 0.685
+    }
+  ],
+  "/twitter-bot-tutorial-nodejs/": [
+    {
+      "slug": "/kathmandu-university-twitter-bot/",
+      "score": 0.619
+    }
+  ]
+}

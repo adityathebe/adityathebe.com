@@ -4,4 +4,14 @@ My personal blog. Visit here - [https://adityathebe.com](https://adityathebe.com
 
 ## AI Related Posts
 
-Set an `OPENAI_API_KEY` in your environment before running `gatsby build` or `gatsby develop` to let the build pipeline generate AI-powered related posts. Embeddings are cached in `data/related-posts-cache.json` (override with `RELATED_POST_CACHE_PATH`); remove that file or run `gatsby clean` to force regeneration. Without an API key the build will reuse cached embeddings but skip refreshing new or edited posts. Tune strictness with `RELATED_POST_MIN_SCORE` (defaults to `0.35`) or switch models via `OPENAI_EMBEDDING_MODEL`.
+Related posts are computed from OpenAI embeddings by a standalone task, not during the Gatsby build. After adding or editing posts, run:
+
+```sh
+OPENAI_API_KEY=... task related_posts
+```
+
+This writes `data/related-posts.json` (each post's related slugs and similarity scores), which `gatsby-node.js` reads at build time. Commit it along with the post. The build itself needs no API key and never calls OpenAI.
+
+Embeddings are cached in `data/related-posts-cache.json` (override with `RELATED_POST_CACHE_PATH`), keyed by post content and embedding model, so only new or edited posts are re-embedded. Delete the cache file to force a full refresh. Without an API key the task warns, keeps the old embedding for edited posts, and leaves new posts without related posts.
+
+Tune strictness with `RELATED_POST_MIN_SCORE` (defaults to `0.6`) or switch models via `OPENAI_EMBEDDING_MODEL` (defaults to `text-embedding-3-small`; switching re-embeds every post).
