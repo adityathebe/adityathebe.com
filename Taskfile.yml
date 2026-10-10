@@ -11,6 +11,11 @@ tasks:
     cmds:
       - docker compose -f docker-compose.dev.yml run --rm app npx gatsby clean
 
+  related_posts:
+    desc: 'Regenerate data/related-posts.json from OpenAI embeddings (requires OPENAI_API_KEY for new or edited posts)'
+    cmds:
+      - node utils/generate-related-posts.js
+
   new_post:
     desc: 'Create a new post template in content/Posts. Usage: task new_post TITLE="My Post Title"'
     requires:
